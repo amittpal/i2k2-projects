@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+    
+<form class="app-form" [formGroup]="additionalSetupFormGroup" id="additionalSetupFormGroup">
+<div class="card-body">
+
+    <div class="card-header">
+        <div class="header-flex-container">
+          <div class="card-title col-4">
+            Roll Number Attributes
+          </div>  
+     </div> 
+     
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table p-0">
+            <ngx-ixcheck-table id="roll-number-attributes" headerTitle="Roll Number Attributes" [items]="attrItems"
+            [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+            [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+            [expandOnIndexColClick]="false" [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+  
+            <ng-template #rowDetailExpand let-rowitem="item">
+            </ng-template> 
+  
+            <ngx-ixcheck-table-column [property]="'attribute'" [header]="'ATTRIBUTE'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+  
+            <ngx-ixcheck-table-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>PRIORITY</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item"> 
+                <div>
+                  <input type="number" min="0" style="width: 50%;" [ngClass]="{red:!additionalSetupFormGroup.controls['priority'+ rowitem.attribute].valid && submitted }" formControlName="priority{{rowitem.attribute}}"  class="form-control priority-binding">
+                </div>
+              </ng-template>
+            </ngx-ixcheck-table-column>  
+
+
+            <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>FIXED LENGTH</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item"> 
+                  <div>
+                    <input type="number" min="0" style="width: 50%;" [ngClass]="{red:!additionalSetupFormGroup.controls['length'+ rowitem.attribute].valid && submitted }" formControlName="length{{rowitem.attribute}}"  class="form-control  length-binding">
+                  </div>
+                </ng-template>
+              </ngx-ixcheck-table-column>  
+
+          </ngx-ixcheck-table>
+        </div>
+    </div>        
+  </div>
+
+    <div class="card-header">
+        <div class="header-flex-container">
+          <div class="card-title col-4">
+            Conditions & Additional Notes
+          </div>  
+     </div> 
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+      <div class="data-table p-0">
+        <ngx-ixcheck-table id="notes-and-conditions" headerTitle="Conditions & Additional Notes" [items]="items"
+          [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+          [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+          [expandOnIndexColClick]="false" [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+
+          <ng-template #rowDetailExpand let-rowitem="item">
+          </ng-template>
+
+          <ngx-ixcheck-table-column [property]="'language_guid'" [header]="'LANGUAGE ID'" [sortable]="false" [resizable]="true" [width]="70" [visible]="false">
+          </ngx-ixcheck-table-column>
+
+          <ngx-ixcheck-table-column [property]="'language_name'" [header]="'LANGUAGE'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+
+
+
+          <ngx-ixcheck-table-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>TERM & CONDITIONS</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+
+              <div *ngIf="rowitem.language_name === 'English'">
+                <textarea style="height:100px" formControlName="termsConditions{{rowitem.language_name}}" [ngClass]="{red:!additionalSetupFormGroup.controls['termsConditions'+ rowitem.language_name].valid && submitted }" class="form-control english-term-binding" placeholder="Terms & Conditions"></textarea><br>
+                <textarea style="height:100px" formControlName="notes{{rowitem.language_name}}" [ngClass]="{red:!additionalSetupFormGroup.controls['notes'+ rowitem.language_name].valid && submitted }" class="form-control english-notes-binding" placeholder="Additonal Notes"></textarea>
+              </div>
+
+              <div *ngIf="rowitem.language_name !== 'English'">                
+               
+                <div class="row">
+                  <div class="col-md-3 col-lg-3">
+                    <input type="file"  accept="image/*" (change)="changeListener($event,'TermsNConditions',rowitem.language_name)" formControlName="termsConditions{{rowitem.language_name}}" [ngClass]="{red:!additionalSetupFormGroup.controls['termsConditions'+rowitem.language_name].valid && submitted }"   id="{{rowitem.language_name}}" class="inputfile otherLangTerms-binding" />
+                    <label for="{{rowitem.language_name}}" [ngClass]="{red:!additionalSetupFormGroup.controls['termsConditionsHidden'+rowitem.language_name].valid && submitted }">Choose T & C Image</label>   
+                    <input type="hidden" #termsCondition_img name="termsConditionsHidden{{rowitem.language_name}}" formControlName="termsConditionsHidden{{rowitem.language_name}}" /> <!-- Validation Field -->
+                      <!--Image Preview-->    
+                      <div *ngIf="termsCondition_img.value">
+                        <img [src]="termsCondition_img.value">
+                      </div>
+                  </div>
+
+                  <div class="col-md-3 col-lg-3">
+                    <input type="file"  accept="image/*" (change)="changeListener($event,'Notes',rowitem.language_name)" formControlName="notes{{rowitem.language_name}}" [ngClass]="{red:!additionalSetupFormGroup.controls['notes'+rowitem.language_name].valid && submitted }"  id="{{rowitem.language_name + 1}}" class="inputfile  otherLangNotes-binding" />
+                    <label for="{{rowitem.language_name + 1}}" [ngClass]="{red:!additionalSetupFormGroup.controls['notesHidden'+rowitem.language_name].valid && submitted }">Choose Additional Notes Image</label>                
+                    <input type="hidden" #notes_img name="notesHidden{{rowitem.language_name}}" formControlName="notesHidden{{rowitem.language_name}}" /> <!-- Validation Field -->
+                    <!--Image Preview-->
+                    <div *ngIf="notes_img.value">
+                      <img [src]="notes_img.value">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngx-ixcheck-table-column>  
+        </ngx-ixcheck-table>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</form>
+
+<div class="card-footer border-0">
+    <button class="btn btn-sm btn-primary" id="submitBtn" type="button" (click)="formSubmit()">Submit</button>
+    <button class="btn btn-sm btn-default float-right" type="button"  (click)="reset()">Reset</button>
+</div>
+
+</div>
+
+
+
+
+</div>  

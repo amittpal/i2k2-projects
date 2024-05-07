@@ -1,0 +1,33 @@
+<div class="card-body fullheight-fixed ">
+    <form class="app-form m-0" id="feeSetupFormGroup" name="feeSetupFormGroup" [formGroup]="feeSetupFormGroup">
+        <div class="row  p-0 ">
+
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group foc trad">
+                    <label>Fee Applicable On</label>
+                    <select class="form-control" formControlName="registration_fee_type_guid"
+                        name="registration_fee_type_guid" (change)="onChangeTypeList($event.target.value)" disabled>
+                        <option value="">Select</option>
+                        <option *ngFor="let regType of feeTypeList" [value]="regType.guid">{{regType.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="col-md-4 col-lg-3">
+                <input type="button" class="btn btn-outline-primary btn-sm" id="btn-bulk-unlock"
+                    [value]="allowBulkUpdate ? 'Apply bulk changes':'Unlock bulk update' "
+                    (click)="onBulkUpdateButtonClick()">
+            </div> -->
+
+        </div>
+    </form>
+    <div *ngFor=" let fee_applicable of fee_applicable_list">
+        <div class="card-header">
+            <label class="card-title">{{fee_applicable.reg_type_name ||fee_applicable.exam_name}}</label>
+        </div>
+
+
+        <app-reg-applicable-fees-list [dataItems]="fee_applicable" (updatedParantDetails)="getUpdatedDetails($event)">
+        </app-reg-applicable-fees-list>
+    </div>
+
+</div>

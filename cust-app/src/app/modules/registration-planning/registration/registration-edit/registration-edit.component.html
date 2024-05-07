@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-borderless fullheight-min">
+      <div class="card-body">
+        <form [formGroup]="templateForm" (ngSubmit)="onFormSubmit()">
+          <div class="row" *ngIf="layoutDetails!=undefined">
+            <div class="col-md-12">
+              <tabset class="tabset-container" #pagesTabs>
+                <tab *ngFor="let page of layoutDetails.layout.pages" heading="{{page.page_name}}" [disabled]="true">
+                </tab>
+              </tabset>
+              <div *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index"
+                [formGroupName]="page.page_name">
+                <div *ngIf="pagesTabs.tabs[pageIndex].active == true">
+
+                  
+                  <ng-container *ngIf="page.page_name !== 'Payment'">
+                    <div class="row mt-3" *ngFor="let section of page.sections">
+                      <div class="col-md-12 mb-2 mt-2">
+                        <h4>{{section.section_name}}</h4>
+                        <hr>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <div *ngFor="let component of section.comps"
+                            class="col-md-{{component.cols}} col-lg-{{component.cols}}">
+                            <!--component to skip to bind-->
+                            <ng-container *ngIf="!skipComponents.includes(component.comp_name)">
+                              <!--Binding component-->
+                              <ng-container LoadComponent [componentDetails]="component"
+                                [group]="templateForm.get(page.page_name)" [additionalDetails]="additionalDetails"
+                                (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                              </ng-container>
+                              <!--Error message component-->
+                              <ng-container *ngIf="component.settings.setting_type !=='button'">
+                                <ngx-ixcheck-showerrormessage
+                                  [control]="templateForm.get(page.page_name).get(component.comp_name)"
+                                  [controlName]="component.settings.setting_label">
+                                </ngx-ixcheck-showerrormessage>
+                              </ng-container>
+                            </ng-container>
+  
+                          </div>
+  
+                        </div>
+  
+  
+                      </div>
+  
+                    </div>
+                  </ng-container>
+
+                  <!-- <ng-container *ngIf="page.page_name === 'Payment'">
+                    <app-paytm-payment-gateway
+                    [RegId]="57"
+                    [ExamGuid]="examGuid"></app-paytm-payment-gateway>                                
+                  </ng-container>      -->
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

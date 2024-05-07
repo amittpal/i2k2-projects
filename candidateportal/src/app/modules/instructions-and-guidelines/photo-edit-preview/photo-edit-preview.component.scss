@@ -1,0 +1,27 @@
+
+
+.modal-body {
+    height: calc(100vh - 35vh) !important;    
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 15px;       
+    .card-bordered{
+      height: calc(100vh - 40vh) !important;    
+
+    }
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+  
+  .modal-footer-image {
+    border-top: 1px solid #dee2e6 !important;
+    padding: 10px 20px;
+  }
+  
+  .mdl{
+    max-width: calc(100vw - 15vw) !important;
+  }
+  
+  

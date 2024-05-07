@@ -1,0 +1,102 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+
+  <div class="col">
+    <form autocomplete="off" name="childFromGroup" id="childFrom" [formGroup]="childFromGroup">
+      <div class="form-row text-uppercase">
+
+
+        <!-- Name -->
+        <div class="form-group d-flex flex-column col">
+          <label for="name" class="mb-0">Name</label>
+          <input type="text" min="0" class="custom-select  custom-select-dd custom-select-sm" formControlName="name"
+            name="name" (click)="$event.stopPropagation();">
+
+        </div>
+
+        <div class="form-group d-flex flex-column col">
+          <label for="ph_female" class="mb-0">Ph Female</label>
+
+          <input type="number" min="0" class="custom-select  custom-select-dd custom-select-sm"
+            formControlName="ph_female" name="ph_female" (click)="$event.stopPropagation();">
+        </div>
+
+
+        <!-- Ph Other -->
+        <div class="form-group d-flex flex-column col">
+          <label for="ph_others" class="mb-0">Ph Other</label>
+          <input type="number" min="0" class="custom-select  custom-select-dd custom-select-sm"
+            formControlName="ph_others" name="ph_others" (click)="$event.stopPropagation();">
+        </div>
+
+        <!-- Reserved Female -->
+        <div class="form-group d-flex flex-column col">
+          <label for="reserved_female" class="mb-0">Reserved Female</label>
+          <input type="number" min="0" class="custom-select  custom-select-dd custom-select-sm" formControlName="reserved_female"
+            name="reserved_female" (click)="$event.stopPropagation();">
+        </div>
+        
+        <!-- Reserved Other -->
+        <div class="form-group d-flex flex-column col">
+          <label for="other_reserved" class="mb-0">Reserved Other</label>
+          <input type="number" min="0" class="custom-select  custom-select-dd custom-select-sm" formControlName="other_reserved"
+            name="other_reserved" (click)="$event.stopPropagation();">
+        </div>
+        
+      </div>
+
+      <div class="form-row text-uppercase">
+        <!-- Other Female -->
+        <div class="form-group d-flex flex-column col">
+          <label for="others_female" class="mb-0">
+            Other Female
+          </label>
+          <input type="number" min="0" formControlName="others_female"
+            class="custom-select custom-select-dd custom-select-sm" name="others_female"
+            (click)="$event.stopPropagation();">
+        </div>
+
+        <!-- Other -->
+        <div class="form-group d-flex flex-column col">
+          <label for="others" class="mb-0">
+            Other
+          </label>
+          <input type="number" min="0" formControlName="others" class="custom-select custom-select-dd custom-select-sm"
+            name="others" (click)="$event.stopPropagation();">
+        </div>
+        <!-- ph-seats -->
+        <div class="form-group d-flex flex-column col">
+          <label for="ph_seats" class="mb-0">
+            PH Capacity
+          </label>
+          <input type="text" formControlName="ph_seats" class="custom-select custom-select-dd custom-select-sm"
+            name="ph_seats" (click)="$event.stopPropagation();">
+        </div>
+
+        <!-- normal seats -->
+        <div class="form-group d-flex flex-column col">
+          <label for="normal_seats" class="mb-0">
+            Normal Capacity
+          </label>
+          <input type="text" formControlName="normal_seats" class="custom-select custom-select-dd custom-select-sm"
+            name="normal_seats" (click)="$event.stopPropagation();">
+        </div>
+
+        <!-- offset -->
+        <div class="form-group d-flex flex-column col">
+        </div>
+
+      </div>
+
+      <!-- Update   -->
+      <div *ngIf="optionId == 1" class="form-row">
+        <div class="form-group d-flex col">
+          <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;" type="button"
+            (click)="sendToParent()">Update</button>
+          <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+            (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

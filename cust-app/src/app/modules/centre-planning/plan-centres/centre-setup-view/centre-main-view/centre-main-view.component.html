@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div>
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <label class="p-1" *ngIf="examNumber">EXAM # {{examNumber||'Exam Number'}}</label>
+        <tabset filterClose class="tabset-container" #tabset>
+          <tab heading="Exam"></tab>
+          <tab heading="Reg Data"></tab>
+          <tab heading="Centre List"></tab>
+          <tab heading="Shifts"></tab>
+          <tab [disabled]="disableSwitching" heading="Assign pref 1"></tab>
+          <tab [disabled]="disableSwitching" heading="Assign pref 2"></tab>
+          <tab [disabled]="disableSwitching" heading="Assign pref 3"></tab>
+          <tab heading="Preference Allocation Review"></tab>
+          <tab heading="Centre Allocation Reports"></tab>
+        </tabset>
+      </div>
+
+      <div class="card-body scrollable inside-footer-fixed">
+        <div *ngIf="tabset.tabs[0].active == true">
+          <app-exam-view (exam_num)="exam_num($event)" [examGuid]="examGuid"></app-exam-view>
+        </div>
+        <div *ngIf="tabset.tabs[1].active == true">
+          <app-regdata-view [examGuid]="examGuid"></app-regdata-view>
+        </div>
+        <div *ngIf="tabset.tabs[2].active == true">
+          <app-centre-list-view [examGuid]="examGuid"></app-centre-list-view>
+        </div>
+        <div *ngIf="tabset.tabs[3].active == true">
+          <app-shift-view [examGuid]="examGuid"></app-shift-view>
+        </div>
+        <div *ngIf="tabset.tabs[4].active == true">
+          <app-assign-pref-1-view [examGuid]="examGuid"></app-assign-pref-1-view>
+        </div>
+        <div *ngIf="tabset.tabs[5].active == true">
+          <app-assign-pref-2-view [examGuid]="examGuid"></app-assign-pref-2-view>
+        </div>
+        <div *ngIf="tabset.tabs[6].active == true">
+          <app-assign-pref-3-view [examGuid]="examGuid"></app-assign-pref-3-view>
+        </div>
+        <div *ngIf="tabset.tabs[7].active == true">
+          <app-final-view-only [examGuid]="examGuid"></app-final-view-only>
+        </div>
+        <div *ngIf="tabset.tabs[8].active == true">
+          <app-center-allocation-report-view [examGuid]="examGuid"></app-center-allocation-report-view>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

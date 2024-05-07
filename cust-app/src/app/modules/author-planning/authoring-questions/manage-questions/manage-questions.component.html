@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="row app-form" *ngIf="examDetails != undefined">
+            <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="exam_number">Exam Number</label>
+              <input type="text" class="form-control form-control-sm" [value]="examDetails.exam_number" [disabled]="true">
+            </div> 
+            <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="exam_number">Exam Type</label>
+              <input type="text" class="form-control form-control-sm" [value]="examDetails.exam_type" [disabled]="true">
+            </div> 
+            <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="exam_number">Exam Code</label>
+              <input type="text" class="form-control form-control-sm" [value]="examDetails.exam_code" [disabled]="true">
+            </div> 
+            <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="exam_number">Exam Grade</label>
+              <input type="text" class="form-control form-control-sm" [value]="examDetails.exam_grade" [disabled]="true">
+            </div> 
+          </div>    
+          <div class="header-flex-container mt-5">
+            <div class="card-title col-4">Questions
+            </div>                     
+          </div>         
+        </div>
+     
+        <div class="card-body">
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="data-table p-0" *ngIf="notFound == false ">
+              <ngx-ixcheck-table id="registrations-setup-list" headerTitle="Questions" [items]="items"
+                [indexColumn]="false" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+                [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+                [expandOnIndexColClick]="true" [expandOnRowClick]="false">
+                <ng-template #rowDetailExpand let-rowitem="item">                  
+                   <app-manage-question-row-details 
+                   [rowItemDetails]="rowitem"></app-manage-question-row-details>
+                   <!--[examId]="examGuid"-->
+                </ng-template>
+                <ngx-ixcheck-table-column [property]="'Assigment_id'" [header]="'#'" [sortable]="false" [resizable]="true">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'shift_number'" [header]="'Shift Number'" [sortable]="false" [resizable]="true">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'subject'" [header]="'Subject'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'language'" [header]="'Language'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'difficulty_level'" [header]="'Difficulty Level'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'question_type'" [header]="'Question Type'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'number_of_questions_assigned'" [header]="'# Of Question Assigned'" >
+               
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'number_of_questions_created'" [header]="'# Of Question Created'">               
+                </ngx-ixcheck-table-column>              
+                <!-- <ngx-ixcheck-table-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Action</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div class="btn-group" dropdown>
+                      <a href="/#/author/questions/{{rowitem.id}}/manage">Manage</a>                                        
+                    </div>
+                  </ng-template>
+                </ngx-ixcheck-table-column> -->
+              </ngx-ixcheck-table>
+            </div>
+            <div class="not-found-container" *ngIf="notFound == true ">
+              <h5>
+                No Data Available...
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

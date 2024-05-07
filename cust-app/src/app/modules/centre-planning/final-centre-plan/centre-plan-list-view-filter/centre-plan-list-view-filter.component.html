@@ -1,0 +1,98 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+            <div class="card-title">Filter</div>
+            <div class="card-controls">
+                <ul>
+                    <li>
+                        <a class="icon-filter-close" filterToggle bubbleClose>
+                            <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body scrollable">
+            <div class="card-body section-body section-body-sm p-2">
+
+                <form novalidate name="registrationsForm" id="registrationsForm" [formGroup]="registrationsFormGroup"
+                    (submit)="onRegistrationsFormSubmit()" class="p-0">
+
+                    <!--Registration Code -->
+                    <div class="form-group mb-0">
+                        <label for="reg_code" class="mb-0">Registration Code</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationsFormGroup.controls['code'].valid}" maxlength="50"
+                            name="reg_code" id="reg_code" formControlName="reg_code">
+                    </div>
+
+                    <!--Registration Name -->
+                    <div class="form-group mb-0">
+                        <label for="name" class="mb-0">Registration Name</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationsFormGroup.controls['name'].valid}" maxlength="50"
+                            name="reg_name" id="reg_name" formControlName="reg_name">
+                    </div>
+                    <!--Exam Code -->
+                    <div class="form-group mb-0">
+                        <label for="reg_code" class="mb-0">Exam Code</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationsFormGroup.controls['code'].valid}" maxlength="50" name="code"
+                            id="code" formControlName="code">
+                    </div>
+
+                    <!--Exam Name -->
+                    <div class="form-group mb-0">
+                        <label for="name" class="mb-0">Exam Name</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationsFormGroup.controls['name'].valid}" maxlength="50" name="name"
+                            id="name" formControlName="name">
+                    </div>
+
+                    <!--Exam Type  -->
+                    <div class="form-group mb-0">
+                        <label for="examtype" class="mb-0">Exam Type</label>
+                        <select class="form-control form-control-sm" id="exam_type" name="exam_type"
+                            formControlName="exam_type">
+                            <option value="">Please Select</option>
+                            <option *ngFor="let examTypes of examTypeList" [value]="examTypes.exam_type_guid">
+                                {{examTypes.name}}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!--Plan Status  -->
+                    <div class="form-group mb-0">
+                        <label for="examtype" class="mb-0">Plan Status</label>
+                        <select class="form-control form-control-sm" id="examtype" name="examtype"
+                            formControlName="planning_status">
+                            <option value="">Please Select</option>
+                            <option *ngFor="let planStatus of planstatusList" [value]="planStatus.status_guid">
+                                {{planStatus.planning_status}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- Status -->
+                    <div class="form-group mb-0">
+                        <label for="status" class="mb-0">Status</label>
+                        <select class="form-control form-control-sm" id="status" name="status" formControlName="status">
+                            <option value="">Please Select</option>
+                            <option *ngFor="let status of statusList" [value]="status.value">
+                                {{status.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit"
+                (click)="onRegistrationsFormSubmit()" form="permissionForm">Apply</button>
+            <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+                (click)="resetFilters()">Reset</button>
+        </div>
+    </div>
+</aside>

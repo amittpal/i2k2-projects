@@ -1,0 +1,33 @@
+
+
+:host ::ng-deep{
+   
+    .was-validated {      
+        textarea.ng-invalid
+        {
+            border: 1px solid lightcoral !important;
+        }
+       
+      }
+      
+      #questionTab .ql-editor {
+        min-height: 100px;
+        height: 25vh;        
+        overflow: auto;
+        font-size: 16px;
+    }
+    .ql-container{
+        font-family: inherit;
+    }
+
+    .question_answer_fix_height{
+        overflow: inherit !important;
+    }
+}
+.mob-menu-block {
+    :host ::ng-deep {
+        .ql-toolbar.ql-snow {
+            display: none !important
+        }    
+    }
+}

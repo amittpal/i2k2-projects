@@ -1,0 +1,44 @@
+<div class="table-responsive">
+  <table class="table table-min-height">
+    <thead>
+      <tr class="flex-tr">
+        <th class="flex-th">Question#</th>
+        <th class="flex-th">subject</th>
+        <th class="flex-th">difficulty level</th>
+        <th class="flex-th">duration/question</th>
+        <th class="flex-th">type</th>
+        <th class="flex-th">marks</th>
+        <th class="flex-th">negative marks</th>
+        <th class="flex-th">action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let question of questionData; let i=index" [attr.data-index]="i" class="flex-tr">
+        <td class="flex-td">{{ question.question_number }}</td>
+        <td class="flex-td">{{ question.subject }}</td>
+        <td class="flex-td">{{ question.difficulty_levels }}</td>
+        <td class="flex-td">{{ question.duration }} {{ question.duration_um }}</td>
+        <td class="flex-td">{{ question.question_type }}</td>
+        <td class="flex-td">{{ question.marks }}</td>
+        <td class="flex-td">{{ question.negative_marks }}</td>
+        <td class="btn-group" dropdown>
+          <a class="cs-click" (click)="updateQuestion()">Manage</a>
+          <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1" placement="right">
+            <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+          </a>
+          <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+            aria-labelledby="button-autoclose1">
+            <li role="menuitem">
+              <a class="dropdown-item" (click)="onDelete(question.question_Id, question.question_number)">Delete</a>
+
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</div>

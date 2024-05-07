@@ -1,0 +1,49 @@
+:host ::ng-deep {
+    .card .card-body.scrollable {
+      margin-bottom: 45px;
+    }
+  
+    @media (min-width: 992px) {
+      .fullheight-fixed {
+        height: calc(100vh - 230px);
+      }
+    }
+
+    a {
+       text-decoration: underline;
+       cursor: pointer;
+    }
+
+    img{
+      margin-top: 20px;
+      height: 145px;
+      width: 236px;
+    }
+
+    .red{
+      border: 1px solid red !important;
+    }
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+.inputfile + label {
+    border-color: #DCDCDC;
+    cursor: pointer;
+    border-style: groove;
+    margin-right: 50px;
+    // font-size: 1.25em;
+    width: 40%;
+    text-align: center;
+    font-weight: 400;
+    background-color: #D3D3D3;
+    display: inline-block;
+}

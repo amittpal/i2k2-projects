@@ -1,0 +1,91 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+            <div class="card-title">Filter</div>
+            <div class="card-controls">
+                <ul>
+                    <li>
+                        <a class="icon-filter-close" filterToggle bubbleClose>
+                            <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body scrollable">
+            <div class="card-body section-body section-body-sm p-2">
+
+                <form novalidate name="manageQuestionsForm" id="manageQuestionsForm" [formGroup]="manageQuestionsFormGroup"
+                    (submit)="onmanageQuestionsFormSubmit()" class="p-0">
+
+                    <!-- Subject -->
+                    <div class="form-group mb-0">
+                        <label for="subject" class="mb-0">Subject</label>
+                        <select class="form-control form-control-sm" id="subject" name="subject"
+                            formControlName="subject">
+                            <option value="" [selected]="true">All</option>
+                            <option *ngFor="let subject of subjectList" [value]="subject.guid">
+                                {{subject.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="form-group mb-0">
+                        <label for="language" class="mb-0">Language</label>
+                        <select class="form-control form-control-sm" id="language" name="language"
+                            formControlName="language">
+                            <option value="" [selected]="true">All</option>
+                            <option *ngFor="let language of languageList" [value]="language.guid">
+                                {{language.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Level -->
+                    <div class="form-group mb-0">
+                        <label for="difficulty_level" class="mb-0">Level</label>
+                        <select class="form-control form-control-sm" id="difficulty_level" name="difficulty_level"
+                            formControlName="difficulty_level">
+                            <option value="" [selected]="true">All</option>
+                            <option *ngFor="let difficulty of difficultyLevelList" [value]="difficulty.guid">
+                                {{difficulty.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Type -->
+                    <div class="form-group mb-0">
+                        <label for="question_type" class="mb-0">Type</label>
+                        <select class="form-control form-control-sm" id="question_type" name="question_type"
+                            formControlName="question_type">
+                            <option value="" [selected]="true">All</option>
+                            <option *ngFor="let question of questionTypeList" [value]="question.guid">
+                                {{question.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <!-- <div class="form-group mb-0">
+                        <label for="status_guid" class="mb-0">Status</label>
+                        <select class="form-control form-control-sm" id="status_guid" name="status_guid" formControlName="status_guid">
+                            <option value="" [selected]="true">All</option>
+                            <option *ngFor="let status of questionStatusList" [value]="status.status_guid">
+                                {{status.completion_status_text}}
+                            </option>
+                        </select>
+                    </div> -->
+
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onmanageQuestionsFormSubmit()"
+                form="permissionForm">Apply</button>
+            <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+                (click)="resetFilters()">Reset</button>
+        </div>
+    </div>
+</aside>

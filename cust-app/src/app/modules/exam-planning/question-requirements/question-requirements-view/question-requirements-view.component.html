@@ -1,0 +1,169 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <form novalidate name="viewQuestionRequirementsForm" id="viewQuestionRequirementsForm"
+        [formGroup]="viewQuestionRequirementsFormGroup" class="p-0 app-form">
+        <div class="row">
+
+          <!-- Exam Number  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="exam_number" class="col-lg-12 p-2 mb-0">Exam Number</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="exam_number"
+                id="exam_number" formControlName="exam_number">
+            </div>
+          </div>
+
+          <!-- Primary Language -->
+          <div class="col-lg-3  col-sm-4 form-group trad foc">
+            <label for="primary_language" class="col-lg-12 p-2 mb-0">Primary Language</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="primary_language"
+                id="primary_language" formControlName="primary_language">
+            </div>
+          </div>
+
+          <!-- Enable review Process -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="enable_review_process" class="col-lg-12 p-2 mb-0">Enable review Process</label>
+            <select class="col-lg-10 p-2 form-control form-control-sm" id="enable_review_process" name="enable_review_process"
+              formControlName="enable_review_process">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="row">
+
+          <!-- Code -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="code" class="col-lg-12 p-2 mb-0">Exam Code</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="code"
+                id="code" formControlName="code">
+            </div>
+          </div>
+
+          <!-- Number of unique shifts -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="shifts" class="col-lg-12 p-2 mb-0">Number of unique shifts</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="shifts"
+                id="shifts" formControlName="shifts">
+            </div>
+          </div>
+
+          <!-- Enable Approval Process -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="enable_approval_process" class="col-lg-12 p-2 mb-0">Enable Approval Process</label>
+            <select class="form-control col-lg-10 p-2 form-control-sm" id="enable_approval_process" name="enable_approval_process"
+              formControlName="enable_approval_process">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Exam Name -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="name" class="col-lg-12 p-2 mb-0">Exam Name</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="name"
+                id="name" formControlName="name">
+            </div>
+          </div>
+
+          <!-- Additional Factor -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="duration" class="col-lg-12 p-2 mb-0">Additional Factor</label>
+            <div class="d-flex">
+              <input type="number" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="additional_factor"
+                id="additional_factor" formControlName="additional_factor">
+            </div>
+          </div>
+
+          <!-- Exam Grade -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="exam_grade" class="col-lg-12 p-2 mb-0">Exam Grade</label>
+            <div class="d-flex">
+              <input type="text" class="col-lg-10 mr-1 cs-height p-2 form-control form-control-sm" name="exam_grade"
+                id="exam_grade" formControlName="exam_grade">
+            </div>  
+          </div>
+        </div>
+      </form>
+      <br>
+      <br>
+      <!-- Question Level(s) -->
+      <div class="header-flex-container">
+        <label class="col-lg-12 p-2 mb-0">QUESTION REQUIREMENTS</label>         
+      </div>
+      <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table p-2">
+          <ngx-ixcheck-table id="questions-list" headerTitle="Questions" [items]="items" [indexColumn]="false"
+            [itemCount]="items.length" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+            [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false" [expandOnIndexColClick]="false"
+            [expandOnRowClick]="false" [paginationStyleType]="paginationStyle" (rowClick)="rowClick($event)"
+            (rowDoubleClick)="rowDoubleClick($event)">
+            <ng-template #rowDetailExpand let-rowitem="item">
+            </ng-template>
+            <ngx-ixcheck-table-column [property]="'id'" [header]="'ID'" [sortable]="false" [resizable]="true"
+              [width]="70" [visible]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'shift_number'" [header]="'Shift Number'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'section_name'" [header]="'Section Name'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'subject'" [header]="'Subject'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'difficulty_level'" [header]="'Difficulty Level'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'question_type'" [header]="'Question Type'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [colType]="'custom'">
+              <ng-template #colHeaderComponent># of questions</ng-template>                          
+              <ng-template #colDetailComponent let-rowitem="item">
+                <div class="form-group trad foc">
+                  <label class="col-sm-7 text-right">{{rowitem.number_of_questions | number}}</label>
+                </div>                      
+              </ng-template>
+            </ngx-ixcheck-table-column>   
+            <ngx-ixcheck-table-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Required Questions</ng-template>                          
+              <ng-template #colDetailComponent let-rowitem="item">
+                <div class="form-group trad foc">
+                  <label class="col-sm-7 text-right">{{rowitem.required_questions | number}}</label>
+                </div>                      
+              </ng-template>
+            </ngx-ixcheck-table-column>
+          </ngx-ixcheck-table>
+          <div class="flxTable">
+            <div class="flxTableBody">
+              <div class="flxTableRow flx-tr">
+                <div class="flx-col-100Per flx-col-sm-100Per-totals">
+                  <div class="flxTable100p">
+                    <div class="flxTableBody">
+                      <div class="flxTableRow flx-tr">
+                        <div class="flx-col-53Per flx-col-sm-0Per"></div>
+                        <div class="flx-col-17Per flx-col-sm-30Per">Total</div>
+                        <div class="flx-col-10Per flx-col-sm-30Per">
+                          <label class="col-lg-12 p-0 mb-0">{{totalQuestions | number}}</label>
+                        </div>
+                        <div class="flx-col-10Per flx-col-sm-10Per"></div>
+                        <div class="flx-col-10Per flx-col-sm-30Per">
+                          <label class="col-lg-12 p-0 mb-0">{{totalRequiredQuestions | number}}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

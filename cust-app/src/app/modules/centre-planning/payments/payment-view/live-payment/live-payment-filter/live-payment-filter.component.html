@@ -1,0 +1,74 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate  [formGroup]="paymentsTransactionFormGroup" (submit)="onPaymentsFormSubmit()"
+            class="p-0">
+            <div class="form-group mb-0">
+              <label for="transaction_id" class="mb-0">Transaction #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['transaction_id'].valid}" name="transaction_id" id="transaction_id"
+                formControlName="transaction_id">
+            </div>
+
+            
+            <div class="form-group mb-0">
+              <label for="order_id" class="mb-0">Registration #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['order_id'].valid}"  name="order_id" id="order_id"
+                formControlName="order_id">
+            </div>
+            
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">Condidate Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['name'].valid}"  name="name" id="name"
+                formControlName="name">
+            </div>
+               <!-- Status -->
+            <div class="form-group mb-0">
+              <label for="email" class="mb-0">Email</label>
+              <input class="form-control form-control-sm" id="email" name="email" formControlName="email">
+            </div>
+            <div class="form-group mb-0">
+              <label for="mobile_number" class="mb-0">Mobile #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['mobile_number'].valid}"  name="mobile_number" id="mobile_number"
+                formControlName="mobile_number">
+            </div>
+            <div class="form-group mb-0">
+              <label for="from_date" class="mb-0">Date From</label>
+              <input type="date" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['from_date'].valid}"  name="from_date" id="from_date"
+                formControlName="from_date">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="to_date" class="mb-0">Date to</label>
+              <input type="date" class="form-control form-control-sm"
+                [ngClass]="{red:!paymentsTransactionFormGroup.controls['to_date'].valid}"  name="to_date" id="to_date"
+                formControlName="to_date">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onPaymentsFormSubmit()"
+          form="permissionForm">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>

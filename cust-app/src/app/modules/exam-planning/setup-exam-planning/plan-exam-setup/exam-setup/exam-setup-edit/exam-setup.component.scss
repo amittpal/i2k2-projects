@@ -1,0 +1,118 @@
+:host ::ng-deep {
+
+  .nav.nav-tabs {
+    .nav-item.active {
+      .nav-link.active {
+        color: #65cf48 !important;
+        opacity: 1;
+      }
+    }
+  }
+  .nav-tabs .nav-link {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: montserrat;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+    color: rgba(44, 44, 44, 0.35);
+  }
+  .card-header a:not(.btn) {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+}
+
+.card .card-header {
+  min-height: 0;
+  padding-bottom: 25px;
+}
+
+:host ::ng-deep {
+  .card .card-body {
+    //padding-top: 15px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .scrollable {
+    margin-top: 10px !important;
+    &.inside-footer-fixed {
+      position: relative;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .tabset-container {
+    > ul {
+      > li:nth-child(4) {
+        &.disabled {
+          display: none;
+        }
+      }
+    }
+    > ul {
+      > li:nth-child(3) {
+        &.disabled {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  //****************************************//
+  //ngx-i2k2-table//
+  //****************************************//
+  .flex-tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.25em 0;
+    border: 0.5px solid rgba(3, 3, 3, 0.2);
+  }
+  .flex-th,
+  .flex-td {
+    flex: 1 1 auto;
+    width: 100%; //border: 0.5px solid rgba(3,3,3,0.2);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  //****************************************//
+  //ngx-i2k2-table//
+  //****************************************//
+  .flex-tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.25em 0;
+    border: 0.5px solid rgba(3, 3, 3, 0.2);
+  }
+  .flex-th,
+  .flex-td {
+    flex: 1 1 auto;
+    width: 100%; //border: 0.5px solid rgba(3,3,3,0.2);
+  }
+}
+
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  word-wrap: break-word;
+  color: #7a8994;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  padding-left: 15px !important;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}

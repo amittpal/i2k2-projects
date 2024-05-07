@@ -1,0 +1,39 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+    <div class="col-sm-12 p-3">
+        <form [formGroup]="regTypeFormGroup" autocomplete="off" name="regTypeFormGroup" id="regTypeFormGroup">
+            <div class="row app-form">
+
+                <div class="col-md-2 col-lg-2">
+                    <div class="form-group foc trad">
+                        <label> State</label>
+                        <!-- formControlName="reg_list_guid" -->
+                        <select class="form-control" name="state_guid" formControlName="state_guid"
+                            (change)="onGetCityList($event.target.value)">
+                            <option value="">Select</option>
+                            <option *ngFor="let state of stateList" [value]="state.guid">{{state.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <div class="form-group foc trad">
+                        <label> City</label>
+                        <select class="form-control" name="guid" formControlName="guid">
+                            <option value="">Select</option>
+                            <option *ngFor="let city of cityList" [value]="city.guid">{{city.name}}</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-sm btn-primary px-4" type="button" [disabled]="!regTypeFormGroup.valid"
+                        (click)="onApplicableFeesFormSubmit()">Update</button>
+                    <button class="btn btn-sm btn-default px-4 ml-2" type="button" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

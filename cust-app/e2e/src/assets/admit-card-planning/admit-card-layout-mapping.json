@@ -1,0 +1,14 @@
+{
+    "LayoutName" : {
+          "Name" : ""
+    },
+    "LayoutCode" :{
+          "Code" : ""
+    },
+    "AdmitCardStatus" : {
+        "Status" : "Setup Finalized"
+    },
+    "MapLayoutCode" : {
+        "Code" : "AL001"
+    }
+  }

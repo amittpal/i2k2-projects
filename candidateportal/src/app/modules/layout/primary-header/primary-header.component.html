@@ -1,0 +1,46 @@
+<div class="row p-3">
+  <div class="col-md-4">
+    <img src="assets/images/logo_vcheck_grey.png" alt="iXcheck" height="32" width="32">
+  </div>
+  <div class="col-md-4 text-center">
+    <h5>INSTITUTE NAME</h5>
+  </div>
+  <div class="col-md-4 text-right">
+    <h5>EXAM NAME</h5>
+  </div>
+</div>
+<div id="menu-container">
+  <ul>
+    <ng-container *ngIf="isUserLoggedIn === false">
+      <li><a routerLink="/login" routerLinkActive="active">Home</a></li>
+    </ng-container>
+
+    <ng-container *ngIf="isUserLoggedIn === true">
+      <li><a routerLink="/dashboard" routerLinkActive="active">Candidate Dashboard</a></li>
+    </ng-container>
+
+    <li><a routerLinkActive="active" routerLink="/registration-guidelines"> Registration Guidelines</a></li>
+
+    <li><a routerLinkActive="active" routerLink="/important-dates">Important Dates</a> </li>
+
+    <li class="dropdown">
+      <a class="dropdown-toggle">Admission Helpline</a>
+      <div class="dropdown-content">
+        <a routerLinkActive="active" routerLink="/helpline">Helpline</a>
+        <a routerLinkActive="active" routerLink="/faq">FAQs</a>
+        <a>How to Pay</a>
+      </div>
+    </li>
+
+    <li><a routerLinkActive="active" routerLink="/contact-us">Contact Us</a></li>           
+    <ng-container *ngIf="isUserLoggedIn === true">
+      <li><a (click)="onMockTestClick()">Mock Test</a></li>
+      <li>
+        <a 
+        routerLink="/change-password"
+        routerLinkActive="active">Change Password</a></li>
+      <li class="float-right" id="app-logout"><a (click)="logout()">Logout</a></li>
+    </ng-container>
+
+  </ul>
+</div>

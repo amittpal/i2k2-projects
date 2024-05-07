@@ -1,0 +1,51 @@
+<div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+    <div class="data-table p-0" *ngIf="items.length > 0">
+        <!-- table start -->
+        <ngx-ixcheck-table id="exam-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+            [selectColumn]="false">
+
+            <!--Snapshot -->
+            <ngx-ixcheck-table-column [property]="'id'" [header]="'Snapshot#'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Snapshot Code -->
+            <ngx-ixcheck-table-column [property]="'code'" [header]="'Snapshot Code'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Snapshot Name -->
+            <ngx-ixcheck-table-column [property]="'name'" [header]="'Snapshot Name'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+
+
+            <!-- Status -->
+            <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'" [visible]="true" [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <span class="badge {{ rowitem.status_css_tag }}">{{
+                        rowitem.planning_status
+                        }}</span>
+                </ng-template>
+            </ngx-ixcheck-table-column>
+
+            <!-- Action -->
+            <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+
+                    <div
+                        class=" btn-group" dropdown>
+                        <a class="cs-clr p-0" href="/#/centre/planning/finalize/registrations/{{ rowitem.guid }}/snapshots/{{ rowitem.id }}/setup"
+                            (click)="$event.stopPropagation();">Finalize</a>
+                    </div>
+
+                </ng-template>
+            </ngx-ixcheck-table-column>
+        </ngx-ixcheck-table>
+        <!-- table end -->
+    </div>
+    <div class="not-found-container" *ngIf="items.length == 0">
+        <h5>
+            No Data Available...
+        </h5>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-min">
+      <div class="card-header">
+        <div class="header-flex-container">
+          <div class="card-title col-4">
+            <label>Exam List</label>
+          </div>
+          <div class="paging-block col-4">
+            <!--pagination html start-->
+            <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+              [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+              (loadTable)="reloadItems($event,false)">
+            </ngx-ixcheck-table-outer-pagination>
+            <!--pagination html ends-->
+            <!-- </div> -->
+          </div>
+          <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+              <!-- bubble start -->
+              <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+              </app-ngx-ixcheck-bubble>
+              <!-- bubble start -->
+            </div>
+
+            <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table p-0" *ngIf="!notFound">
+
+            <!-- table start -->
+            <ngx-ixcheck-table id="exam-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false">
+
+              <!-- exam_id -->
+              <ngx-ixcheck-table-column [property]="'exam_id'" [header]="'ID'" [sortable]="false" [visible]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Exam Number -->
+              <ngx-ixcheck-table-column [property]="'exam_number'" [header]="'Exam #'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Code -->
+              <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Name -->
+              <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Exam Public Label -->
+              <ngx-ixcheck-table-column [property]="'exam_public_label'" [header]="'Exam Public Label'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Type -->
+              <ngx-ixcheck-table-column [property]="'exam_type'" [header]="'Type'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Duration -->
+              <ngx-ixcheck-table-column [property]="'duration'" [header]="'Duration'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Plan Status -->
+              <ngx-ixcheck-table-column [property]="'plan_status'" [header]="'Setup Status'" [visible]="true"
+                [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <span class="badge {{rowitem.plan_status_css_tag}}">{{rowitem.plan_status_text}}</span>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <!-- Status -->
+              <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'" [visible]="true" [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <span class="badge {{rowitem.status_css_tag}}">{{rowitem.status_text}}</span>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <!-- Manage Exam -->
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <div *ngIf="rowitem.exam_setup_id" class="btn-group" dropdown>
+                    <ng-container *ngIf="rowitem.plan_status_text =='Setup Finalized'">
+                      <a class="cs-clr" (click)="$event.stopPropagation();">Unfinalize</a>
+                      <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                        placement="right">
+                        <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                      </a>
+                      <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                        aria-labelledby="button-autoclose1">
+                        <li role="menuitem">
+                          <a href="/#/exam/{{rowitem.id}}/view/{{rowitem.exam_setup_id}}"
+                            (click)="$event.stopPropagation();" class="dropdown-item">View</a>
+                        </li>
+                      </ul>
+                    </ng-container>
+
+                    <ng-container *ngIf="rowitem.plan_status_text =='Requirement Finalized'">
+                      <a 
+                      class="withoutdrp" 
+                      href="/#/exam/{{rowitem.id}}/view/{{rowitem.exam_setup_id}}" 
+                      (click)="$event.stopPropagation();">View</a>
+                    </ng-container>
+
+                    <div *ngIf="rowitem.plan_status_text !='Setup Finalized' && rowitem.plan_status_text !='Requirement Finalized'" >
+                      <a href="/#/exam/{{rowitem.id}}/setup/{{rowitem.exam_setup_id}}"
+                        (click)="$event.stopPropagation();">Manage Exam</a>
+                      <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                        placement="right">
+                        <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                      </a>
+                      <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                        aria-labelledby="button-autoclose1">
+                        <li role="menuitem">
+                          <a href="/#/exam/{{rowitem.id}}/view/{{rowitem.exam_setup_id}}"
+                            (click)="$event.stopPropagation();" class="dropdown-item">View</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div *ngIf="!rowitem.exam_setup_id" class="btn-group" dropdown>
+                    <a class="withoutdrp" href="/#/exam/{{rowitem.id}}/setup" (click)="$event.stopPropagation();">Manage
+                      Exam</a>
+                    <!-- <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                      placement="right">
+                      <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                    </a> -->
+                    <!-- <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                      aria-labelledby="button-autoclose1">
+                      <li role="menuitem">
+                        <a href="/#/exam/{{rowitem.id}}/view" (click)="$event.stopPropagation();"
+                          class="dropdown-item">View</a>
+                      </li>
+                    </ul> -->
+                  </div>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+            </ngx-ixcheck-table>
+            <!-- table end -->
+          </div>
+          <div class="not-found-container" *ngIf="notFound">
+            <h5>
+              No Data Available...
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-plan-exams-filter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag" [updatedFilter]="count">
+</app-plan-exams-filter>

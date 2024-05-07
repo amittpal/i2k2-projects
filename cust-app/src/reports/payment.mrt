@@ -1,0 +1,826 @@
+{
+  "ReportVersion": "2019.3.4",
+  "ReportGuid": "dcac563775f283f704256fb13ca7d6de",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportFile": "Report_payment.mrt",
+  "ReportCreated": "/Date(1567677180000+0530)/",
+  "ReportChanged": "/Date(1567677180000+0530)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "ReportUnit": "Centimeters",
+  "PreviewSettings": 268435455,
+  "Dictionary": {
+    "Resources": {
+      "0": {
+        "Name": "payment_view",
+        "Alias": "payment_view",
+        "Type": "Json",
+        "Image": "mqnEGPJrpZ/JOqH2sCyIT4BGYmEAc+22p7R8bzurkbVAwhGuNZ2tX3d81A0YpykipmD6DvgpOQ3LeV0yeUUa46hdG7OgdQG/H15sxYs9q1zBsF9Yuj7tExCFr8miieaiq+1hm6n8Arw81KmTuEL4qAl367GwEg1yR7DKG4vQgGL83EwiZ2uA/PSbgoEH631qok4XrS1a3bFr+66eJ1nJvqi2D8189fldmlX69Aw1bVshMD3qpuaUY0jurv+eULh/1dlwmDPoegHe/+FyBP3gl5ZXdXebtG6VHk+l9HcnhB48QjKyJpVHh27vQaOV321oQQL8T/hTWled8i0HcxoGyzAYkkTbT2iQdASktc4TUf3xkSs/ePKb2IRSIWYz3aWJ5jTHlQu6LkIJHmH1foAKzupFaVhoUB88Cmd2vOuSGWm3h3nU/AmsZJxv"
+      }
+    },
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "payment_detail",
+        "Alias": "payment_detail",
+        "Columns": {
+          "0": {
+            "Name": "payment_id",
+            "Index": -1,
+            "NameInSource": "payment_id",
+            "Alias": "payment_id",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "customer_id",
+            "Index": -1,
+            "NameInSource": "customer_id",
+            "Alias": "customer_id",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "first_name",
+            "Index": -1,
+            "NameInSource": "first_name",
+            "Alias": "first_name",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "last_name",
+            "Index": -1,
+            "NameInSource": "last_name",
+            "Alias": "last_name",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "full_name",
+            "Index": -1,
+            "NameInSource": "full_name",
+            "Alias": "full_name",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "email",
+            "Index": -1,
+            "NameInSource": "email",
+            "Alias": "email",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "payment_date",
+            "Index": -1,
+            "NameInSource": "payment_date",
+            "Alias": "payment_date",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "balance_amount",
+            "Index": -1,
+            "NameInSource": "balance_amount",
+            "Alias": "balance_amount",
+            "Type": "System.Decimal"
+          },
+          "8": {
+            "Name": "amount",
+            "Index": -1,
+            "NameInSource": "amount",
+            "Alias": "amount",
+            "Type": "System.Decimal"
+          },
+          "9": {
+            "Name": "customer_type",
+            "Index": -1,
+            "NameInSource": "customer_type",
+            "Alias": "customer_type",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "has_child",
+            "Index": -1,
+            "NameInSource": "has_child",
+            "Alias": "has_child",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "payment_type",
+            "Index": -1,
+            "NameInSource": "payment_type",
+            "Alias": "payment_type",
+            "Type": "System.String"
+          },
+          "12": {
+            "Name": "payment_customer_digits",
+            "Index": -1,
+            "NameInSource": "payment_customer_digits",
+            "Alias": "payment_customer_digits",
+            "Type": "System.String"
+          },
+          "13": {
+            "Name": "trans_auth_code",
+            "Index": -1,
+            "NameInSource": "trans_auth_code",
+            "Alias": "trans_auth_code",
+            "Type": "System.String"
+          },
+          "14": {
+            "Name": "trans_status",
+            "Index": -1,
+            "NameInSource": "trans_status",
+            "Alias": "trans_status",
+            "Type": "System.String"
+          },
+          "15": {
+            "Name": "trans_type",
+            "Index": -1,
+            "NameInSource": "trans_type",
+            "Alias": "trans_type",
+            "Type": "System.String"
+          },
+          "16": {
+            "Name": "profile_id",
+            "Index": -1,
+            "NameInSource": "profile_id",
+            "Alias": "profile_id",
+            "Type": "System.String"
+          },
+          "17": {
+            "Name": "payment_profile_id",
+            "Index": -1,
+            "NameInSource": "payment_profile_id",
+            "Alias": "payment_profile_id",
+            "Type": "System.String"
+          },
+          "18": {
+            "Name": "trans_id",
+            "Index": -1,
+            "NameInSource": "trans_id",
+            "Alias": "trans_id",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "payment_view.payment_detail"
+      },
+      "1": {
+        "Ident": "StiDataTableSource",
+        "Name": "stats",
+        "Alias": "stats",
+        "Columns": {
+          "0": {
+            "Name": "cached_check_time",
+            "Index": -1,
+            "NameInSource": "cached_check_time",
+            "Alias": "cached_check_time",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "sql_conn_time",
+            "Index": -1,
+            "NameInSource": "sql_conn_time",
+            "Alias": "sql_conn_time",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "sql_query_time",
+            "Index": -1,
+            "NameInSource": "sql_query_time",
+            "Alias": "sql_query_time",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "loop_time",
+            "Index": -1,
+            "NameInSource": "loop_time",
+            "Alias": "loop_time",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "payment_view.stats"
+      }
+    },
+    "Databases": {
+      "0": {
+        "Ident": "StiJsonDatabase",
+        "Name": "payment_view",
+        "Alias": "payment_view",
+        "PathData": "resource://payment_view"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "346c8b211c3c8cbd85c45af2db1eb840",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:Transparent",
+      "Components": {
+        "0": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand1",
+          "ClientRectangle": "0,0.4,19,3.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text1",
+              "Guid": "2db6b22870d3824afa24e284b2e390a6",
+              "ClientRectangle": "0,0,3.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "GSTIN : 09AABCI7220A1Z3"
+              },
+              "Font": ";;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text2",
+              "Guid": "35756fa73f255a5912fc4671a5767060",
+              "ClientRectangle": "8.4,0.6,2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "PAYMENT"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;Bold, Underline;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text3",
+              "Guid": "b42ef6b54e02d2e7ce5e395f5294a41b",
+              "ClientRectangle": "0.4,1.2,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "i2k2 Networks Pvt. Ltd."
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text4",
+              "Guid": "0922fe0d767a8c8933c7b40744cfc17e",
+              "ClientRectangle": "0.4,1.6,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Spring Meadows Business Park, A-61B/4 & 4A,First Floor,Sector-63 "
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text5",
+              "Guid": "4365e75e72e5c0857ff1af6047bb00a2",
+              "ClientRectangle": "0.4,2,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Noida-201301, CIN : U72300DL2007PTC166707 "
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text6",
+              "Guid": "86560d1b3daca024a6d6f6b35214a81a",
+              "ClientRectangle": "0.4,2.4,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "PAN : AABCI7220A"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text7",
+              "Guid": "8d676a8df4dd2f01d03122ec82527147",
+              "ClientRectangle": "0.4,2.8,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Tel. : 0120-4663009 email : accounts@i2k2.com"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "1": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand2",
+          "ClientRectangle": "0,4.8,19,4.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:0,0,0",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text8",
+              "Guid": "5ec7fc668f29a3350070307cbd1accca",
+              "ClientRectangle": "0.2,0.2,4.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Customer details"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold, Underline;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text9",
+              "Guid": "fb33a4baf3984c008382a077a2d38007",
+              "ClientRectangle": "0.2,0.8,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Name "
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text10",
+              "Guid": "3485c3d58840f4d2486920e0d19feb47",
+              "ClientRectangle": "3.4,0.8,7.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":    {payment_detail.full_name}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text11",
+              "Guid": "a0e1a3e8f460cc52a4bf0043e78ed328",
+              "ClientRectangle": "15.8,0.8,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Date"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text12",
+              "Guid": "f7b106e39a92e5bfdfcba13849c821dd",
+              "ClientRectangle": "15.8,1.4,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{payment_detail.payment_date}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text13",
+              "Guid": "46ac88230288a5d2731289f069b3a034",
+              "ClientRectangle": "0.2,1.4,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Payment Amount"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text14",
+              "Guid": "5ce8e026c5223f69c0930f7bf839963d",
+              "ClientRectangle": "3.4,1.4,7.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":    {payment_detail.amount}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "7": {
+              "Ident": "StiText",
+              "Name": "Text15",
+              "Guid": "701ce21ca1b5fb7d4ecb7837991bff5a",
+              "ClientRectangle": "0.2,2,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Payment Mode"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "8": {
+              "Ident": "StiText",
+              "Name": "Text16",
+              "Guid": "9c9d9246b3bd1b0c4146bb48797233f9",
+              "ClientRectangle": "3.4,2,7.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":    {payment_detail.payment_type}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "9": {
+              "Ident": "StiPanel",
+              "Name": "Panel1",
+              "ClientRectangle": "0,2.6,10.8,0.6",
+              "Conditions": {
+                "0": {
+                  "Ident": "StiCondition",
+                  "Item": "Expression",
+                  "Expression": {
+                    "Value": "{payment_detail.payment_type == \"Cash\" || payment_detail.payment_type == \"Online\"}"
+                  },
+                  "Enabled": false,
+                  "BorderSides": "None"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text27",
+                  "Guid": "67ed6eadeda3525c4174ba8b498304a3",
+                  "ClientRectangle": "0.2,0,3,0.6",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Cheque Number"
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "solid:Transparent",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "Expression"
+                }
+              }
+            },
+            "10": {
+              "Ident": "StiPanel",
+              "Name": "Panel2",
+              "ClientRectangle": "0,3.2,10.8,0.6",
+              "Conditions": {
+                "0": {
+                  "Ident": "StiCondition",
+                  "Item": "Expression",
+                  "Expression": {
+                    "Value": "{payment_detail.payment_type != \"Cash\" || payment_detail.payment_type != \"Physical Check\"}"
+                  },
+                  "Enabled": false,
+                  "BorderSides": "None"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "Components": {
+                "0": {
+                  "Ident": "StiText",
+                  "Name": "Text28",
+                  "Guid": "8c5becdd948b442d15f18e3f9c8228ff",
+                  "ClientRectangle": "0.2,0,3,0.6",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Text": {
+                    "Value": "Transaction No."
+                  },
+                  "VertAlignment": "Center",
+                  "Font": ";10;;",
+                  "Border": ";;;;;;;solid:0,0,0",
+                  "Brush": "solid:Transparent",
+                  "TextBrush": "solid:0,0,0",
+                  "Type": "Expression"
+                }
+              }
+            }
+          }
+        },
+        "2": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand3",
+          "ClientRectangle": "0,9.8,19,2.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text17",
+              "Guid": "dd9bd7d87bd30e36bdfc4efb41506dd7",
+              "ClientRectangle": "0.2,0,3.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Customer Bank"
+              },
+              "Font": ";10;Bold, Underline;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text18",
+              "Guid": "4a9fd48b6f001e20629816479d2fccbd",
+              "ClientRectangle": "0.2,0.6,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Bank Name"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text19",
+              "Guid": "1ccfdb75fc57f2c7686750aad8505f80",
+              "ClientRectangle": "0.2,1,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Account Number"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text20",
+              "Guid": "34baf7b0d0515d2ed2688b33a1e11c27",
+              "ClientRectangle": "0.2,1.4,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "IFSC Code"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text21",
+              "Guid": "0a3249467e641859a25a2d8056abadd2",
+              "ClientRectangle": "0.2,1.8,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Branch"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text22",
+              "Guid": "75b05eef7e3a3060d20a7a04dd8d518d",
+              "ClientRectangle": "11.6,0.2,3.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Deposit Bank"
+              },
+              "Font": ";10;Bold, Underline;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text23",
+              "Guid": "ae9b821b2a68c9a51c5dc849b449fe75",
+              "ClientRectangle": "11.6,0.8,2.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Bank Name"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "7": {
+              "Ident": "StiText",
+              "Name": "Text24",
+              "Guid": "130a6ecfcdb046ed66371e679823934e",
+              "ClientRectangle": "11.6,1.2,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Account Number"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "8": {
+              "Ident": "StiText",
+              "Name": "Text25",
+              "Guid": "4f05322478ca755aa50a2a1385f2d513",
+              "ClientRectangle": "11.6,1.6,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "IFSC Code"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "9": {
+              "Ident": "StiText",
+              "Name": "Text26",
+              "Guid": "e3ae57554938ff71f5ecb16c7cf74029",
+              "ClientRectangle": "11.6,2,2.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Branch"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "3": {
+          "Ident": "StiReportSummaryBand",
+          "Name": "ReportSummaryBand1",
+          "ClientRectangle": "0,13.2,19,0.8",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent"
+        }
+      },
+      "PageWidth": 21,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1,
+        "Right": 1,
+        "Top": 1,
+        "Bottom": 1
+      }
+    }
+  }
+}

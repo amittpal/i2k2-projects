@@ -1,0 +1,37 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+
+    <div class="col-sm-12">
+      <form autocomplete="off" name="childFromGroup" id="childFrom" [formGroup]="childFromGroup">
+        <div class="form-row text-uppercase">
+  
+           <!-- Child-Normal Seat -->
+           <div class="form-group col-lg-2 col-sm-2">
+            <label for="normal_seats" class="mb-0">Normal Seat</label>
+            <input type="text" formControlName="normal_seats" appTwoDigitDecimaNumber
+            class="custom-select custom-select-dd custom-select-sm" name="normal_seats"
+            (click)="$event.stopPropagation();">
+          </div>
+
+           <!-- Child-Pwd Seat -->
+           <div class="form-group col-lg-2 col-sm-2">
+            <label for="pwd_seats" class="mb-0">Ph Seat</label>
+            <input type="text" formControlName="pwd_seats" appTwoDigitDecimaNumber
+            class="custom-select custom-select-dd custom-select-sm" name="pwd_seats"
+            (click)="$event.stopPropagation();">
+          </div>
+  
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group d-flex col-lg-2 col-sm-4">
+            <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;"
+              type="button" (click)="sendToParent()">Update</button>
+            <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+              (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  

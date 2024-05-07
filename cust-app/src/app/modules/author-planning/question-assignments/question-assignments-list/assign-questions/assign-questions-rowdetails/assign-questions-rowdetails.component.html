@@ -1,0 +1,55 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+
+  <div class="col-sm-12">
+    <form autocomplete="off" name="childFromGroup" id="childFrom" [formGroup]="childFromGroup">
+      <div class="form-row text-uppercase">
+
+        <!-- Author -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3 ">
+          <label for="Author" class="mb-0">Author</label>
+
+          <select class="custom-select custom-select-dd custom-select-sm" name="Author" id="Author"
+            formControlName="author_guids">
+            <option value="">Select</option>
+            <option *ngFor="let author of authorList" [value]="author.guid">
+              {{author.name}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Reviewer -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3">
+          <label for="Reviewer" class="mb-0">Reviewer</label>
+          <select class="custom-select custom-select-dd custom-select-sm" name="Reviewer" id="Reviewer"
+            formControlName="reviewer_guids">
+            <option value="">Select</option>
+            <option *ngFor="let reviewer of authorList" [value]="reviewer.guid">
+              {{reviewer.name}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Approver -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3">
+          <label for="Approver" class="mb-0">Approver</label>         
+          <select class="custom-select custom-select-dd custom-select-sm" name="Approver" id="Approver"
+            formControlName="approver_guid">
+            <option value="">Select</option>
+            <option *ngFor="let approver of authorList" [value]="approver.guid">
+              {{approver.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group d-flex col-lg-2 col-sm-4">
+          <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;" [disabled]="!childFromGroup.valid"
+            type="button" (click)="sendToParent()">Update</button>
+          <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+            (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

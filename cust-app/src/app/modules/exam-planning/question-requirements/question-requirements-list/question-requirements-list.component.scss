@@ -1,0 +1,81 @@
+:host ::ng-deep {
+  // .flex-t1-th-5,
+  // .flex-t1-th-6,
+  // .flex-t1-th-7,
+  // .flex-t1-th-8,
+  .flex-t1-th-9,
+  .flex-t1-col-9,
+  .flex-t1-th-10,
+  .flex-t1-col-10,
+  .flex-t1-th-11,
+
+  .flex-t1-col-11 {
+    // text-align: right;
+  }
+}
+:host ::ng-deep {
+  .flex-t1-td {
+    flex: 1 1 auto; //border: 0.5px solid rgba(3,3,3,0.2);
+  }
+  .flex-t1-th-1 {
+    order: 1;
+    width: 100%;
+  }
+  .flex-t1-th-2 {
+    order: 2;
+    width: 100%;
+  }
+  .flex-t1-th-3 {
+    order: 3;
+    width: 100%;
+  }
+  .flex-t1-th-4 {
+    order: 4;
+    width: 100%;
+  }
+  .flex-t1-th-5 {
+    order: 5;
+    width: 9% !important; 
+  }
+  .flex-t1-th-6 {
+    order: 6;
+    width: 9% !important; 
+  }
+  .flex-t1-th-7 {
+    order: 12;
+    width: 9%  !important;
+  }
+  .flex-t1-th-8 {
+    order: 8;
+    width:  12% !important;
+  }
+  .flex-t1-th-9 {
+    order: 9;
+    width:  9%  !important;
+  }
+  .flex-t1-th-10 {
+    order: 10;
+    width: 12% !important;
+  }
+  .flex-t1-th-11 {
+    order: 11;
+    width: 12% !important;
+  }
+  .flex-t1-th-12 {
+    order: 12;
+    width: 8% !important;
+  }
+  .flex-t1-th-13 {
+    order: 13;
+    width: 8% !important;
+    text-align: right;
+  }
+  .flex-t1-th-14 {
+    order: 14;
+    width: 100%;
+  }
+
+  .flex-t1-col-13 {
+    text-align: right;
+  }        
+}

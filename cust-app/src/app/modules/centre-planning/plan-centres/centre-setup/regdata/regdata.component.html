@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+    <form autocomplete="off" class="app-form" id="regDataForm" [formGroup]="regDataFormGroup" novalidate="">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <div class="form-group foc trad">
+            <label for="examCode" class="mb-0">EXAM</label>
+            <select class="form-control" id="examCode" name="examCode" (change)="getIntialData()"
+              formControlName="examCode">
+              <option value="">ALL</option>
+              <option *ngFor="let item of examList" [value]="item.exam_guid">
+                {{item.code}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <div *ngIf="itemJson.length > 0">
+        <div *ngFor="let item of itemJson; let i = index">
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <!-- CITIES PRIORITY -->
+            <div class="row form-group trad foc">
+              <div class="col-md-10">
+                <label>CITIES PRIORITY - {{ i + 1 }} of {{ priority }}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-bordered pb-3">
+            <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="item" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false">
+              <!-- state -->
+              <ngx-ixcheck-table-column [property]="'city_name'" [header]="'city'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- city -->
+              <ngx-ixcheck-table-column [property]="'state_name'" [header]="'state'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Ph female -->
+              <ngx-ixcheck-table-column [property]="'ph_female'" [header]="'Ph female'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Ph other -->
+              <ngx-ixcheck-table-column [property]="'ph_other'" [header]="'Ph other'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Reserved Female -->
+              <ngx-ixcheck-table-column [property]="'reserved_female'" [header]="'Reserved Female'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              
+              <!-- Reserved Other -->
+              <ngx-ixcheck-table-column [property]="'reserved_other'" [header]="'Reserved Other'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- other female -->
+              <ngx-ixcheck-table-column [property]="'other_female'" [header]="'other female'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- other -->
+              <ngx-ixcheck-table-column [property]="'other_other'" [header]="'other'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- total -->
+              <ngx-ixcheck-table-column [property]="'total'" [header]="'total'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+            <!-- <hr />
+            <div class="row">
+              <div class="col"></div>
+              <div class="col"><span class="pl-2">Total</span></div>
+              <div class="col">
+                <span class="pl-5">{{ ph_female[i] }}</span>
+              </div>
+              <div class="col">
+                <span class="pl-5">{{ ph_other[i] }}</span>
+              </div>
+              <div class="col">
+                <span>{{ other_female[i] }}</span>
+              </div>
+              <div class="col">
+                <span class="pl-2">{{ other[i] }}</span>
+              </div>
+              <div class="col">
+                <span class="pl-2">{{ total[i] }}</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div *ngIf="itemJson.length == 0" class="not-found-container">
+        <h5>
+          No Data Available...
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row" *ngIf="QuestionDetails !== undefined">
+    <div class="col-md-12">
+        <div class="card card-bordered mb-0">
+            <div class="card-body pt-1 pb-1" id="answer_status_summary_head">
+                <app-questions-status-summary  
+                    [SummaryView]="true"
+                    [CandidateInformation]="CandidateInformation" [SelectedSectionGuid]="SelectedSectionGuid"
+                    [SectionsList]="SectionsList" [AnswerSummary]="AnswerSummary"
+                    (questionClickEmitter)="onQuestionNumberClick($event)">
+                </app-questions-status-summary>
+                <!--[QuestionStatusDetails]="QuestionDetails"-->
+            </div>
+        </div>
+        <div class="bg-gray mb-0">
+            <div class="text-center p-1">
+                <strong>{{SectionName}}</strong>
+            </div>
+        </div>
+        <div class="card card-bordered" id="answer_summary_card">
+            <div class="card-body pb-0" id="question_numbers">
+                <div class="row " *ngIf="AnswerSummary">
+                    <div class="col-md-6 padding-bottom" *ngFor="let sec of AnswerSummary.answer_summary; let i=index;">
+                        <div class="card card-bordered height-100">
+                            <div class="card-header text-center border-bottom">
+                                <span class="card-title">{{sec.section_name}} - {{sec.subject_name}}</span>
+                            </div>
+                            <div class="card-body pt-2 pb-2" id="question_numbers">
+                                <span *ngFor="let question of AnswerSummary.answer_summary[i].question">
+                                    <button                                        
+                                        class="{{question.status_css_tag}} shaped"
+                                        (click)="onQuestionNumberClick(question.question_guid, sec.section_guid)"
+                                        title="{{question.status_name}}">
+                                        {{question.question_number}}</button>
+                                        <!-- *ngIf="question.question_guid !== QuestionDetails.question[0].question_guid" else activeQuestion-->
+                                    <!-- <ng-template #activeQuestion>
+                                        <button class="{{question.status_css_tag}} badge-active shaped"
+                                            (click)="onQuestionNumberClick(question.question_guid, sec.section_guid)"
+                                            title="Active">
+                                            {{question.question_number}}</button>
+                                    </ng-template> -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="button" class="btn btn-primary px-4" value="Resume Exam"
+                            (click)="onResumeExamClick()"> <!--btn-info-light-->
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <input type="button" class="btn btn-primary px-4" value="Submit Exam"
+                            (click)="onSubmitExamClick()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

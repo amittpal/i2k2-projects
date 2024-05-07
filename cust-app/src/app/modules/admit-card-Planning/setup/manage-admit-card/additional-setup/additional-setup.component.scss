@@ -1,0 +1,36 @@
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+.inputfile + label {
+    border-color: #DCDCDC;
+    cursor: pointer;
+    border-style: groove;
+    margin-right: 50px;
+    font-size: 1.25em;
+    font-weight: 400;
+    background-color: #D3D3D3;
+    display: inline-block;
+}
+
+img{
+    margin-top: 20px;
+    // height: 145px;
+    width: 236px;
+  }
+
+  :host ::ng-deep {
+    table.flex-t1 thead
+    {
+      background-color: #f9f9f9!important;
+    }
+    .red{
+      border: 1px solid red !important;
+    }
+}

@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  
+  <div class="table-container">
+    <form class="app-form"  novalidate name="editCentresFormGroup" id="editCentresFormGroup" [formGroup]="editCentresFormGroup"
+    class="p-0">
+    <div class="card card-bordered fullheight-min">
+      
+      <div class="card-header">
+        <div class="header-flex-container">
+          <div class="card-title col-4">
+            <label></label>
+          </div>
+
+          <div class="paging-block col-4">           
+          </div>
+
+          <div class="filter-container col-4">         
+          </div>
+
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+           <div class="row form-group trad  foc">
+            <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="description">IMPORT NUMBER</label>
+              <input type="text" class="form-control form-control-sm" name="import_number" id="import_number" formControlName="import_number">
+             </div>
+
+             <!-- Registration Name-->
+             <div class="col-lg-3 col-sm-3 form-group trad foc">
+              <label for="layoutRegType">Registration Name</label>
+              <input type="text" class="form-control form-control-sm" name="regName" id="regName"
+              formControlName="regName">
+            </div>
+
+            <div class="col-lg-2 col-sm-2 form-group trad foc">
+              <label for="code" >IMPORT CODE</label>
+                <input type="text" class="form-control form-control-sml" name="code" id="code" formControlName="code" > 
+            </div>
+
+            <div class="col-lg-2 col-sm-2 form-group trad foc">
+              <label for="name" >IMPORT NAME</label>
+              <input type="text" class="form-control form-control-sml" name="name" id="name" formControlName="name">
+            </div>
+            
+            <div class="col-lg-2 col-sm-2 form-group trad foc">
+              <label for="status" >STATUS</label>
+              <select class="form-control form-control-sml" id="status" name="status" formControlName="status">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
+            </div>
+
+           </div>
+         </div>
+        </div>  
+        <div class="row tablemargin">
+          <div class="col-md-12 col-lg-12">
+            <div class="col-md-4">
+              <div class="row form-group ">
+              <label class="mapcentrecolor">Centres List</label>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table p-0" *ngIf="!notFound">
+
+            <!-- table start -->
+            <ngx-ixcheck-table id="mapCentreslist" headerTitle="Imported centres" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false" [expandOnIndexColClick]="true" [expandOnRowClick]="false">
+
+              <ng-template #rowDetailExpand let-rowitem="item">
+                <app-centre-edit-details  [item]="rowitem" (updateEvent)=getImportedCentres()
+                 [rowItemData]=rowitem>
+                </app-centre-edit-details>
+              </ng-template>
+
+
+              <!-- City   -->
+              <ngx-ixcheck-table-column [property]="'city_name'" [header]="'City'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- State -->
+              <ngx-ixcheck-table-column [property]="'state_name'" [header]="'State'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+            
+                <!-- Ph Seat -->
+                <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'Ph Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                 <!-- Normal Seat -->
+                 <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'Normal Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Total Seat -->
+                <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+            </ngx-ixcheck-table>
+            <!-- table end -->
+          </div>
+          <div class="not-found-container" *ngIf="notFound">
+            <h5>
+              No Data Available...
+            </h5>
+          </div>
+        </div>
+      </div>       
+    </div>
+  </form>
+</div>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="text-center mt-2">
+    <b style="font-size: large;">EXAM STATUS</b> <br><br>
+    <div>
+        <div class="outer-container">
+            <div class="inner-container mr-4">
+                <b class="" style="font-size: medium;">CONDUCTED</b><br>
+                <b style="color: black;font-size: large;">{{examStatusDetail ? examStatusDetail["exam_conducted"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b style="font-size: medium;">EXAM DATA</b><br>
+                <b style="color: black;font-size: large;">{{examStatusDetail ? examStatusDetail["exam_data_synced"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b style="font-size: medium;">EXAM RESULTS</b><br>
+                <b style="color: black;font-size: large;">{{examStatusDetail ? (examStatusDetail["result_available"] == '1' ? 'AVAILABLE' : 'NOT AVAILABLE')  : 'NA'}}</b>
+            </div>
+        </div>
+    </div>
+</div>

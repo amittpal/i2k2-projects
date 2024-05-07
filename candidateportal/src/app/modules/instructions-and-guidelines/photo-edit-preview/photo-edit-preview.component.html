@@ -1,0 +1,161 @@
+<div class="form-group trad foc">    
+    <div class="input-group">
+      <input #FileuploaderInput type="file" class="form-control" (change)="onFileChange($event)">
+      <input type="hidden" formControlName="NgxIxcheckPhotouploaderAi">      
+    </div>
+  
+    <ng-container *ngIf="addedFiles.length === 0">
+      <div class="row">
+        <div class="col-md-8">
+          <div *ngIf="componentDetails.validations.valid_allowedExtentions">
+            <small class="font-italic pt-3">
+              You can only upload <strong>{{componentDetails.validations.valid_allowedExtentions}}</strong> files
+            </small>
+  
+          </div>
+          <div *ngIf="componentDetails.validations.valid_allowedFileCount>0">
+            <small class="font-italic pt-3">
+              Upto <strong>{{componentDetails.validations.valid_allowedFileCount}}</strong> photo can be uploaded
+            </small>
+          </div>
+          <div>
+            <small class="font-italic pt-3">
+              File must have minimum width of <strong>{{componentDetails.validations.valid_minWidth}} px</strong>
+              and maximum width of <strong>{{componentDetails.validations.valid_maxWidth}} px</strong>
+            </small>
+          </div>
+  
+          <div>
+            <small class="font-italic pt-3">
+              File must have minimum height of <strong>{{componentDetails.validations.valid_minHeight}} px</strong>
+              and maximum height of <strong>{{componentDetails.validations.valid_maxHeight}} px</strong>
+            </small>
+          </div>
+  
+  
+          <div>
+            <small class="font-italic pt-3">
+              Face percent must be between <strong>{{componentDetails.ai_parameters.face_percent_min}}%</strong>
+              to <strong>{{componentDetails.ai_parameters.face_percent_max}}%</strong>
+            </small>
+          </div>
+  
+          <div>
+            <small class="font-italic pt-3">
+              {{componentDetails.ai_parameters.color_guid}} background percent of photo must be between
+              <strong>{{componentDetails.ai_parameters.color_percent_min}}%</strong>
+              to <strong>{{componentDetails.ai_parameters.color_percent_max}}%</strong>
+            </small>
+          </div>
+        </div>
+        <div class="col-md-4 text-right mt-3">
+          <!-- <input *ngIf="selectedFile" type="button" value="Crop Image" class="btn btn-default btn-sm"
+            (click)="showImageCropperModal()"> -->
+        </div>
+      </div>
+    </ng-container>
+  
+  
+    <div class="row mt-2" *ngFor="let image of addedFiles; let i=index" style=" border-bottom: 1px solid #f0f3f5;">
+      <div class="col-md-6">
+        <ng-container *ngIf="image.facePercent && image.colorPercent">
+          <!-- <strong>{{image.name}}</strong> -->
+          <div>Face(%): {{image.facePercent}}</div>
+          <div>White(%): {{image.colorPercent}}</div>
+        </ng-container>
+  
+      </div>
+      <div class="col-md-3 aling-self-center">
+        <img [src]="image.result" height="50">
+      </div>
+      <div class="col-md-3 align-self-center">
+        <a (click)="onRemoveImage(i)" class="btn btn-default">X</a>
+      </div>
+    </div>
+  
+    <div *ngIf="maxUploadLimitExceeded===true">
+      <small class="font-italic pt-3 text-danger">Maximum upload limit is exceeded</small>
+    </div>
+  
+  
+    <ng-template #CropperTemplate>
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Photo Editing & Verification</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-2 pr-0">   
+            <div class="card card-bordered text-left p-1 mb-0">
+              <div class="mb-2">
+                <label><strong>Required Dimensions</strong></label>
+                <label class="mb-0">Width- {{componentDetails.validations.valid_minWidth }}px - {{componentDetails.validations.valid_maxWidth }} px</label>
+                <label>Height- {{componentDetails.validations.valid_minHeight }}px - {{componentDetails.validations.valid_maxHeight }} px</label>                          
+              </div>   
+              <div class="mb-2">
+                <label><strong>Current Dimensions</strong></label>            
+                <div [ngClass]="isValidDimensions ? 'text-success' : 'text-danger' ">
+                  <label class="mb-0">Width- {{croppedImage.width}} px</label>
+                  <label>Height- {{croppedImage.height}} px</label>                          
+                </div>              
+              </div>
+              
+              <div class="mb-2">
+                <label><strong>Face Detections</strong></label><br>         
+                <label [ngClass]="validatedImageInfo.faceDetectedStatusText ==='Human face detected' ? 'text-success' : 'text-danger' ">{{validatedImageInfo.faceDetectedStatusText}}</label>                                 
+              </div> 
+              <div class="mb-2">
+                <label><strong>Face Percent</strong></label><br>         
+                <label [ngClass]="validatedImageInfo.facePercent > 0 ? 'text-success' : 'text-danger' ">{{validatedImageInfo.facePercent}}%</label>                                 
+              </div> 
+
+              <div class="mb-2">
+                <label><strong>White Color (%)</strong></label><br>              
+                <label  [ngClass]="validatedImageInfo.colorPercentage > 0 ? 'text-success' : 'text-danger' ">{{validatedImageInfo.colorPercentage}}%</label>                                 
+              </div>              
+            </div>               
+          </div>
+          <div class="col-md-10 text-center">
+            <div class="card card-bordered p-1 mb-0">
+              <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" format="png"
+              (imageCropped)="imageCropped($event)"></image-cropper>                     
+            </div>                          
+          </div>        
+        </div>
+  
+  
+      </div>
+      <div class="modal-footer-image">        
+       <div class="row">
+         <div class="col-md-12">
+          <input 
+          type="button" 
+          value="Download Photo" 
+          class="btn btn-primary btn-sm"
+          (click)="onDownloadImageClick()"
+          [disabled]="!isImageValid">
+         </div>
+         <!-- <div class="col-md-6 text-right">
+          <input 
+          type="button" 
+          value="Validate" 
+          class="btn btn-info btn-sm" 
+          (click)="imageCropedAndValidate()">
+         </div> -->
+       </div>
+      
+      </div>
+    </ng-template>
+  </div>
+  
+  
+  
+  <!--
+  [maintainAspectRatio]="true"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+  -->

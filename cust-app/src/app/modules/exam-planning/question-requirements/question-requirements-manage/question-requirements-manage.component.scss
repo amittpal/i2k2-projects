@@ -1,0 +1,68 @@
+/* flex table */
+  
+.flxTable {
+    display: table;
+    margin: 0 auto;
+    width: 99%;
+}
+  
+.flxTable100p {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+}
+  
+.flxTableRow {
+    display: table-row;
+}
+  
+.flxTableBody {
+    display: table-row-group;
+}
+  
+.flx-tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.25em 0;
+    border: 0px solid rgba(3, 3, 3, 0.2);
+}
+  
+.flx-col-0Per {
+    width: 0%;
+}
+  
+.flx-col-5Per {
+    width: 5%;
+}  
+  
+.flx-col-10Per {
+    width: 10%;
+}
+
+.flx-col-17Per {
+    width: 17%;
+}
+
+.flx-col-53Per {
+    width: 53%;
+}
+  
+.flx-col-50Per {
+    width: 50%;
+}
+    
+.flx-col-100Per {
+    width: 100%;
+}
+
+.was-validated { 
+    input.ng-invalid,  
+    select.ng-invalid {
+        border: 1px solid lightcoral;
+    }
+    input.ng-valid, 
+    select.ng-valid {
+        border: 1px solid lightgreen;
+    }
+}

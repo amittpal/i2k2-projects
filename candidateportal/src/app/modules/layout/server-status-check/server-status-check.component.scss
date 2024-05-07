@@ -1,0 +1,19 @@
+:host ::ng-deep{
+    .server-status
+    {
+        height: 1.15rem;
+        width: 1.15rem;
+        background-color: gray;
+        border-radius: 50%;
+        display: inline-block;
+        //border:0.125rem solid white; 
+        margin-left: 0.5rem;    
+        position:absolute;   
+    }
+    .server-status.online{
+        background-color: #7bbe2e;
+    }
+    .server-status.offline{
+        background-color: #d84810;
+    }
+}

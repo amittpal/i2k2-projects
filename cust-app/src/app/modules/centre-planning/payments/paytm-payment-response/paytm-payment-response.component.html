@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">
+            </div>
+            <div class="paging-block col-4">
+            </div>
+            <div class="filter-container col-4">
+  
+            </div>
+          </div>
+        </div>
+        <div class="card-body scrollable">
+          <div class="app-form">
+  
+            <form novalidate name="PaytmPaymentForm" id="PaytmPaymentForm" [formGroup]="paytmPaymentResponseFormGroup">
+  
+              <div class="row">
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Order Id</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="order_id" name='ORDER_ID'
+                    readonly>
+                </div>
+  
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Id</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="id" name='id' readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+  
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0"> BankTxn Id</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="bank_txn_id" readonly
+                    name='bank_txn_id'>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Tax Amount</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="txn_amount" name='txn_amount'
+                    readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Response Code</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="response_code"
+                    name='response_code' readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Response Msg</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="response_msg"
+                    name='response_msg' readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Payment Mode</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="payment_mode"
+                    name='payment_mode' readonly>
+                </div>
+  
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Txn Date</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="txn_date" name='txn_date'
+                    readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Currency</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="currency" name='currency'
+                    readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Bank Name</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="bank_name" name='bank_name'
+                    readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Status</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="txn_status" name='txn_status'
+                    readonly>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required">
+                  <label for="customers" class="mb-0">Gateway Name</label>
+                  <input type='text' class="form-control form-control-sm" formControlName="gateway_name" readonly
+                    name='gateway_name'>
+                </div>
+                <div class="col-lg-4 col-sm-4 form-group trad foc required"></div>
+  
+  
+              </div>
+  
+  
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

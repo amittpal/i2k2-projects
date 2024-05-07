@@ -1,0 +1,65 @@
+<div class="header-container">
+  <div class="container-fluid">
+    <div class="row header-row">
+      <div class="col mob-menu-block">
+        <a class="head-icon" menuToggle filterClose>
+          <svg-icon class="icon-menu" src="assets/images/menu.svg"></svg-icon>
+        </a>
+      </div>
+
+      <div class="col-12 heading-block">{{page_title}}</div>
+      <div class="user-block user-area">
+        <div class="btn-group" dropdown>
+          <span class="pl-2 pr-2 text-primary txt-user-details"><b>{{user_name}}</b></span>
+          <button id="button-autoclose1" dropdownToggle type="button" class="btn btn-link"
+            aria-controls="dropdown-autoclose1" placement="right">
+            <svg-icon class="icon-user" src="assets/images/user.svg"></svg-icon>
+            <svg-icon class="icon-user-downarrow" src="assets/images/chevron-down.svg"></svg-icon>
+          </button>
+          <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-list dropdown-menu-right" role="menu"
+            aria-labelledby="button-autoclose1">
+            <li role="menuitem ">
+              <span class="pl-2 pr-2 text-primary txt-user-details"><b>{{user_name}}</b></span>
+            </li>
+            <li role="menuitem" class="type-container type-user"><span class="pl-2 pr-2 type-style">{{user_type}}</span>
+            </li>
+
+            <div class="dropdown-divider"></div>
+            <li role="menuitem">
+              <a class="dropdown-item text_L pl-2 pr-2" href="/#/edituserprofile">
+                <div class="row">
+                  <div class="col-5"></div>
+                  <div class="col-1 b-4">
+                    <svg-icon src="assets/icons/user.svg"></svg-icon>
+                  </div>
+                  <div class="col-5"> Edit Profile</div>
+                </div>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item text_L pl-2 pr-2" href="/#/changepassword">
+                <div class="row">
+                  <div class="col-5"></div>
+                  <div class="col-1">
+                    <svg-icon src="assets/icons/key.svg"></svg-icon>
+                  </div>
+                  <div class="col-5"> Change Password</div>
+                </div>
+              </a>
+            </li>
+            <li role="menuitem"><a class="dropdown-item text_L pl-2 pr-2" (click)="logout()">
+                <div class="row">
+                  <div class="col-5"></div>
+                  <div class="col-1 ml-1">
+                    <svg-icon src="assets/icons/power.svg"></svg-icon>
+                  </div>
+                  <div class="col-5">Logout</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

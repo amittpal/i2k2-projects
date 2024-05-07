@@ -1,0 +1,13 @@
+.gap{
+    width:300px;
+}
+
+.capacityInput{
+  text-align: right !important;
+}
+
+@media (min-width: 992px) {
+ .fullheight-fixed {
+        height: calc(100vh - 280px);
+      }
+ }

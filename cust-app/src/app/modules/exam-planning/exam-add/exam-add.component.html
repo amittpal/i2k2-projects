@@ -1,0 +1,56 @@
+<div class="container-fluid">
+
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body">
+            <form autocomplete="off" class="app-form" id="addExamForm" [formGroup]="addExamFormGroup" novalidate="">
+                <!--Order Number -->
+                <div class="col-lg-3  col-sm-4 form-group trad foc required">
+                    <label for="exam_code" class="col-lg-12 p-2 mb-0">Order Number</label>
+                    <select class="form-control col-lg-10 p-2 form-control-sm" id="order_id" name="order_id"
+                        formControlName="order_id" (change)="generateExamNumber()">
+                        <option value="" disabled>Please Select</option>
+                        <option *ngFor="let order of orderList" [value]="order.id">
+                            {{order.number}}
+                        </option>
+                    </select>
+
+                </div>
+
+                <!-- Exam Number-->
+                <div class="col-lg-3 col-sm-4 form-group trad foc required">
+                    <label for="exam_number" class="col-lg-12 p-2 mb-0">Exam Number</label>
+                    <input type="text" onlyNumber class="col-lg-10 p-2 form-control form-control-sm" maxlength="30"
+                        name="exam_number" (keypress)="checkInput($event)" id="exam_number" formControlName="exam_number" required readonly>
+                </div>
+
+
+                <!-- Exam Public Lable -->
+                <div class="row ml-0">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group trad  required">
+                                    <label for="exam_public_label" class="mb-0">Exam Public Label</label>
+                                    <input type="text" class="form-control form-control-sm" name="exam_public_label" id="exam_public_label"
+                                        formControlName="exam_public_label"  maxlength="150" required readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group trad foc mt-4">
+                                    <button *ngIf="examNumber > 0" class="btn btn-sm btn-secondary" (click)="generateExamNumber()">Regenerate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Form Submit -->
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Save</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</div>

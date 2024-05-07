@@ -1,0 +1,17 @@
+:host ::ng-deep {  
+    .large_checkbox, .large_radio{     
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+    }   
+    quill-view .ql-editor{
+        padding: 2px;
+    }
+    .was-validated {
+        input.ng-invalid,
+        select.ng-invalid,
+        textarea.ng-invalid {
+            border: 1px solid lightcoral !important;
+        }       
+      }
+}

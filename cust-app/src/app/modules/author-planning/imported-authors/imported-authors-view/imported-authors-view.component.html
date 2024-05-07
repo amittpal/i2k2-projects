@@ -1,0 +1,172 @@
+<div class="container-fluid">
+    <div class="table-container">
+     <form class="app-form"  novalidate name="viewImportedAuthorsForm" id="viewImportedAuthorsForm" [formGroup]="viewImportedAuthorsFormGroup" class="p-0">    <div class="card card-bordered fullheight-min">        
+        <div class="card-header">
+
+          <div class="header-flex-container">
+            <div class="card-title col-4">
+              <label></label>
+            </div>
+  
+            <div class="paging-block col-4">           
+            </div>
+  
+            <div class="filter-container col-4">         
+            </div>
+  
+          </div>
+        </div>
+      
+        <div class="card-body">   
+        <div class="row">
+          <div class="col-md-12 col-lg-10">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+               <div class="col-md-3">
+                 
+                <label for="description" class="mb-0">AUTHOR#</label>
+                <input type="text" class="form-control" name="authors" id="authors" formControlName="authors">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">HIGHEST QUALIFICATION</label>
+                  <input type="text" class="form-control" name="highest_qualification" id="highest_qualification" formControlName="highest_qualification" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">MOBILE NUMBER</label>
+                <input type="text" class="form-control" name="mobile_number" id="mobile_number" formControlName="mobile_number">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+               <div class="col-md-3">
+                 
+                <label for="description" class="mb-0">TITLE</label>
+                <input type="text" class="form-control" name="title" id="title" formControlName="title">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">SME </label>
+                  <input type="text" class="form-control" name="sme" id="sme" formControlName="sme" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">ALTERNATE MOBILE NUMBER </label>
+                <input type="text" class="form-control" name="alternate_mobile_numner" id="alternate_mobile_numner" formControlName="alternate_mobile_numner">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+               <div class="col-md-3">
+                 
+                <label for="description" class="mb-0">NAME </label>
+                <input type="text" class="form-control" name="name" id="name" formControlName="name">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">EXPERIENCE (YEARS) </label>
+                  <input type="text" class="form-control" name="experience" id="experience" formControlName="experience" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">PHONE NUMBER (OFFICE)</label>
+                <input type="text" class="form-control" name="phone_number_office" id="phone_number_office" formControlName="phone_number_office">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+               <div class="col-md-3">
+                 
+                <label for="description" class="mb-0">ORGANIZATION NAME</label>
+                <input type="text" class="form-control" name="organization_name" id="organization_name" formControlName="organization_name">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">LANGUAGES </label>
+                  <input type="text" class="form-control" name="language" id="language" formControlName="language" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">PHONE NUMBER (HOME)</label>
+                <input type="text" class="form-control" name="phone_number_home" id="name" formControlName="phone_number_home">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+               <div class="col-md-3">
+                 
+                <label for="description" class="mb-0">DEPARTMENT </label>
+                <input type="text" class="form-control" name="department" id="department" formControlName="department">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">IDENTITY TYPE </label>
+                  <input type="text" class="form-control" name="identity_type" id="identity_type" formControlName="identity_type" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">EMAIL</label>
+                <input type="text" class="form-control" name="email" id="email" formControlName="email">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <div class="row form-group trad  foc">
+
+               <div class="col-md-3">                
+                <label for="description" class="mb-0">DESIGNATION </label>
+                <input type="text" class="form-control" name="designation" id="designation" formControlName="designation">
+               </div>
+  
+               <div class="col-md-3">
+                <label for="code" class="mb-0">IDENTITY NUMBER </label>
+                  <input type="text" class="form-control" name="identity_number" id="identity_number" formControlName="identity_number" > 
+              </div>
+  
+              <div class="col-md-3">
+                <label for="name" class="mb-0">RATING</label>
+                <input type="text" class="form-control" name="rating" id="rating" formControlName="rating">
+              </div>
+
+             </div>
+           </div>
+          </div>  
+        </div>
+          <div class="col-md-12 col-lg-2">
+            <img  class="imgmanage" src="{{image}}" alt="">
+        </div>
+        </div>
+        </div>      
+      </div>
+    </form>
+  </div>
+</div>
+
+  
+  

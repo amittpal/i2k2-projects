@@ -1,0 +1,221 @@
+<div class="card card-borderless">
+  <div class="card-header">
+    <div class="header-flex-container">
+      <div class="card-title col-4">
+      </div>
+      <div class="paging-block col-4">
+      </div>
+      <div class="filter-container col-4">
+
+      </div>
+    </div>
+  </div>
+  <div class="card-body scrollable">
+
+
+    <div class="row mt-3 mb-3">
+      <div class="col-md-6 p-0">
+        <h5 class="text-uppercase">Payment Status</h5>
+      </div>
+      <div class="col-md-6 text-right p-0">
+        <ng-container *ngIf="isUserLoggedIn !== true">
+          <a class="btn btn-light-green" routerLink="/login">Back To Login</a>
+        </ng-container>
+      </div>
+    </div>
+
+    <div *ngIf="OnlinePayment === 1">
+      <div class="row main-table p-3 mb-4" *ngFor="let transaction of transactionList">
+        <div class="col-md-10">
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Name:</span>
+              {{transaction.first_name +" "+ transaction.last_name}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Email:</span>{{transaction.email}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Address:</span>
+              {{transaction.address +", "+ transaction.city+", "+transaction.states +", "+ transaction.pincode}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Mobile Number:</span>
+              {{transaction.mobile_number}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Exam Code:</span>{{transaction.exam_code}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Exam Name:</span>{{transaction.exam_name}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Transaction Id:</span> {{transaction.order_id}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Candidate Id:</span>{{transaction.candidate_guid}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Bank Transaction Id:</span> {{transaction.bank_txn_id}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Amount:</span> {{transaction.txn_amount}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Response Code:</span> {{transaction.response_code}}
+            </div>
+            <div class="col-md-4 text-truncate">
+              <span class="column-head">Response Message:</span>
+              <span title="{{transaction.response_msg}}">
+                {{transaction.response_msg}}
+              </span>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Payment Mode:</span> {{transaction.payment_mode}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Transaction Date:</span> {{transaction.txn_date}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Currency:</span> {{transaction.currency}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <span class="column-head">Bank Name:</span> {{transaction.bank_name}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Status:</span> {{transaction.txn_status}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Gateway Name:</span> {{transaction.gateway_name}}
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-2 align-self-center text-center">
+          <div class="mb-3">
+            <ng-container *ngIf="transaction.txn_status === 'TXN_FAILURE'">
+              <span class="badge badge-danger">Payment Failed</span>
+            </ng-container>
+
+            <ng-container *ngIf="transaction.txn_status === 'TXN_SUCCESS'">
+              <span class="badge badge-success">Payment Successful</span>
+            </ng-container>
+
+          </div>
+          <input type="button" value="Download Receipt" class="btn btn-light-green"
+            (click)="downloadPaymentDetailAsTextFile(transaction)">
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div *ngIf="OnlinePayment === 0">
+      <div class="row main-table p-3 mb-4" *ngFor="let transaction of transactionList">
+        <div class="col-md-10">
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Name:</span>
+              {{transaction.first_name +" "+ transaction.last_name}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Email:</span>{{transaction.email}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Address:</span>
+              {{transaction.address +", "+ transaction.city+", "+transaction.states +", "+ transaction.pincode}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Mobile Number:</span>
+              {{transaction.mobile_number}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Exam Code:</span>{{transaction.exam_code}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Exam Name:</span>{{transaction.exam_name}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Transaction Id:</span> {{transaction.order_id}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Candidate Id:</span>{{transaction.candidate_guid}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Bank Transaction Id:</span> {{transaction.bank_txn_id}}
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Amount:</span> {{transaction.txn_amount}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Response Code:</span> {{transaction.response_code}}
+            </div>
+            <div class="col-md-4 text-truncate">
+              <span class="column-head">Response Message:</span>
+              <span title="{{transaction.response_msg}}">
+                {{transaction.response_msg}}
+              </span>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <span class="column-head">Payment Mode:</span> {{transaction.payment_mode}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Transaction Date:</span> {{transaction.txn_date}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Currency:</span> {{transaction.currency}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <span class="column-head">Bank Name:</span> {{transaction.bank_name}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Status:</span> {{transaction.txn_status}}
+            </div>
+            <div class="col-md-4">
+              <span class="column-head">Gateway Name:</span> {{transaction.gateway_name}}
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-2 align-self-center text-center">
+          <div class="mb-3">
+            <ng-container *ngIf="transaction.txn_status === 'TXN_FAILURE'">
+              <span class="badge badge-danger">Payment Failed</span>
+            </ng-container>
+
+            <ng-container *ngIf="transaction.txn_status === 'TXN_SUCCESS'">
+              <span class="badge badge-success">Payment Successful</span>
+            </ng-container>
+
+          </div>
+          <input type="button" value="Download Receipt" class="btn btn-light-green"
+            (click)="downloadPaymentDetailAsTextFile(transaction)">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

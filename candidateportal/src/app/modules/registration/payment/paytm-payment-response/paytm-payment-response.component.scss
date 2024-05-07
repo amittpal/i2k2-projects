@@ -1,0 +1,27 @@
+:host  ::ng-deep{
+    .table{
+        color: black;
+        margin-bottom: 0;
+        
+    }
+    .table th, .table td{
+        padding: .5rem;
+    }
+    .inner-table tbody tr > td{
+        border-top:0;    
+        width: 50%;    
+    }
+
+    .main-table{
+        border: 1px solid #b7b7b7;
+        background-color: #f2f2f2;
+        margin-bottom:.5rem;
+        color: black;
+      
+    }
+    .column-head{
+        font-weight: 600;
+        font-size: 14px;
+        padding-right: 15px;
+    }
+}

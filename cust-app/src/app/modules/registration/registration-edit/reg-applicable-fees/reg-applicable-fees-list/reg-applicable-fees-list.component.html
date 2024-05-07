@@ -1,0 +1,76 @@
+<div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+    <div class="data-table">
+        <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items"
+            [dragColumn]="true" [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount"
+            [tableName]="'products-grid'"
+            [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+            [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [selectColumn]="true"
+            [expandOnIndexColClick]="true" [pagination]="false" [addRows]="false" [dragIcon]="" [dragCss]=""
+            [sortIndexOnDrop]="true" (onDrag)="onDragged($event)" [deleteColumn]="true"
+            [deleteCss]="{'color': 'red'}" (onDeleteRow)="deleteRow($event)">
+            <!-- Child-Component -->
+            <ng-template #rowDetailExpand let-rowitem="item">
+                <app-applicable-fees-row-details [rowItemData]="rowitem" 
+                    (updatedDetails)="getUpdatedDetails($event)">
+                </app-applicable-fees-row-details>
+            </ng-template>
+            <!-- Child-Component-end -->
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                <ng-template #colHeaderComponent>
+                    <div class="text-center">#</div>
+                </ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+
+                    <div class="text-center">{{rowitem.line_num}}</div>
+                </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Level1</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="level1"
+                        [(ngModel)]="rowitem.level01" (click)="$event.stopPropagation();">
+
+                </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Level2</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="level2"
+                        [(ngModel)]="rowitem.level02" (click)="$event.stopPropagation();">
+
+                </ng-template>
+            </ngx-ixcheck-table3-column>
+
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Level 3</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="level3"
+                        [(ngModel)]="rowitem.level03" (click)="$event.stopPropagation();">
+                </ng-template>
+            </ngx-ixcheck-table3-column>
+
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Fees</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16 " name="amount"
+                        [(ngModel)]="rowitem.amount" (click)="$event.stopPropagation();">
+                </ng-template>
+            </ngx-ixcheck-table3-column>
+
+        </ngx-ixcheck-table3>
+        <br>
+        <div class="row">
+            <div class="col-7 pl-5">
+                <button class="btn btn-sm btn-default add-rows" (click)="onAddRow()">add Rows</button>
+                <button class="btn btn-sm btn-default add-rows ml-2" (click)="onClearRow()">Clear All
+                    Rows</button>
+            </div>
+        </div>
+    </div>
+</div>

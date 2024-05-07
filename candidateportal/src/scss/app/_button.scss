@@ -1,0 +1,11 @@
+.btn-light-green{
+    background-color: #a9d18e;
+    border-color: #89bc66;
+    color: #000 !important;
+   &:hover{
+        // color: white !important;
+    }
+}
+.btn{
+    border-radius: 0;
+}

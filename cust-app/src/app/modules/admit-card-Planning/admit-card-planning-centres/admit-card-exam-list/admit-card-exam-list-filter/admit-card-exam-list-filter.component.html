@@ -1,0 +1,76 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate  [formGroup]="admitCardCentresFormGroup" (submit)="onAdmitCardCentresFormSubmit()" class="p-0">
+
+            <div class="form-group mb-0">
+              <label for="Exam" class="mb-0">Exam #</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardCentresFormGroup.controls['exam_number'].valid}" name="exam_number" id="exam_number" formControlName="exam_number">
+            </div>
+            <div class="form-group mb-0">
+              <label for="Exam Code" class="mb-0">Exam Code</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardCentresFormGroup.controls['exam_code'].valid}" name="exam_code" id="exam_code" formControlName="exam_code">
+            </div>
+            <div class="form-group mb-0">
+              <label for="Exam Name" class="mb-0">Exam Name</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardCentresFormGroup.controls['exam_name'].valid}" name="exam_name" id="exam_name" formControlName="exam_name">
+            </div>
+          
+            <div class="form-group mb-0">
+                <label for="Exam type" class="mb-0">Exam type</label>
+                <select class="form-control form-control-sm" id="exam_type" name="exam_type" formControlName="exam_type">
+                  <option value="">All</option>
+                  <option *ngFor="let _examType of examTypeList" [value]="_examType.guid">
+                    {{_examType.name}}
+                  </option>
+                </select>
+            </div> 
+
+         <!--Plan Status  -->
+          <div class="form-group mb-0">
+            <label for="examtype" class="mb-0">PLAN STATUS</label>
+            <select class="form-control form-control-sm" id="plan_status" name="plan_status" formControlName="plan_status">
+              <option value="">Please Select</option>
+              <option *ngFor="let planStatus of planStatus" [value]="planStatus.status_guid">
+                {{planStatus.plan_status_text}}
+              </option>
+            </select>
+          </div>
+          <!-- Plan Status -->
+
+            <div class="form-group mb-0">
+              <label for="exam_status" class="mb-0">EXAM STATUS</label>
+              <select class="form-control form-control-sm" id="status" name="status" formControlName="status">
+                <option value="">All</option>
+                <option *ngFor="let _status of status" [value]="_status.value">
+                  {{_status.name}}
+                </option>
+              </select>
+            </div>   
+  
+  
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" (click)="onAdmitCardCentresFormSubmit()">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

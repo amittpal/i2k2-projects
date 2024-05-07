@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-fixed ">
+      <div class="card-header">
+        <div class="header-flex-container">
+        </div>
+        <tabset class="tabset-container" #tabset>
+          <tab heading="BASIC SETUP"></tab>
+          <tab heading="Exam Cities"></tab>
+          <tab heading="REG TYPES"></tab>
+          <tab heading="REG TYPE MAPPING"></tab>
+          <tab heading="Mail Server Configuration"></tab>
+          <tab heading="APPLICABLE FEES"></tab>
+          <tab heading="FINAL REVIEW"></tab>
+        </tabset>
+      </div>
+      <div *ngIf="tabset.tabs[0].active == true">
+        <app-basic-setup [tabset]="tabset"></app-basic-setup>
+      </div>
+      <div *ngIf="tabset.tabs[1].active == true">
+        <app-registration-exam-cities [tabset]="tabset"></app-registration-exam-cities>
+      </div>
+      <div *ngIf="tabset.tabs[2].active == true">
+        <app-reg-types [tabset]="tabset"></app-reg-types>
+      </div>
+      <div *ngIf="tabset.tabs[3].active == true">
+        <app-reg-type-mapping [tabset]="tabset"></app-reg-type-mapping>
+      </div>
+      <div *ngIf="tabset.tabs[4].active == true">
+        <app-reg-mail-server-config [tabset]="tabset"></app-reg-mail-server-config>
+      </div>
+      <div *ngIf="tabset.tabs[5].active == true">
+        <app-reg-applicable-fees [tabset]="tabset"></app-reg-applicable-fees>
+      </div>
+      <div *ngIf="tabset.tabs[6].active == true">
+        <app-reg-final-review [tabset]="tabset"></app-reg-final-review>            
+      </div>
+    </div>
+  </div>
+</div>

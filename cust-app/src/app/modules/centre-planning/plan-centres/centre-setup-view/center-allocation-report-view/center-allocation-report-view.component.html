@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="table-container">
+        <div class="card card-bordered fullheight-fixed">
+            <div class="card-body app-form">
+                <form class="app-form" [formGroup]="centreReportFormGroup">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-3 form-group trad foc">
+                            <label for="layoutCode">Report Option</label>
+                            <select class="form-control" formControlName="reportOption" (change)="valueChange($event)">
+                                <option value="0" disabled>Select</option>
+                                <option value="1">Report By Shift</option>
+                                <option value="2">Report By Centre</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="app-form" *ngIf="layout">
+                    <div class="container-fluid">
+                        <div class="card card-bordered">
+                            <div class="card-body">
+                                <ngx-ixcheck-reports-viewer [template]="templateUrl" [data]="dataSet"
+                                    [templateName]="'CentreAllocationReport'">
+                                </ngx-ixcheck-reports-viewer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Form Submit -->
+            <div class="card-footer">                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="text-center mt-2">
+    <b style="font-size: large;">REGISTRATION STATUS</b> <br><br>
+    <div>
+        <div class="outer-container">
+            <div class="inner-container mr-4">
+                <b class="" style="font-size: medium;">REGISTERED</b><br>
+                <b style="color: black;font-size: large;">{{registrationStatusDetail ? registrationStatusDetail["registration_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b  style="font-size: medium;">PAID</b><br>
+                <b style="color: black;font-size: large;">{{registrationStatusDetail ? registrationStatusDetail["paid_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b  style="font-size: medium;">PENDING</b><br>
+                <b style="color: black;font-size: large;">{{registrationStatusDetail ? registrationStatusDetail["pending_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b  style="font-size: medium;">REJECTED</b><br>
+                <b style="color: black;font-size: large;">{{registrationStatusDetail ? registrationStatusDetail["rejected_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b  style="font-size: medium;">QUALIFIED</b><br>
+                <b style="color: green;font-size: large;">{{registrationStatusDetail ? registrationStatusDetail["qualified_count"] : 'NA'}}</b>
+            </div>
+        </div>
+    </div>
+</div>

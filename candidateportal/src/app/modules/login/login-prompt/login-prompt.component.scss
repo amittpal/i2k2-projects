@@ -1,0 +1,67 @@
+
+:host ::ng-deep {  
+
+  $light-gray-bg:#f2f2f2;
+  
+  
+  .help-block{
+    margin-bottom: 16px;
+}
+
+.section-header{
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000000;
+}
+
+.was-validated .form-group.trad input.ng-invalid, .was-validated .form-group.trad select.ng-invalid {
+  border: 1px solid #f08080;
+}
+#card-container{
+  
+  margin-bottom: 0;
+  margin: 2rem;
+  
+}
+.action-icon {
+  // background-color:$color-dark-blue;
+  padding: 10px;
+  color:#ffffff;
+  border-radius: 50%;
+  // border: 1px solid $dark-border-color;
+ 
+}
+
+#login-container{
+  border-left: 2px solid #dee2e6;
+  padding: 15vh 0vh !important;
+}
+
+#menu-container{
+  background-color: $light-gray-bg;
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li{
+      float: left;
+      a{
+        display: block;        
+        text-align: center;
+        padding: 5px 15px;
+        text-decoration: none;
+        color: #000000;
+      }
+    }
+  }  
+}
+
+.tooltip{
+   cursor: pointer;
+}
+
+
+}
+

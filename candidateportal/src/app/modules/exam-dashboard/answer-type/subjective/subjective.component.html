@@ -1,0 +1,16 @@
+<div class="row" *ngIf="QuestionDetails ">
+  <div class="col-md-12 ">
+    <form class="app-form desk-menu-block" [formGroup]="answerFormGroup" id="answerForm">
+      <div class="form-group trad foc  mb-0" id="questionTab">
+        <!-- <textarea
+            rows="10"  
+            style="overflow-y: auto;"
+            class="form-control form-control-sm opt_max_height {{QuestionDetails.question[0].language_name}}" 
+            formControlName="answer_text"
+            (change)="onAnswerChange()"></textarea> -->
+        <quill-editor formControlName="answer_text" [modules]="quillConfig"
+          [class]="QuestionDetails.question[0].language_name" (change)="onAnswerChange()"></quill-editor>
+      </div>
+    </form>
+  </div>
+</div>

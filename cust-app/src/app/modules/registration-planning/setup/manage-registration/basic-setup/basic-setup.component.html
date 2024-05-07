@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <!-- <label class="">Hii</label>     -->
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable p-0">
+            
+            <form [formGroup]="basicSetupFormGroup">
+                <div class="row app-form">
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group trad foc">
+                            <label>EXAM CODE</label>
+                            <input type="text" class="form-control" formControlName="code">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>EXAM NAME</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>EXAM TYPE</label>
+                            <input type="text" class="form-control" formControlName="exam_type">
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group trad foc">
+                            <label>Registration Start Date</label>
+                            <input type="date" class="form-control" formControlName="registration_start_date">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>Registration End Date</label>
+                            <input type="date" class="form-control" formControlName="registration_end_date">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>Fee End Date</label>
+                            <input type="date" class="form-control" formControlName="fee_end_date">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>Required Prepayment</label>
+                            <select class="form-control" formControlName="required_payment">
+                                <option value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option [selected] value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>URL</label>                            
+                            <input type="text" class="form-control" formControlName="url" id="url">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer border-0">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onBasicSetupFormSubmit()"
+                [disabled]="!basicSetupFormGroup.valid">Submit</button>
+            <!-- <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button> -->
+        </div>
+    </div>
+
+</div>

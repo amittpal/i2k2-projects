@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">
+              LAYOUT LIST
+            </div>  
+            <div class="paging-block col-4">
+              <!--pagination html start-->
+              <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+                [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                (loadTable)="reloadItems($event,false)">
+              </ngx-ixcheck-table-outer-pagination>
+              <!--pagination html ends-->
+            </div>
+  
+            <div class="filter-container col-4">
+              <div id="bubbleBlock" class="bubble-block">
+                <!-- bubble start -->
+                <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                  [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+                </app-ngx-ixcheck-bubble>
+                <!-- bubble start -->
+              </div>
+  
+              <div class="filter-block" filterToggle>
+                <a class="filter-slider">
+                  <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                </a>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="data-table p-0" *ngIf="!notFound">                
+              <ngx-ixcheck-table id="exam-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+                [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                [lastOffset]="lastOffset" [selectColumn]="false">
+                  
+                <ngx-ixcheck-table-column [property]="'number'" [header]="'Layout #'" [sortable]="false" >
+                </ngx-ixcheck-table-column>                 
+                <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+                </ngx-ixcheck-table-column>                              
+                <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+                </ngx-ixcheck-table-column>                
+                <ngx-ixcheck-table-column [property]="'exam_type'" [header]="'Type'" [sortable]="false">
+                </ngx-ixcheck-table-column>                                                           
+                <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'"  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <span class="badge {{rowitem.status_css_tag}}">{{rowitem.status_text}}</span>
+                  </ng-template>
+                </ngx-ixcheck-table-column>                 
+                <ngx-ixcheck-table-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Action</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div *ngIf="rowitem.id" class="btn-group" dropdown>
+                      <a href="/#/registration/layout/{{rowitem.id}}/edit" (click)="$event.stopPropagation();">Manage Layout</a>
+                    <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                      placement="right">
+                      <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                    </a>
+                    <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                      aria-labelledby="button-autoclose1">
+                      <li role="menuitem">
+                        <a href="/#/registration/layout/{{rowitem.id}}/preview" (click)="$event.stopPropagation();"
+                          class="dropdown-item">Layout Preview</a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="/#/registration/layout/{{rowitem.id}}/sample-data" (click)="$event.stopPropagation();"
+                          class="dropdown-item">Sample Data</a>
+                      </li>
+                      <li role="menuitem">
+                        <a href="/#/registration/layout/{{rowitem.id}}/copy" (click)="$event.stopPropagation();"
+                          class="dropdown-item">Copy Layout</a>
+                      </li>
+                      <li role="menuitem">
+                        <a (click)="onDeleteLayout(rowitem.id)"
+                          class="dropdown-item">Delete</a>
+                      </li>
+                    </ul>
+                    </div>
+                  
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+  
+              </ngx-ixcheck-table>
+             
+            </div>
+            <div class="not-found-container" *ngIf="notFound">
+              <h5>
+                No Data Available...
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-layout-list-filter
+   (updateEvent)="updateTable($event)"
+   [resetFlter]="resetFilterFlag"
+   [updatedFilter]="count">
+  </app-layout-list-filter>
+  

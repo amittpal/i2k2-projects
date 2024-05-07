@@ -1,0 +1,7 @@
+:host ::ng-deep {  
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      height: calc(100vh - 203px);
+    }
+  }
+}  

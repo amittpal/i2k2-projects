@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table table-min-height" *ngIf="candidatesRegistrationDetail.length > 0">
+        <thead>
+            <tr class="flex-tr">
+                <th class="flex-th">Name</th>
+                <th class="flex-th ">Code</th>
+                <th class="flex-th">Count</th>
+                <th class="Runtime">Run DateTime</th>
+                <th class="flex-th">Job Status</th>
+                <th class="flex-th">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="flex-tr" *ngFor="let candidate of candidatesRegistrationDetail; let i=index"
+                [attr.data-index]="i">
+                <td class="flex-td">{{ candidate.job_type_name }}</td>
+                <td class="flex-td ">{{ candidate.job_type_code }}</td>
+                <td class="flex-td ">{{ candidate.count }}</td>
+                <td class="flex-td ">{{ candidate.run_date_time }}</td>
+                <td class="flex-td "><span class="badge {{candidate.job_status_css_tag}}">{{ candidate.job_status }}</span>
+                </td>
+                <td class="flex-td "><span class="badge {{candidate.status_css_tag}}">{{ candidate.status }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="detailed-table" *ngIf="candidatesRegistrationDetail.length == 0">
+        <tr class="flex-tr txtalgn">
+            <td class="flex-td"><span>Data not available</span> </td>
+        </tr>
+    </table>
+
+
+</div>

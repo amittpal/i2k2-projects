@@ -1,0 +1,47 @@
+<div *ngIf="disabledRow" class="row" style="background-color: #dddddd; margin: auto">
+  <div class="col-sm-12">
+    <form autocomplete="off" name="productFormGroup" id="productForm" [formGroup]="productFormGroup">
+      <div class="form-row text-uppercase">
+
+        <!-- Subject -->
+        <div class="form-group col-lg-2 d-flex flex-column col-sm-3 ">
+          <label for="subject" class="mb-0">Subject</label>
+
+          <select class="custom-select custom-select-dd custom-select-sm" name="subject" id="subject"
+            formControlName="subject_guids">
+            <option value="">Select</option>
+            <option *ngFor="let subjects of selectedSubject" [ngValue]="subjects.name">
+              {{subjects.name}}</option>
+          </select>
+
+        </div>
+
+        <!-- Difficulty Level -->
+        <div class="form-group col-lg-2 col-sm-3">
+          <label for="difficulty_level" class="mb-0">Difficulty Level</label>
+
+          <select class="custom-select custom-select-dd custom-select-sm" name="difficulty_level" id="difficulty_level"
+            formControlName="difficulty_level_guids">
+            <option value="">Select</option>
+            <option *ngFor="let level of difficultyLevels" [ngValue]="level.name">{{level.name}}</option>
+          </select>
+        </div>
+
+        <!-- Number Of Question(s) -->
+        <div class="form-group col-lg-2 col-sm-3">
+          <label for="question" class="mb-0">Number Of Question(s)</label>
+          <input type="number" min="0" formControlName="number_of_questions"
+            class="custom-select custom-select-dd custom-select-sm" name="question" (click)="$event.stopPropagation();">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group d-flex col-lg-2 col-sm-4">
+          <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;" type="button" (click)="getProductInfo()"
+           >Update</button>
+          <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+            (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

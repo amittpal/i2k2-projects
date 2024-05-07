@@ -1,0 +1,155 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <form class="app-form" id="examDetailForm" [formGroup]="examDetailFormGroup" novalidate="">
+
+        <div class="row">
+
+          <div class="col-lg-3 col-sm-4">
+             <div class="row">
+                <!-- Exam Code -->
+                <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                  <label for="exam_code" class="col-lg-12 p-2 mb-0">SNAPSHOT#</label>
+                  <label type="text" class="lbl" id="exam_code" name="exam_code">{{examDetail.snapshot_number
+                    }}</label>
+                </div>
+
+                <!-- Exam Name -->
+                <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                  <label for="name" class="col-lg-12 p-2 mb-0">SNAPSHOT CODE</label>
+                  <input type="text" class="form-control form-control-sm" [ngClass]="{red:!examDetailFormGroup.controls['snapshotCode'].valid}"
+                    maxlength="50" name="snapshotCode" id="snapshotCode" formControlName="snapshotCode">
+
+                </div>
+
+                <!-- Exam Type -->
+                <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                  <label for="exam_type" class="col-lg-12 p-2 mb-0">SNAPSHOT NAME</label>
+                  <input type="text" class="form-control form-control-sm"
+                    [ngClass]="{red:!examDetailFormGroup.controls['snapshotName'].valid}" maxlength="50" name="snapshotName"
+                    id="snapshotName" formControlName="snapshotName">                    
+                </div>
+
+             </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-4">
+            <div class="row">
+
+              <!-- Imported Centres Name -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                <label for="centres_name" class="col-lg-12 p-2 mb-0">TOTAL CANDIDATES</label>
+                <label type="text" id="centres_name" class="lbl"
+                  name="centres_name">{{exams.total_candidates }}</label>
+              </div>
+
+              <!-- No of Shift  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="shift" class="col-lg-12 p-2 mb-0"># OF EXAMS</label>
+                <label type="text" class="lbl" id="shift" name="shift">{{examDetail.number_of_exams
+                  }}</label>
+              </div>
+
+              <!-- Duration -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                <label for="duration" class="col-lg-12 p-2 mb-0"># OF CITIES</label>
+                <div class="d-flex">
+                  <label type="text" id="duration" class="lbl"
+                    name="duration">{{exams.number_of_cities}}</label>
+                </div>
+              </div>
+
+            </div>    
+          </div>
+
+          <div class="col-lg-3 col-sm-4">
+            <div class="row">
+
+              <!-- priority  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="priority" class="col-lg-12 p-2 mb-0">REGISTRATION CODE</label>
+                <label type="text" id="priority" class="lbl"
+                  name="priority">{{examDetail.registration_code }}</label>
+              </div>
+
+              <!-- priority  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="priority" class="col-lg-12 p-2 mb-0">REGISTRATION NAME</label>
+                <label type="text" id="priority" class="lbl"
+                  name="priority">{{examDetail.registration_Name }}</label>
+              </div>
+
+              <!-- priority  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="priority" class="col-lg-12 p-2 mb-0">NUMBER OF CITY’S PRIORITY</label>
+                <label type="text" id="priority" class="lbl"
+                  name="priority">{{exams.number_of_city_priority }}</label>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-4">
+            <div class="row daysection">
+
+              <!-- Exam Days  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="exam_days" class="col-lg-12 p-2 mb-0">EXAM DAYS</label>
+                <select [compareWith]="multiSubjectComp" (ngModelChange)="valueChange($event)" class="col-lg-7 p-2 form-control form-control-sm"
+                  formControlName="exam_days" id="exam_days" multiple>
+                  <option *ngFor="let days of daysList" [ngValue]="days">
+                    {{days.name}}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+      <br>
+      <div class="card-header pl-0">
+        <div class="header-flex-container">
+          <div class="card-title col-4">
+            <label>EXAMS</label>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-min-height">
+          <thead class="table-heading">
+            <tr class="flex-tr">
+              <th class="flex-th">#</th>
+              <th class="flex-th">EXAM CODE</th>
+              <th class="flex-th">EXAM NAME</th>
+              <th class="flex-th"># OF UNIQUE SHIFTS</th>
+              <th class="flex-th">DURATION</th>      
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="rowDetailsId" *ngFor="let item of examList; let i=index" [attr.data-index]="i" class="flex-tr">
+              <td class="flex-td">{{ i + 1 }}</td>
+              <td class="flex-td">{{ item.code }}</td>
+              <td class="flex-td">{{ item.name }}</td>
+              <td class="flex-td">{{ item.number_of_shift }}</td>
+              <td class="flex-td">{{ item.duration }}</td>
+            </tr>
+            <tr *ngIf="examList.length == 0">
+              <td class="flex-td">No Record Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  <!-- <div class="not-found-container" *ngIf="!displayData">
+    <h5>
+      No Data Available...
+    </h5>
+  </div> -->
+</div>

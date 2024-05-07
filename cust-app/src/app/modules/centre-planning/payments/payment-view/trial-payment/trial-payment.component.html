@@ -1,0 +1,82 @@
+<div class="card-header">
+    <div class="header-flex-container">
+        <div class="card-title col-4">
+            TRANSACTIONS
+
+
+        </div>
+        <div class="paging-block col-6 d-flex justify-content-between">
+            <!--pagination html start-->
+            <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+                [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                (loadTable)="reloadItems($event,false)">
+            </ngx-ixcheck-table-outer-pagination>
+            <!--pagination html ends-->
+
+            <!-- <button  class="btn btn-sm btn-primary"  id="submitBtn"  type="button"    (click)="refreshExamList()">
+                  Refresh Exam list</button> -->
+        </div>
+
+        <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+                <!-- bubble start -->
+                <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                    [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+                </app-ngx-ixcheck-bubble>
+                <!-- bubble start -->
+            </div>
+
+            <div class="filter-block" filterToggle>
+                <a class="filter-slider">
+                    <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="card-body">
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table p-0" *ngIf="!notFound">
+            <ngx-ixcheck-table id="trial-list" headerTitle="trial List" [items]="items" [indexColumn]="false"
+                [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                [lastOffset]="lastOffset" [selectColumn]="false">
+                <ngx-ixcheck-table-column [property]="'transaction_id'" [header]="'TRANSACTION #'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <!-- <ngx-ixcheck-table-column [property]="'txn_date'" [header]="'DATE'" [sortable]="false">
+                    </ngx-ixcheck-table-column> -->
+                <ngx-ixcheck-table-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent> Date</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        {{rowitem.txn_date|date:'dd/MM/yyyy'}}
+                    </ng-template>
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'order_id'" [header]="'REGISTRATION #'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'name'" [header]="'CANDIDATE NAME'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'email'" [header]="'EMAIL'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'mobile_number'" [header]="'MOBILE#'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'txn_amount'" [header]="'AMOUNT'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'txn_status'" [header]="'Status'" [colType]="'custom'">
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <span class="badge {{rowitem.status_css_tag}}">{{rowitem.txn_status}}</span>
+                    </ng-template>
+                </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+        </div>
+        <div class="not-found-container" *ngIf="notFound">
+            <h5>
+                No Data Available...
+            </h5>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
+
+<app-live-payment-filter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag" [updatedFilter]="count">
+</app-live-payment-filter>

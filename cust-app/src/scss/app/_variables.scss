@@ -1,0 +1,173 @@
+// Bootstrap
+
+//Base Grey Color
+$color-master: #626262 !default;
+$primary:       #65CF48 !default;//$blue !default;
+
+// Lighter Grey colors
+//$color-master-light:mix($color-master, #fff, 16%) !default;
+$color-master-light:mix($color-master, #fff, 25%) !default;
+$color-master-lighter:mix($color-master, #fff, 9.5%) !default;
+$color-master-lightest:mix($color-master, #fff, 3%) !default;
+
+// Darker Grey colors
+$color-master-dark:mix($color-master, #000, 45%) !default;
+$color-master-darker:mix($color-master, #000, 27%) !default;
+$color-master-darkest:mix($color-master, #000, 18%) !default;
+
+$color-white: #fff !default;
+$color-black: #000 !default;
+
+$color-success: #55ff6b !default;
+$color-complete : #48b0f7 !default;
+$color-primary: #6d5cae !default;
+$color-warning: #f8d053 !default;
+$color-danger: #f55753 !default;
+$color-info: #3b4752 !default;
+
+$body-bg: $color-white;
+//$font-family-base: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+$font-size-base: .8125rem;
+$body-color: #7a8994;
+
+// Iconbar
+$icon-bar-width: 50px;
+$az-color-primary: #007bff;                         
+$az-height-base: 25px;
+$az-width-iconbar-aside: 300px;
+$icon-logo-bg: $color-white;
+$icon-logo-border: $color-master-light;
+$iconbar-bg: $color-white;
+$iconbar-aside-header: $color-white;
+$iconbar-aside-bg:$color-white;
+
+
+// Page header
+$page-head-height: 50px; //Iconbar and Page header
+$page-head-bg: $color-white;
+$page-head-border: $color-master-light;
+$page-head-user-width: 75px;
+
+// Panels
+$panel-border-color: rgba(0, 0, 0, 0.07) !default;
+$panel-padding: 20px !default;
+$panel-heading-padding: $panel-padding $panel-padding 7px $panel-padding !default;
+$panel-heading-min-height: 48px !default;
+$panel-condensed-heading-padding: 13px 13px 0 13px !default;
+$panel-condensed-body-padding: 13px !default;
+$panel-condensed-heading-min-height: 48px !default;
+
+//controls
+$control-border: $color-master-light;
+
+
+
+
+// Layout
+// --------------------------------------------------
+$layout-header-height:60px !default;
+$layout-mobile-header-height:48px !default;
+$layout-mobile-logo-scale:0.8 !default;
+$layout-sidepanel-width-collapsed : 70px !default;
+$layout-sidepanel-width:280px !default;
+$layout-sidepanel-pin-width:250px !default;
+$layout-right-quickview-width: 285px !default;
+$layout-user-profile-margin:25px !default;
+$layout-container-fixed-lg: 1700px !default;
+
+// z-index scale 
+$zIndex-1:   100;
+$zIndex-2:   200;
+$zIndex-3:   300;
+$zIndex-4:   400;
+$zIndex-5:   500;
+$zIndex-6:   600;
+$zIndex-7:   700;
+$zIndex-8:   800;
+$zIndex-9:   900;
+$zIndex-10: 1000;
+
+//TODO: add all components
+// z-index applications
+
+$zIndex-sidebar : $zIndex-10;
+$zIndex-tooltips : $zIndex-10;
+$zIndex-quickview: $zIndex-10;
+$zIndex-horizontal-menu-mobile: $zIndex-10;
+$zIndex-notifications : $zIndex-9;
+$zIndex-navbar : $zIndex-8;
+$zIndex-dropdown : $zIndex-7;
+$zIndex-dropdownMask : $zIndex-6;
+$zIndex-portlet : $zIndex-6;
+
+$base-img-url: "/assets/images";
+$assets-url: "../../assets";
+
+$color-white: #fff ;
+$color-black: #000 ;
+
+$color-success: #10cfbd ;
+$color-complete : #48b0f7 ;
+$color-primary: #6d5cae ;
+$color-warning: #f8d053 ;
+$color-danger: #f55753 ;
+$color-info: #3b4752 ;
+
+$base-font-family: -apple-system, BlinkMacSystemFont,  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell","Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
+
+//Mixing Color varriable for creating both light and dark colors
+$mix-percentage-dark: 81% ;
+$mix-percentage-darker: 60% ;
+$mix-percentage-light: 80% ;
+$mix-percentage-lighter: 20% ;
+
+//Darker colors
+$color-success-dark: mix($color-success, $color-black, $mix-percentage-dark) ;
+$color-success-darker: mix($color-success, $color-black, $mix-percentage-darker) ;
+
+$color-complete-dark: mix($color-complete, $color-black, $mix-percentage-dark) ;
+$color-complete-darker: mix($color-complete, $color-black, $mix-percentage-darker) ;
+
+$color-primary-dark: mix($color-primary, $color-black, $mix-percentage-dark) ;
+$color-primary-darker: mix($color-primary, $color-black, $mix-percentage-darker) ;
+
+$color-warning-dark: mix($color-warning, $color-black, $mix-percentage-dark) ;
+$color-warning-darker: mix($color-warning, $color-black, $mix-percentage-darker) ;
+
+$color-danger-dark: mix($color-danger, $color-black, $mix-percentage-dark) ;
+$color-danger-darker: mix($color-danger, $color-black, $mix-percentage-darker) ;
+
+$color-info-dark: mix($color-info, $color-black, $mix-percentage-dark) ;
+$color-info-darker: mix($color-info, $color-black, $mix-percentage-darker) ;
+
+//Lighter colors
+$color-success-light: mix($color-success, $color-white, $mix-percentage-light) ;
+$color-success-lighter: mix($color-success, $color-white, $mix-percentage-lighter) ;
+
+$color-complete-light: mix($color-complete, $color-white, $mix-percentage-light) ;
+$color-complete-lighter: mix($color-complete, $color-white, $mix-percentage-lighter) ;
+
+$color-primary-light: mix($color-primary, $color-white, $mix-percentage-light) ;
+$color-primary-lighter: mix($color-primary, $color-white, $mix-percentage-lighter) ;
+
+$color-warning-light: mix($color-warning, $color-white, $mix-percentage-light) ;
+$color-warning-lighter: mix($color-warning, $color-white, $mix-percentage-lighter) ;
+
+$color-danger-light: mix($color-danger, $color-white, $mix-percentage-light) ;
+$color-danger-lighter: mix($color-danger, $color-white, $mix-percentage-lighter) ;
+
+$color-info-light: mix($color-info, $color-white, $mix-percentage-light) ;
+$color-info-lighter: mix($color-info, $color-white, $mix-percentage-lighter) ;
+
+
+// Modals
+$alert-from-top:                    35vh !default;
+$notification-from-top:             6px !default;
+$modal-inner-padding:               0 20px 20px !default;
+$modal-title-line-height:           1 !default;
+$modal-content-border-color:        $color-master-light !default;
+$modal-content-border-radius:       0 !default;
+$modal-backdrop-bg:                 $color-white !default;
+$modal-backdrop-opacity:            .7 !default;
+$modal-header-padding-y:            20px !default;
+$modal-header-padding-x:            20px !default;

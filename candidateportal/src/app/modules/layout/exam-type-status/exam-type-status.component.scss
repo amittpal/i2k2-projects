@@ -1,0 +1,61 @@
+.ribbon {
+  // position: absolute;
+  // z-index: 1111;
+  // overflow: hidden;
+  width: 150px;
+  // height: 75px;
+  // text-align: right;  
+ 
+  #wrapper {
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    // transform: rotate(45deg);
+    // -webkit-transform: rotate(45deg);
+    width: 100px;
+    display: block;
+    background: #ed5012;
+    background: linear-gradient(#ed5012 0%, #ed5012 100%);    
+    // position: absolute;
+    // top: 15px;
+    // right: -25px;  
+       
+  }
+
+  #text {
+    animation: blink 2s linear infinite;
+  }
+}
+
+.ribbon.left{
+  top: 0;
+  left: 0;  
+}
+.ribbon.right{
+  // top: 0;
+  right: 0;  
+}
+.ribbon.center {
+  left: 100px;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

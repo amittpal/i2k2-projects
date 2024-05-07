@@ -1,0 +1,57 @@
+{
+  "PlanCentreList": {
+    "PlanStatus": "Centres Mapped"
+  },
+  "ManagePlanCentresExam": {
+    "ExamDays": " Tuesday "
+  },
+  "ManagePlanCentresFinalTab": {
+    "CityPriority": "2 of 3"
+  },
+  "ManagePlanCentresPrefATab": {
+    "FirstTabA": "0",
+    "FirstTabB": "0",
+    "FirstTabC": "3",
+    "FirstTabD": "3",
+    "ThirdTabA": "0",
+    "ThirdTabB": "0",
+    "ThirdTabC": "1",
+    "ThirdTabD": "0"
+  },
+  "ManagePlanCentresPrefBTab": {
+    "FirstTabA": "0",
+    "FirstTabB": "1",
+    "FirstTabC": "0",
+    "FirstTabD": "0",
+    "SecondTabA": "0",
+    "SecondTabB": "0",
+    "SecondTabC": "1",
+    "SecondTabD": "0"
+  },
+  "ManagePlanCentresPrefCTab": {
+    "FirstTabA": "0",
+    "FirstTabB": "0",
+    "FirstTabC": "1",
+    "FirstTabD": "0"
+  },
+  "ManagePlanCentresShiftTab": {
+    "FirstTabA": "28/04/2020",
+    "FirstTabB": "3",
+    "FirstTabC": "4",
+    "FirstTabD": "5",
+    "Status": "PM",
+    "SecondTabA": "28/04/2020",
+    "SecondTabB": "3",
+    "SecondTabC": "4",
+    "SecondTabD": "5",
+    "RegistrationDataOption": "Pick % per shift",
+    "FirstTabPercentage": "50",
+    "SecondTabPercentage": "50"
+  },
+  "UpdatePlanCentresPrefATab": {
+    "FirstTabA": "0",
+    "FirstTabB": "1",
+    "FirstTabC": "5",
+    "FirstTabD": "3"
+  }
+}

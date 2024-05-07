@@ -1,0 +1,47 @@
+<aside class="filter-menu" id="filterDiv" *ngIf="questionStatusList !== undefined">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">QUESTION</div>
+        <!-- <div class="card-controls">
+          <ul>
+            <li>
+              <a #filterOpen class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div> -->
+      </div>  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2 app-form" id="checkboxDiv">                       
+          <div class=" d-flex flex-row mt-2" *ngFor="let item of questionStatusList">
+            <div class="mt-1">
+              <input type="checkbox" class="large_checkbox"  [checked]="item.selected"
+                (change)="onFilterCheckboxChange($event,item)">
+            </div>              
+            <div  class="ml-1 badge {{item.plan_status_css_tag}} question_summary_item">               
+              <strong>{{item.plan_status_text}} ({{item.number_of_questions}})</strong>
+            </div>
+          </div>         
+        </div>
+
+        <div class="card-body section-body p-2 overflow-hidden ">           
+          <div class="row ml-0">
+            <ng-container *ngFor="let item of questionStatusList">                  
+              <div 
+              class=" col-md-3 badge {{item.plan_status_css_tag}} question_number_item" 
+              [ngClass]="{'selected_question': item.mock_question_requirment_id==MockQuestionId}"             
+              (click)="onQuestionNumberClick(item)">                                          
+                <strong>{{item.question_number}}</strong>
+          </div>            
+          </ng-container>    
+        </div>                
+        </div>
+      </div>
+      <div class="card-footer">         
+        <!--(click)="onFilterApplyClick()"-->
+        <input type="button" class="btn btn-primary" value="Apply">         
+        <input type="button" class="btn btn-default float-right" value="Reset">   
+      </div>
+    </div> 
+  </aside>

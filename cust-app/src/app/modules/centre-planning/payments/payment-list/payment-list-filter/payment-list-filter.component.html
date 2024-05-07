@@ -1,0 +1,69 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate  [formGroup]="layoutFormGroup" (submit)="onLayoutsFormSubmit()"
+            class="p-0">
+            <div class="form-group mb-0">
+              <label for="exam_number" class="mb-0">Exam #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!layoutFormGroup.controls['exam_number'].valid}" name="exam_number" id="exam_number"
+                formControlName="exam_number">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="exam_code" class="mb-0">EXAM CODE</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!layoutFormGroup.controls['exam_code'].valid}"  name="exam_code" id="exam_code"
+                formControlName="exam_code">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="exam_name" class="mb-0">EXAM NAME</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!layoutFormGroup.controls['exam_name'].valid}"  name="exam_name" id="exam_name"
+                formControlName="exam_name">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="exam_type_name" class="mb-0">Payment Gateway</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!layoutFormGroup.controls['exam_type_name'].valid}"  name="exam_type_name" id="exam_type_name"
+                formControlName="exam_type_name">
+            </div>
+               <!-- Status -->
+            <div class="form-group mb-0">
+              <label for="status" class="mb-0">EXAM STATUS</label>
+              <select class="form-control form-control-sm" id="layout_status" name="layout_status" formControlName="layout_status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of statusList" [value]="status.value">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onLayoutsFormSubmit()"
+          form="permissionForm">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

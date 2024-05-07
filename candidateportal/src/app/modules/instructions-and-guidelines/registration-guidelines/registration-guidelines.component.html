@@ -1,0 +1,330 @@
+<div class="row">
+    <div class="col-md-12 mt-3">
+        <div class="card card-borderless">
+            <div class="card-header text-center bg-light-blue">
+                <div class="card-title">Registration Guidelines</div>
+            </div>
+            <div class="card-body mt-3 p-0">
+                <accordion [isAnimated]="true"
+                [closeOthers]="true">
+                    <accordion-group 
+                    heading="STEP 1: Identity Registration">
+                      <div class="row">
+                          <div class="col-md-12">
+                            <label class="font-weight-bold">Create Identity</label>
+                            <hr>
+                          </div>
+                      </div>
+                      <!--Title-->
+                    <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Title</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter Title of your name. Title is mandatory.
+                        </div>
+                    </div>
+                    <!--First Name-->
+                    <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">First Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your First name in the space provided. The name should be the same as mentioned in Class X/XII/School leaving certificate. First name is mandatory.
+                        </div>
+                    </div>
+                      <!--Middle Name-->
+                      <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Middle Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your Middle Name (if Applicable) in the space provided. The name should be the same as mentioned in Class X/XII/School leaving certificate.
+                        </div>
+                    </div>
+
+                     <!--Last Name-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Last Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your Last Name (if Applicable) in the space provided. The name should be the same as mentioned in Class X/XII/School leaving certificate.
+                        </div>
+                    </div>
+
+                      <!--Address-->
+                      <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Address</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your full address.
+                        </div>
+                    </div>
+                      <!--State-->
+                      <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">State</label>
+                        </div>
+                        <div class="col-md-10">
+                           Select state from dropdown list.
+                        </div>
+                    </div>
+
+                      <!--City-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">City</label>
+                        </div>
+                        <div class="col-md-10">
+                           Select city from dropdown list.
+                        </div>
+                    </div>
+                     <!--Pincode-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Pincode</label>
+                        </div>
+                        <div class="col-md-10">
+                           Enter your 6 digit pincode number.
+                        </div>
+                    </div>
+                      <!--User Name-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">User Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your Unique User Name. This User Name will be used during the entire registration process and for Login into the Candidate Portal. 
+                        </div>
+                    </div>
+
+                     <!--Password-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Create Password</label>
+                        </div>
+                        <div class="col-md-10">
+                            Create a new password for the "Registration Portal".
+                        </div>
+                    </div>
+                     <!--Confirm Password-->
+                     <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Confirm Password</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter the same password as you entered in the "Password".
+                        </div>
+                    </div>
+                    <!--Mobile Number-->
+                    <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Mobile Number</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your 10 digit mobile number (Do not add 0 or +91 before your number).
+                        </div>
+                    </div>
+                      <!--Phone-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Phone</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your phone number
+                        </div>
+                    </div>
+                    <!--Email-->
+                      <div class="row mb-3 p-2">
+                          <div class="col-md-2">
+                            <label class="font-weight-bold">Email</label>
+                          </div>
+                          <div class="col-md-10">
+                            Enter your personal Email ID. This Email ID will be used during the entire registration process.
+                          </div>
+                      </div>
+                      <div class="row p-2">
+                          <div class="col-md-12">
+                            <p class="font-weight-bold">Note: Please check the information for any spelling mistakes
+                                 before clicking 'SAVE AND VERIFY' Button.</p>
+                          </div>
+                      </div>
+
+                         
+                    </accordion-group>
+                    <accordion-group heading="STEP 2: Email Verification">
+                      <div class="row">
+                          <div class="col-md-12 mb-3 p-2">                              
+                              <p>After successful submission of the Identity Registration form,
+                                a OTP will be sent to your email address.
+                              </p>
+                              <p>Please check your inbox including SPAM/BULK and submit the OTP
+                                to complete your Email Varification.</p>                                                              
+                                
+                          </div>
+                      </div>
+                    </accordion-group>
+                    <accordion-group 
+                    heading="STEP 3: Complete Your Registration">
+                      <div class="row">
+                          <div class="col-md-12">
+                            <label class="font-weight-bold">Personal Details</label>
+                            <hr>
+                          </div>
+                      </div>
+                      <!--Father Name-->
+                    <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Father Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your Father Name.
+                        </div>
+                    </div>
+                    <!--Date of Birth-->
+                    <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Date of Birth</label>
+                        </div>
+                        <div class="col-md-10">
+                            Enter your Date of Birth in the space provided. The Date of Birth should be the same as mentioned in Class X/XII/School leaving certificate.
+                        </div>
+                    </div>
+                      <!--Gender-->
+                      <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Gender</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select your Gender from dropdown.
+                        </div>
+                    </div>
+
+                     <!--Physical Disability-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Physical Disability</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select Physical Disability from dropdown.
+                        </div>
+                    </div>
+
+                      <!--Category-->
+                      <div class="row mb-3 bg-light p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Category</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select Category from dropdown.
+                        </div>
+                    </div>
+                      <!--RegTypeList-->
+                      <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">RegTypeList</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select Registrations from dropdown.
+                        </div>
+                    </div>
+
+                      <!--City Priority 1-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">City Priority 1</label>
+                        </div>
+                        <div class="col-md-10">
+                           Select City Priority 1 from dropdown list.
+                        </div>
+                    </div>
+                     <!--City Priority 2-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">City Priority 2</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select City Priority 2 from dropdown list.
+                        </div>
+                    </div>
+                      <!--City Priority 3-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">City Priority 3</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select City Priority 3 from dropdown list.
+                        </div>
+                    </div>
+
+                     <!--Nationality-->
+                     <div class="row mb-3 p-2">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Nationality</label>
+                        </div>
+                        <div class="col-md-10">
+                            Select your Nationality from dropdown list.
+                        </div>
+                    </div>
+                     <!--Photo Upload-->
+                     <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold">Photo Upload</label>
+                        </div>
+                        <div class="col-md-10">
+                            Upload your profile photo.
+                            This Profile photo will be used in entire candidate protal.
+                        </div>
+                    </div>
+                      <!-- Signature Upload-->
+                      <div class="row mb-3 p-2 bg-light">
+                        <div class="col-md-2">
+                            <label class="font-weight-bold"> Signature Upload</label>
+                        </div>
+                        <div class="col-md-10">
+                            Upload photo of your signature.
+                        </div>
+                    </div>
+                   
+                  
+                      <div class="row p-2">
+                          <div class="col-md-12">
+                            <p class="font-weight-bold">Note: Please check the information for any spelling mistakes
+                                 before clicking 'SUBMIT' Button.</p>
+                          </div>
+                      </div>
+
+                         
+                    </accordion-group>
+                    <accordion-group heading="STEP 4: Photo Validate">  
+                        <div class="row">
+                            <div class="col-md-12">
+                              <label class="font-weight-bold">Photo Validate Preview</label>
+                              <hr>
+                              <app-photo-edit-preview></app-photo-edit-preview>
+                            </div>
+                        </div>                        
+                    </accordion-group>
+                    <accordion-group heading="STEP 5: Payment of the Application Fee">  
+                        <div class="row">
+                            <div class="col-md-12">
+                              <label class="font-weight-bold">Payment Procedure</label>
+                              <hr>
+                            </div>
+                        </div>  
+                        <ul>
+                            <li>Click on the button "Pay Now".</li>
+                            <li>Select Payment Gateway.</li>
+                            <li>Pay your application fee.</li>
+                            <li>Candidates need to have Debit Card, Credit Card or Net Banking.</li>
+                        </ul>                                                                    
+                        <strong>Notes : Please note that you will not be allowed to Update/Modify the application form in any circumstances once you have paid the registration fee. The fee is non refundable.</strong>                                                                                                                        
+                    </accordion-group>
+                  </accordion>
+            </div>
+        </div>
+
+    </div>
+</div>

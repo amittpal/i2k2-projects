@@ -1,0 +1,4565 @@
+{
+  "app_id": "abcd-1234-efgh-5678-ijkl",
+  "app_name": "ixcheck-cust-app",
+  "app_desc": "ixcheck Cust App",
+  "app_icon": "assets/images/icon-hexbluelight.svg#icon-hexbluelight",
+  "data_type": "full",
+  "selected_modules": [],
+  "app_modules": [
+    {
+      "id": 1,
+      "permission": [
+        "shared:access"
+      ],
+      "name": "Dashboards",
+      "desc": "Various module dashbaords for quick access, select any.",
+      "route": "/module",
+      "icon": "assets/images/home.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "shared:access"
+          ],
+          "selected_sub_modules": [],
+          "name": "Dashboards",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "shared:access"
+              ],
+              "name": "Exam Dashboard",
+              "desc": "",
+              "route": "/main",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "shared:access"
+          ],
+          "selected_sub_modules": [],
+          "name": "Configuration",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "shared:access"
+              ],
+              "name": "Mail Server Configuration",
+              "desc": "",
+              "route": "/configuration",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "permission": [
+        "exam:examplan:setup",
+        "exam:examplan:question:requirement"
+      ],
+      "name": "Exam Planning",
+      "desc": "Various features to set up exam planning",
+      "route": "/exam",
+      "icon": "assets/images/edit.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "exam:examplan:setup",
+            "exam:examplan:question:requirement"
+          ],
+          "selected_sub_modules": [],
+          "name": "Exam Planning",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:examplan:setup"
+              ],
+              "name": "Setup",
+              "desc": "",
+              "route": "/exam/planning",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:examplan:question:requirement"
+              ],
+              "name": "Question Requirements",
+              "desc": "",
+              "route": "/question/requirements",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "exam:examplan:setup"
+              ],
+              "name": "Exam Add",
+              "desc": "",
+              "route": "/exam/add",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:examplan:setup",
+            "exam:examplan:question:requirement"
+          ],
+          "selected_sub_modules": [],
+          "name": "Mock Test",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:examplan:setup"
+              ],
+              "name": "Questions",
+              "desc": "",
+              "route": "/exam/mock-test",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:examplan:question:requirement"
+              ],
+              "name": "Publish",
+              "desc": "",
+              "route": "/exam/publish",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "permission": [
+        "exam:registration:plan",
+        "exam:registration:publish",
+        "centreplan:registered:candidate",
+        "centreplan:payment"
+      ],
+      "name": "Registration Planning",
+      "desc": "Registration Planning Module",
+      "route": "/registration",
+      "icon": "assets/images/layout.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "exam:registration:plan",
+            "exam:registration:publish"
+          ],
+          "selected_sub_modules": [],
+          "name": "Registration Layouts",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:registration:plan"
+              ],
+              "name": "Layouts",
+              "desc": "",
+              "route": "/registration/layouts",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:registration:plan"
+              ],
+              "name": "Layout Add",
+              "desc": "",
+              "route": "/registration/layout/add",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:registration:plan",
+            "exam:registration:publish"
+          ],
+          "selected_sub_modules": [],
+          "name": "Registration Planning",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:registration:plan"
+              ],
+              "name": "Registrations",
+              "desc": "",
+              "route": "/registrations",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:registration:plan"
+              ],
+              "name": "Registration Add",
+              "desc": "",
+              "route": "/registrations/add",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:registration:plan",
+            "exam:registration:publish",
+            "centreplan:registered:candidate",
+            "centreplan:payment"
+          ],
+          "selected_sub_modules": [],
+          "name": "Registration Data",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:registration:plan"
+              ],
+              "name": "Import Registrations",
+              "desc": "",
+              "route": "/registrations/import",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "centreplan:registered:candidate"
+              ],
+              "name": "Registrations Data",
+              "desc": "",
+              "route": "/candidates/registrations",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "centreplan:payment"
+              ],
+              "name": "Registrations payment",
+              "desc": "",
+              "route": "/payments/list",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "permission": [
+        "exam:centreplan",
+        "exam:centreplan:mapping",
+        "exam:centreplan:import",
+        "exam:centreplan:registration"
+      ],
+      "name": "Centre Planning",
+      "desc": "Various Centre Planning Module features ",
+      "route": "/centre",
+      "icon": "assets/images/calendar.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "exam:centreplan",
+            "exam:centreplan:mapping",
+            "exam:centreplan:import"
+          ],
+          "selected_sub_modules": [],
+          "name": "Centre Planning",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:centreplan:import"
+              ],
+              "name": "Imported Centres",
+              "desc": "",
+              "route": "/imported/centres",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:centreplan:import"
+              ],
+              "name": "Import centres",
+              "desc": "",
+              "route": "/imported/import/centre",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "exam:centreplan"
+              ],
+              "name": "CENTRE PLANNING",
+              "desc": "",
+              "route": "/centre/planning",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "exam:centreplan"
+              ],
+              "name": "Final Centre Plan",
+              "desc": "",
+              "route": "/centre/planning/finalize",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:centreplan:registration"
+          ],
+          "selected_sub_modules": [],
+          "name": "CENTRE REPORTS",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:centreplan:registration"
+              ],
+              "name": "Shift Report",
+              "desc": "",
+              "route": "/main",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:centreplan:registration"
+              ],
+              "name": "Centres Report",
+              "desc": "",
+              "route": "/main",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "permission": [
+        "exam:authoring:plan",
+        "exam:authoring:question"
+      ],
+      "name": "AUTHOR PLANNING",
+      "desc": "Various Author Planning Module features ",
+      "route": "/authoring",
+      "icon": "assets/images/book.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "exam:authoring:plan",
+            "exam:authoring:question"
+          ],
+          "selected_sub_modules": [],
+          "name": "AUTHOR PLANNING",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:authoring:plan"
+              ],
+              "name": "Imported Authors",
+              "desc": "",
+              "route": "/author/imported",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "exam:authoring:plan"
+              ],
+              "name": "Import Authors",
+              "desc": "",
+              "route": "/author/import",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "exam:authoring:plan"
+              ],
+              "name": "Approval Authorities",
+              "desc": "",
+              "route": "/author/approval/authority",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 4,
+              "permission": [
+                "exam:authoring:plan"
+              ],
+              "name": "Question Assignments",
+              "desc": "",
+              "route": "/author/assignments",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:authoring:question"
+          ],
+          "selected_sub_modules": [],
+          "name": "AUTHORING",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:authoring:question"
+              ],
+              "name": "Questions",
+              "desc": "",
+              "route": "/author/questions",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "permission": [
+        "exam:admitcard:planning",
+        "exam:admitcard:generation"
+      ],
+      "name": "Admit Card Planning",
+      "desc": "Various Admit Card Planning Module features ",
+      "route": "/admitcard",
+      "icon": "assets/images/card.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "exam:admitcard:planning"
+          ],
+          "selected_sub_modules": [],
+          "name": "Admit Card Layouts",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:admitcard:planning"
+              ],
+              "name": "Layouts",
+              "desc": "",
+              "route": "/admitcard/layouts",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:admitcard:generation"
+          ],
+          "selected_sub_modules": [],
+          "name": "Admit Card Planning",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:admitcard:generation"
+              ],
+              "name": "Admit Cards",
+              "desc": "",
+              "route": "/admitcard/registrations",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 4,
+              "permission": [
+                "exam:admitcard:planning"
+              ],
+              "name": "Centres",
+              "desc": "",
+              "route": "/admitcard/centre/registrations",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        },
+        {
+          "permission": [
+            "exam:admitcard:distribution"
+          ],
+          "selected_sub_modules": [],
+          "name": "Admit Card Reports",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "exam:admitcard:distribution"
+              ],
+              "name": "Admit Card Report",
+              "desc": "",
+              "route": "/main",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "permission": [
+        "org:jobtypes",
+        "org:jobs"
+      ],
+      "name": "Jobs Module",
+      "desc": "Various Admit Card Planning Module features ",
+      "route": "/jobs",
+      "icon": "assets/images/card.svg",
+      "css": "",
+      "main_modules": [
+        {
+          "permission": [
+            "org:jobtypes"
+          ],
+          "selected_sub_modules": [],
+          "name": "Jobs Module",
+          "sub_modules": [
+            {
+              "id": 1,
+              "permission": [
+                "org:jobtypes"
+              ],
+              "name": "Jobs Types",
+              "desc": "",
+              "route": "/jobs/types",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 2,
+              "permission": [
+                "org:jobtypes"
+              ],
+              "name": "Jobs Type Add",
+              "desc": "",
+              "route": "/jobs/types/add",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 3,
+              "permission": [
+                "org:jobs"
+              ],
+              "name": "Jobs",
+              "desc": "",
+              "route": "/jobs",
+              "icon": "",
+              "css": ""
+            },
+            {
+              "id": 4,
+              "permission": [
+                "org:jobs"
+              ],
+              "name": "Job Add",
+              "desc": "",
+              "route": "/jobs/add",
+              "icon": "",
+              "css": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "app_routes": {
+    "_main": {
+      "getRegistrationList": {
+        "desc": "Get Registration List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/registrations/list"
+      },
+      "getExamList": {
+        "desc": "Get Exam List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/examcode"
+      },
+      "getTotalExam": {
+        "desc": "Get Total Exam",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/total/exams/#regGuid/#examGuid"
+      },
+      "getQuestionPaperDetails": {
+        "desc": "Get Question Paper Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/question/papers/#regGuid/#examGuid"
+      },
+      "getAuthoringStatusDetail": {
+        "desc": "Get Authoring Status Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/authoring/status/#regGuid/#examGuid"
+      },
+      "getTotalRegistrationDetail": {
+        "desc": "Get Total Registration Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/total/registrations/#regGuid/#examGuid"
+      },
+      "getRegistrationStatusDetail": {
+        "desc": "Get Registration Status Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/registration/status/#regGuid/#examGuid"
+      },
+      "getTotalCentersDetail": {
+        "desc": "Get Total Centers Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/total/centres/#regGuid/#examGuid"
+      },
+      "getTotalCentres": {
+        "desc": "Get Total Exam",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/total/exams"
+      },
+      "getAdmitCardDetail": {
+        "desc": "Get AdmitCard Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/admit/cards/#regGuid/#examGuid"
+      },
+      "getExamStatusDetail": {
+        "desc": "Get Exam Status Detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/exam/status/#regGuid/#examGuid"
+      },
+      "getPostExamDetail": {
+        "desc": "Get Post Exam Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/post/exam/#regGuid/#examGuid"
+      },
+      "getRegistrationPerHour": {
+        "desc": "Get Registration Per Hour Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Dashbord/registrationperhour/#regGuid/#examGuid"
+      }
+    },
+    "_centre": {
+      "getExamList": {
+        "desc": "Get Exam List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/examcode"
+      },
+      "getDaysList": {
+        "desc": "get days lists",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/dayslist"
+      },
+      "getCentrePlanStatus": {
+        "desc": "Get centre plan status list ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/_PlanStatus"
+      },
+      "getRegistrationSummary": {
+        "desc": "get Registration Summary",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#examGuid/registrationSummary/#importId"
+      },
+      "getShiftsDetailsList": {
+        "desc": "get Registration Summary",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/#allocationSnapshotId/shiftdetails"
+      },
+      "updateShiftExamMain": {
+        "desc": "update exam shift main",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/add/shiftdetails"
+      },
+      "getAssignPrefFinal": {
+        "desc": "get Assign Pref Final",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/registrations/#registrationGuid/snapshots/#snapshotId/exams/#examGuid/priority/#priorityNumber/review"
+      },
+      "getAssignPrefA": {
+        "desc": "get Assign Pref A",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/snapshot/#snapshotId/exam/#examGuid/preference/#priority"
+      },
+      "getAssignPrefB": {
+        "desc": "get Assign Pref B",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/snapshot/#snapshotId/exam/#examGuid/preference/#priority"
+      },
+      "getAssignPrefC": {
+        "desc": "get Assign Pref C",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/snapshot/#snapshotId/exam/#examGuid/preference/#priority"
+      },
+      "getAssignPrefCentreList": {
+        "desc": "get Assign Pref Centre List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#examGuid/centrelist/#cityGuid/#importId/#priority/#shift_number"
+      },
+      "getAssignPrefCentreListB": {
+        "desc": "get Assign Pref Centre List B",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#examGuid/centrelist/#cityGuid/#importId/#priority/#shift_number"
+      },
+      "getAssignPrefCentreListC": {
+        "desc": "get Assign Pref Centre List B",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#examGuid/centrelist/#cityGuid/#importId/#priority/#shift_number"
+      },
+      "assignpreftotal": {
+        "desc": "save assign pref total",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#examGuid/assignpreftotal/#importId/#priority"
+      },
+      "getOptionList": {
+        "desc": "get Option List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/optionslist"
+      },
+      "updateAddCentreData": {
+        "desc": "update Add Centre Data",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/addCentreData"
+      },
+      "updateAddCentreDataB": {
+        "desc": "update Add Centre Data",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/addCentreData"
+      },
+      "updateAddCentreDataC": {
+        "desc": "update Add Centre Data",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/addCentreData"
+      },
+      "updateSelectedCentreList": {
+        "desc": "update Selected Centre List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/assignexamcentres"
+      },
+      "updateSelectedCentreListB": {
+        "desc": "update Selected Centre List B",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/assignexamcentres"
+      },
+      "updateSelectedCentreListC": {
+        "desc": "update Selected Centre List B",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/assignexamcentres"
+      },
+      "getAddedCentreList": {
+        "desc": "get Added Centre List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#cityGuid/addedcentrelist/#importId/#examGuid/#shiftNumber/#priority"
+      },
+      "getAddedCentreListB": {
+        "desc": "get Added Centre List B",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#cityGuid/addedcentrelist/#importId/#examGuid/#shiftNumber/#priority"
+      },
+      "getAddedCentreListC": {
+        "desc": "get Added Centre List B",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/#cityGuid/addedcentrelist/#importId/#examGuid/#shiftNumber/#priority"
+      },
+      "getCentreList": {
+        "desc": "get  centre list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/centres/list"
+      },
+      "getRegistrationList": {
+        "desc": "get registration list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/registrations/list"
+      },
+      "refreshExamList": {
+        "desc": "refresh Exam List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/examlistrefresh"
+      },
+      "getExamDetail": {
+        "desc": "get exam Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#examGuid/list"
+      },
+      "updateExamShift": {
+        "desc": "update exam shift",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#id/edit"
+      },
+      "getExamShiftMainById": {
+        "desc": "get Exam Shift Main By Id",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShiftMain/#examId/getExamShiftMainById/#examShiftNumber"
+      },
+      "getNumberOfShifts": {
+        "desc": "get number of shifts",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShift/shiftnos/#examId"
+      },
+      "getStates": {
+        "desc": "get states list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShift/#id/getstate"
+      },
+      "getCitiesById": {
+        "desc": "get cities by ids",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShift/getcitiesbyid"
+      },
+      "updateExamShiftMain": {
+        "desc": "update exam shift main",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShiftMain/#examId/edit"
+      },
+      "getExamCityStudent": {
+        "desc": "Get exam city student",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShiftMain/#examId/getExamCityStudent/#examShiftNumber"
+      },
+      "updateExamShiftMainStudent": {
+        "desc": "update exam shift main for student",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShiftMain/#examId/editstudent"
+      },
+      "getExamCentreList": {
+        "desc": "Get exam center list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamShiftMain/getExamCentreList"
+      },
+      "addExamCentre": {
+        "desc": "add exam centre",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ExamCentre/add"
+      },
+      "getCenterRegistrationsList": {
+        "desc": "get layout mapping list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportRegistration/importexamregistration/list"
+      },
+      "getExamTypeList": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/examType/list"
+      },
+      "deleteLayout": {
+        "desc": "delete layout",
+        "method": "DELETE",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layout/#layoutId/delete"
+      },
+      "importRegistration": {
+        "desc": "import registration list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportRegistration/import/#examGuid"
+      },
+      "getAlgoList": {
+        "desc": "get AlgoList List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/distributionslist"
+      },
+      "deleteAssignPrefCenter": {
+        "desc": "delete Assign Pref",
+        "method": "DELETE",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/centre/#examGuid/#centreGuid/#shiftNumber/#priority/delete"
+      },
+      "getReportByShift": {
+        "desc": "get Report By Shift",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/report/shiftby/#examGuid/snapshots/#snapshotId"
+      },
+      "getReportByCenter": {
+        "desc": "get Report By Center",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/AssignPref/report/centreby/#examGuid/snapshots/#snapshotId"
+      },
+      "getCentreListForEdit": {
+        "desc": "Get Centre List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#examGuid/centres/list"
+      },
+      "bulkEditCentreList": {
+        "desc": "bulk Edit Centre List",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/centre/edit"
+      },
+      "getStatesList": {
+        "desc": "get state List",
+        "method": "GET",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/Meta/state/list"
+      },
+      "getCitiesList": {
+        "desc": "get Cities List",
+        "method": "POST",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/ImportCentres/city/list"
+      },
+      "getSnapshotList": {
+        "desc": "Get Snapshot List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/snapShot/list"
+      },
+      "getExistedSnapshotList": {
+        "desc": "Get Snapshot List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/snapShot/list"
+      },
+      "getSnapshotInfo": {
+        "desc": "Get Snapshot Info",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/#id/snapShot/info"
+      },
+      "updateShiftSnapshot": {
+        "desc": "Update Shift Snapshot",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/snapshot/#regGuid/#id/edit"
+      },
+      "getCentreImportedCode": {
+        "desc": "Get Centre Imported Code",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/centreimportedcode"
+      },
+      "getCentreExamCode": {
+        "desc": "Get Centre Exam Code",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/examcode"
+      },
+      "getCentreListByImportCode": {
+        "desc": "Get Centre List By Import Code",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#importId/centres/list"
+      },
+      "addCentres": {
+        "desc": "Add Centres",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/centres/add"
+      },
+      "getAddedCentreListBySnapShotId": {
+        "desc": "Get Added Centre List By Snapshot Id",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#allocationSnapshotId/#examGuid/#shiftNumber/allocationcentres/list"
+      },
+      "editCentres": {
+        "desc": "Edit Centres",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/centres/edit"
+      },
+      "getShiftNumbers": {
+        "desc": "Get Shift Numbers",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#examGuid/#allocationSnapshotId/shift"
+      },
+      "getAllocationAlgo": {
+        "desc": "Get Allocation Algo",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/allocation/preference"
+      },
+      "getSnapshotCentreImportedDetails": {
+        "desc": "Get Snapshot Centre Imported Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#allocationSnapshotId/snapshotdetails"
+      },
+      "allocateAlgoPreference": {
+        "desc": "Allocate Algo Preference",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/snapshot/allocate"
+      },
+      "getRandomAlgoList": {
+        "desc": "Get Algo List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/random/algo/list"
+      },
+      "getRegistrationData": {
+        "desc": "Get Registration Data",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/registration/list"
+      },
+      "apllyRandomAlgo": {
+        "desc": "Get Registration Data",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/add/random/algo"
+      },
+      "getRegistrationSummaryByRegGuid": {
+        "desc": "Get Registration Summary",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/#examGuid/registrationsSummary/#snapShotId"
+      },
+      "getRandomAlgo": {
+        "desc": "Get Algo List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/random/algo"
+      },
+      "finalizeCentrePlanning": {
+        "desc": "Finalize Centre Planning",
+        "method": "PUT",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/#regGuid/#allocationSnapshotId/finalized"
+      }
+    },
+    "_registration": {
+      "publishRegSetupDetails": {
+        "desc": "publish RegSetup Details",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Publish/registrations/#registrationsGuid/update"
+      },
+      "getRegBasicSetupDetailsByRegGuid": {
+        "desc": "get reg Basic setup details  By Registration Guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid"
+      },
+      "getRegSetupFeeByRegGuid": {
+        "desc": "get Reg Setup Fee by regGuid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/feesetup/get"
+      },
+      "addLayout": {
+        "desc": "add new layout",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/postForm"
+      },
+      "editLayout": {
+        "desc": "edit layout",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/editForm"
+      },
+      "getLayoutList": {
+        "desc": "get list of layouts",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layout/list"
+      },
+      "getLayoutMappingList": {
+        "desc": "get layout mapping list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layoutMapping/list"
+      },
+      "getExamMappingList": {
+        "desc": "get layout mapping list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/examMapping/list"
+      },
+      "addFromValue": {
+        "desc": "add form values",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/postFormValue"
+      },
+      "getExamTypeList": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/examType/list"
+      },
+      "viewLayout": {
+        "desc": "get layout details",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#layoutId/getForm"
+      },
+      "deleteLayout": {
+        "desc": "delete layout",
+        "method": "DELETE",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layout/#layoutId/delete"
+      },
+      "getStudentList": {
+        "desc": "get list of students",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/candidate/list"
+      },
+      "getExamDetails": {
+        "desc": "get exam details",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#examId/getExam"
+      },
+      "getExamList": {
+        "desc": "refresh exam list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/exam/examlist"
+      },
+      "mapRegistrationLayout": {
+        "desc": "map registration with layout",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/mapRegistrationsLayout"
+      },
+      "getRegistrationsSetupList": {
+        "desc": "get setup list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/regsetup/list"
+      },
+      "getRegistrationsSetupByExamId": {
+        "desc": "get setup by exam id",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/regsetup/#examguid"
+      },
+      "verifiedMail": {
+        "desc": "verified Mail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/validate"
+      },
+      "saveRegistrationsSetup": {
+        "desc": "Add Setup",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/regsetup/add"
+      },
+      "updateRegistrationsSetup": {
+        "desc": "Update Setup",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/regsetup/#examId/update"
+      },
+      "getPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/plans/status/list"
+      },
+      "getRegistrationSetupList": {
+        "desc": "get registration setup list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/list"
+      },
+      "getRegistrationsSetupDetailsByExamId": {
+        "desc": "get registration setup detail by exam guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/list"
+      },
+      "updateRegistrationsSetupDetails": {
+        "desc": "update registration setup detail by exam guid",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/update"
+      },
+      "addRegistrationsSetupDetails": {
+        "desc": "add registration setup detail by exam guid",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/add"
+      },
+      "getApplicableFeesSetupList": {
+        "desc": "get applicable fees setup list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/ApplicableFeesetup/list"
+      },
+      "deleteApplicableFeeSetup": {
+        "desc": "delete fees setup by exam guid and id",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/#id/ApplicableFeesetup/delete"
+      },
+      "getFeeSetupMasterList": {
+        "desc": "get fee setup master list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Regsetup/feesetup"
+      },
+      "getFeesSetupList": {
+        "desc": "get fees setup list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#registrationGuid/Feesetup/list"
+      },
+      "updateFeesSetupList": {
+        "desc": "update fees setup list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/Feesetup/Update"
+      },
+      "updateApplicableFeesSetup": {
+        "desc": "update applicable fees setup list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/ApplicableFeesetup/Update"
+      },
+      "sampleDataView": {
+        "desc": "Get Sample Data View ",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#regId/getCandidate"
+      },
+      "getLayoutDropdownList": {
+        "desc": "get list of layouts",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layout-dropdown/list"
+      },
+      "getExamDetailsByExamId": {
+        "desc": "getExamDetailsByExamId",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Exam/#examId"
+      },
+      "getPaymentTypeList": {
+        "desc": "get Payment Type List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/type/list"
+      },
+      "getPaymentDeatils": {
+        "desc": "get Payment Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/list"
+      },
+      "addPaymentGatewayInfo": {
+        "desc": "add  Payment Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/info/#registrationGuid/update"
+      },
+      "getLayoutDetailByExamGuid": {
+        "desc": "get layout detail by exam guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/OpenRegistration/#examGuid/getForm"
+      },
+      "getPaymentMappingList": {
+        "desc": "get payment mapping list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/mapping/list"
+      },
+      "paytmPaymentGateway": {
+        "desc": "get payment mapping list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/#examGuid/add"
+      },
+      "getPaymentPaymentInfo": {
+        "desc": "get payment info",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/payments/#regId/info"
+      },
+      "getPaymentsList": {
+        "desc": "get payment List",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/payments/list"
+      },
+      "getPaymentPaytmResponse": {
+        "desc": "get payment paytm response",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/payments/response/orders/#orderId"
+      },
+      "addFormValueByExamGuid": {
+        "desc": "add form value by exam guid",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/OpenRegistration/postFormValue"
+      },
+      "getCandidateDetailsByGuid": {
+        "desc": "get candidate details by guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/OpenRegistration/#guid/getCandidateDetail"
+      },
+      "getLayoutTypeList": {
+        "desc": "get layout type list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layoutType/list"
+      },
+      "getLayoutTypeListByExamId": {
+        "desc": "get layout type list by exam id",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#examId/#layoutCode/list"
+      },
+      "getPublishRegistrationList": {
+        "desc": "get list of publish regisration",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Publish/list"
+      },
+      "publishRegistration": {
+        "desc": "Publish regisration",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Publish/registrations/#registrationGuid/update"
+      },
+      "getRegistrationsEmailServerDetailsByExamId": {
+        "desc": "get Registration Email Server Detail by exam id",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/emailsetup"
+      },
+      "addRegistrationsEmailServerDetails": {
+        "desc": "Add Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/add"
+      },
+      "updateRegistrationsEmailServerDetails": {
+        "desc": "Update Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/update"
+      },
+      "getRegistrationTypeList": {
+        "desc": "get registration type List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/registrations/list"
+      },
+      "getRegistrationDetailsByGuid": {
+        "desc": "get registration details by guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#registrationGuid/getRegistrations"
+      },
+      "getLayoutTypeListByRegistrationId": {
+        "desc": "get layout type list by registration id",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/#registrationGuid/#layoutCode/list"
+      },
+      "getPaymentGatewayTypeList": {
+        "desc": "get Payment Gateway Type List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/type/list"
+      },
+      "getPaymentGatewayEnvironmentList": {
+        "desc": "get Payment Gateway Environment List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/environments/list"
+      },
+      "getPaymentGatewayDetails": {
+        "desc": "get Payment Gateway Detail",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/details/#id"
+      },
+      "updateRegistrationPaymentGatewayDetail": {
+        "desc": "Update Registration Payment Gateway Detail",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/details/#id/update"
+      },
+      "updatePaytmConfigDetail": {
+        "desc": "Update Registration Paytm Config Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/paytm/config/add"
+      },
+      "updatePayumoneyConfigDetail": {
+        "desc": "Update Payumoney Config Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/payumoney/config/add"
+      },
+      "updateRazorPayConfigDetail": {
+        "desc": "Update Razorpay Config Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/razorpay/config/add"
+      }
+    },
+    "_exam": {
+      "getExamList": {
+        "desc": "get exam list",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/exam/list"
+      },
+      "getOrderList": {
+        "desc": "Get Order List ",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/exam/order/list/get"
+      },
+      "saveOrder": {
+        "desc": "save order",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/exam/add/main"
+      },
+      "getExamTypeList": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/types/list"
+      },
+      "getLanguageList": {
+        "desc": "get language list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/languages/list"
+      },
+      "getSubjectList": {
+        "desc": "get subject list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/subjects/list"
+      },
+      "getUomsList": {
+        "desc": "get uoms list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/uoms/list"
+      },
+      "getExamByExamId": {
+        "desc": "get exam by exam id",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId"
+      },
+      "getExamById": {
+        "desc": "get exam by id and exam id",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup"
+      },
+      "getGradeList": {
+        "desc": "get Grade List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/GetGradeList"
+      },
+      "getPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/plans/status/list"
+      },
+      "saveExam": {
+        "desc": "save exam",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup/add"
+      },
+      "updateExam": {
+        "desc": "update exam",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup/#examSetupId/edit"
+      },
+      "getSectionList": {
+        "desc": "get section list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId"
+      },
+      "getDifficultyLevelList": {
+        "desc": "Get Difficulty Level List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/difficulty/levels/list"
+      },
+      "getUserSelectedSubjectList": {
+        "desc": "Get User Selected Subject List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/subjects/list/#examId"
+      },
+      "addNewSection": {
+        "desc": "Add new section",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/add"
+      },
+      "saveSection": {
+        "desc": "Save Section",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId/Update"
+      },
+      "getSaveSection": {
+        "desc": "Get Save Section details",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId"
+      },
+      "getQuestionTypeList": {
+        "desc": "Get Question Type List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/Question/type/list"
+      },
+      "getQuestionList": {
+        "desc": "Get Question List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/list"
+      },
+      "saveQuestion": {
+        "desc": "Save Question List",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/Update"
+      },
+      "finalizeExam": {
+        "desc": "Finalize Exam Details",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/UpdateFinalize"
+      },
+      "deleteSection": {
+        "desc": "Delete Section",
+        "method": "DELETE",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId/delete"
+      },
+      "deleteQuestion": {
+        "desc": "Delete Question",
+        "method": "DELETE",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/#id/#question_number/delete"
+      },
+      "getMockTestExamList": {
+        "desc": "get exam list",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/MockTest/list"
+      },
+      "getMockTestQuestionsByExamId": {
+        "desc": "get mock test questions by exam id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/MockTest/#examId/manage"
+      },
+      "getMockTestQuestionsById": {
+        "desc": "get mock test questions by detail id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/MockTest/#questionId/list"
+      },
+      "getMockTestQuestionsDetailsById": {
+        "desc": "get mock test questions details by id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/MockTest/#detailId/#answerType"
+      },
+      "addMockQuestionsDetails": {
+        "desc": "add mock question details",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/MockTest/#answerType/add"
+      },
+      "updateMockQuestionsDetails": {
+        "desc": "update mock question details",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/MockTest/#answerType/update"
+      },
+      "getMockQuestionsStatusList": {
+        "desc": "get mock questions status list",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/MockTest/#questionId/getstatuslist"
+      },
+      "getMockTestSecondaryQuestionsDetailsById": {
+        "desc": "get mock test secondary questions details by id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/MockTest/#detailId/secondary/#answerType"
+      },
+      "publishMockExam": {
+        "desc": "publish mock exam",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/MockTest/#examGuid/publish"
+      },
+      "getMockTestQuestionsListByExamId": {
+        "desc": "get mock test list questions by exam id",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/MockTest/#examId/mockquestion/list"
+      },
+      "getMockTestSubjectList": {
+        "desc": "get mock test subject list",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/#examId/subjects/list"
+      },
+      "getMockTestLanguageList": {
+        "desc": "get mock test language list",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/#examId/language/list"
+      },
+      "getMockTestDifficultyLevelList": {
+        "desc": "get mock test difficulty level list",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/#examId/level/list"
+      },
+      "getMockTestQuestionTypeList": {
+        "desc": "get mock test question type list",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/#examId/questiontype/list"
+      },
+      "getQuestionOptionSequenceList": {
+        "desc": "get question option sequence list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/Question/Option/Sequence/list"
+      },
+      "getQuestionRandomizationOptionList": {
+        "desc": "get question randomization option list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/Question/randomization/options/list"
+      },
+      "getQuestionViewOptionList": {
+        "desc": "get question view option list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/Question/view/options/list"
+      }
+    },
+    "_author": {
+      "getSubjectsList": {
+        "desc": "Get subjects list",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/Customers/subjects/list/#subjectGuid"
+      },
+      "getLanguagesList": {
+        "desc": "Get Languages list",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/Customers/languages/list/#languageGuid"
+      },
+      "getImporteedAuthors": {
+        "desc": "Get imported Authors",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/Meta/imported/authors/list"
+      },
+      "deleteImporteedAuthors": {
+        "desc": "Delete imported Authors",
+        "method": "DELETE",
+        "url": "http://localhost:10012/api/v1/Meta/imported/authors/#Id/delete"
+      },
+      "getAuthorsList": {
+        "desc": "Get Languages list",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/vendors/auhtor/list"
+      },
+      "getAssignmentList": {
+        "desc": "get question assignment list",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/QuestionAssignment/list"
+      },
+      "getAssignmentDetail": {
+        "desc": "get Assignment Detail",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/QuestionAssignment/exam/#examId/shift/#shiftNumber/language/#languageGuid/primary/#primary/manage"
+      },
+      "getAssignmentQuestionDetail": {
+        "desc": "get Assignment Question Detail",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/QuestionAssignment/#assignmentId/manage/question"
+      },
+      "saveAssignQuestion": {
+        "desc": "save Assign Question",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/QuestionAssignment/#assignmentId/assignquestion/Update"
+      },
+      "getLanguageList": {
+        "desc": "get language list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/languages/list"
+      },
+      "getSubjectList": {
+        "desc": "get subject list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/subjects/list"
+      },
+      "getUomsList": {
+        "desc": "get uoms list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/uoms/list"
+      },
+      "getExamByExamId": {
+        "desc": "get exam by exam id",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId"
+      },
+      "getExamById": {
+        "desc": "get exam by id and exam id",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup"
+      },
+      "getGradeList": {
+        "desc": "get Grade List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/GetGradeList"
+      },
+      "getPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/plans/status/list"
+      },
+      "saveExam": {
+        "desc": "save exam",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup/add"
+      },
+      "updateExam": {
+        "desc": "update exam",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/#examId/setup/#examSetupId/edit"
+      },
+      "getSectionList": {
+        "desc": "get section list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId"
+      },
+      "getDifficultyLevelList": {
+        "desc": "Get Difficulty Level List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/difficulty/levels/list"
+      },
+      "getUserSelectedSubjectList": {
+        "desc": "Get User Selected Subject List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Exam/subjects/list/#examId"
+      },
+      "addNewSection": {
+        "desc": "Add new section",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/add"
+      },
+      "saveSection": {
+        "desc": "Save Section",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId/Update"
+      },
+      "getSaveSection": {
+        "desc": "Get Save Section details",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId"
+      },
+      "getQuestionTypeList": {
+        "desc": "Get Question Type List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/Question/type/list"
+      },
+      "getQuestionList": {
+        "desc": "Get Question List",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/list"
+      },
+      "saveQuestion": {
+        "desc": "Save Question List",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/Update"
+      },
+      "finalizeExam": {
+        "desc": "Finalize Exam Details",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/UpdateFinalize"
+      },
+      "deleteSection": {
+        "desc": "Delete Section",
+        "method": "DELETE",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Section/#examId/#sectionId/delete"
+      },
+      "deleteQuestion": {
+        "desc": "Delete Question",
+        "method": "DELETE",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Question/#examId/#sectionId/#id/#question_number/delete"
+      },
+      "getAuthoringQuestionList": {
+        "desc": "get authoring question list",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/Question/list"
+      },
+      "getAuthoringQuestionListByExamId": {
+        "desc": "get authoring question list by exam id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Question/exams/#examGuid/manage"
+      },
+      "getImportJson": {
+        "desc": "Get import json",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/vendors/import/authors"
+      },
+      "saveImportMeta": {
+        "desc": "Get import json",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/Meta/authors/add"
+      },
+      "getQuestionAssignmentsListById": {
+        "desc": "get question assignments list by id",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Question/#assignmentId/assignments"
+      },
+      "getQuestionDetails": {
+        "desc": "get question details",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Question/#detailId/#answerType"
+      },
+      "getImporteedAuthorsById": {
+        "desc": "get question details",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/imported/authors/#Id"
+      },
+      "addQuestionDetails": {
+        "desc": "get question details",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/Question/#answerType/add"
+      },
+      "updateQuestionDetails": {
+        "desc": "update question details",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/Question/#detailId/#answerType/update"
+      },
+      "getQuestionAssignments": {
+        "desc": "get question assignments",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/Question/#assignmentId/assignments"
+      },
+      "updateQuestionReviewStatus": {
+        "desc": "update question review status",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/Question/#detailId/reviewquestion/update"
+      },
+      "updateQuestionApproveStatus": {
+        "desc": "update question approve status",
+        "method": "PUT",
+        "url": "http://localhost:10012/api/v1/Question/#detailId/approvequestion/update"
+      },
+      "getSubjects": {
+        "desc": "get Subjects ",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/Customers/subjects/list/#subjectGuid"
+      },
+      "getLanguages": {
+        "desc": "get Subjects ",
+        "method": "POST",
+        "url": "https://qat.api.crm.ixcheck.io/api/v1/Customers/languages/list/#languageGuid"
+      },
+      "getReviewPlanStatusList": {
+        "desc": "Get Review Plan Status List",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/reviewplan/status/list"
+      },
+      "getApprovePlanStatusList": {
+        "desc": "Get Approve Plan Status List",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Meta/approveplan/status/list"
+      },
+      "getPrimaryQuestionDetails": {
+        "desc": "get primary question details",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Question/#detailId/primary/#answerType"
+      },
+      "getQuestionAuditTrail": {
+        "desc": "get question audit trail",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/Question/#questionId/QuestionTrail"
+      },
+      "getAssignmentShiftDetail": {
+        "desc": "get Assignment Shift Detail",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/QuestionAssignment/exam/#examId/examshiftdetails"
+      },
+      "getApprovalAuthorityExamList": {
+        "desc": "get Approval Authority Exam List",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/ApprovalAuthorities/list"
+      },
+      "getApprovalAuthorityExamDetails": {
+        "desc": "get Approval Authority Exam Details",
+        "method": "GET",
+        "url": "http://localhost:10012/api/v1/ApprovalAuthorities/exam/#examId/details"
+      },
+      "updatePrincipalApprover": {
+        "desc": "get Approval Authority Exam Details",
+        "method": "POST",
+        "url": "http://localhost:10012/api/v1/ApprovalAuthorities/exam/#examId/author/#authorGuid/update"
+      }
+    },
+    "_question": {
+      "getQuestionRequirementsList": {
+        "desc": "get question requirements list",
+        "method": "POST",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/requirement/questions/list"
+      },
+      "getQuestionRequirementsByExamId": {
+        "desc": "get question requirements list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/requirement/#examId/questions"
+      },
+      "saveQuestionRequirements": {
+        "desc": "Finalize question requirements list",
+        "method": "PUT",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/requirement/#examId/questions/finalize"
+      },
+      "getExamTypeList": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/types/list"
+      },
+      "getLanguageList": {
+        "desc": "get language list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/languages/list"
+      },
+      "getSubjectList": {
+        "desc": "get subject list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/subjects/list"
+      },
+      "getPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/plans/status/list"
+      }
+    },
+    "_imported": {
+      "getExamList": {
+        "desc": "get exam list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/examlist"
+      },
+      "getLayoutMappingList": {
+        "desc": "get layout mapping list",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/layoutMapping/list"
+      },
+      "getImportedCentresList": {
+        "desc": "Get Imported centres List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/list"
+      },
+      "getImportedCentresListDetails": {
+        "desc": "Get Imported centres List Details",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/centres/details/#id/#cityGuid"
+      },
+      "centresUnMap": {
+        "desc": "Centres UnMaped",
+        "method": "DELETE",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/unmapping/#examGuid"
+      },
+      "deleteImportedCentresById": {
+        "desc": "Delete imported Centred",
+        "method": "DELETE",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/#Id/delete"
+      },
+      "getImportedCentresById": {
+        "desc": "Get Imported centres List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/#Id"
+      },
+      "getCentresMappingList": {
+        "desc": "Get imported centres mapping",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/mapping"
+      },
+      "getCentresMappingById": {
+        "desc": "Get Map Centres List By id",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/mapping/#mapCentreId"
+      },
+      "saveCentresMapping": {
+        "desc": "Save Map Centres List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/mapping/add"
+      },
+      "getExamTypeList": {
+        "desc": "Save Map Centres List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/examType"
+      },
+      "getStatesList": {
+        "desc": "get state List",
+        "method": "GET",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/Meta/state/list"
+      },
+      "getCitiesList": {
+        "desc": "get Cities List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/city/list/#regGuid"
+      },
+      "getCentresList": {
+        "desc": "get Centres List",
+        "method": "POST",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/ImportCentres/centre/list"
+      },
+      "getNewCentresList": {
+        "desc": "get Centres List",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/centre/list"
+      },
+      "getImportJson": {
+        "desc": "get import json List",
+        "method": "POST",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/ImportCentres/importcentre"
+      },
+      "saveImportMeta": {
+        "desc": "Save import meta ",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/add"
+      },
+      "saveMoreImportMeta": {
+        "desc": "Save more import meta ",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/addmorecentres"
+      },
+      "getImportedCentresListById": {
+        "desc": "Get importList By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/importmeta/centrebyimportid/#importedId"
+      },
+      "getImportedNumber": {
+        "desc": "Get importList By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/getimportnumber"
+      },
+      "getPlanStatus": {
+        "desc": "Get importList By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/_PlanStatus"
+      },
+      "getCentresMappingRefresgList": {
+        "desc": "Get importList By imported Id ",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/mappingrefresh"
+      },
+      "getMappedCentresList": {
+        "desc": "Get Exam List By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/mapping/view/#mapCentreId"
+      },
+      "getStates": {
+        "desc": "State List ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportMeta/state/list/#regGuid"
+      },
+      "getCentreTypeList": {
+        "desc": "Get centre type list",
+        "method": "GET",
+        "url": "https://qat.api.metacentre.ixcheck.io/api/v1/Centres/type/list"
+      },
+      "updateImportedCentres": {
+        "desc": "Update Imported Centres",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/edit"
+      },
+      "getRegistrationTypeList": {
+        "desc": "get registration type List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/registrations/list"
+      }
+    },
+    "_admitcard": {
+      "getAdmitCardSetupList": {
+        "desc": "Get Admit Card Setup List",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/list"
+      },
+      "getRegTypeList": {
+        "desc": "Get reg type list",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/reg/list/types"
+      },
+      "getExamTypeList": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.exam.ixcheck.io/api/v1/Meta/types/list"
+      },
+      "getLayoutTypeList": {
+        "desc": "get layout type list",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/reg/list/types"
+      },
+      "getLayoutList": {
+        "desc": "get list of layouts",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/list"
+      },
+      "viewLayoutPreview": {
+        "desc": "get preview layout details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/#layoutId"
+      },
+      "updateLayoutPreview": {
+        "desc": "update preview layout details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/update"
+      },
+      "getLayoutMappingList": {
+        "desc": "get layout mapping list",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/mapping"
+      },
+      "getExamDetails": {
+        "desc": "get exam details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/mapping/#registrationGuid"
+      },
+      "mapAdmitCardLayout": {
+        "desc": "Map Admit Card Layout",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/mapping/add"
+      },
+      "getAdmitCardLayoutMappingRefreshList": {
+        "desc": "Get Exam List through refresh button ",
+        "method": "POST",
+        "url": ""
+      },
+      "getPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/planstatus"
+      },
+      "getMappedLayoutView": {
+        "desc": "get mapped layout view",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Layout/view/#registrationGuid"
+      },
+      "getAdmitCardBasicSetupDetailsByExamId": {
+        "desc": "get Basic Setup Details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/getbasicdetails"
+      },
+      "updateAdmitCardBasicSetupDetails": {
+        "desc": "update admit card basic setup details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/addbasicdetails"
+      },
+      "getAdmitCardDistributionMethod": {
+        "desc": "get admit card distribution method",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/getdistributionmethod"
+      },
+      "getAdmitCardDistributionSchedule": {
+        "desc": "get admit card distribution schedule",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/getdistributionsechdule"
+      },
+      "getAdmitCardSmsDetails": {
+        "desc": "get admit card sms details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/getsmsdetails"
+      },
+      "addAdmitCardSmsDetails": {
+        "desc": "add admit card sms details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/addsmsdetails"
+      },
+      "getAdmitCardEmailDetails": {
+        "desc": "get admit card email details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/getemaildetails"
+      },
+      "addAdmitCardEmailDetails": {
+        "desc": "add admit card email details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/addemaildetails"
+      },
+      "getTermAndConditions": {
+        "desc": "get admit card terms and conditions details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/gettermsconditions"
+      },
+      "addTermAndConditions": {
+        "desc": "add admit card terms and conditions details",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/addtermsconditions"
+      },
+      "finalizeAdmitCard": {
+        "desc": "finalize admit card",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/admitcardfinalize"
+      },
+      "GetAdmitCardExamList": {
+        "desc": "Get Exam List for admit card",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/exams/list"
+      },
+      "GetCentresList": {
+        "desc": "Get Centres List for admit card",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/centres/#examguid"
+      },
+      "getNetworksList": {
+        "desc": "Get Network List for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/networkgroup/#examGuid/#centreGuid/#shiftNumber"
+      },
+      "getAdmitCardCentresDetails": {
+        "desc": "Get Centres details for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/examcentredetail/#id/#shift"
+      },
+      "getpocList": {
+        "desc": "Get poc list for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/poc/#id/#shift"
+      },
+      "getNetworkDetailsList": {
+        "desc": "Getnetwork details for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/networkdetails/#id/#shift"
+      },
+      "getNetworkForCentreDetails": {
+        "desc": "Get network  for centre details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/networkgroup/detail/#id/#shift"
+      },
+      "getStatesList": {
+        "desc": "Get state list for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/state/list"
+      },
+      "getCentreTypeList": {
+        "desc": "Get state list for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/type/list"
+      },
+      "getCityList": {
+        "desc": "Get City list for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardCentre/city/list/#stateGuid"
+      },
+      "getShiftDetailsList": {
+        "desc": "Get Shift Details List for admit card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#regGuid/#allocationSnapshotId/shiftdetails"
+      },
+      "getAdmitCardListByCityId": {
+        "desc": "Get Admit Details List by City Id",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#examGuid/admitcardcitydata/#cityGuid/#shiftNumber"
+      },
+      "getAdmitCardList": {
+        "desc": "Get Admit Details List",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/admitcardcitywisedata"
+      },
+      "getStates": {
+        "desc": "Get States",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/statelist"
+      },
+      "getCities": {
+        "desc": "Get Cities",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/citylist"
+      },
+      "getAdmitCardPreviewDetails": {
+        "desc": "Get Admit Card Preview Details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#regGuid/#examGuid/admitcardbycandidateguid/#candidateGuid"
+      },
+      "generateAdmitCards": {
+        "desc": "Generate Admit Card",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#examGuid/generate"
+      },
+      "getEmailPreviewDetail": {
+        "desc": "get Admit Card Email Preview Detail",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#regGuid/#examGuid/emailpreview/#candidateGuid"
+      },
+      "getQrCodeDetails": {
+        "desc": "get Admit Card QR Code Detail",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/getqrbarcode"
+      },
+      "addQrBarCodeDetails": {
+        "desc": "Add Qr Bar Code",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/addqrbarcode"
+      },
+      "getQrBarCodeById": {
+        "desc": "get Admit Card QR/BAR Code by exam id",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/#registrationGuid/getqrbarcodebyid"
+      },
+      "createPackage": {
+        "desc": "Create Package",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/Package/#examGuid/#centreGuid/#shift/#networkGuid/#regGuid"
+      },
+      "publishAdmitCards": {
+        "desc": "Publish Admit Card",
+        "method": "PUT",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/Publish/#regGuid"
+      },
+      "getAdmitCardSetupRegList": {
+        "desc": "get Admit Card Setup Reg List",
+        "method": "POST",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCardSetup/registration/list"
+      },
+      "generateRegistration": {
+        "desc": "genrate registration",
+        "method": "GET",
+        "url": "http://localhost:10013/registrations/#registrationGuid/generate"
+      },
+      "getAdmitCardCentreList": {
+        "desc": "Get Admit Centres List",
+        "method": "POST",
+        "url": "http://localhost:10013/api/v1/AdmitCardCentre/admitcardcitywisedata"
+      }
+    },
+    "_packaging": {
+      "getPackageSetupExamList": {
+        "desc": "Get Package Setup Exam List",
+        "method": "POST",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/exams/list"
+      },
+      "getPackageSetupPlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/planstatus"
+      },
+      "getPackageSetupExamType": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/examtype"
+      },
+      "refreshPackageSetupExamList": {
+        "desc": "Refresh Package Setup Exam List",
+        "method": "POST",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/listrefresh"
+      },
+      "getPackageExamList": {
+        "desc": "Get Package Exam List",
+        "method": "POST",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/exams/list"
+      },
+      "getPackagePlanStatusList": {
+        "desc": "get plan status list",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/planstatus"
+      },
+      "getPackageExamType": {
+        "desc": "get exam type list",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/examtype"
+      },
+      "getShiftDetailsList": {
+        "desc": "Get Shift Details List for packaging",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageSetup/exams/shifts/#examGuid"
+      },
+      "createPackage": {
+        "desc": "Create  packaging",
+        "method": "GET",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/ImportPackage/shift_to_network_group/#examGuid/#shiftGuid"
+      },
+      "getPackageList": {
+        "desc": "Get Package  List",
+        "method": "POST",
+        "url": "https://qat.api.package.ixcheck.io/api/v1/PackageDistribution/exams/list"
+      }
+    },
+    "_registered": {
+      "getExamTypeList": {
+        "desc": "Save Map Centres List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/ImportedCentres/examType"
+      },
+      "getPlanStatus": {
+        "desc": "Get importList By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/CentrePlanning/_PlanStatus"
+      },
+      "getCandidatesExamList": {
+        "desc": "Get imported centres mapping",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Exams/list"
+      },
+      "getPaymentExamList": {
+        "desc": "Get imported centres mapping",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Exams/list"
+      },
+      "getPaymentManagementList": {
+        "desc": "get registered candidates list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/candidate/#guid/list"
+      },
+      "getPaymentDetailByPaymentId": {
+        "desc": "get payment list row detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/detail/exam/#examId/candidate/#guid"
+      },
+      "getCandidateRegistrationStatus": {
+        "desc": "get Candidate Registration List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/status/list"
+      },
+      "getCandidateDetailsByExamGuid": {
+        "desc": "get candidate detail by candidate & exam guid",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/detail/exam/#exam_guid/candidate/#candidate_guid"
+      }
+    },
+    "_registrations": {
+      "getExamList": {
+        "desc": "Get Exam  List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Exam/examlist"
+      },
+      "addRegBasicSetupDetails": {
+        "desc": "add Reg Basic Setup Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/add"
+      },
+      "getRegistrationList": {
+        "desc": "Get Registration  List",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/list"
+      },
+      "getExamTypeList": {
+        "desc": "Get exam type  List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Reg/examType/list"
+      },
+      "getRegPlanStatusList": {
+        "desc": "Get reg Plan status  List",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/plan/status"
+      },
+      "getExamListByRegistrationGuid": {
+        "desc": "get Exam List By Registration Guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/exams"
+      },
+      "getRegBasicSetupDetailsByRegGuid": {
+        "desc": "get reg Basic setup details  By Registration Guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid"
+      },
+      "updateRegBasicSetupDetails": {
+        "desc": "update Reg Basic Setup Details",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/update"
+      },
+      "getRegTypeList": {
+        "desc": "get reg type list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/reg/list/types"
+      },
+      "getCityList": {
+        "desc": "get city list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list/#stateGuid"
+      },
+      "getStateList": {
+        "desc": "get state list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/state/list"
+      },
+      "addExamCity": {
+        "desc": "add exam city ",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#registrationGuid/registration/cities/add"
+      },
+      "getExamCityListByRegGuid": {
+        "desc": "get Exam City List By RegGuid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list/priority/#registrationGuid"
+      },
+      "addRegType": {
+        "desc": "update reg type ",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/reg/types/add"
+      },
+      "getRegTypeByGuid": {
+        "desc": "get reg type list by guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/reg/types/get"
+      },
+      "updateRegType": {
+        "desc": "update reg type ",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/reg/types/update"
+      },
+      "addRegTypeMapping": {
+        "desc": "add reg type mapping ",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/regtypemap/add"
+      },
+      "getRegTypeMappingListByGuid": {
+        "desc": "get reg type mapping list by guid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/regtypemap/get"
+      },
+      "updateRegTypeMapping": {
+        "desc": "update reg type mapping ",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationGuid/regtypemap/update"
+      },
+      "verifiedMail": {
+        "desc": "verified Mail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/validate"
+      },
+      "addRegistrationsEmailServerDetails": {
+        "desc": "Add Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/add"
+      },
+      "getRegistrationsEmailServerDetailsByExamId": {
+        "desc": "get Registration Email Server Detail by exam id",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#examGuid/emailsetup"
+      },
+      "updateRegistrationsEmailServerDetails": {
+        "desc": "Update Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/emailsetup/update"
+      },
+      "getFeeTypeList": {
+        "desc": "get fee type list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/fee/types"
+      },
+      "getApplicableFeeList": {
+        "desc": "get applicable fee  list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/feetype/#feeTypeGuid/feesetup/get"
+      },
+      "getFeeSetupMasterList": {
+        "desc": "get fee setup master list",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Regsetup/feesetup"
+      },
+      "addFeeApplicableDetails": {
+        "desc": "add FeeApplicable Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/feesetup/add"
+      },
+      "updateFeeApplicableDetails": {
+        "desc": "Update FeeApplicable Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/#registrationsGuid/Feesetup/Update"
+      },
+      "finlizeRegSetupDetails": {
+        "desc": "finlize Reg Setup Details",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/final/review"
+      },
+      "getRegSetupFeeByRegGuid": {
+        "desc": "get Reg Setup Fee by regGuid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/feesetup/get"
+      },
+      "getRegTypeByRegGuid": {
+        "desc": "get Reg Setup Fee by regGuid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/RegSetup/registration/#registrationsGuid/reglisttype/#regListTypeGuid/reg/types/get"
+      },
+      "getCandidateRegistrationsList": {
+        "desc": "get candidate registrations list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/list"
+      },
+      "getPlanStatus": {
+        "desc": "Get importList By imported Id ",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/plan/status/list"
+      },
+      "getCandidateRegistrationsDetail": {
+        "desc": "get candidate registartion status detail list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/jobs/list"
+      },
+      "createJob": {
+        "desc": "create jobs for registrations by registration guid",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/jobs/create"
+      },
+      "addPaymentGateway": {
+        "desc": "Add Payment Gateway",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/#registrationGuid/add"
+      },
+      "getPaymentGatewayList": {
+        "desc": "Get Payment Gateway List ",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/list/#registrationGuid"
+      },
+      "changeRegistrationPaymentGatewayStatus": {
+        "desc": "Change Registration Payment Gateway Status ",
+        "method": "PUT",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/PaymentGateways/change/status/#id/#statusCode/#registrationGuid"
+      }
+    },
+    "_candidates": {
+      "finalizeRegistration": {
+        "desc": "finalize registration status",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Registrations/finalize/#registration_guid"
+      },
+      "getPlanStatus": {
+        "desc": "get registration plan status list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/plan/status/list"
+      },
+      "getCandidateRegistrationStatus": {
+        "desc": "get candidate registration status list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/status/list"
+      },
+      "getCandidateRegistrationsList": {
+        "desc": "get candidate registrations list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/list"
+      },
+      "getCandidateRegistrationsDetail": {
+        "desc": "get candidate registartion status detail list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/status/list"
+      },
+      "getCategoryList": {
+        "desc": "get candidate category list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/category/list"
+      },
+      "getGenderList": {
+        "desc": "get candidate gender list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/gender/list"
+      },
+      "getPaymentStatus": {
+        "desc": "get Payment Status List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/status/list"
+      },
+      "getRegisteredCandidatesList": {
+        "desc": "get registered candidates list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/candidate/list"
+      },
+      "getRegisteredCandidateDetail": {
+        "desc": "get registered candidate row detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/candidates/#candidateGuid/exams/list"
+      },
+      "getCandidateInfo": {
+        "desc": "get student basic info by candidate guid",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/#candidateGuid/basic/info"
+      },
+      "updateCandidateStatus": {
+        "desc": "update Candidate Status",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/Registrations/update/status/#statusCode/candidate/#candidateGuid"
+      },
+      "getActivityLogs": {
+        "desc": "get candidate activity logs list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/#candidateGuid/activity/log"
+      },
+      "getCandidateDetailsByExamGuid": {
+        "desc": "get candidate detail by candidate & exam guid",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/detail/candidate/#candidate_guid"
+      },
+      "getEligibilityQualification": {
+        "desc": "get eligibility and qualifications list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/candidate/#candidateGuid/eligibility/qualification"
+      }
+    },
+    "_payments": {
+      "getPlanStatus": {
+        "desc": "get registration plan status list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/plan/status/list"
+      },
+      "getCandidateRegistrationStatus": {
+        "desc": "get candidate registration status list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/status/list"
+      },
+      "getCandidateRegistrationsList": {
+        "desc": "get candidate registrations list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/list"
+      },
+      "getCandidateRegistrationsDetail": {
+        "desc": "get candidate registartion status detail list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/#guid/status/list"
+      },
+      "getCategoryList": {
+        "desc": "get candidate category list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/category/list"
+      },
+      "getGenderList": {
+        "desc": "get candidate gender list",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/registrations/candidate/gender/list"
+      },
+      "getPaymentStatus": {
+        "desc": "get Payment Status List",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/status/list"
+      },
+      "getPaymentManagementList": {
+        "desc": "get payment management list",
+        "method": "POST",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/candidate/#guid/list"
+      },
+      "getPaymentDetailByPaymentId": {
+        "desc": "get payment list row detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/detail/exam/#registrationId/candidate/#guid"
+      },
+      "getRegistrationsPaymentDetail": {
+        "desc": "get payment detail for registrations row detail",
+        "method": "GET",
+        "url": "https://qat.api.centre.ixcheck.io/api/v1/payments/registrations/#guid/status/list"
+      }
+    },
+    "_configuration": {
+      "updateRegistrationsEmailServerDetails": {
+        "desc": "Update Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Configurations/emailsetup/update"
+      },
+      "addRegistrationsEmailServerDetails": {
+        "desc": "Add Registration Email Server Detail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Configurations/emailsetup/add"
+      },
+      "verifiedMail": {
+        "desc": "verified Mail",
+        "method": "POST",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Configurations/emailsetup/validate"
+      },
+      "getRegistrationsEmailServerDetailsByGuid": {
+        "desc": "get Registration Email Server Detail by uid",
+        "method": "GET",
+        "url": "https://qat.api.reg.ixcheck.io/api/v1/Configurations/#guid/emailsetup"
+      }
+    },
+    "_jobs": {
+      "getJobTypesList": {
+        "desc": "get job types list",
+        "method": "POST",
+        "url": "http://localhost:10026/api/v1/JobTypes/list"
+      },
+      "deleteJobTypesById": {
+        "desc": "delete job types by its id",
+        "method": "DELETE",
+        "url": "http://localhost:10026/api/v1/JobTypes/#jobTypeId/delete"
+      },
+      "addJobTypes": {
+        "desc": "add job types",
+        "method": "POST",
+        "url": "http://localhost:10026/api/v1/JobTypes/add"
+      },
+      "getJobTypesById": {
+        "desc": "get job types by its id",
+        "method": "GET",
+        "url": "http://localhost:10026/api/v1/JobTypes/#jobTypeId"
+      },
+      "updateJobTypes": {
+        "desc": "save updated job types by its id",
+        "method": "PUT",
+        "url": "http://localhost:10026/api/v1/JobTypes/#jobTypeId/edit"
+      },
+      "addJobs": {
+        "desc": "add job",
+        "method": "POST",
+        "url": "http://localhost:10026/api/v1/Jobs/main/add"
+      },
+      "getJobTypeList": {
+        "desc": "get job type List",
+        "method": "GET",
+        "url": "http://localhost:10026/api/v1/JobTypes/list/get"
+      },
+      "getJobStatusList": {
+        "desc": "get job staus List",
+        "method": "GET",
+        "url": "http://localhost:10026/api/v1/Jobs/main/staus/list"
+      },
+      "getJobList": {
+        "desc": "get job staus List",
+        "method": "POST",
+        "url": "http://localhost:10026/api/v1/Jobs/main/list"
+      },
+      "getJobDetailsById": {
+        "desc": "get Job Details By Id",
+        "method": "GET",
+        "url": " http://localhost:10026/api/v1/Jobs/main/#jobId"
+      },
+      "updateJobs": {
+        "desc": "update Jobs",
+        "method": "PUT",
+        "url": " http://localhost:10026/api/v1/Jobs/main/#jobId/edit"
+      }
+    },
+    "_edituserprofile": {
+      "getOrgsUserTypeDropList": {
+        "desc": "get organization's type list for dropdown",
+        "method": "GET",
+        "url": "https://qat.api.auth.ixcheck.io/api/v1/iam/orgs/appuser/users/types/organdagency/list"
+      },
+      "getUserDataByUserId": {
+        "desc": "get User Data By User By Id ",
+        "method": "POST",
+        "url": "https://qat.api.examauth.ixcheck.io/api/v1/token/user/#userId/self"
+      },
+      "getOwnerEntitesTypes": {
+        "desc": "get Owner Entites Type list",
+        "method": "GET",
+        "url": "https://qat.api.auth.ixcheck.io/api/v1/iam/orgs/appuser/owner/entites/types/list"
+      },
+      "getDepartmrntList": {
+        "desc": "get Departmrnt List",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/department/list"
+      },
+      "getDesignationList": {
+        "desc": "get Designation List",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/designation/list"
+      },
+      "getHighestQualification": {
+        "desc": "get Highest Qualification",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/highestqualification/list"
+      },
+      "getSubjectList": {
+        "desc": "get Subject List",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/subjects/list/0"
+      },
+      "getLanguageList": {
+        "desc": "get Language List",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/languages/list/0"
+      },
+      "getIdentityType": {
+        "desc": "get Identity Type",
+        "method": "POST",
+        "url": "http://localhost:10018/api/v1/token/identity/type"
+      },
+      "getUserByOrgIdAndUserId": {
+        "desc": "get organization user detail by its id and organization id",
+        "method": "GET",
+        "url": "https://qat.api.auth.ixcheck.io/api/v1/iam/orgs/appuser/#userId"
+      },
+      "saveEditedOrgsUser": {
+        "desc": "update organization user detail by its id and organization id",
+        "method": "POST",
+        "url": "https://qat.api.examauth.ixcheck.io/api/v1/token/user/#userId/edit/self"
+      },
+      "getOrgsTypeDropList": {
+        "desc": "get organization's type list for dropdown",
+        "method": "GET",
+        "url": "https://qat.api.auth.ixcheck.io/api/v1/iam/orgs/types/list"
+      },
+      "getPermissionDropList": {
+        "desc": "get permission list",
+        "method": "GET",
+        "url": "https://qat.api.auth.ixcheck.io/api/v1/iam/orgs/permissions/list"
+      }
+    },
+    "_changepassword": {
+      "changepassword": {
+        "desc": "change password",
+        "method": "PUT",
+        "url": "https://qat.api.examauth.ixcheck.io/api/v1/token/user/changepassword/self"
+      }
+    }
+  },
+  "ixcheckComponents": [
+    {
+      "components": [
+        {
+          "componentName": "NgxIxcheckAddress",
+          "value": "Address",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Address",
+            "setting_description": "Address",
+            "setting_type": "textarea",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckAddressline1",
+          "value": "Address Line 1",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Address Line 1",
+            "setting_description": "Address Line 1",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckAddressline2",
+          "value": "Address Line 2",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Address Line 2",
+            "setting_description": "Address Line 2",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckConfirmpassword",
+          "value": "Confirm Password",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Confirm Password",
+            "setting_description": "Confirm Password",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDateofbirth",
+          "value": "Date of Birth",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Date of Birth",
+            "setting_description": "Date of Birth",
+            "setting_type": "date",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckEmail",
+          "value": "Email",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Email",
+            "setting_description": "Email",
+            "setting_type": "email",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": true,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_unique": true,
+            "otp_varification": false,
+            "valid_uniqueURL": "https://qat.api.reg.ixcheck.io/api/v1/shared/ValidateUniqueComponent"
+          }
+        },
+        {
+          "componentName": "NgxIxcheckConfirmEmail",
+          "value": "Confirm Email",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Confirm Email",
+            "setting_description": "Confirm Email",
+            "setting_type": "email",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_dataEndpoint": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_isdisabled": false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_unique": true,
+            "otp_varification": false,
+            "valid_uniqueURL": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckFirstname",
+          "value": "First Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "First Name",
+            "setting_description": "First Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckUsername",
+          "value": "User Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "User Name",
+            "setting_description": "User Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_unique": true,
+            "valid_regex": "",
+            "valid_uniqueURL": "https://qat.api.reg.ixcheck.io/api/v1/shared/ValidateUniqueComponent"
+          }
+        },
+        {
+          "componentName": "NgxIxcheckFathername",
+          "value": "Father Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Father Name",
+            "setting_description": "Father Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckFileuploader",
+          "value": "File Uploader",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "File Upload",
+            "setting_description": "File Upload",
+            "setting_type": "file",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_allowedExtentions": "png,jpeg",
+            "valid_allowedSize": 1,
+            "valid_allowedFileCount": 1,
+            "valid_minHeight": 50,
+            "valid_minWidth": 50,
+            "valid_maxHeight": 200,
+            "valid_maxWidth": 200
+          }
+        },
+        {
+          "componentName": "NgxIxcheckLastname",
+          "value": "Last Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Last Name",
+            "setting_description": "Last Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckMobilenumber",
+          "value": "Mobile Number",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Mobile Number",
+            "setting_description": "Mobile Number",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckConfirmMobilenumber",
+          "value": "Confirm Mobile Number",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Confirm Mobile Number",
+            "setting_description": "Confirm Mobile Number",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPhone",
+          "value": "Phone",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Phone",
+            "setting_description": "Phone",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckMothername",
+          "value": "Mother Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Mother Name",
+            "setting_description": "Mother Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckMiddlename",
+          "value": "Middle Name",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Middle Name",
+            "setting_description": "Middle Name",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPassword",
+          "value": "Password",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Password",
+            "setting_description": "Password",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPhysicalDisability",
+          "value": "Physical Disability",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Physical Disability",
+            "setting_description": "Physical Disability",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCity",
+          "value": "City",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "City",
+            "setting_description": "City",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCityPriority1",
+          "value": "City Priority 1",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "City Priority 1",
+            "setting_description": "City Priority 1",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list/priority/#registrationGuid",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCityPriority2",
+          "value": "City Priority 2",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "City Priority 2",
+            "setting_description": "City Priority 2",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list/priority/#registrationGuid",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCityPriority3",
+          "value": "City Priority 3",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "City Priority 3",
+            "setting_description": "City Priority 3",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/city/list/priority/#registrationGuid",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCategory",
+          "value": "Category",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Category",
+            "setting_description": "Category",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/category/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckGender",
+          "value": "Gender",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Gender",
+            "setting_description": "Gender",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/gender/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckMinority",
+          "value": "Minority",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Minority",
+            "setting_description": "Minority",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckNationality",
+          "value": "Nationality",
+          "groupName": "Nationality",
+          "settings": {
+            "setting_label": "Nationality",
+            "setting_description": "Nationality",
+            "setting_type": "dropdown",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/nationality/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckState",
+          "value": "State",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "State",
+            "setting_description": "State",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/state/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckSubmitbutton",
+          "value": "Submit Button",
+          "groupName": "button",
+          "settings": {
+            "setting_label": "Submit",            
+            "setting_type": "button",
+            "setting_defaultValue": "",
+            "setting_labelposition": "text-left"
+          },
+          "validations": {}
+        },
+        {
+          "componentName": "NgxIxcheckNextbutton",
+          "value": "Next Button",
+          "groupName": "button",
+          "settings": {
+            "setting_label": "Next",
+            "setting_type": "button",
+            "setting_defaultValue": "",
+            "setting_labelposition": "text-left"
+          },
+          "validations": {}
+        },
+        {
+          "componentName": "NgxIxcheckBackbutton",
+          "value": "Back Button",
+          "groupName": "button",
+          "settings": {
+            "setting_label": "Back",
+            "setting_type": "button",
+            "setting_defaultValue": "",
+            "setting_labelposition": "text-left"
+          },
+          "validations": {}
+        },
+        {
+          "componentName": "NgxIxcheckTermandcondition",
+          "value": "Terms and Conditions",
+          "groupName": "checkbox",
+          "settings": {
+            "setting_label": "Terms and Conditions",
+            "setting_description": "Terms and Conditions",
+            "setting_type": "checkbox",
+            "setting_defaultValue": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckTitle",
+          "value": "Title",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Title",
+            "setting_description": "Title",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/title/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        },
+        {
+          "componentName": "NgxIxcheckRelation",
+          "value": "Relation",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Relation",
+            "setting_description": "Relation",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/relation/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckIdproof",
+          "value": "Idproof",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Idproof",
+            "setting_description": "Idproof",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/id_proof/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckReligion",
+          "value": "Religion",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Religion",
+            "setting_description": "Religion",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/religion/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckRegTypeList",
+          "value": "RegTypeList",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "RegTypeList",
+            "setting_description": "RegTypeList",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/#registrationGuid/reg_type/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCourse",
+          "value": "Course",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Course",
+            "setting_description": "Course",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/course/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckUniversity",
+          "value": "University",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "University",
+            "setting_description": "University",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/university/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckStream",
+          "value": "Stream",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Stream",
+            "setting_description": "Stream",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/stream/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckBoard",
+          "value": "Board",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Board",
+            "setting_description": "Board",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/board/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPhotouploader",
+          "value": "Photo Uploader",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Photo Upload",
+            "setting_description": "Photo Upload",
+            "setting_type": "file",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_allowedExtentions": "png,jpeg",
+            "valid_allowedSize": 1,
+            "valid_allowedFileCount": 1,
+            "valid_minHeight": 50,
+            "valid_minWidth": 50,
+            "valid_maxHeight": 200,
+            "valid_maxWidth": 200
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPhotouploaderAi",
+          "value": "Photo Uploader Ai",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Photo Upload",
+            "setting_description": "Photo Upload",
+            "setting_type": "file",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_allowedExtentions": "png,jpeg",
+            "valid_allowedSize": 1,
+            "valid_allowedFileCount": 1,
+            "valid_minHeight": 50,
+            "valid_minWidth": 50,
+            "valid_maxHeight": 200,
+            "valid_maxWidth": 200
+          },
+          "ai_parameters": {
+            "algo_guid": "",
+            "algo_url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/regaialgos/list",
+            "validation_url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/images/ai/validations/list",
+            "color_url": "https://qat.api.reg.ixcheck.io/api/v1/Shared/color/list",
+            "color_percent_min": "40",
+            "color_percent_max": "50",
+            "face_percent_min": "20",
+            "face_percent_max": "30",
+            "colors": [
+              {
+                "color_guid": "",
+                "blue_percent_min": "200",
+                "blue_percent_max": "250",
+                "green_percent_min": "200",
+                "green_percent_max": "250",
+                "red_percent_min": "200",
+                "red_percent_max": "250"
+              }
+            ]
+          }
+        },
+        {
+          "componentName": "NgxIxcheckSignatureUploader",
+          "value": "Signature Uploader",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Signature Upload",
+            "setting_description": "Signature Upload",
+            "setting_type": "file",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_allowedExtentions": "png,jpeg",
+            "valid_allowedSize": 1,
+            "valid_allowedFileCount": 1,
+            "valid_minHeight": 50,
+            "valid_minWidth": 50,
+            "valid_maxHeight": 200,
+            "valid_maxWidth": 200
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPincode",
+          "value": "Pincode",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Pincode",
+            "setting_description": "Pincode",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckAddressline3",
+          "value": "Address Line 3",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Address Line 3",
+            "setting_description": "Address Line 3",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": true,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckMaritialstatus",
+          "value": "Maritial Status",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Maritial Status",
+            "setting_description": "Maritial Status",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/marital_status/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckExammedium",
+          "value": "Exam Medium",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Exam Medium",
+            "setting_description": "Exam Medium",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/exam_medium/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckTrueFalse",
+          "value": "True False",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "True False",
+            "setting_description": "True False",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/exam_medium/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCustomHtml",
+          "value": "Custom Html",
+          "groupName": "html",
+          "settings": {
+            "setting_type": "html",
+            "setting_label": "",
+            "setting_defaultValue": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCertificateNumber",
+          "value": "Certificate Number",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Certificate Number",
+            "setting_description": "Certificate Number",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCertificateIssuingDate",
+          "value": "Certificate Issuing Date",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Certificate Issuing Date",
+            "setting_description": "Certificate Issuing Date",
+            "setting_type": "date",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minDate": "",
+            "valid_maxDate": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDateOfAttestation",
+          "value": "Date Of Attestation",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Date Of Attestation",
+            "setting_description": "Date Of Attestation",
+            "setting_type": "date",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minDate": "",
+            "valid_maxDate": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDateOfDischarge",
+          "value": "Date Of Discharge",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Date Of Discharge",
+            "setting_description": "Date Of Discharge",
+            "setting_type": "date",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minDate": "",
+            "valid_maxDate": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCertificationIssuingAuthority",
+          "value": "Certification issuing authority",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Certification issuing authority",
+            "setting_description": "Certification issuing authority",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/certificate-issuing-authority/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCertificationIssuingDistrict",
+          "value": "Certificate Issuing District",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Certificate Issuing District",
+            "setting_description": "Certificate Issuing District",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/certificate-issuing-district/list",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPhQuestion",
+          "value": "Ph Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Are you differently abled(PH)?",
+            "setting_description": "Physical Disability",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckExServicemanQuestion",
+          "value": "Ex Serviceman Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Are you an Ex-Serviceman?",
+            "setting_description": "Ex Serviceman question",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckFreedomFighterQuestion",
+          "value": "Freedom Fighter",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Are you Dependent of Freedom Fighter (DFF)?",
+            "setting_description": "Freedom Fighter question",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckOrphanQuestion",
+          "value": "Orphan Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Are you an orphan child?",
+            "setting_description": "Orphan question",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDomicileCheck",
+          "value": "Domicile Check",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Domicile of state?",
+            "setting_description": "Domicile",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckPlace",
+          "value": "Place",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Place",
+            "setting_description": "Place",
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_allowTextUppercase":false
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckEducationalDetails",
+          "value": "Educational Details",
+          "groupName": "listview",
+          "settings": {
+            "setting_label": "Educational Details",
+            "setting_description": "Educational Details",
+            "setting_type": "listview",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Reg/postRegGridValue",
+            "setting_dataDeleteEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Reg/deleteRegGridValue",
+            "setting_dataGetEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Reg/getRegGridComponentList",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          },
+          "subComponents": [
+            {
+              "subComponentName": "NgxIxcheckQualificationType",
+              "subComponentvalue": "Qualification Type",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Qualification Type",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/qualification-type/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckNameOfDegree",
+              "subComponentvalue": "Name of Degree",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Name of Degree",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/degree/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckUniversityStateBord",
+              "subComponentvalue": "University/Board State",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "University/Board State",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/state/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckUniversityBord",
+              "subComponentvalue": "University/Board",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "University/Board",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/university/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckDateofIssuingonFinalyearMarksheet",
+              "subComponentvalue": "Date of Issuing on Final year Marksheet",
+              "subComponentgroupName": "input",
+              "subComponentsettings": {
+                "setting_label": "Date of Issuing on Final year Marksheet",
+                "setting_type": "date",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckSubjectStream",
+              "subComponentvalue": "Subject/Stream",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Subject/Stream",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/stream/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckMarksType",
+              "subComponentvalue": "Marks Type",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Marks Type",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/marks-type/list",
+                "setting_dataParameter": "",
+                "setting_visibility": true,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": true
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckMarksObtained",
+              "subComponentvalue": "Marks Obtained/CGPA",
+              "subComponentgroupName": "input",
+              "subComponentsettings": {
+                "setting_label": "Marks Obtained/CGPA",
+                "setting_type": "input",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/stream/list",
+                "setting_dataParameter": "",
+                "setting_visibility": false,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": false
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckMaximumMarks",
+              "subComponentvalue": "Maximum Marks",
+              "subComponentgroupName": "input",
+              "subComponentsettings": {
+                "setting_label": "Maximum Marks",
+                "setting_type": "input",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/stream/list",
+                "setting_dataParameter": "",
+                "setting_visibility": false,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": false
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckGrade",
+              "subComponentvalue": "Grade",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Grade",
+                "setting_type": "select",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/grade/list",
+                "setting_dataParameter": "",
+                "setting_visibility": false,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": false
+              }
+            },
+            {
+              "subComponentName": "NgxIxcheckPercentageMarksObtained",
+              "subComponentvalue": "Percentage Marks Obtained/Equivalent %",
+              "subComponentgroupName": "dropdown",
+              "subComponentsettings": {
+                "setting_label": "Percentage Marks Obtained/Equivalent %",
+                "setting_type": "input",
+                "setting_defaultValue": "",
+                "setting_dataEndpoint": "https://qat.api.reg.ixcheck.io/api/v1/Shared/stream/list",
+                "setting_dataParameter": "",
+                "setting_visibility": false,
+                "setting_showingrid": false,
+                "setting_labelposition": "align-top",
+                "setting_width": 20
+              },
+              "subComponentValidations": {
+                "valid_required": false
+              }
+            }
+          ]
+        },
+        {
+          "componentName": "NgxIxcheckCaptcha",
+          "value": "Captcha",
+          "groupName": "Captcha",
+          "settings": {
+            "setting_label": "Captcha",
+            "setting_description": "Captcha",
+            "setting_type": "Captcha",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20,
+            "setting_dataEndpoint": "https://qat.api.candidateportal.ixcheck.io/api/v1/Shared/captcha"
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDivisionalOfficersCourse",
+          "value": "Divisional Officers Course",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Have you done divisional officers course?*",
+            "setting_description": "Divisional Officers Course",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckDegreeInFireEngineering",
+          "value": "Degree In Fire Engineering",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Do you posess three years degree in engineering?*",
+            "setting_description": "Degree in engineering",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckAutomobileRepairingQuestion",
+          "value": "Automobile Repairing Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Do you have knowledge of automobile repairing?*",
+            "setting_description": "Automobile repairing",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckExperienceInFireFightingQuestion",
+          "value": "Experience In Fire Fighting Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Do you have experience of practical fire fighting?*",
+            "setting_description": "Fire fighting experience",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckServedInTerritorialArmyQuestion",
+          "value": "Served In Territorial Army Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Have you served in the territorial army?*",
+            "setting_description": "Territorial Army Question",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCadetCorpsCertificateQuestion",
+          "value": "Cadet Corps Certificate Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Do you possess 'B' Certificate of National Cadet?*",
+            "setting_description": "Certificate of National Cadet",
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckRelaxationInPhysicalStandardsQuestion",
+          "value": "Relaxation In Physical Standard Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Do you want relaxation in height and chest on Physical Standards?*",
+            "setting_description": "Field",            
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCriminalRecordQuestion",
+          "value": "Criminal Record Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Is there any criminal case pending against you?*",
+            "setting_description": "Field",  
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckBlackListedQuestion",
+          "value": "Black Listed Question",
+          "groupName": "radio",
+          "settings": {
+            "setting_label": "Whether debarred or Black Listed from Examination?*",
+            "setting_description": "Field",  
+            "setting_type": "radio",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckIdProofNumber",
+          "value": "Id Proof Number",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "Id Proof Number*",
+            "setting_description": "Id Proof",  
+            "setting_type": "text",
+            "setting_placeholder": "",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_question_type_guid": "",
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false
+          }
+        },
+        {
+          "componentName": "NgxIxcheckCaptchaTextbox",
+          "value": "Captcha Textbox",
+          "groupName": "input",
+          "settings": {
+            "setting_label": "",
+            "setting_description": "Captcha",  
+            "setting_type": "text",
+            "setting_defaultValue": "",
+            "setting_placeholder": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": false,
+            "valid_minlength": 0,
+            "valid_maxlength": 100,
+            "valid_regex": ""
+          }
+        },
+        {
+          "componentName": "NgxIxcheckIpAddress",
+          "value": "Ip Address",
+          "groupName": "dropdown",
+          "settings": {
+            "setting_label": "Ip Address",
+            "setting_description": "Ip Address",
+            "setting_type": "select",
+            "setting_defaultValue": "",
+            "setting_dataEndpoint": "http://api.ipify.org/?format=json",
+            "setting_dataParameter": "",
+            "setting_showingrid": false,
+            "setting_labelposition": "align-top",
+            "setting_width": 20
+          },
+          "validations": {
+            "valid_required": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-fixed">
+      <!-- <div class="card-header">
+        <div class="header-flex-container">
+          <!-- <div class="card-title col-4">Final Review
+          </div> -->
+          <!-- <div class="paging-block col-4">
+            <!- -pagination html start- ->
+            <ngx-ixcheck-table-outer-pagination *ngIf="notFound == false " [itemCount]="itemCount"
+              [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+              (loadTable)="reloadItems($event,false)">
+            </ngx-ixcheck-table-outer-pagination>
+            <!- -pagination html ends- ->
+          </div> -- >
+
+          <!- - <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+              <!- - bubble start - ->
+          <!- -  <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+              </app-ngx-ixcheck-bubble> - ->
+          <!- - bubble end - ->
+            </div> - ->
+          <!- - <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+          </div>- ->
+
+        </div>
+      </div> -->
+      <div class="card-body scrollable">
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table p-0" *ngIf="notFound == false ">
+              <!-- table start -->
+            <ngx-ixcheck-table id="orders-list" headerTitle="Orders" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false" [expandOnIndexColClick]="true" [expandOnRowClick]="false"
+              (rowClick)="rowClick($event)" (rowDoubleClick)="rowDoubleClick($event)">
+              <ng-template #rowDetailExpand let-rowitem="item">
+                <app-final-review-rowdetail (sendToParent)="sendToParent($event)" [order]=rowitem>
+                </app-final-review-rowdetail>
+              </ng-template>
+
+              <ngx-ixcheck-table-column [property]="'id'" [header]="'ID'" [sortable]="false" [resizable]="true"
+                [width]="70" [visible]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'section_number'" [header]="'Section #'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'name'" [header]="'Section Name'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Subjects</ng-template>
+                <ng-template #colDetailComponent>
+                  {{subjectList}}
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Question Count</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  {{rowitem.question_count}}
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Allow duration </ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  {{rowitem.allow_duration}}
+                </ng-template>
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>duration </ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  {{rowitem.duration}}
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <ngx-ixcheck-table-column [property]="'status'" [header]="'auto switch'" [sortable]="false"
+                [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                  {{rowitem.auto_switch}}
+                </ng-template>
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <div class="btn-group" dropdown>
+                    <a class="cs-click" (click)="updateSection(rowitem.id)">Manage</a>
+                    <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                      placement="right">
+                      <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                    </a>
+                    <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                      aria-labelledby="button-autoclose1">
+                      <li role="menuitem">
+                        <a class="dropdown-item" (click)="onDelete(rowitem.id)">Delete</a>
+                      </li>
+                    </ul>
+                  </div>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+            <!-- table end -->
+          </div>
+          <div class="not-found-container" *ngIf="notFound == true ">
+            <h5>
+              No Data Available.
+            </h5>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary" id="submitBtn" (click)="formSubmit()" type="submit">Finalize</button>
+      </div>
+
+    </div>
+  </div>
+</div>

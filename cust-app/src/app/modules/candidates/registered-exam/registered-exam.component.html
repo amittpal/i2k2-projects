@@ -1,0 +1,131 @@
+<div class="container-fluid">
+    <div class="table-container">
+        <div class="card card-bordered fullheight-fixed">
+            <div class="card-header">
+                <tabset class="tabset-container" #tabset>
+                    <tab heading="Basic Info"></tab>
+                    <tab heading="Eligibility & Qualification"></tab>
+                    <tab heading="Activity Log"></tab>
+                </tabset>
+            </div>
+
+            <div class="card-body scrollable d-flex flex-column">
+                <div *ngIf="tabset.tabs[0].active == true">
+                    <form class="app-form" name="studentInfoForm" id="studentInfoForm"
+                        [formGroup]="studentInfoFormGroup">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-4">
+                                <div class="form-group trad foc ">
+                                    <label for="registration_date" class="mb-0">Registration Date</label>
+                                    <input type="date" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="registration_date">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="code" class="mb-0">Code</label>
+                                    <input type="text" class="form-control form-control-sm" formControlName="code">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="name" class="mb-0">Name</label>
+                                    <input type="text" class="form-control form-control-sm" formControlName="name">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="father_name" class="mb-0">Father Name</label>
+                                    <input type="text" class="form-control form-control-sm"
+                                        formControlName="father_name">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="dob" class="mb-0">DOB</label>
+                                    <input type="date" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="dob">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-4">
+                                <div class="form-group trad foc ">
+                                    <label for="gender" class="mb-0">Gender</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="gender">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="ph" class="mb-0">Ph</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="ph">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="category" class="mb-0">Category</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="category">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="pay_status" class="mb-0">Pay Status</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="pay_status">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="registration_status" class="mb-0">Registration Status</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="registration_status">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-4">
+                                <div class="form-group trad foc ">
+                                    <label for="city_name" class="mb-0">City</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="city_name">
+                                </div>
+                                <div class="form-group trad foc ">
+                                    <label for="state_name" class="mb-0">State</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="state_name">
+                                </div>
+                                <!-- <div class="form-group trad foc ">
+                                    <label for="country" class="mb-0">Country</label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="country">
+                                </div> -->
+                                <div class="form-group trad foc ">
+                                    <label for="pin_code" class="mb-0">Pin </label>
+                                    <input type="text" class="form-control form-control-sm" autocomplete="off"
+                                        formControlName="pin_code">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-4" style="padding-top: 15px !important">
+                                <img *ngIf="candidateImage" [src]="candidateImage" class="img-fluid image-container"
+                                    alt="Responsive image">
+                                <img *ngIf="!candidateImage" class="img-fluid image-container"
+                                    src="../../../assets/images/user.jpg">
+                                <p>
+                                    <label for="pin_code" class="mb-0">Color Percent </label>
+                                    {{color_percent}}
+                                    <label for="pin_code" class="mb-0">Face Percent </label>
+                                    {{face_percent}}
+                                </p>
+                            </div>
+                            <div class="col-lg-2 col-sm-4" style="padding-top: 15px !important">
+                                <img *ngIf="signatureImage" [src]="signatureImage" class="img-fluid image-container"
+                                    alt="Responsive image">
+                                <img *ngIf="!signatureImage" class="img-fluid image-container"
+                                    src="../../../assets/images/user.jpg">
+                            </div>
+                        </div>
+                    </form>
+
+                    <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+                        (click)="viewRegistrationForm()">View Full Registration Form</button>
+
+                    <div class="card-footer">
+                        <button *ngIf="registration_status==='Rejected'" class="btn btn-sm btn-info" type="submit"
+                            (click)="updateCandidateStatus('APPROVED')">APPROVE</button>
+                        <button *ngIf="registration_status==='Approved'" class="btn btn-sm btn-warning" type="submit"
+                            (click)="updateCandidateStatus('REJECTED')">REJECT</button>
+                    </div>
+                </div>
+                <div *ngIf="tabset.tabs[1].active == true">
+                    <app-eligibility-qualification (updateEvent)="updateEventEmit()" [candidateGuid]="candidateGuid"></app-eligibility-qualification>
+                </div>
+                <div *ngIf="tabset.tabs[2].active == true">
+                    <app-activity-logs [candidateGuid]="candidateGuid"></app-activity-logs>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

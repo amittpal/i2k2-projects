@@ -1,0 +1,116 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body scrollable">    
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate name="centresListForm" id="centresListForm" [formGroup]="centresListFormGroup"
+            class="p-0">
+
+            <div class="form-group mb-0">
+                <label for="State" class="mb-0">State</label>
+                <select class="form-control form-control-sm" id="state_guid" name="state_guid" multiple formControlName="state_guid">
+                  <option value="">All</option>
+                  <option *ngFor="let states of CentresGuid" [value]="states.state_guid">
+                    {{states.state_name}}
+                  </option>
+                </select>
+              </div>     
+
+            <div class="form-group mb-0">
+              <label for="State" class="mb-0">City</label>
+              <select class="form-control form-control-sm" id="city_guid" name="city_guid" multiple formControlName="city_guid">
+                <option value="">All</option>
+                <option *ngFor="let city of CentresGuid" [value]="city.guid">
+                  {{city.name}}
+                </option>
+              </select>
+            </div>  
+            
+              <div class="form-group mb-0">
+                <label for="Centre Code" class="mb-0">Centre Code</label>
+                <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['centre_code'].valid}" name="centre_code" id="centre_code" formControlName="centre_code">
+              </div>
+            
+              <div class="form-group mb-0">
+                <label for="Centre Type" class="mb-0">Centre Type</label>
+                <select class="form-control form-control-sm" id="centre_type_guid" name="centre_type_guid" formControlName="centre_type_guid">
+                  <option value="">All</option>
+                  <option *ngFor="let centreType of centreTypeList" [value]="centreType.guid">
+                    {{centreType.name}}
+                  </option>
+                </select>
+              </div> 
+              
+              <div class="form-group mb-0" style="overflow: hidden;">
+                <label for="Total Seats Range" class="mb-0">Total Seats Range</label>
+                <div class="row">
+                  <div class="col-lg-5">
+                     <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['total_min_seat'].valid}" name="total_min_seat" id="total_min_seat" formControlName="total_min_seat">
+                 </div>
+                 <div class="col-lg-2">-</div>
+                 <div class="col-lg-5">
+                    <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['total_max_seat'].valid}" name="total_max_seat" id="total_max_seat" formControlName="total_max_seat">
+                  </div>
+              </div>
+              </div>
+
+              <div class="form-group mb-0" style="overflow: hidden;">
+                <label for="Normal Seats Range" class="mb-0">Normal Seats Range</label>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['normal_min_seat'].valid}" name="normal_min_seat" id="normal_min_seat" formControlName="normal_min_seat">
+                </div>
+                <div class="col-lg-2">-</div>
+                  <div class="col-lg-5">
+                     <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['normal_max_seat'].valid}" name="normal_max_seat" id="normal_max_seat" formControlName="normal_max_seat">
+                  </div>
+              </div>
+              </div>
+
+              <div class="form-group mb-0" style="overflow: hidden;">
+                <label for="Ph Seats Range" class="mb-0">Ph Seats Range</label>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['ph_min_seat'].valid}" name="ph_min_seat" id="ph_min_seat" formControlName="ph_min_seat">
+                 </div>
+                 <div class="col-lg-2">-</div>
+                 <div class="col-lg-5">
+                <input type="text" class="form-control form-control-sm" [ngClass]="{red:!centresListFormGroup.controls['ph_max_seat'].valid}" name="ph_max_seat" id="ph_max_seat" formControlName="ph_max_seat">
+              </div>
+              </div>
+              </div>
+
+              <div class="form-group mb-0">
+                <label for="Rating" class="mb-0">Rating</label>
+                <select class="form-control form-control-sm" id="rating" name="rating" formControlName="rating">
+                  <option value="">All</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div> 
+            
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" (click)="oncentresFormSubmit($event)">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body ">
+            <form [formGroup]="randomAlgoFormGroup" id="randomAlgoForm">
+                <div class="row app-form">
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group trad foc">
+                            <label>Registration Code</label>
+                            <input type="text" class="form-control" formControlName="registration_code" name="registration_code" id="registration_code">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>Registration Name</label>
+                            <input type="text" class="form-control" formControlName="registration_name" name="registration_name" id="registration_name">
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>Total Candidate</label>
+                            <input type="text" class="form-control" formControlName="total_candidate" name="total_candidate" id="total_candidate">
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>Random Algo</label>
+                            <select class="form-control form-control-sm" id="random_algo_id" name="random_algo_id" formControlName="random_algo_id" 
+                            required>
+                            <option value="">Please Select</option>
+                            <option *ngFor="let algo of algoList" [value]="algo.id" selected>
+                              {{algo.name}}
+                            </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>Seed</label>
+                            <input type="number"  class="form-control" formControlName="algo_seed" name="algo_seed" id="algo_seed">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()" >Submit</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+    </div>
+
+</div>

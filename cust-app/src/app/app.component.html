@@ -1,0 +1,8 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="loader-wrapper" *ngIf="!contentLoaded">
+    <div id="loader"></div>
+</div>
+<div *ngIf="contentLoaded">
+    <ngx-ixcheck-loading-spinner></ngx-ixcheck-loading-spinner>
+    <router-outlet></router-outlet>
+</div>

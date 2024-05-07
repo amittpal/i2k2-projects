@@ -1,0 +1,167 @@
+main{
+    text-align: center;
+    background: #f5f5f5;
+    padding: 20px 0;
+    border-radius: 50px;
+    svg{
+        width: 50px;
+        height: 40px;
+        stroke: black;
+        fill: black;
+        opacity: 0.4;
+    }
+}
+
+
+@mixin circLegend($color){
+    border: 1px solid $color;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+
+.dash-card{    
+    padding: 10px 15px;
+    min-height: (100vh - 20vh);
+    //max-width: 50em;
+    .col-form-label{
+        &.title{
+            font-weight: 500;
+        }
+    }
+}
+.card-body.section-body{
+    background-color: #f9f9f9;    
+    div.h4{
+        //padding-top: 9px;
+        //margin-top: -15.5px;
+        margin-top: -27.5px;
+    }
+    .form-action-row{
+        text-align: right;
+    }
+    .card.card-height{
+        .card-body{
+            //height: 115px;
+            height: 180px;
+        }
+    }
+    .filter-row{
+        margin-bottom: 1.5rem;
+        #dashForm{        
+            .btn-form{
+                margin-top: 21px;
+                &:last-child{
+                    margin-left: 5px;
+                }
+                
+            }
+        }
+        .days-gp{
+            text-align: right;
+            
+            .btn-days-gp{
+                margin-top: 21px;
+                > .btn{
+                    margin-right: 10px;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+                &.last-gp{
+                    //margin-left: 10px;
+                    margin-left: 6px;
+                }
+            }
+        }
+        
+    }
+    
+    
+.tbl-head{
+    font-weight: 500;
+}
+    .tbl-overview{
+        > thead{
+            > tr > th{
+                border-top: none;
+            }
+
+        }
+
+        .legend-circ{
+            width: 12px;
+            height: 12px;
+            &.bg-info{
+                @include circLegend(#2dabe9);
+            }      
+            &.bg-success{
+                @include circLegend(#5b9a31);
+            }  
+            &.bg-warning{
+                @include circLegend(#c69500);
+            }
+            &.bg-primary{
+                @include circLegend(#187da0);
+            }
+            &.bg-danger{
+                @include circLegend(#ff1414);
+            }
+            &.bg-purple{
+                @include circLegend(#533093);
+            }
+            &.bg-dark{
+                @include circLegend(#0f1417);
+            }
+            &.bg-secondary{
+                @include circLegend(#7e99a7);
+            }
+            &.bg-indigo{
+                @include circLegend(#4c0ab8);
+            }
+            &.bg-orange{
+                @include circLegend(#f1a306);
+            }
+            &.bg-teal{
+                @include circLegend(#17926e);
+            }
+            &.bg-pink{
+                @include circLegend(#ce196c);
+            }
+        }
+    }
+
+    
+}
+
+//Responsive styles
+@media (max-width: 991px) {
+    .card-body.section-body{
+        .filter-row{
+            .days-gp{
+                text-align: center;
+                .btn-days-gp{
+                    &.last-gp{
+                        margin-left: 0;
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    
+  }
+// @media (max-width: 575px) {
+//     .card-body.section-body{
+//         .form-action-row{
+//             text-align: center;
+//         }
+//     }
+    
+//     .col-form-label{        
+//         &.text-muted{
+//             padding-top: 0;
+//         }
+//     }    
+//   }

@@ -1,0 +1,92 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+
+  <div class="col-sm-12">
+    <form autocomplete="off" name="childFromGroup" [id]="'childFrom' + examGuid + shift " [formGroup]="childFromGroup">
+      <div class="form-row text-uppercase">
+
+        <!-- Exam Date -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3 ">
+          <label for="exam_date" class="mb-0">Exam Date</label>
+          <input type="date" class="custom-select custom-select-dd custom-select-sm"
+            formControlName="exam_date" name="exam_date" min="{{minDate}}" (click)="$event.stopPropagation();">
+            <!-- <input id="datefield" type='date' min='2020-03-22' max='2020-04-03'> -->
+        </div>
+
+        <!-- SHIFT REPORTING TIME -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3">
+          <label for="shift_reporting_time" class="mb-0">SHIFT REPORTING TIME</label>
+          <div class="row">
+            <select class="col-3 form-control" placeholder="HH" formControlName="srt_hour">
+              <option value="">HH</option>
+              <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="srt_minute">
+              <option value="">MM</option>
+              <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="srt_ums">
+              <option value="">AM/PM</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- SHIFT START TIME -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3">
+          <label for="shift_start_time" class="mb-0">SHIFT START TIME
+          </label>
+          <div class="row">
+            <select class="col-3 form-control" placeholder="HH" formControlName="sst_hour">
+              <option value="">HH</option>
+              <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="sst_minute">
+              <option value="">MM</option>
+              <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="sst_ums">
+              <option value="">AM/PM</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- SHIFT END TIME -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3">
+          <label for="shift_end_time" class="mb-0">SHIFT END TIME
+          </label>
+          <div class="row">
+            <select class="col-3 form-control" placeholder="HH" formControlName="set_hour">
+              <option value="">HH</option>
+              <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="set_minute">
+              <option value="">MM</option>
+              <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+            </select>
+            <select class="col-3 form-control" formControlName="set_ums">
+              <option value="">AM/PM</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- REG DATA DISTRIBUTION % -->
+        <div class="form-group d-flex flex-column col-lg-2 col-sm-3" *ngIf="showdistribution">
+          <label for="distribution" class="mb-0">REG DATA DISTRIBUTION %
+          </label>
+
+          <input type="text" min="0" class="custom-select custom-select-dd custom-select-sm"
+            formControlName="distribution" name="distribution" (click)="$event.stopPropagation();">
+        </div>
+      </div>  
+    </form>
+
+  </div>
+</div>

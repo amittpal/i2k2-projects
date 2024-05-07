@@ -1,0 +1,267 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+
+    <div class="card-body scrollable">
+      <form autocomplete="off" class="app-form" id="addQuestionsForm" [formGroup]="addQuestionsFormGroup" novalidate="">
+
+        <div class="row">
+          <!-- Section  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="section" class="col-lg-12 p-2 mb-0">Section #</label>
+            <select class="col-lg-10 p-2 form-control form-control-sm" (change)="valueChange($event)" id="section"
+              name="section" formControlName="section">
+              <option value="">Please Select</option>
+              <option *ngFor="let section of sectionList" [value]="section.id">
+                {{section.section_name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- Name -->
+          <div class="col-lg-3  col-sm-4 form-group trad foc required">
+            <label for="name" class="col-lg-12 p-2 mb-0">section Name</label>
+            <input type="text" style="text-align:left!important" class="col-lg-10 p-2 form-control form-control-sm" name="name" id="name"
+              formControlName="name" required>
+          </div>        
+        </div>
+        
+         <div class="row align-items-center m-3" formGroupName="bulkUpdateForm">
+           <div class="col-md-12">
+            <table class="table" id="tbl-bulk-inputs">
+              <thead>
+                <th></th>
+                <th>Subject</th>
+                <th>Difficulty Level</th>
+                <th *ngIf="allowDurationStatus">Duration/Question</th>
+                <th>Question Type</th>
+                <th>Marks</th>
+                <th *ngIf="isNegativeMarkingEnabled">Negative Marks</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mt-3"> 
+                   <input
+                   type="button"
+                   class="btn btn-outline-primary btn-sm"
+                   id="btn-bulk-unlock"
+                   [value]="allowBulkUpdate ? 'Apply bulk changes':'Unlock bulk update' "
+                   (click)="onBulkUpdateButtonClick()">
+                 </td>
+                  <td class="form-group">                  
+                   <select 
+                     class="form-control-sm w-100" 
+                     id="subjects" 
+                     name="subjects"                     
+                     formControlName="subjects">
+                     <option value="">Custom</option>
+                     <option *ngFor="let subject of selectedSubject" 
+                     [ngValue]="subject">{{subject.name}}
+                     </option>
+                   </select>
+                  </td>
+                  <td class="form-group">                 
+                   <select class="form-control-sm w-100"
+                     formControlName="difficulty_level">
+                     <option value="">Custom</option>
+                     <option *ngFor="let level of difficultyLevelList"
+                      [ngValue]="level">{{level.name}}
+                     </option>
+                   </select>
+                  </td>
+                  <td class="form-group" *ngIf="allowDurationStatus">
+                    <div class="input-group">                     
+                      <input 
+                      type="number"
+                      min=0 
+                      class="form-control form-control-sm" 
+                      id="duration" 
+                      name="duration"
+                      formControlName="duration">
+                      <div class="input-group-append">
+                        <select 
+                        class="form-control form-control-sm" 
+                        id="duration_uom_guid" name="duration_uom_guid"
+                        formControlName="duration_uom_guid">
+                        <option value="">Select</option>
+                        <option *ngFor="let uoms of uomsList"
+                        [ngValue]="uoms">{{uoms.name}}</option>
+                      </select>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="form-group">                  
+                   <select class="form-control-sm w-100" id="question_type" name="question_type"
+                     formControlName="question_type">
+                     <option value="">Custom</option>
+                     <option *ngFor="let question of questionTypeList"
+                     [ngValue]="question">{{question.questionType}}
+                     </option>
+                   </select>
+                  </td>
+                  <td class="form-group">                  
+                   <input 
+                   type="text" 
+                   class="form-control-sm w-100" 
+                   placeholder="00.00"
+                   appTwoDigitDecimaNumber
+                   id="marks" 
+                   name="marks" 
+                   formControlName="marks">
+                  </td>
+                  <td class="form-group" *ngIf="isNegativeMarkingEnabled">                  
+                   <input 
+                   type="text" 
+                   class="form-control-sm w-100"  
+                   placeholder="00.00"
+                   appTwoDigitDecimaNumber
+                   id="negativeMarks" 
+                   name="negativeMarks" 
+                   formControlName="negativeMarks">       
+                  </td>
+                </tr>
+              </tbody>
+            </table>                    
+           </div>
+           
+         </div>
+
+      </form>
+      
+      <div class="card-body">
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table">
+            <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="true"
+              [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+              [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+              [addRows]="false" [dragIcon]="" [dragCss]="" [sortIndexOnDrop]="true"
+              [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+              [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [sortIndexOnDrop]="true"
+              [deleteCss]="{'color': 'red'}">
+
+
+              <!-- Child-Component -->
+              <ng-template #rowDetailExpand let-rowitem="item">
+                <questions-edit-rowdetail [rowItemData]="rowitem" [examId]="examId"
+                  (childComponentData)="getChildComponentData($event)" [item]="rowitem"
+                  (update)="updateProductDetails($event)" 
+                  [disabledQuestionType]="disabledQuestionTypeStatus"
+                  [disabledSubject]="disabledSubjectStatus"
+                  [disabledMarks]="disabledMarksStatus"
+                  [disabledNegativeMarks]="disabledNegativeMarksStatus"
+                  [disabledDuration]="disabledDuration"
+                  [disabledDurationType]="disabledDurationType"
+                  [isNegativeMarkingEnabled]="isNegativeMarkingEnabled"></questions-edit-rowdetail>
+              </ng-template>
+              <!-- Child-Component-end -->
+
+              <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                <ng-template #colHeaderComponent>
+                  <div class="text-center">#</div>
+                </ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+
+                  <div class="text-center">{{rowitem.line_num||rowitem.question_number}}</div>
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Subject -->
+              <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Subject</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                    [(ngModel)]="rowitem.subject_name||rowitem.subject" (click)="$event.stopPropagation();">
+                  <!-- <label class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                   (click)="$event.stopPropagation();">{{rowitem.subject_name||rowitem.name}}</label> -->
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Difficulty Level -->
+              <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Difficulty Level</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                    [(ngModel)]="rowitem.level_name||rowitem.difficulty_levels" (click)="$event.stopPropagation();">
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Duration/Question -->
+              <ngx-ixcheck-table3-column *ngIf="allowDurationStatus" [colType]="'custom'">
+                <ng-template #colHeaderComponent>Duration/Question</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+
+                  <input readonly type="text" class="form-control-sm col-lg-6 col-sm-12 font-size-16  " name="txt_units"
+                    [(ngModel)]="rowitem.duration" (click)="$event.stopPropagation();">
+                  <input readonly type="text" class="form-control-sm col-lg-6 col-sm-12 font-size-16  " name="txt_units"
+                    [(ngModel)]="rowitem.uoms_name||rowitem.duration_um" (click)="$event.stopPropagation();">
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Question Type -->
+              <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Question Type</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <input readonly type="text" class="form-control-sm col-lg-12 col-sm-12 font-size-16  "
+                    name="txt_units" [(ngModel)]="rowitem.question_type_name||rowitem.question_type"
+                    (click)="$event.stopPropagation();">
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Marks -->
+              <ngx-ixcheck-table3-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Marks</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <input readonly type="text" class="form-control-sm col-lg-12 col-sm-12 font-size-16  "
+                    name="txt_units" [(ngModel)]="rowitem.marks" (click)="$event.stopPropagation();">
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+
+              <!-- Negative Marks -->
+              <ngx-ixcheck-table3-column [colType]="'custom'" *ngIf="isNegativeMarkingEnabled">
+                <ng-template #colHeaderComponent>Negative Marks</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <input readonly type="text" class="form-control-sm col-lg-12 col-sm-12 font-size-16  "
+                    name="txt_units" [(ngModel)]="rowitem.Negative_marks||rowitem.negative_marks"
+                    (click)="$event.stopPropagation();">
+                </ng-template>
+              </ngx-ixcheck-table3-column>
+            </ngx-ixcheck-table3>
+            <br>
+            <div  class="row">
+              <div [ngClass]="{'col-9': (allowDurationStatus === true && isNegativeMarkingEnabled === true),
+                               'col-8': (allowDurationStatus === true || isNegativeMarkingEnabled === true),
+                               'col-6': (allowDurationStatus !== true && isNegativeMarkingEnabled !== true)}">
+              </div>
+              <div class="col-1 ml-2">
+                Total
+              </div>
+              <div class="col-1 ml-4">
+                {{items.length}}
+              </div>
+            </div>
+
+            <!-- <div *ngIf="!allowDurationStatus" class="row">
+              <div class="col-8">
+              </div>
+              <div class="col-1 p-0">
+                Total
+              </div>
+              <div class="col-1 ml-n4">
+                {{items.length}}
+              </div>
+            </div> -->
+            
+          </div>
+        </div>
+        <!--End of table 3 -->
+      </div>
+
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" [disabled]="!addQuestionsFormGroup.valid" type="submit"
+        (click)="formSubmit()">Update</button>
+      <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</div>

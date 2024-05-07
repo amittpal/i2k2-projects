@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body scrollable">
+      <!-- <center>
+      <h1>Please do not refresh this page...</h1>
+    </center> -->
+      <div class="app-form">
+        <form novalidate name="PaymentGatewayForm" id="PaymentGatewayForm" [formGroup]="PaymentGatewayFormGroup">
+
+
+          <!-- <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="order_id" class="mb-0">Exam Guid</label>
+            <input type='text' class="form-control form-control-sm" formControlName="exam_guid" name='exam_guid'
+              required readonly>
+          </div> -->
+          <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="reg_id" class="mb-0">Reg Number</label>
+            <input type='text' class="form-control form-control-sm" formControlName="reg_id" name='Customer Id' required
+              readonly>
+          </div>
+          <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="name" class="mb-0">Student Name</label>
+            <input type='text' class="form-control form-control-sm" formControlName="name" name='name'
+              required readonly>
+          </div>
+
+          <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="email" class="mb-0">Email</label>
+            <input type='text' class="form-control form-control-sm" formControlName="email" name='email' required
+              readonly>
+          </div>
+
+          <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="mobile_number" class="mb-0">Mobile #</label>
+            <input type='text' class="form-control form-control-sm" formControlName="mobile_number" name='mobile_number' required
+              readonly>
+          </div>
+          
+
+          <div class="col-lg-2 col-sm-4 form-group trad foc required">
+            <label for="payment_amount" class="mb-0">Payment Amount</label>
+            <input type='text' class="form-control form-control-sm" formControlName="payment_amount"
+              name='Payment Amount' required readonly>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" type="button" (click)="onFormSubmit()">Pay Now</button>
+      <!-- <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button> -->
+    </div>
+  </div>
+</div>

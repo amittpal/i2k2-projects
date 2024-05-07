@@ -1,0 +1,261 @@
+%FormControl{
+    background-color: #fff;
+                background-image: none;
+                border: 1px solid #ced4da;
+                font-family: Arial,sans-serif;
+                //-webkit-appearance: none; //commented as to show dropdown icon
+                color: inherit;
+                outline: 0;
+                padding: 8px 12px;
+                line-height: normal;
+                //font-size: 16px;
+                font-size: 13px;
+                font-weight: 400;
+                vertical-align: middle;
+                min-height: 35px;
+                height: auto;               
+                border-radius: 2px;                
+                &:focus {
+                    border: 1px solid rgba(0,0,0,.14);
+                    background-color: #f2f4f5;
+                    z-index: 999;
+                    box-shadow: none;   
+                    outline: 0;        
+                }
+                &[disabled], &[readonly] {
+                    background: #f9fafa;
+                    //color: rgba(122,137,148,.23);
+                    color:  #7a8994;
+                    &:-moz-placeholder            { color: rgba(122, 137, 148,0.4);opacity: 0.6; } // Firefox 4-18
+                    &::-moz-placeholder           { color: rgba(122, 137, 148,0.4); opacity: 1; } // Firefox 19+
+                    &:-ms-input-placeholder       { color: rgba(122, 137, 148,0.4); opacity: 0.6;} // Internet Explorer 10+
+                    &::-webkit-input-placeholder  { color: rgba(122, 137, 148,0.4); opacity: 0.6;} // Safari and Chrome
+                    &.placeholder                 { color: rgba(122, 137, 148,0.4); opacity: 0.6;} // Fallback                    
+                }
+}
+.app-form{
+    .form-group{
+        //traditional/simple one
+        &.trad{
+            margin-bottom: 10px;
+            &.disabled {
+                background: #f9f9fa;
+                //color: rgba(122,137,148,.23);
+                color:  #7a8994;
+                input {
+                    opacity: .6;
+                }  
+            }
+            label{
+                font-family: Montserrat;
+                font-size: 13px;
+                letter-spacing: .06em;
+                text-transform: uppercase;
+                font-weight: 500;
+                margin-bottom: 3px;
+                color: #000000;
+                // color: rgba(44, 44, 44, 0.35);
+            }
+
+            .form-control{
+                @extend %FormControl;
+            }
+            select.form-control{
+                @extend %FormControl;
+                padding: 8px 12px 8px 8px;
+            }
+            // &.required {
+            //     label:after{
+            //         color: #ea2c54;
+            //         content: "*";
+            //         font-family: Montserrat;
+            //         font-size: 13px;
+            //         font-weight: 500;
+            //         position: absolute;
+            //         padding-left: 0.06rem;
+            //         align-items: initial;
+            //         //right: 15px;
+            //     }
+            // }
+        }
+        &.box{
+            background-color: #fff;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            border-radius: 2px;
+            padding-top: 7px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 4px;
+            width: 100%;
+            margin-bottom: 10px;
+            //-webkit-transition: background-color 0.2s ease;
+            //transition: background-color 0.2s ease;
+                &.required:after{
+                    color: #ea2c54;
+                    content: "*";
+                    font-family: arial;
+                    font-size: 20px;
+                    position: absolute;
+                    right: 15px;
+                    top: 9px;
+                }
+                &.disabled {
+                    background: #f9f9fa;
+                    color: rgba(122,137,148,.23);
+                    input {
+                        opacity: .6;
+                    }  
+                }
+                &.focused,
+                &:focus {
+                    border: 1px solid rgba(0,0,0,.1);
+                    background-color: #f2f4f5;            
+                }
+                &.has-error{
+                    background-color: rgba(234,44,84,.1);
+                }
+                &.has-success .form-control, 
+                &.has-success .form-control:focus, 
+                &.has-error .form-control, 
+                &.has-error .form-control:focus{
+                    border: none;
+                    box-shadow: none;
+                }
+                label{
+                    margin: 0;
+                    display: block;
+                    opacity: 1;
+                    &:not(.error){
+                        font-family:'Montserrat';
+                        font-size: 10.5px;
+                        letter-spacing: 0.06em;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                    }
+                }
+                .form-control{
+                    border: none;
+                    min-height: 25px;
+                    padding: 0;
+                    margin-top: -4px;
+                    background: none;
+                    height: 25px;
+                    font-family: Arial, sans-serif;
+                    -webkit-appearance: none;
+                    color: #373e43;
+                    outline: 0;
+                    line-height: normal;
+                    font-size: 14px;
+                    font-weight: normal;
+                    vertical-align: middle;
+                    box-shadow: none;
+                    border-radius: 2px;
+                    &:focus{
+                        background: none;
+                    }
+                    &textarea{
+                        padding-top: 5px;
+                    }
+                }
+                // css solution for chrome, safari, mozilla: not supported for IE 11, IE Edge and opera mini
+                &.foc{
+                    &:focus,
+                    &:focus-within{
+                        label{
+                            color: #d1cfcf;
+                        }
+                        border: 1px solid rgba(0,0,0,.1);
+                        background-color: #f2f4f5; 
+                        z-index: 999;
+                    }
+                }
+                
+            }
+            
+    }
+    .title{
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+        display: inline-block;
+        letter-spacing: 0.06em;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        padding: 0;
+        line-height: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        filter: alpha(opacity=40);
+        transition: opacity 0.3s ease;
+    }
+    //form validation
+    &.was-validated .form-group.trad{
+        input.ng-invalid,  
+        select.ng-invalid {
+            border: 1px solid lightcoral;
+        }
+        input.ng-valid, 
+        select.ng-valid {
+            border: 1px solid lightgreen;
+        }
+    }
+    
+    
+}
+
+
+.card-footer {
+    background-color: rgba(0,0,0,0);    
+}
+
+.btn {
+    font-family: Montserrat;
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.text-muted {
+    font-family: Montserrat;
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 3px;
+    color: rgba(44, 44, 44, 0.35);
+}
+
+
+.strong{
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 0.06em;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  input[type=search]{
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ced4da;
+    font-family: Arial,sans-serif;
+    color: inherit;
+    outline: 0;
+    padding: 8px 12px;
+    line-height: normal;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+    min-height: 35px;
+    height: auto;
+    border-radius: 2px;
+  }
+  

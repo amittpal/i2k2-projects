@@ -1,0 +1,21 @@
+.form-control-sm {
+    text-align: left !important;
+}
+
+.was-validated {
+  input.ng-invalid,
+  select.ng-invalid {
+    border: 1px solid lightcoral;
+    background: white !important;
+  }
+  input.ng-valid,
+  select.ng-valid {
+    border: 1px solid lightgreen;
+  }
+}
+
+:host ::ng-deep {    
+    .red{
+      border: 1px solid red !important;
+    }
+}

@@ -1,0 +1,123 @@
+
+
+<div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+    <div class="data-table p-0" *ngIf="notFound == false ">            
+      <ngx-ixcheck-table 
+        id="registrations-setup-list" 
+        headerTitle="Exam List" 
+        [items]="items"
+        [indexColumn]="false"         
+        [selectColumn]="false">     
+        <ngx-ixcheck-table-column [property]="'question_number'" [header]="'Question #'" [sortable]="false" [resizable]="true">
+        </ngx-ixcheck-table-column>
+      
+        <ngx-ixcheck-table-column [property]="'completion_status_text'" [header]="'Status'"
+         [sortable]="false" [colType]="'custom'">
+          <ng-template #colDetailComponent let-rowitem="item">           
+            <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span>
+          </ng-template>
+        </ngx-ixcheck-table-column>
+        <ngx-ixcheck-table-column [property]="'created_by'" [header]="'Created By'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+        <ngx-ixcheck-table-column [property]="'reviewed_by'" [header]="'Reviewed By'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+        <ngx-ixcheck-table-column [property]="'approved_by'" [header]="'Approved By'" [sortable]="false">
+        </ngx-ixcheck-table-column>                   
+        <ngx-ixcheck-table-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>Action</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <!--Routes primary question-->
+              <div *ngIf="rowitem.primary_question===1">
+                <div *ngIf="rowitem.completion_status_text === 'Pending'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary" (click)="$event.stopPropagation();">Create</a>              
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Rejected'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary" (click)="$event.stopPropagation();">Manage</a>              
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Created'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary" (click)="$event.stopPropagation();">Manage</a>
+                  <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                    placement="right">
+                    <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                  </a>
+                  <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                    aria-labelledby="button-autoclose1">
+                    <li role="menuitem">
+                      <a class="dropdown-item"
+                        href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/review/primary"
+                        (click)="$event.stopPropagation();">Review</a>
+                    </li>                 
+                  </ul>
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Reviewed'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary" (click)="$event.stopPropagation();">Manage</a>
+                  <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                    placement="right">
+                    <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                  </a>
+                  <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                    aria-labelledby="button-autoclose1">                 
+                    <li role="menuitem">
+                      <a class="dropdown-item" 
+                      href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/approve/primary"
+                      (click)="$event.stopPropagation();">Approve</a>
+                    </li>
+                  </ul>
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Approved'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary" (click)="$event.stopPropagation();">Manage</a>              
+                </div>
+              </div> 
+               <!--Routes secondary question-->
+              <div *ngIf="rowitem.primary_question===0">
+                <div *ngIf="rowitem.completion_status_text === 'Pending'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary" (click)="$event.stopPropagation();">Create</a>              
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Rejected'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary" (click)="$event.stopPropagation();">Manage</a>              
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Created'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary" (click)="$event.stopPropagation();">Manage</a>
+                  <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                    placement="right">
+                    <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                  </a>
+                  <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                    aria-labelledby="button-autoclose1">
+                    <li role="menuitem">
+                      <a class="dropdown-item"
+                        href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/review/secondary"
+                        (click)="$event.stopPropagation();">Review</a>
+                    </li>                 
+                  </ul>
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Reviewed'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary" (click)="$event.stopPropagation();">Manage</a>
+                  <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                    placement="right">
+                    <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                  </a>
+                  <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                    aria-labelledby="button-autoclose1">                 
+                    <li role="menuitem">
+                      <a class="dropdown-item" 
+                      href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/approve/secondary"
+                      (click)="$event.stopPropagation();">Approve</a>
+                    </li>
+                  </ul>
+                </div>
+                <div *ngIf="rowitem.completion_status_text === 'Approved'" class="btn-group" dropdown>
+                  <a href="/#/author/questions/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary" (click)="$event.stopPropagation();">Manage</a>              
+                </div>
+              </div> 
+            </ng-template>
+        </ngx-ixcheck-table-column>
+       
+      </ngx-ixcheck-table>
+    </div>
+    <div class="not-found-container" *ngIf="notFound == true ">
+      <h5>
+        No Data Available...
+      </h5>
+    </div>
+  </div>

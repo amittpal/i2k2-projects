@@ -1,0 +1,247 @@
+<div class="container-fluid">
+    <ng-container *ngIf="examServeStatusDetails.hasExamOfflineTimeExceeded === false  && isExamResumed === true">
+        <div class="table-container" *ngIf="questionDetails !== undefined && viewAnswerSummary ===false">
+            <div class="card card-bordered mb-0">
+                <div class="card-body pt-1 pb-1" id="question_status_summary">
+                    <app-questions-status-summary [SectionStatus]="currentSectionStatusList"
+                        [SectionQuestionStatus]="examQuestionsSummary.section_questions_status"
+                        [SectionsList]="sectionsList" [SelectedQuestionGuid]="selectedQuestionGuid"
+                        [SelectedLanguageGuid]="selectedLanguageGuid"
+                        [SelectedQuestionNumber]="questionDetails.question[0].question_number"
+                        [SelectedSectionGuid]="selectedSectionGuid" [SummaryView]="false" [SelectSection]="selectSection"
+                        [CandidateInformation]="candidateInformation" (questionClickEmitter)="onQuestionNumberClick($event)"
+                        (questionStatusClickEmitter)="onQuestionStatusClick($event)"
+                        (sectionClickEmitter)="onSectionClick($event)">
+                    </app-questions-status-summary>
+                </div>
+            </div>
+            <ng-container *ngIf="fullQuestionView === false">
+                <div class="bg-gray m-0 row">
+                    <div class="col-md-4 left">
+                        <div class="text-center p-1">
+                            <ng-container *ngIf="examType === 'mock'">
+                                <app-exam-type-status [Position]="'center'">
+                                </app-exam-type-status>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center p-1">
+                            <strong><span *ngIf="questionDetails.question[0].section_name">{{questionDetails.question[0].section_name}}</span>
+                                <span *ngIf="questionDetails.question[0].section_name && questionDetails.question[0].subject"> - </span>
+                                <span *ngIf="questionDetails.question[0].subject">{{questionDetails.question[0].subject}}</span>
+                            </strong>                        
+                        </div> 
+                    </div>
+                    <div class="col-md-4 right">
+                        <div class="text-center p-1">
+                            <ng-container *ngIf="examType === 'mock'">
+                                <app-exam-type-status [Position]="'center'">
+                                </app-exam-type-status>
+                            </ng-container>
+                        </div>
+                    </div>                                  
+                </div>
+                <div class="card card-bordered mb-0">
+                    <div class="card-body pt-0 pb-0">
+                        <div class="row" id="questionCard">
+                            <div class="col-md-6 border-right">
+                                <app-question [QuestionDetails]="questionDetails" [LanguagesList]="languagesList"
+                                    [SelectedLanguageGuid]="selectedLanguageGuid"
+                                    (changeLanguageEmitter)="onLanguageChange($event)"></app-question>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row m-1 border-bottom pt-1">
+                                    <div class="col-md-3 p-0">
+                                        <div class="section-head">
+                                            Answer
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-9 text-right p-0">
+                                        <button class="btn btn-info-light p-1 px-3 ml-2"
+                                            (click)="onClearClick()">Clear</button>
+                                        <ng-container
+                                            *ngIf="questionStatusCode === 'QuesMarkReview' then unreview_button else review_button">
+                                        </ng-container>
+                                        <ng-template #review_button>
+                                            <input type="button" class="btn btn-review ml-2 p-1 px-3"
+                                                (click)="onMarkToReviewClick()" value="Review Later">
+                                        </ng-template>
+                                        <ng-template #unreview_button>
+                                            <input type="button" (click)="onMarkToUnreviewClick()"
+                                                class="btn btn-review btn-review ml-2 p-1 px-3" value="Unreview">
+                                        </ng-template>
+    
+                                    </div>
+                                </div>
+                                <div class="p-3 question_answer_fix_height">
+    
+                                    <ng-container [ngSwitch]="questionType">
+                                        <!--single selection question-->
+                                        <ng-container *ngSwitchCase="'SingleChoice'">
+                                            <app-single-choice 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid" 
+                                                [SelectedSectionGuid]= "selectedSectionGuid"
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()">
+                                            </app-single-choice>
+                                        </ng-container>
+    
+                                        <!--multiple selection question-->
+                                        <ng-container *ngSwitchCase="'MultipleChoice'">
+                                            <app-multiple-choice 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-multiple-choice>
+                                        </ng-container>
+    
+                                        <!--question with true false option-->
+                                        <ng-container *ngSwitchCase="'TrueFalse'">
+                                            <app-true-false 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-true-false>
+                                        </ng-container>
+    
+                                        <!-- fill blank question -->
+                                        <ng-container *ngSwitchCase="'FillBlank'">
+                                            <app-fill-blank 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-fill-blank>
+                                        </ng-container>
+    
+                                        <!-- Short Answer question -->
+                                        <ng-container *ngSwitchCase="'ShortAnswer'">
+                                            <app-fill-blank 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-fill-blank>
+                                        </ng-container>
+    
+                                        <!-- match question -->
+                                        <ng-container *ngSwitchCase="'Match'">
+                                            <app-match 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-match>
+                                        </ng-container>
+    
+                                        <!-- subjective question -->
+                                        <ng-container *ngSwitchCase="'Subjective'">
+                                            <app-subjective 
+                                                [QuestionDetails]="questionDetails"
+                                                [AnswerSubmitted]="answerSubmitted"
+                                                [SelectedLanguageGuid]="selectedLanguageGuid"
+                                                [SelectedSectionGuid]= "selectedSectionGuid" 
+                                                [ClearFrom]="clearFormStatus"
+                                                (answerSubmitEmitter)="onAnswerSubmit($event)"
+                                                (answerChangedEmitter)="onQuestionAnswerChangedEmmiter()"></app-subjective>
+                                        </ng-container>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button 
+                                class="btn btn-primary px-4" 
+                                (click)="onFinishExamClick()"
+                                [disabled]="!examServeStatusDetails.isServerOnline">
+                                Finish Exam</button>
+                                <!--btn-info-light-->
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <ng-container *ngIf="questionDetails.question[0].question_number > '1' ">
+                                    <button 
+                                    class="btn btn-primary px-4"
+                                    (click)="onNextOrPreviousClick(false,true)">{{hasAnswerChanged ? 'Save & Prev' : 'Prev'}}</button>
+                                </ng-container>
+    
+                                <button 
+                                class="btn btn-primary ml-3 px-4"
+                                (click)="onNextOrPreviousClick(true,false)">{{hasAnswerChanged ? 'Save & Next' : 'Next'}}</button>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            </ng-container>
+    
+            <ng-container *ngIf="fullQuestionView === true">
+                <div class="card card-bordered">
+                    <div class="card-body pt-0 pb-0">
+                        <app-full-question-view 
+                        [QuestionsList]="examQuestionsSummary.question_summary"
+                        [SelectedLanguageGuid]="selectedLanguageGuid" 
+                        [LanguagesList]="languagesList"
+                        (questionClickEmitter)="onFullQuestionNumberClick($event)" 
+                        (selectLanguageClickEmitter)="onSelectLanguage($event)">
+                        </app-full-question-view>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="not-found-container" *ngIf="questionDetails === undefined">
+            <h5>
+                Please wait while we prepare your exam. <br>
+                Your time will start once the exam is fully downloaded and ready.
+            </h5>
+          </div>
+        <div class="table-container" 
+        *ngIf="viewAnswerSummary === true && examServeStatusDetails.isServerOnline">
+            <app-answers-summary [SectionName]="sectionName" [AnswerSummary]="answerSummary"
+                [QuestionDetails]="questionDetails" [SectionsList]="sectionsList"
+                [SelectedSectionGuid]="selectedSectionGuid" [CandidateInformation]="candidateInformation"
+                (ResumeExamEmitter)="onExamSummaryEmmiter($event)" (SubmitExamEmitter)="onExamComplete($event)">
+            </app-answers-summary>
+        </div>
+        <!-- <ng-container *ngIf="examType === 'mock'">
+             <app-exam-type-status
+             [Position]="'right'">
+            </app-exam-type-status>
+            <app-exam-type-status
+            [Position]="'left'">
+           </app-exam-type-status>
+        </ng-container> -->
+    </ng-container>
+
+    <ng-container *ngIf="isExamResumed === false">
+        <div class="not-found-container">
+            <h5>
+                You can not continue your exam now. <br>
+                You can resume your exam once exam server will be online.
+            </h5>
+          </div>
+    </ng-container>   
+</div>
+
+

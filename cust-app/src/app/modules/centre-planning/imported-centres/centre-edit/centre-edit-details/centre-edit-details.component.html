@@ -1,0 +1,112 @@
+
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="data-table">
+              <ngx-ixcheck-table3 id="centres-grid" headerTitle="centre" [items]="items" [dragColumn]="true"
+                [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'centres-grid'"
+                [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+                [addRows]="false" [dragIcon]="" [dragCss]="" [sortIndexOnDrop]="true"
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [sortIndexOnDrop]="true"
+                [deleteCss]="{'color': 'red'}">
+  
+  
+                <!-- Child-Component -->
+                <ng-template #rowDetailExpand let-rowitem="item">
+                  <app-centre-edit-rowdetails [rowItemData]="rowitem" [examId]="examId"
+                    (childComponentData)="getChildComponentData($event)" [item]="rowitem"
+                    (update)="updateProductDetails($event)" 
+                    [disabledNormalSeat]="disabledNormalSeat"
+                    [disabledPwdSeat]="disabledPwdSeat"></app-centre-edit-rowdetails>
+                </ng-template>
+                <!-- Child-Component-end -->
+                <!-- City -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>City</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                      [(ngModel)]="rowitem.city_name" (click)="$event.stopPropagation();">
+                    <!-- <label class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                     (click)="$event.stopPropagation();">{{rowitem.subject_name||rowitem.name}}</label> -->
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+  
+                <!-- State -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>State</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                      [(ngModel)]="rowitem.state_name" (click)="$event.stopPropagation();">
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+  
+                <!-- Centre Code -->
+                <ngx-ixcheck-table3-column  [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Centre Code</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+  
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_units"
+                      [(ngModel)]="rowitem.code" (click)="$event.stopPropagation();">
+                    
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+  
+
+                
+                <!-- Centre Name -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Centre Name</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16"
+                      name="txt_units" [(ngModel)]="rowitem.name"
+                      (click)="$event.stopPropagation();">
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+  
+                <!-- Centre Address -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Centre Address</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16"
+                      name="txt_units" [(ngModel)]="rowitem.address" (click)="$event.stopPropagation();">
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+  
+                <!-- Total Seat -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Total Seat</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <input readonly type="text" class="form-control-sm col-sm-12 font-size-16"
+                      name="txt_units" [(ngModel)]="rowitem.total_seats"
+                      (click)="$event.stopPropagation();">
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+                  <!-- Normal Seat -->
+                  <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Normal Seat</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                      <input readonly type="text" class="form-control-sm col-sm-12 font-size-16"
+                        name="txt_units" [(ngModel)]="rowitem.normal_seats"
+                        (click)="$event.stopPropagation();">
+                    </ng-template>
+                  </ngx-ixcheck-table3-column>
+
+                  <!-- Ph Seat -->
+                  <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Ph Seat</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                      <input readonly type="text" class="form-control-sm col-sm-12 font-size-16"
+                        name="txt_units" [(ngModel)]="rowitem.pwd_seats"
+                        (click)="$event.stopPropagation();">
+                    </ng-template>
+                  </ngx-ixcheck-table3-column>
+              </ngx-ixcheck-table3>
+              <br>
+            </div>
+          </div>
+          <!--End of table 3 -->
+
+        <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+          (click)="formSubmit()">Update</button>
+        <!-- <button class="btn btn-sm btn-default " type="button" (click)="reset()">Reset</button> -->
+
+  

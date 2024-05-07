@@ -1,0 +1,2140 @@
+{
+  "ReportVersion": "2019.4.1.0",
+  "ReportGuid": "5334c2f8915e4e54aca06ef3f5876a5d",
+  "ReportName": "invoices_view_wt_stamp",
+  "ReportAlias": "invoices_view_wt_stamp",
+  "ReportAuthor": "Avinash Pandey",
+  "ReportCreated": "/Date(1567397916000+0000)/",
+  "ReportChanged": "/Date(1567397916000+0000)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "PreviewSettings": 268435455,
+  "Script": "using System;\r\nusing System.Drawing;\r\nusing System.Windows.Forms;\r\nusing System.Data;\r\nusing Stimulsoft.Controls;\r\nusing Stimulsoft.Base.Drawing;\r\nusing Stimulsoft.Report;\r\nusing Stimulsoft.Report.Dialogs;\r\nusing Stimulsoft.Report.Components;\r\n\r\nnamespace Reports\r\n{\r\n    public class Report : Stimulsoft.Report.StiReport\r\n    {\r\n        public Report()        {\r\n            this.InitializeComponent();\r\n        }\r\n\r\n        #region StiReport Designer generated code - do not modify\r\n\t\t#endregion StiReport Designer generated code - do not modify\r\n    }\r\n}\r\n",
+  "ReferencedAssemblies": {
+    "0": "System.Dll",
+    "1": "System.Drawing.Dll",
+    "2": "System.Windows.Forms.Dll",
+    "3": "System.Data.Dll",
+    "4": "System.Xml.Dll",
+    "5": "Stimulsoft.Controls.Dll",
+    "6": "Stimulsoft.Base.Dll",
+    "7": "Stimulsoft.Report.Dll"
+  },
+  "Dictionary": {
+    "Resources": {
+      "0": {
+        "Name": "Invoice_json_rs",
+        "Alias": "Invoice_json_rs",
+        "Type": "Json",
+        "Image": "oyaj2EqLGZ1K+UiHVVC9vqB09sBSix71ahloksTsdBujXqNWyFQiH5j6SIcB8L39Bvwn9lLAHLXrmEiCgcC9vopEo1LYAVAeSnBIwweWvTQpZOdWUthQ8EpWSIcSdr0Wo8b3UvqLUrUuuW0HgXI8lmrMo1b+iBibirtoB4HC13ejJLcGBgtKtYoRSIRV+L025l6j0KzaE7WKueoNlOy9FkpOoKysC1A0vbkc1IHi/dQpdOVSUgFSWg/8DBbFcv02o16jSvqLGbVcuWgBBdo8taNeoFJSwBR8ntFIDVEo+L7pJKNSVgtQHLozfYfSclQWYV5yjsCLUB1v00iWgXL9lgl0oAhmwFAdf/zZhxJy/b4LXvP+cI5KtUrxfYebcjfUgV7oUtCLfTdruUgTXnK9vgYutk7Qjkm167v9h4Jy/fajXid8UtpKvB752ReQchW+Sl58rFLbUnwruW1UgigVFOlefHJSiwL2XrmdhwFS+JYp3KPQUhsRPF4zfYfScr2+IV4jUsqLUD2sEWiHgdaWvinc88TOiw31rrlIB4HavVEp/KPE1IsRtWq5HJSc6r0USnQ39AiLUP97kdyUXow3d+ZetkpSXzT1ipGsDZDavb6jXqPQBotQtX65SFgS7Bi+o3R8UlaLfZ1Km5rVVeq9neNOc9rMXx+1XrlI1tLuFZaIznAG0ItQtT6Q3deB8NcWBk51UtgLHrW++UiHB3YV/eNeo1JSi30cajNokoJy1RtCFCVSwB96tRtWzYTQdhW+CvygZlKLHvZbuUgHgVI3G+BesmbQC1IcvrlIBxhyt9SjJHP4Uosf9UrRXAHFdnRcz16jVvofH7Vv+ZyHAozXV8jWo1JS2FDX37l51IHuGBSpdClS+AtQXOgxmoeUwNW+o16jUnCLHbWYMYjWB3IXvotOttpSi1Ddb5BIh9P4GL7j9ClS9BtJtS9Wb9cB+Bj0o14lyMDaLxAOUGiHlHI1PEoko2bYCFCcmJHd15RS/jbjdKNSrNpQtUpweYcR8DxRo16mUlKYfbXouWiRgXK9NqFeo8z2Cx5cbzEN1YH4vb4GFLD4Uot63phW6ZMB7JCVC15zUlKLUjRbuU3XgeAV/gv0o+hSX0H1uhBJ14Fq/b6jXilg4ItQEEq5HAeBcny+KXyj9lKLffW++YgTkuxSvot0o1JWi1A/anDq0YHa+PSjFHDIwB4eNEszSAeB9HT+yT52UlIBULUPE8gHxNa3/qOOo1LY3R21rvnphwfsdL7jXqBmUs5QnJ65HIcL8L135oSj8t6LSrVKuayHAe69vqNeI1J+WAjffhBth8r6+BsqJKOsUppQXF78HQEScr37oz6jUlINFBAf27+SC3KV/stUo1JSi1C1z7mchwHYPD+jJKNSSotQnUocbZaB+hc0BsTl9qyeUj9q/EgUgXK9/agUsPL2l0q1XvmsVAHkd77jZLZKUtlc9R5WHNbTdpYbo/z2cPSLXB1qkGjBgfpSl6MUo0r2i30cSnAcU1IovZyIXqP6zItctWoQ/cxecv0bozejVtoLCD9K+emHxdoXvoF0JVbgWBScf7tI18RyNb7jjqNSrJ8FPd6ST1eBctW+o14jVsieevZKM0gUBFC0/aNFI1JWC1BcStJIhNQovRajXvb41IsfHoq5iNWCcpVR5l6jUlKNUJ1PuZwBXiZS/kxe81JSiwQ/rrm8B0LevbwiLKNSTosF9Wq56dLTQDS+41SjUqxUULUv90jWgXL9vgtOo8hS2VC1StFIWIHi+L5KpSXOUotQEN652YMBRrb+o6U3fMiLET3rukmDyvq9vKNecFbMWAW1irl8hwvsl74KRPLQ2AFQ9Q8RmsGB1FT+o17oBtALUP9K0+kTgXK3Vyueo1Jmiy896DNIAoH6VDSjXiPIcp1Q9n4cnVgBdr03Cl63UsBPBLVquUiHlWq9UYh8d1ZSixFcD9Fohwty/Xej3uVS2JgVtUrTSYcSUL20Czd/TAbYH/Xou9zMB4y9F6NUowaAUlLd39GsV4GMvfQJ/CP4wpgfWn+5DtIBdpS+oV62zszdLx/L+UgUlIz4UQEsc3b6iBWdHjNt1JBylZyjJPP0UotQHEr56syUUBW+o153+tDeUPauEAzM03K9/uOl8lJK2VA83rloDYHsVDTjziVSCIgVtW+5SIQHcr036SynUvRUGZgO02gUgUY8vqNE8/h4nhS1vflIB1EovTfjN6dSUtpQWkoxSIdQ7pW+inToZmDAL93e/FySkGr9Pyl0o1LK2kk/D7mcAYLavTQp/KPY+pJQNGq5SFiB7Df+43Rn9NbPHTRKuYwBAfi91CleI3L6mAX12xFoh4JyN76jLKPUwJ9QP0pYSMOBWL28Kl4l2gjeQDRK+dxUgfC2vqNeMFIGi1K1SreIh4GUFZyjXnxSVs0Wt14TSFRelBgUo16jcFLaExBquVkHVXa9+6Ne81L6C1C1mJBtzBJG+L6AXilS1h4FtUq5aIfQUBS+io4jUkoXEXxKmx2HC/i9FKleo1Ly232XSrJIDVHslRYGPiPO+gFKtS+5aAcBcjWWo/0jVgiZUH9euUiCkHJ10KP88ZpSi1D1bht9w17WvZwBXqPMCB5Su1u5SAeB1P42414wzgaYEbVqM2jEgXaVP6M88gjUH1CcDZGa19SMcBaBxHz6Sg0Ntc8SaA0B0hO+o46jjtgLHLWYuUhXgvS90aN0oFJKmHo/StPphwtyvZYpVOhScgtQtUq5GQ1eWFRX4JSjUqyLUj9KVklXUl7+viJEo/r2VEq1mPlIh4FWvVGj5qMGcl8ZEA4cmsyBchfUo3yjUlLaHLUP+pyEQnIY16Olo/JSi1C1vTFIVIH4FVGj9qNmUgsEWg+53IeU4L37bk6jYlaIHhx+OEjX0XL4+8HNo8hSixz1H5Hqh1JyNP6jTvFyVgsR9Q/5aA0L2BcWi06jUlKLBd+++UiUgfoVN+n8sthy3VDwanDqBxVyvb6jfOf6clhQ/96RSYfQ4Bi+Bl63+lIfXB+++Q+HHdYVV6OlpghSC1LbH7lIDURyvTSj3qNSUotBnEoxmpKBjBj7avSjUlLeUjwP+bzVgVK3/k90o2ZS3Xo/GvlIB4Gw1f4iN3xSUtpQHx65v5FSjDwW43QpCFILerU/ub9XlEb9+6k0I5JSixH1vnDpVcXuUv0L9qNW+toEEIq5aFXQdjw8K15nUvKLFTS9uU2H0HKVvssu5cz6iB7wSvl91dFy1/vJfKNSVtRclg+QaAGBcr12yV6jrKyLULVKHFnWRCa9NOPs9WBSVB216/p8h4FynxujXqNSVoh93w/6SAGBeP39o153VlLfFd6810mHUSifFgvEI1J4wFJ0fzBIh9Jy9XyjTqMGUosefGq5SIfKchX9qfbxVlILSpZK87xY3Pq9/qNOo1KsixV8Srm/h4FyNf2j/CMIVotQPJjzHJaBctf9j17oVvQLUN3r+g3XgYx3vgl8I1KOCyQ/ShxtWIHsN76jD7ZSUotS9egQHNWBVDf+CRSjUvRfFXgOOEiHgUbXFaFeo9jWi1C/SvloUwFy+L4pXqN2Vt5Q9ZgTSIcBcnQWo16j1lbPBD9KEQ1U0HK9FuF85lLYnwS8qrl91YL4vb7jXjf6Ut4rfF75SFfHJr13414jVlJTEb6uuUiVBUJ0vubeo1LOixUdSnSozAH4vZbgXvPg+F9F30q6v4cBXFS+y8Sj1FJYULWYuUjWAUb9FgvOtsrAi3paarloBMRyGL4LXvPQzItKXV65SIeB7Nb+gSS6UvraRj++M0gN0XI11Ep8o3rOARU/vrdI11Xu+DaLXqNWCItQNJj5fIeBdhi+oV7xdlKIULUeuXmHgXLVvqOOo2ZSi1Kd6Pzp0YJyN76jJeesZg4RtUr52YcB6r3WKTcjUlKLCbVe+YiHgSY1vgZOZ95SDREcflBth4Hs/r5pPjBSUotc8Eq5aNga8L2+4KWjZlKIULV/ud1YVfg1vKPeI1LQzx8QWzFIBwHaFxajXiNSUotFtb4cSMHRcjW+5l4pzsABUD9KeNyHynKfvgpO6NDi2lC/SrkNFAtSvdSjN6P2ZgtStUv8rANeUL2+yV62UlLaULVKuUjV13LXnOMPo1ZOnyU9/fdZV9TYvZZLJLJSzIgC8P+RTYeBcjW+C8Qpjvreej1KMHlYgUb3FOPMclIGmi21DdNokoFy874GXiNS+gtQHUr5nJOBdv2+4F7zUrRYUD/eOGiH1Oj4liLMo1JS2hT1b/xth8rqN74hzOhSVgEItWq5DZLRQvi+5jQ39giLApwfWIiWAfj9vqNeo0pSmHq1b/dZh1Ry1xXjPilwrJ9Q8F65iBfS7p4e41S2SlLeGXwLEerSgdo="
+      }
+    },
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "invoices_data_customer_info",
+        "Alias": "invoices_data_customer_info",
+        "Key": "df453f4cfafc486fb19e0add202c07d9",
+        "Columns": {
+          "0": {
+            "Name": "id",
+            "Index": -1,
+            "NameInSource": "id",
+            "Alias": "id",
+            "Type": "System.Decimal"
+          },
+          "1": {
+            "Name": "sub_customer_id",
+            "Index": -1,
+            "NameInSource": "sub_customer_id",
+            "Alias": "sub_customer_id",
+            "Type": "System.Decimal"
+          },
+          "2": {
+            "Name": "customer_number",
+            "Index": -1,
+            "NameInSource": "customer_number",
+            "Alias": "customer_number",
+            "Type": "System.Decimal"
+          },
+          "3": {
+            "Name": "gst_number",
+            "Index": -1,
+            "NameInSource": "gst_number",
+            "Alias": "gst_number",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "type_id",
+            "Index": -1,
+            "NameInSource": "type_id",
+            "Alias": "type_id",
+            "Type": "System.Decimal"
+          },
+          "5": {
+            "Name": "type",
+            "Index": -1,
+            "NameInSource": "type",
+            "Alias": "type",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "company",
+            "Index": -1,
+            "NameInSource": "company",
+            "Alias": "company",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "state_id",
+            "Index": -1,
+            "NameInSource": "state_id",
+            "Alias": "state_id",
+            "Type": "System.Decimal"
+          },
+          "8": {
+            "Name": "state_code",
+            "Index": -1,
+            "NameInSource": "state_code",
+            "Alias": "state_code",
+            "Type": "System.String"
+          },
+          "9": {
+            "Name": "email",
+            "Index": -1,
+            "NameInSource": "email",
+            "Alias": "email",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "full_name",
+            "Index": -1,
+            "NameInSource": "full_name",
+            "Alias": "full_name",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "address",
+            "Index": -1,
+            "NameInSource": "address",
+            "Alias": "address",
+            "Type": "System.String"
+          },
+          "12": {
+            "Name": "full_address",
+            "Index": -1,
+            "NameInSource": "full_address",
+            "Alias": "full_address",
+            "Type": "System.String"
+          },
+          "13": {
+            "Name": "street_number",
+            "Index": -1,
+            "NameInSource": "street_number",
+            "Alias": "street_number",
+            "Type": "System.String"
+          },
+          "14": {
+            "Name": "street_address",
+            "Index": -1,
+            "NameInSource": "street_address",
+            "Alias": "street_address",
+            "Type": "System.String"
+          },
+          "15": {
+            "Name": "city",
+            "Index": -1,
+            "NameInSource": "city",
+            "Alias": "city",
+            "Type": "System.String"
+          },
+          "16": {
+            "Name": "state",
+            "Index": -1,
+            "NameInSource": "state",
+            "Alias": "state",
+            "Type": "System.String"
+          },
+          "17": {
+            "Name": "country",
+            "Index": -1,
+            "NameInSource": "country",
+            "Alias": "country",
+            "Type": "System.String"
+          },
+          "18": {
+            "Name": "post_code",
+            "Index": -1,
+            "NameInSource": "post_code",
+            "Alias": "post_code",
+            "Type": "System.String"
+          },
+          "19": {
+            "Name": "phone",
+            "Index": -1,
+            "NameInSource": "phone",
+            "Alias": "phone",
+            "Type": "System.String"
+          },
+          "20": {
+            "Name": "mobile",
+            "Index": -1,
+            "NameInSource": "mobile",
+            "Alias": "mobile",
+            "Type": "System.String"
+          },
+          "21": {
+            "Name": "create_date",
+            "Index": -1,
+            "NameInSource": "create_date",
+            "Alias": "create_date",
+            "Type": "System.String"
+          },
+          "22": {
+            "Name": "expire_date",
+            "Index": -1,
+            "NameInSource": "expire_date",
+            "Alias": "expire_date",
+            "Type": "System.String"
+          },
+          "23": {
+            "Name": "invoice_date",
+            "Index": -1,
+            "NameInSource": "invoice_date",
+            "Alias": "invoice_date",
+            "Type": "System.String"
+          },
+          "24": {
+            "Name": "due_date",
+            "Index": -1,
+            "NameInSource": "due_date",
+            "Alias": "due_date",
+            "Type": "System.String"
+          },
+          "25": {
+            "Name": "approval_status",
+            "Index": -1,
+            "NameInSource": "approval_status",
+            "Alias": "approval_status",
+            "Type": "System.Boolean"
+          },
+          "26": {
+            "Name": "invoice_id",
+            "Index": -1,
+            "NameInSource": "invoice_id",
+            "Alias": "invoice_id",
+            "Type": "System.Decimal"
+          },
+          "27": {
+            "Name": "invoice_number",
+            "Index": -1,
+            "NameInSource": "invoice_number",
+            "Alias": "invoice_number",
+            "Type": "System.Decimal"
+          },
+          "28": {
+            "Name": "indian_currency",
+            "Index": -1,
+            "NameInSource": "indian_currency",
+            "Alias": "indian_currency",
+            "Type": "System.String"
+          },
+          "29": {
+            "Name": "amount",
+            "Index": -1,
+            "NameInSource": "amount",
+            "Alias": "amount",
+            "Type": "System.Decimal"
+          },
+          "30": {
+            "Name": "paid_amount",
+            "Index": -1,
+            "NameInSource": "paid_amount",
+            "Alias": "paid_amount",
+            "Type": "System.Decimal"
+          },
+          "31": {
+            "Name": "balance_amount",
+            "Index": -1,
+            "NameInSource": "balance_amount",
+            "Alias": "balance_amount",
+            "Type": "System.Decimal"
+          },
+          "32": {
+            "Name": "invoice_status",
+            "Index": -1,
+            "NameInSource": "invoice_status",
+            "Alias": "invoice_status",
+            "Type": "System.Decimal"
+          },
+          "33": {
+            "Name": "invoice_status_text",
+            "Index": -1,
+            "NameInSource": "invoice_status_text",
+            "Alias": "invoice_status_text",
+            "Type": "System.String"
+          },
+          "34": {
+            "Name": "notes",
+            "Index": -1,
+            "NameInSource": "notes",
+            "Alias": "notes",
+            "Type": "System.String"
+          },
+          "35": {
+            "Name": "discount_type_id",
+            "Index": -1,
+            "NameInSource": "discount_type_id",
+            "Alias": "discount_type_id",
+            "Type": "System.Decimal"
+          },
+          "36": {
+            "Name": "discount_type",
+            "Index": -1,
+            "NameInSource": "discount_type",
+            "Alias": "discount_type",
+            "Type": "System.String"
+          },
+          "37": {
+            "Name": "discount_type_unit",
+            "Index": -1,
+            "NameInSource": "discount_type_unit",
+            "Alias": "discount_type_unit",
+            "Type": "System.String"
+          },
+          "38": {
+            "Name": "discount_value",
+            "Index": -1,
+            "NameInSource": "discount_value",
+            "Alias": "discount_value",
+            "Type": "System.Decimal"
+          },
+          "39": {
+            "Name": "tax_id",
+            "Index": -1,
+            "NameInSource": "tax_id",
+            "Alias": "tax_id",
+            "Type": "System.Decimal"
+          },
+          "40": {
+            "Name": "tax_code",
+            "Index": -1,
+            "NameInSource": "tax_code",
+            "Alias": "tax_code",
+            "Type": "System.String"
+          },
+          "41": {
+            "Name": "tax_type",
+            "Index": -1,
+            "NameInSource": "tax_type",
+            "Alias": "tax_type",
+            "Type": "System.String"
+          },
+          "42": {
+            "Name": "tax_rate",
+            "Index": -1,
+            "NameInSource": "tax_rate",
+            "Alias": "tax_rate",
+            "Type": "System.Decimal"
+          },
+          "43": {
+            "Name": "total_amount",
+            "Index": -1,
+            "NameInSource": "total_amount",
+            "Alias": "total_amount",
+            "Type": "System.Decimal"
+          },
+          "44": {
+            "Name": "total_amount_in_words",
+            "Index": -1,
+            "NameInSource": "total_amount_in_words",
+            "Alias": "total_amount_in_words",
+            "Type": "System.String"
+          },
+          "45": {
+            "Name": "igst_tax_amount",
+            "Index": -1,
+            "NameInSource": "igst_tax_amount",
+            "Alias": "igst_tax_amount",
+            "Type": "System.Decimal"
+          },
+          "46": {
+            "Name": "cgst_tax_amount",
+            "Index": -1,
+            "NameInSource": "cgst_tax_amount",
+            "Alias": "cgst_tax_amount",
+            "Type": "System.Decimal"
+          },
+          "47": {
+            "Name": "sgst_tax_amount",
+            "Index": -1,
+            "NameInSource": "sgst_tax_amount",
+            "Alias": "sgst_tax_amount",
+            "Type": "System.Decimal"
+          },
+          "48": {
+            "Name": "sub_total_amount",
+            "Index": -1,
+            "NameInSource": "sub_total_amount",
+            "Alias": "sub_total_amount",
+            "Type": "System.Decimal"
+          },
+          "49": {
+            "Name": "total_amount_after_discount",
+            "Index": -1,
+            "NameInSource": "total_amount_after_discount",
+            "Alias": "total_amount_after_discount",
+            "Type": "System.Decimal"
+          },
+          "50": {
+            "Name": "taxable_amount",
+            "Index": -1,
+            "NameInSource": "taxable_amount",
+            "Alias": "taxable_amount",
+            "Type": "System.Decimal"
+          },
+          "51": {
+            "Name": "non_taxable_amount",
+            "Index": -1,
+            "NameInSource": "non_taxable_amount",
+            "Alias": "non_taxable_amount",
+            "Type": "System.Decimal"
+          },
+          "52": {
+            "Name": "tax_amount",
+            "Index": -1,
+            "NameInSource": "tax_amount",
+            "Alias": "tax_amount",
+            "Type": "System.Decimal"
+          },
+          "53": {
+            "Name": "discount_amount",
+            "Index": -1,
+            "NameInSource": "discount_amount",
+            "Alias": "discount_amount",
+            "Type": "System.Decimal"
+          },
+          "54": {
+            "Name": "relationId",
+            "Index": -1,
+            "NameInSource": "relationId",
+            "Alias": "relationId",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.invoices_data_customer_info"
+      },
+      "1": {
+        "Ident": "StiDataTableSource",
+        "Name": "invoices_data_order_info",
+        "Alias": "invoices_data_order_info",
+        "Key": "2f812f4c50074a23ab375e94dd7b15e2",
+        "Columns": {
+          "0": {
+            "Name": "id",
+            "Index": -1,
+            "NameInSource": "id",
+            "Alias": "id",
+            "Type": "System.Decimal"
+          },
+          "1": {
+            "Name": "order_number",
+            "Index": -1,
+            "NameInSource": "order_number",
+            "Alias": "order_number",
+            "Type": "System.Decimal"
+          },
+          "2": {
+            "Name": "order_type_id",
+            "Index": -1,
+            "NameInSource": "order_type_id",
+            "Alias": "order_type_id",
+            "Type": "System.Decimal"
+          },
+          "3": {
+            "Name": "order_type",
+            "Index": -1,
+            "NameInSource": "order_type",
+            "Alias": "order_type",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "order_category_id",
+            "Index": -1,
+            "NameInSource": "order_category_id",
+            "Alias": "order_category_id",
+            "Type": "System.Decimal"
+          },
+          "5": {
+            "Name": "order_category",
+            "Index": -1,
+            "NameInSource": "order_category",
+            "Alias": "order_category",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "relationId",
+            "Index": -1,
+            "NameInSource": "relationId",
+            "Alias": "relationId",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.invoices_data_order_info"
+      },
+      "2": {
+        "Ident": "StiDataTableSource",
+        "Name": "invoices_data",
+        "Alias": "invoices_data",
+        "Key": "86dde29bd1ab4dbd9b03049ce3d2ba41",
+        "Columns": {
+          "0": {
+            "Name": "customer_info",
+            "Index": -1,
+            "NameInSource": "customer_info",
+            "Alias": "customer_info",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "order_info",
+            "Index": -1,
+            "NameInSource": "order_info",
+            "Alias": "order_info",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "relationId",
+            "Index": -1,
+            "NameInSource": "relationId",
+            "Alias": "relationId",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.invoices_data"
+      },
+      "3": {
+        "Ident": "StiDataTableSource",
+        "Name": "invoices",
+        "Alias": "invoices",
+        "Key": "054266a91c7447cd91389bf10659a721",
+        "Columns": {
+          "0": {
+            "Name": "id",
+            "Index": -1,
+            "NameInSource": "id",
+            "Alias": "id",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "type",
+            "Index": -1,
+            "NameInSource": "type",
+            "Alias": "type",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "data",
+            "Index": -1,
+            "NameInSource": "data",
+            "Alias": "data",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.invoices"
+      },
+      "4": {
+        "Ident": "StiDataTableSource",
+        "Name": "tax_items",
+        "Alias": "tax_items",
+        "Key": "a26cc5595f1a4d988393c9d3058469d3",
+        "Columns": {
+          "0": {
+            "Name": "name",
+            "Index": -1,
+            "NameInSource": "name",
+            "Alias": "name",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "tax_rate",
+            "Index": -1,
+            "NameInSource": "tax_rate",
+            "Alias": "tax_rate",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "amount",
+            "Index": -1,
+            "NameInSource": "amount",
+            "Alias": "amount",
+            "Type": "System.Decimal"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.tax_items"
+      },
+      "5": {
+        "Ident": "StiDataTableSource",
+        "Name": "discount",
+        "Alias": "discount",
+        "Key": "c5f6bb559b704718a938ab563a97dd9a",
+        "Columns": {
+          "0": {
+            "Name": "discount_type_id",
+            "Index": -1,
+            "NameInSource": "discount_type_id",
+            "Alias": "discount_type_id",
+            "Type": "System.Decimal"
+          },
+          "1": {
+            "Name": "discount_type",
+            "Index": -1,
+            "NameInSource": "discount_type",
+            "Alias": "discount_type",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "discount_type_unit",
+            "Index": -1,
+            "NameInSource": "discount_type_unit",
+            "Alias": "discount_type_unit",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "discount_value",
+            "Index": -1,
+            "NameInSource": "discount_value",
+            "Alias": "discount_value",
+            "Type": "System.Decimal"
+          },
+          "4": {
+            "Name": "discount_amount",
+            "Index": -1,
+            "NameInSource": "discount_amount",
+            "Alias": "discount_amount",
+            "Type": "System.Decimal"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.discount"
+      },
+      "6": {
+        "Ident": "StiDataTableSource",
+        "Name": "lineitems",
+        "Alias": "lineitems",
+        "Key": "3a0dec3d2c384dff9b8afe9411c921d1",
+        "Columns": {
+          "0": {
+            "Name": "product_type_id",
+            "Index": -1,
+            "NameInSource": "product_type_id",
+            "Alias": "product_type_id",
+            "Type": "System.Decimal"
+          },
+          "1": {
+            "Name": "product_id",
+            "Index": -1,
+            "NameInSource": "product_id",
+            "Alias": "product_id",
+            "Type": "System.Decimal"
+          },
+          "2": {
+            "Name": "hsc_code_id",
+            "Index": -1,
+            "NameInSource": "hsc_code_id",
+            "Alias": "hsc_code_id",
+            "Type": "System.Decimal"
+          },
+          "3": {
+            "Name": "hsc_code",
+            "Index": -1,
+            "NameInSource": "hsc_code",
+            "Alias": "hsc_code",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "product_type_name",
+            "Index": -1,
+            "NameInSource": "product_type_name",
+            "Alias": "product_type_name",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "product_desc",
+            "Index": -1,
+            "NameInSource": "product_desc",
+            "Alias": "product_desc",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "units",
+            "Index": -1,
+            "NameInSource": "units",
+            "Alias": "units",
+            "Type": "System.Decimal"
+          },
+          "7": {
+            "Name": "amount",
+            "Index": -1,
+            "NameInSource": "amount",
+            "Alias": "amount",
+            "Type": "System.Decimal"
+          },
+          "8": {
+            "Name": "total_amount",
+            "Index": -1,
+            "NameInSource": "total_amount",
+            "Alias": "total_amount",
+            "Type": "System.Decimal"
+          },
+          "9": {
+            "Name": "line_num",
+            "Index": -1,
+            "NameInSource": "line_num",
+            "Alias": "line_num",
+            "Type": "System.Decimal"
+          },
+          "10": {
+            "Name": "is_taxable",
+            "Index": -1,
+            "NameInSource": "is_taxable",
+            "Alias": "is_taxable",
+            "Type": "System.Decimal"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.lineitems"
+      },
+      "7": {
+        "Ident": "StiDataTableSource",
+        "Name": "stats",
+        "Alias": "stats",
+        "Key": "2207cf960bfb433382212759a06de5b8",
+        "Columns": {
+          "0": {
+            "Name": "cached_check_time",
+            "Index": -1,
+            "NameInSource": "cached_check_time",
+            "Alias": "cached_check_time",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "sql_conn_time",
+            "Index": -1,
+            "NameInSource": "sql_conn_time",
+            "Alias": "sql_conn_time",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "sql_query_time",
+            "Index": -1,
+            "NameInSource": "sql_query_time",
+            "Alias": "sql_query_time",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "loop_time",
+            "Index": -1,
+            "NameInSource": "loop_time",
+            "Alias": "loop_time",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "Invoice_json_rs.stats"
+      }
+    },
+    "Databases": {
+      "0": {
+        "Ident": "StiJsonDatabase",
+        "Name": "Invoice_json_rs",
+        "Alias": "Invoice_json_rs",
+        "PathData": "resource://Invoice_json_rs"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "bdec93823d254f26eb99e4074c7162f5",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:",
+      "Components": {
+        "0": {
+          "Ident": "StiPageFooterBand",
+          "Name": "PageFooterBand1",
+          "ClientRectangle": "0,32.64,19,0.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text55",
+              "Guid": "3730632ed27ee38f275c9f0ae36cb877",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0,0.16,19,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{PageNofM} ( Inv No. {invoices_data_customer_info.invoice_number})"
+              },
+              "HorAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        },
+        "1": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand1",
+          "ClientRectangle": "0,0.4,19,3.4",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text1",
+              "Guid": "66883257b6e744353a1add46c5f03f2e",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0,4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "GSTIN : 09AABCI7220A1Z3"
+              },
+              "Font": ";;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text2",
+              "Guid": "85c6ba8d0a65b7a15d240d3263229478",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "8.4,0.4,2.4,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "TAX INVOICE"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": "Bottom;;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text3",
+              "Guid": "c752d035787d3dee52e85eb5bb3793ce",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,1,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "i2k2 Networks Pvt. Ltd."
+              },
+              "HorAlignment": "Center",
+              "Font": ";12;Bold;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text4",
+              "Guid": "59ccfcd88f73c41139423d03a78b9d36",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,1.6,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Spring Meadows Business Park, A-61B/4 & 4A,First Floor,Sector-63 "
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text5",
+              "Guid": "bbfe2307fd190dcc005a5c1e2024d86a",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,2,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Noida-201301, CIN : U72300DL2007PTC166707 "
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text7",
+              "Guid": "1ab053adee4cba24aaacd223ac4f92e0",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,2.4,18.2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "PAN : AABCI7220A"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text6",
+              "Guid": "58b52782e33483121c4f15b6bdb4621d",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,2.8,18.2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Tel. : 0120-4663009 ,    email : accounts@i2k2.com"
+              },
+              "HorAlignment": "Center",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "2": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand2",
+          "ClientRectangle": "0,4.6,19,3.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text8",
+              "Guid": "20fccdeb8744e5c10c73a673f4f9fd50",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0.2,3.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Party Details :"
+              },
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text9",
+              "Guid": "ecc83df42f3bd7763a7a376ed2ea415e",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0.6,8.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.company}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text10",
+              "Guid": "b866b5142959981341e1c1066e7a5d76",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1,8.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.full_name}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text11",
+              "Guid": "282f7e644a594d82f918e43f4f35d890",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1.4,8.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.address}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "DataColumn"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text12",
+              "Guid": "617a5278486e99ed09ac8a0219e80328",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,2.2,6.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Mob : {invoices_data_customer_info.mobile}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text13",
+              "Guid": "006d5d073390b177110797ab63da9ddf",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,2.6,8.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Email : {invoices_data_customer_info.email}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text14",
+              "Guid": "8dd09d166447bc0ba3aa9f89f9f7c1c7",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.4,0.6,3.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":  {invoices_data_customer_info.invoice_number}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "7": {
+              "Ident": "StiText",
+              "Name": "Text15",
+              "Guid": "9f50dd6a0530f547acb5439b42f3c0b8",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,0.6,2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Invoice No."
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "8": {
+              "Ident": "StiText",
+              "Name": "Text16",
+              "Guid": "b9ed35976d93c016305f4538ff131270",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,1,2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Dated"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "9": {
+              "Ident": "StiText",
+              "Name": "Text17",
+              "Guid": "2ce2e2ffc0e7902a61bff289b9fa291d",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.4,1,3.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":  {invoices_data_customer_info.invoice_date}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "10": {
+              "Ident": "StiText",
+              "Name": "Text45",
+              "Guid": "3d1be452cb66790d954d58ca48b8fce2",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,0.2,2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Order No."
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "11": {
+              "Ident": "StiText",
+              "Name": "Text46",
+              "Guid": "468a267d809d781b95ec05685f852d38",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.4,0.2,3.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":  {invoices_data_order_info.id}"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "12": {
+              "Ident": "StiText",
+              "Name": "Text47",
+              "Guid": "a1efa4d61049acbf2fce7534d522e419",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1.8,8.8,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.city} - {invoices_data_customer_info.post_code}, {invoices_data_customer_info.state}"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "13": {
+              "Ident": "StiText",
+              "Name": "Text28",
+              "Guid": "4fcb48d7db60af4195280c5f739b4210",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,1.4,2.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Place of Supply"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "14": {
+              "Ident": "StiText",
+              "Name": "Text29",
+              "Guid": "9b8c0169401aa1493c28f779084c41c3",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.4,1.4,3.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":  {invoices_data_customer_info.state} ({invoices_data_customer_info.state_code})"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "15": {
+              "Ident": "StiText",
+              "Name": "Text30",
+              "Guid": "0f2d5c29704b8cd23447b0d632bcfd4c",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "12.6,1.8,2.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Reverse Charge"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "16": {
+              "Ident": "StiText",
+              "Name": "Text58",
+              "Guid": "229a859c1ea3dd3f0f73141b4dc088df",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.4,1.8,1.6,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":   N"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "17": {
+              "Ident": "StiText",
+              "Name": "Text59",
+              "Guid": "632cf63d04c14c72d9ba42693b64d18d",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,3,9.2,0.4",
+              "Conditions": {
+                "0": {
+                  "Ident": "StiCondition",
+                  "Item": "Expression",
+                  "Expression": {
+                    "Value": "{ {invoices_data_customer_info.gst_number}  == ''}"
+                  },
+                  "Enabled": false,
+                  "BorderSides": "None"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "GSTIN / UIN   :  {invoices_data_customer_info.gst_number}"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "3": {
+          "Ident": "StiHeaderBand",
+          "Name": "HeaderBand1",
+          "ClientRectangle": "0,9,19,0.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text18",
+              "Guid": "b5805f4cb5ea43ee73424bcc96523969",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0,0.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "S.N."
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text21",
+              "Guid": "6b8e29daeb27d15c6782bb8b06eff54b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.2,0,3.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Amounts ({invoices_data_customer_info.indian_currency})"
+              },
+              "HorAlignment": "Right",
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text48",
+              "Guid": "7818fb955ce9fc641d4c71324183c33e",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.8,0,1,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Qty"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text50",
+              "Guid": "2369aa4a878c7badb982644ad63dc0a0",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "13,0,2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Price ({invoices_data_customer_info.indian_currency})"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text19",
+              "Guid": "203fcdeab73e2f02c1da5399d46be14c",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "1.2,0,6.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Description of goods"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text20",
+              "Guid": "211d2862536f5acdff3ca00d4d5c59ba",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "8.6,0,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "HSN/SAC Code"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "4": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand1",
+          "ClientRectangle": "0,10.4,19,0.8",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text23",
+              "Guid": "2e1807774a899b9ad0e597e6ce0bdfc3",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "15.2,0.2,3.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{lineitems.total_amount}"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false
+              }
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text24",
+              "Guid": "b9e2a323c7b974bd18c5026e02eee889",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0.2,0.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Line}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text49",
+              "Guid": "ed8a48133b7c834b678301d81f310051",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.8,0.2,1,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{lineitems.units}"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text51",
+              "Guid": "9453e3487e11f68ec1504ab5f27bc8a7",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "13,0.2,2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{lineitems.amount}"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false
+              }
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text27",
+              "Guid": "6fabf5c8e61bb1a1a7931f8cda05cd56",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "8.6,0.2,3,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{lineitems.hsc_code}"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text22",
+              "Guid": "46a2aae4b0cf20f6fd2f3b95ed95ad2b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "1.2,0.2,7.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{lineitems.product_desc}"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0"
+            }
+          },
+          "DataSourceName": "lineitems"
+        },
+        "5": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand4",
+          "Guid": "15510449870ef6785ee14834f0bea9dc",
+          "ClientRectangle": "0,12,19,0.8",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": "Top;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text26",
+              "Guid": "4b2f9a93fa60a5ff4ddf5413c253d7ed",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.2,0.4,3.2,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Total ({invoices_data_customer_info.indian_currency})"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text25",
+              "Guid": "2fd0a2f9d24f707c87638dbae2c246c0",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.8,0.4,4,0.4",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.sub_total_amount}"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false,
+                "State": "NegativeInRed"
+              }
+            }
+          }
+        },
+        "6": {
+          "Ident": "StiDataBand",
+          "Name": "DataBand2",
+          "ClientRectangle": "0,13.6,19,0.6",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text56",
+              "Guid": "f8a3cd9d2c4de083073823c0e2bf835d",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.2,0,3.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Add : {tax_items.name}({tax_items.tax_rate})"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text57",
+              "Guid": "69aebf5b35ed7c1614a48b2973a7ad6a",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.8,0,4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{tax_items.amount}"
+              },
+              "HorAlignment": "Right",
+              "VertAlignment": "Center",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false
+              }
+            }
+          },
+          "DataSourceName": "tax_items"
+        },
+        "7": {
+          "Ident": "StiFooterBand",
+          "Name": "FooterBand1",
+          "ClientRectangle": "0,15,19,2.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text31",
+              "Guid": "1746b5512002c534a969f08acb06a5f2",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.2,0.8,3.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Grand Total ({invoices_data_customer_info.indian_currency})"
+              },
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text32",
+              "Guid": "e5c6d54392fad16b6787b5bee948a31a",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.8,0.8,4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.total_amount}"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false,
+                "State": "NegativeInRed"
+              }
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text52",
+              "Guid": "acddb8661d25d7892873b24f62d353d7",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "11.2,0,3.2,0.6",
+              "Conditions": {
+                "0": {
+                  "Ident": "StiCondition",
+                  "Item": "Expression",
+                  "Expression": {
+                    "Value": "{invoices_data_customer_info.discount_value == 0}"
+                  },
+                  "Enabled": false,
+                  "BorderSides": "None"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Discount ({invoices_data_customer_info.discount_type_unit})"
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text53",
+              "Guid": "e22c691fde023e8e3749289fdb3b008b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.8,0,4,0.6",
+              "Conditions": {
+                "0": {
+                  "Ident": "StiCondition",
+                  "Condition": "GreaterThan",
+                  "DataType": "Numeric",
+                  "Column": "invoices_data_customer_info.discount_value",
+                  "Item": "Expression",
+                  "Value1": "100",
+                  "Expression": {
+                    "Value": "{invoices_data_customer_info.discount_value == 0}"
+                  },
+                  "Enabled": false,
+                  "BorderSides": "None"
+                }
+              },
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{invoices_data_customer_info.discount_value}"
+              },
+              "HorAlignment": "Right",
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "TextFormat": {
+                "Ident": "StiNumberFormatService",
+                "NegativePattern": 1,
+                "GroupSeparator": ",",
+                "UseGroupSeparator": false,
+                "UseLocalSetting": false,
+                "State": "NegativeInRed"
+              }
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text54",
+              "Guid": "e0cb603f15bb750b6f5d19ba57902214",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0,1.6,19,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "  {invoices_data_customer_info.total_amount_in_words}"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": "Top;;;;;;;solid:0,0,0",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Margins": {
+                "Left": 0.0,
+                "Right": 5.0,
+                "Top": 0.0,
+                "Bottom": 0.0
+              },
+              "Type": "Expression"
+            }
+          }
+        },
+        "8": {
+          "Ident": "StiFooterBand",
+          "Name": "FooterBand2",
+          "ClientRectangle": "0,18,19,2.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": "Bottom;;;;;;;solid:0,0,0",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text33",
+              "Guid": "46792b29da3f00045fc09612e60d4c66",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,0.2,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Bank Details"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;Bold, Underline;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text34",
+              "Guid": "f757fde27a7a7040af12275a0f463cf7",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,0.6,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Beneficiary Name : i2k2 Networks Pvt. Ltd."
+              },
+              "HorAlignment": "Center",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text35",
+              "Guid": "d1562f9df70de89f58dbe51dfcdd3053",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,1,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "HDFC Bank A/c No. : 09752320000390"
+              },
+              "HorAlignment": "Center",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text36",
+              "Guid": "c1ff7a36c7a974ef1d3cccfe0ebc723f",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,1.4,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "IFSC Code : HDFC0000975, Swift Code : HDFCINBB"
+              },
+              "HorAlignment": "Center",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text37",
+              "Guid": "f69540803c4bc3089e2d8ab09b797c73",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.4,1.8,18.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Bank Branch : sec - 63, Noida (U.P.)"
+              },
+              "HorAlignment": "Center",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            }
+          }
+        },
+        "9": {
+          "Ident": "StiFooterBand",
+          "Name": "FooterBand3",
+          "ClientRectangle": "0,21,19,5.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text38",
+              "Guid": "e766ddfb2b68b02809f0967562b5a8a4",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0,0.2,3.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Terms & Conditions"
+              },
+              "HorAlignment": "Center",
+              "Font": ";10;Bold, Underline;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text39",
+              "Guid": "ce439c968dccf4cc25d44c12ad274128",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1.2,8.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "1. Payment to be mady by cheque/NEFT/RTGS"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text40",
+              "Guid": "cbab34b761f078df71e9a7ab1d004964",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1.6,9.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "2. If the invoice is not paid within 15 days of receipt of"
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text41",
+              "Guid": "0bd6128ce3784b616d4c31e0080bed8b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,2,9.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "soft copy of invoice, the server/instance will be "
+              },
+              "Font": ";10;;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text43",
+              "Guid": "7f1787d980e45b0e0df05e8c8866000c",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.2,0.4,4.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "for i2k2 Networks Pvt Ltd."
+              },
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text44",
+              "Guid": "c9597f24074272d179ea9ccaded5571e",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "14.8,3,4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "Authorised Signatory"
+              },
+              "Font": ";10;Bold;",
+              "Border": ";105,105,105;;;;;;solid:105,105,105",
+              "Brush": "solid:",
+              "TextBrush": "solid:0,0,0",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text42",
+              "Guid": "4b24e79210ab61b4101cbdebcddcc397",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,2.4,9.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "automatically suspended without any intimation."
+              },
+              "Font": ";10;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "7": {
+              "Ident": "StiText",
+              "Name": "Text60",
+              "Guid": "6e3939c7337255b7536628b7f3d39328",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0.8,1.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "E. & O.E."
+              },
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        }
+      },
+      "PageWidth": 21.0,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1.0,
+        "Right": 1.0,
+        "Top": 1.0,
+        "Bottom": 1.0
+      }
+    }
+  }
+}

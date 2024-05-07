@@ -1,0 +1,41 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body scrollable">    
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate name="mapCentreListForm" id="mapCentreListForm" [formGroup]="mapCentreListFormGroup" (submit)="onMapCentreListFormSubmit()"class="p-0">
+
+            <div class="form-group mb-0">
+              <label for="ImportedCentre" class="mb-0">Imported Centre #</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!mapCentreListFormGroup.controls['import_number'].valid}" name="import_number" id="import_number" formControlName="import_number">
+            </div>
+            <div class="form-group mb-0">
+              <label for="ImportedCentreCode" class="mb-0">Imported Centre Code</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!mapCentreListFormGroup.controls['code'].valid}" name="code" id="code" formControlName="code">
+            </div>
+            <div class="form-group mb-0">
+              <label for="ImportedCentreName" class="mb-0">Imported Centre Name</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!mapCentreListFormGroup.controls['name'].valid}" name="name" id="name" formControlName="name">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onMapCentreListFormSubmit()">Apply</button>
+
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"(click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

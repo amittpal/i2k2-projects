@@ -1,0 +1,37 @@
+{
+    "BasicSetupValues" : {
+        "DistributionSchedule" : "Days before exam",
+        "ShowCentreMap" : "No",
+        "RandomizeRegistration" : "No",
+        "DaysForDistribution" : "2",
+        "DistributionMethod" : "SMS & MAIL",
+        "QrBarCode" : "QR Code",
+        "LogoImage" : "images/i2k2-networks-logo.png",
+        "SignatoryImage" : "images/sign.jpg",
+        "BackgroundImage" : "images/bg.jpg"
+  },
+  "AdditionalSetupValues" : {
+        "EnglishTermsnConditions" : "Testing Terms & Conditions",
+        "EnglishNotes" : "Testing Notes",
+        "TermsNConditionsImage" : "images/hindi_term.PNG",
+        "NotesImage" : "images/hindi_notes.PNG"
+  },
+  "SmsSetupValues" : {
+        "Url" : "https://www.i2k2.com",
+        "Uid" : "raj-org-admin",
+        "Password" : "kelaram",
+        "TemplateText" : "This is testing template text."
+  },
+  "EmailSetupValues" : {
+        "SmtpServer" : "192.168.0.1",
+        "SmtpPort" : "224",
+        "SendersEmailId" : "Romeo@yopmail.com",
+        "SendersName" : "Viking",
+        "VerifyEmailAccount" : "admin@yopmail.com",
+        "Password" : "kelaram",
+        "EmailSubjectsTemplateText" : "This is testing email subject text"
+  },
+  "SetExamNumber" :{
+        "ExamNumber" : ""
+  }
+}

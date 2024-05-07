@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class=" col-4">             
+            </div>             
+         </div>      
+         <label class="p-1" *ngIf="examNumber">EXAM # {{examNumber||'Exam Number'}}</label>
+          <tabset  class="tabset-container" #tabset>
+            <tab heading="BASIC SETUP"></tab>
+            <tab heading="ADDITIONAL SETUP"></tab>
+            <tab heading="SMS SETUP" [disabled] = "smsEmailActiveFlag != '1' && smsEmailActiveFlag != '3'"></tab>
+            <tab heading="EMAIL SETUP" [disabled] = "smsEmailActiveFlag != '2' && smsEmailActiveFlag != '3'"></tab>
+            <tab heading="QR CODE SETUP" [disabled] = "qrBarCodeActiveFlag != '2'"></tab>
+            <tab heading="FINAL REVIEW"></tab>  
+            
+          </tabset>
+        </div>  
+        <div class="card-body scrollable inside-footer-fixed p-0">             
+          <div *ngIf="tabset.tabs[0].active == true">
+            <app-basic-setup (sms_email_qr_barCode_flag)="enableDisableSmsEmailQrBarCode($event)" (exam_num)="exam_num($event)" [tabset]="tabset"></app-basic-setup>         
+          </div>          
+          <div *ngIf="tabset.tabs[1].active == true">
+            <app-additional-setup [tabset]="tabset" [smsEmailActiveFlag]="smsEmailActiveFlag"></app-additional-setup>            
+          </div>
+          <div *ngIf="tabset.tabs[2].active == true" >
+            <app-sms-setup [tabset]="tabset" [smsEmailActiveFlag]="smsEmailActiveFlag" [qrBarCodeActiveFlag]="qrBarCodeActiveFlag"></app-sms-setup>
+          </div>
+          <div *ngIf="tabset.tabs[3].active == true">
+            <app-email-setup [tabset]="tabset"  [qrBarCodeActiveFlag]="qrBarCodeActiveFlag"></app-email-setup>            
+          </div>
+          <div *ngIf="tabset.tabs[4].active == true">
+            <app-qrcode-setup [tabset]="tabset"></app-qrcode-setup>            
+          </div>
+          <div *ngIf="tabset.tabs[5].active == true">
+            <app-final-review></app-final-review>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

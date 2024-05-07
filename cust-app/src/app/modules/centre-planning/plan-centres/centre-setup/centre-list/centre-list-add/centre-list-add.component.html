@@ -1,0 +1,225 @@
+<div class="container-fluid">
+    <div class="table-container">
+        <div class="card card-bordered fullheight-fixed">
+
+            <div class="card-body scrollable">
+
+                <form autocomplete="off" class="app-form" id="editCentreForm" [formGroup]="editCentreFormGroup"
+                    novalidate="">
+
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+
+                            <table class="table" id="tbl-bulk-inputs">
+                                <thead>
+                                    <th class="gap"></th>
+                                    <th class="gap">ALLOWED PH CAPACITY (%)</th>
+                                    <th class="gap">ALLOWED NORMAL CAPACITY (%)</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="mt-3">
+                                            <input type="button" class="btn btn-outline-primary btn-sm"
+                                                id="btn-bulk-unlock"
+                                                [value]="allowBulkUpdate ? 'Apply bulk changes':'Unlock bulk update' "
+                                                (click)="onBulkUpdateButtonClick()" [disabled]="items.length == 0">
+                                        </td>
+                                        <td class="form-group">
+                                            <input type="number" class="form-control-sm w-100 mr-4" placeholder=""
+                                                id="phCapacity" name="phCapacity" formControlName="phCapacity">
+                                        </td>
+                                        <td class="form-group">
+                                            <input type="number" class="form-control-sm w-100 ml-4" placeholder=""
+                                                id="normalCapacity" name="normalCapacity"
+                                                formControlName="normalCapacity">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <!-- <div class="card-header ml-2 mr-2">
+                    <div class="row">
+                        <div class="paging-block col-11">
+                            <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+                                [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                                [lastOffset]="lastOffset">
+                            </ngx-ixcheck-table-outer-pagination>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="card-body">
+                    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="data-table">
+                            <ngx-ixcheck-table3 id="centre-list-grid" headerTitle="Centre" [items]="items"
+                                [dragColumn]="false" [indexColumn]="true" [indexColumnHeader]="'#'"
+                                [itemCount]="itemCount" [tableName]="'centre-list-grid'" [selectColumn]="true"
+                                [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="true"
+                                [addRows]="false" [dragIcon]="" [dragCss]="" [sortIndexOnDrop]="true"
+                                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}"
+                                [sortIndexOnDrop]="true" [deleteCss]="{'color': 'red'}">
+
+
+                                <!-- Child-Component -->
+                                <ng-template #rowDetailExpand let-rowitem="item">
+                                    <app-centre-edit-rowdetails [rowItemData]="rowitem" [examId]="examId"
+                                        (childComponentData)="getChildComponentData($event)" [item]="rowitem"
+                                        (update)="updateProductDetails($event)">
+                                    </app-centre-edit-rowdetails>
+                                </ng-template>
+                                <!-- Child-Component-end -->
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">STATE</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.state_name}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">CITY</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.city_name}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">CODE</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.code}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">NAME</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.name}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">ADDRESS</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.address}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">PH SEATS</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.total_ph_seats}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">NORMAL SEATS</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.total_normal_seats}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">TOTAL SEATS</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.total_seats}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">ALLOWED PH CAPACITY (%)</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.allowed_ph_capacity_per}}%</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">ALLOWED NORMAL CAPACITY (%)</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.allowed_normal_capacity_per}}%</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">ALLOWED PH CAPACITY</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.pwd_seats}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">ALLOWED NORMAL CAPACITY</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.normal_seats}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                                <ngx-ixcheck-table3-column [colType]="'custom'">
+                                    <ng-template #colHeaderComponent>
+                                        <div class="text-center">TOTAL ALLOWED CAPACITY</div>
+                                    </ng-template>
+                                    <ng-template #colDetailComponent let-rowitem="item">
+
+                                        <div class="text-center">{{rowitem.total_allowed_capacity}}</div>
+                                    </ng-template>
+                                </ngx-ixcheck-table3-column>
+
+                            </ngx-ixcheck-table3>
+                        </div>
+                    </div>
+                    <!--End of table 3 -->
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" [disabled]="items.length == 0"
+                    (click)="formSubmit()">Update</button>
+                <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()" [disabled]="items.length == 0">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>

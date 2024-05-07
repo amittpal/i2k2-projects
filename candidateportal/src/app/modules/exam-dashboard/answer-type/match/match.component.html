@@ -1,0 +1,65 @@
+
+  <form 
+  [formGroup]="matchQuestionFormGroup" 
+  class="app-form" id="matchQuestionForm">
+    <ng-container 
+    formArrayName="optionsArray"  
+    *ngFor="let option of QuestionDetails.option; index as i">
+   <div class="row m-2">
+     <div class="col-md-12 border-bottom">                
+           <div class="row" [formGroupName]="i">
+             <div class="col-md-1 d-flex"></div>  
+             <div class="col-md-3 d-flex">
+               <span class="pr-2">{{option.option_number}}.</span>
+               <div 
+               [innerHTML]="option.description | sanitizeHtml"
+               [class]="QuestionDetails.question[0].language_name"
+               ></div>
+             </div>
+             <div class="col-md-3 d-flex">
+              
+             </div>     
+             <div class="col-md-5  form-group trad foc mb-2">     
+               
+               <ng-container *ngIf="QuestionDetails.answers.length === 0">
+                 <select  
+                 class="form-control" 
+                 (change)="onOptionSelect(option,$event)" 
+                 formControlName="match_guid">
+                 <!-- <ng-container *ngTemplateOutlet="optionsDropdown"></ng-container> -->
+                   <option value="">Select</option>
+                   <option *ngFor="let opt of QuestionDetails.option"
+                   [value]="opt.match_guid">
+                   <!-- {{opt.match_option_number}}.&nbsp; -->
+                   <!-- <div [innerHTML]="opt.match_description | sanitizeHtml"></div> -->
+                   {{opt.match_option_number}}.&nbsp;
+                   {{opt.match_description | htmlToText}}
+                 </option>
+                 </select> 
+               </ng-container>   
+               <ng-container *ngIf="QuestionDetails.answers.length > 0">
+                 <select  class="form-control" 
+                 (change)="onOptionSelect(option,$event)"
+                  formControlName="match_guid">                                   
+                 <option value="">Select</option>
+                   <option *ngFor="let opt of QuestionDetails.option"
+                   [value]="opt.match_guid"
+                   [selected]="opt.match_guid === QuestionDetails.answers[i].match_guid ? true : null">
+                   {{opt.match_option_number}}.&nbsp;
+                   {{opt.match_description |htmlToText}}
+                   <!-- <div [innerHTML]="opt.match_description | sanitizeHtml"></div> -->
+                 </option>
+                 </select> 
+               </ng-container>                                           
+             </div>
+           </div>                              
+     </div>                                            
+   </div>   
+ </ng-container>  
+</form>
+ 
+
+ 
+
+
+ 

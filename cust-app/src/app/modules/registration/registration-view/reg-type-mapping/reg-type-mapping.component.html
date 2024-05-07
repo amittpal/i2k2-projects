@@ -1,0 +1,51 @@
+<div class="card-body fullheight-fixed  ">
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table ">
+            <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="false"
+                [indexColumn]="false" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+                [selectColumn]="false" [expandOnIndexColClick]="false" [expandOnRowClick]="false" [pagination]="false"
+                [addRows]="false" [dragIcon]="" [dragCss]="" [sortIndexOnDrop]="false"
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [deleteColumn]="false"
+                [sortIndexOnDrop]="false" [deleteCss]="{'color': 'red'}">
+                <!-- Child-Component -->
+                <ng-template #rowDetailExpand let-rowitem="item">
+                    <app-reg-type-mapping-row-edit [rowItemData]="rowitem" [item]="rowitem"
+                        (update)="updateProductDetails($event)" (updatedDetails)="getUpdatedDetails($event)">
+                    </app-reg-type-mapping-row-edit>
+                </ng-template>
+                <!-- Child-Component-end -->
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                    <ng-template #colHeaderComponent>
+                        <div class="text-center">#</div>
+                    </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="text-center">{{rowitem.line_num}}</div>
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Exam Code </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="code"
+                            [(ngModel)]="rowitem.code || rowitem.exam_code" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Reg Type</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="reg_type"
+                            [(ngModel)]="rowitem.reg_type " (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+            </ngx-ixcheck-table3>
+            <br>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="text-center mt-2">
+    <b style="font-size: large;">AUTHORING STATUS</b> <br><br>
+
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <b style="font-size: medium;">QUESTIONS</b><br>
+                <b style="color: black;font-size: large;">{{authoringStatusDetail ? authoringStatusDetail["questions_total"] : 'NA'}}</b>
+            </div>
+            <div class="col-md-4">
+                <b style="font-size: medium;">ALLOCATED</b><br>
+                <b style="color: black;font-size: large;">{{authoringStatusDetail ? authoringStatusDetail["allocated_total"] : 'NA'}}</b>
+            </div>
+            <div class="col-md-4">
+                <b style="font-size: medium;">APPROVED</b><br>
+                <b style="color: black;font-size: large;">{{authoringStatusDetail ? authoringStatusDetail["approved_total"] : 'NA'}}</b>
+            </div>
+        </div>
+    </div>
+</div>

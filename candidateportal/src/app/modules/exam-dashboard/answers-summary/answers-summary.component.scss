@@ -1,0 +1,114 @@
+:host::ng-deep {
+
+  //@import '../../../../scss/app/shapes';
+  #answer_status_summary_head {
+    // height: 115px;
+    height: 135px;
+    overflow: hidden;
+  }
+
+  #answer_summary_card {
+    //height: calc(100vh - 40vh);
+    height: calc(100vh - 242px);
+    overflow-y: auto;
+
+    .card-header {
+      min-height: 40px !important;
+      max-height: 40px !important;
+      background-color: #f2f2f2;
+      padding: 0.75rem 1.25rem;
+    }
+
+    #question_numbers {
+        .card.card-bordered {
+            margin-bottom: 2px;
+          }
+    
+          .height-100 {
+            height: 100%;
+          }
+    
+          .padding-bottom {
+            padding-bottom: 15px;
+          }
+    
+        button {
+          //width: 35px;
+          //height: 30px;  
+          //margin: 4px;
+          border: 0;
+          border-radius: 0;
+          //font-size: 11px;
+          font-weight: 700;
+          width: 1.6rem;
+          //padding: 0.15rem;
+          padding: 0.3rem 0rem;
+          font-size: 0.75rem;
+          margin: 0.15rem;
+          &:first-child {
+            //margin-left: 0px !important;
+          }
+    
+          &:focus {
+            outline: 1px solid;
+          }
+        }
+      } 
+  }
+
+     
+
+  #question_status_wrapper {
+
+    button {
+      // margin: 2px;
+      border: 1px solid #609ed6;
+      border-radius: 0;
+      // height: 30px;
+      //font-size: 11px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      
+      &:first-child {
+        width: 70%;
+  
+      }
+  
+      &:last-child {
+        //width: 2rem;
+        width: 1.6rem;
+      }
+  
+      &:focus {
+        outline: 0px solid;
+      }
+    }   
+
+  }
+
+  .badge-active {
+    background-color: #2E75B6 !important;
+    //color: #fff !important;
+    // border: 1px solid #28a745 !important;       
+  }
+
+  .badge-total {
+    background-color: white;
+  }
+}
+
+.badge {
+  color: #000;
+}
+
+.badge-danger,
+.badge-default {
+  //color: #fff;
+}
+
+.badge-success {
+  background-color: rgb(83, 168, 59);
+}
+
+
+

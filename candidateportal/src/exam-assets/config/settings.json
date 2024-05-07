@@ -1,0 +1,34 @@
+{
+    "application_guid": "e20caa40-6aa6-47ba-b763-f5c5f29fa0e6",
+    "application_type": "development",
+    "token" : {
+        "url" : "http://localhost:55527/api/v1/token",
+        "method" : "POST"
+    },
+    "getLanguageList": {
+        "desc": "get languages list",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/languages"
+    },
+    "appmodulesandroutes" :{
+        "url" : "./exam-assets/config/appmodulesandroutes.json",
+        "method" : "GET"
+    },
+    "getUserInstructionStatus": {       
+        "url": "http://localhost:55527/api/v1/exam/user/",
+        "method": "POST"
+    },
+    "updateHeartbeatLocal": {
+        "url": "http://localhost:55527/api/v1/system/infra/heartbeat/update/local",
+        "method": "POST"
+    },
+    "updateHeartbeat": {
+        "url": "http://localhost:55527/api/v1/system/infra/heartbeat/update",
+        "method": "POST"
+    },
+    "checkServerStatus": {
+        "desc": "check server status",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/system/infra/heartbeat"        
+      } 
+}

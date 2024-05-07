@@ -1,0 +1,14 @@
+.lbl {
+  color: black !important;
+  font-weight: 300 !important;
+}
+
+#heading-section{
+  word-break: break-word;
+}
+
+:host ::ng-deep {
+    .flex-t1-th-9,.flex-t1-col-9 {
+        text-align: right !important;
+    }
+}

@@ -1,0 +1,230 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered ">
+      <div class="card-header">
+        <div class="header-flex-container">
+          <div class=" col-4">
+          </div>
+
+          <div class="col-4">
+          </div>
+
+          <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+              <!-- bubble start -->
+              <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+              </app-ngx-ixcheck-bubble>
+            </div>
+
+            <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <tabset class="tabset-container" #tabset>
+          <tab heading="Subjects"></tab>
+          <tab heading="Languages"></tab>
+          <tab heading="Authors"></tab>
+        </tabset>
+      </div>
+
+
+      <div *ngIf="tabset.tabs[0].active == true">
+        <div class="card-body">
+          <div class="row" style="margin-left: 0;margin-right: 0;">
+            <!-- first table starts -->
+            <div class="col-sm-6" style="padding: 0px;padding-right: 5px;">
+              <div class="form-group col-sm-12 p-0">
+                <table class="table table-striped table-min-height">
+                  <thead>
+                    <tr>
+                      <th>Subject Name</th>
+                      <th style="width: 50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody [dragula]="'subjects'" [dragulaModel]='subjectsList'>
+                    <tr *ngFor="let subject of originalSubjectsData; let i=index" [attr.data-index]="i">
+                      <td>{{subject?.name}}</td>
+                      <td class="fa fa-plus-circle fa-lg" (click)="addSubject(subject,i)"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- first table ends -->
+
+            <!-- second table starts -->
+            <div class="col-sm-6" style="padding: 0px;padding-left: 5px;">
+              <div class="form-group col-sm-12 p-0">
+                <table class="table table-striped table-min-height">
+                  <thead>
+                    <tr>
+                      <th>Subject Name</th>
+                      <th style="width: 50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody [dragula]="'added-subjects'" [dragulaModel]='dataAddSubjects'>
+                    <tr *ngFor="let subject of originaldataAddSubjects; let i=index" [attr.data-index]="i">
+
+                      <td>{{subject?.name}}</td>
+                      <td class="fa fa-minus-circle fa-lg" (click)="revertSubject(subject, i)">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- second table ends -->
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onSubjectformSubmit()">SAVE &
+            CONTINUE</button>
+          <button class="btn btn-sm btn-default float-right" type="button" (click)="resetSubject()">Reset</button>
+        </div>
+      </div>
+
+
+
+
+      <div *ngIf="tabset.tabs[1].active == true">
+        <div class="card-body ">
+          <!-- <app-city [stateId]="stateId" [tabset]="tabset"></app-city> -->
+          <div class="row" style="margin-left: 0;margin-right: 0;">
+            <!-- first table starts -->
+            <div class="col-sm-6" style="padding: 0px;padding-right: 5px;">
+              <div class="form-group col-sm-12 p-0">
+                <table class="table table-striped table-min-height">
+                  <thead>
+                    <tr>
+                      <th>Language Name</th>
+                      <th style="width: 50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody [dragula]="'languages'" [dragulaModel]='languagesList'>
+                    <tr *ngFor="let language of originalLanguagesData ; let i=index" [attr.data-index]="i">
+                      <td>{{language?.name}}</td>
+                      <td class="fa fa-plus-circle fa-lg" (click)="addLanguage(language,i)"></td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- first table ends -->
+            <!-- second table starts -->
+            <div class="col-sm-6" style="padding: 0px;padding-left: 5px;">
+              <div class="form-group col-sm-12 p-0">
+                <table class="table table-striped table-min-height">
+                  <thead>
+                    <tr>
+                      <th>Language Name</th>
+                      <th style="width: 50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody [dragula]="'added-languages'" [dragulaModel]='dataAddLanguages'>
+                    <tr *ngFor="let language of originaldataAddLanguages; let i=index" [attr.data-index]="i">
+                      <td>{{language?.name}}</td>
+                      <td class="fa fa-minus-circle fa-lg" (click)="revertLanguage(language, i)">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- second table ends -->
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onLanguageformSubmit()">SAVE &
+            CONTINUE</button>
+          <button class="btn btn-sm btn-default float-right" type="button" (click)="resetLanguage()">Reset</button>
+        </div>
+      </div>
+
+
+      <div *ngIf="tabset.tabs[2].active == true">
+        <!-- <app-centres [stateId]="stateId" [importData]="addImportDataFromGroup.value"></app-centres>   -->
+        <div class="card-header">
+          <div class="header-flex-container">
+              <div class="card-title col-4">
+              </div>
+              <div class="paging-block col-4">
+                  <ngx-ixcheck-table-outer-pagination *ngIf="notFound == false " [itemCount]="itemCount"
+                      [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                      (loadTable)="reloadItems($event,false)">
+                  </ngx-ixcheck-table-outer-pagination>
+
+              </div>
+              <div class="filter-container col-4">
+              </div>
+          </div>
+      </div>
+        <div class="card-body ">
+          <div class="row" style="margin-left: 0;margin-right: 0;">
+            <!-- first table starts -->
+            <div class="col-sm-12" style="padding: 0px;padding-right: 5px;">
+              <div class="form-group col-sm-12 p-0">
+                <table class="table table-striped table-min-height">
+                  <thead>
+                    <tr>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Code</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Subject</th>
+                      <th>Language</th>
+                      <th>Rating</th>
+                      <th style="width: 50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody [dragula]="'authors'" [dragulaModel]='authorList'>
+                    <tr *ngFor="let author of originalAuthorsData ;let i=index" [attr.data-index]="i">
+                      <td>{{author?.city}}</td>
+                      <td>{{author?.state}}</td>
+                      <td>{{author?.code}}</td>
+                      <td>{{author?.name}}</td>
+                      <td>{{author?.address}}</td>
+                      <td>{{author?.subject}}</td>
+                      <td>{{author?.language}}</td>
+                      <td>{{author?.rating}}</td>
+                      <td [ngClass]="author.is_select==='0' ? 'fa-plus-circle' : 'fa-minus-circle'"
+                        (click)="addRow(author,i)"></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- first table ends -->
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+            (click)="onAuthorsformSubmit()">Submit</button>
+          <button class="btn btn-sm btn-default float-right" type="button" (click)="resetAuthors()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="tabset.tabs[0].active == true">
+    <app-subjects-filter (updateEvent)="updateSubjectTable($event)" [resetFlter]="resetFilterFlag"
+      [updatedFilter]="count"></app-subjects-filter>
+  </div>
+
+  <div *ngIf="tabset.tabs[1].active == true">
+    <app-languages-filter (updateEvent)="updateLanguageTable($event)" [resetFlter]="resetFilterFlag"
+      [updatedFilter]="count"></app-languages-filter>
+  </div>
+
+  <div *ngIf="tabset.tabs[2].active == true">
+    <app-authors-filter (updateEvent)="updateAuthorTable($event)" [resetFlter]="resetFilterFlag"
+      [updatedFilter]="count"></app-authors-filter>
+  </div>

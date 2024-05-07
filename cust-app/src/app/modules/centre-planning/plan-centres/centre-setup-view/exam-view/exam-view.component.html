@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <form class="app-form" id="examDetailForm" [formGroup]="examDetailFormGroup" novalidate="">
+
+        <div class="row">
+          <!-- Exam Code -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="exam_code" class="col-lg-7 p-2 mb-0">Exam Code</label>
+            <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="exam_code"
+              name="exam_code">{{examDetail.code }}</label>
+          </div>
+
+          <!-- Imported Centres Name -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="centres_name" class="col-lg-8 p-2 mb-0">Imported Centres Name</label>
+            <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="centres_name"
+              name="centres_name">{{examDetail.import_number }}</label>
+          </div>
+
+          <!-- Exam Days  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="exam_days" class="col-lg-12 p-2 mb-0">Exam Days</label>
+            <select [compareWith]="multiSubjectComp" (ngModelChange)="valueChange($event)"
+              class="col-lg-7 p-2 form-control form-control-sm" formControlName="exam_days" id="exam_days" multiple>
+              <option *ngFor="let days of daysList" [ngValue]="days">
+                {{days.name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- priority  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="priority" class="col-lg-12 p-2 mb-0">NUMBER OF CITY’S PRIORITY</label>
+            <select class="form-control col-lg-7 p-2 form-control-sm" id="priority" name="priority"
+              formControlName="priority_city">
+              <option value="">Please Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <!-- Exam Name -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="name" class="col-lg-7 p-2 mb-0">Exam Name</label>
+            <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="name"
+              name="name">{{examDetail.name }}</label>
+          </div>
+
+          <!-- No of Shift  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="shift" class="col-lg-12 p-2 mb-0"> Number of Unique Shifts</label>
+            <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="shift"
+              name="shift">{{examDetail.no_of_shifts }}</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <!-- Exam Type -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="exam_type" class="col-lg-7 p-2 mb-0">Exam Type</label>
+            <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="exam_type"
+              name="exam_type">{{examDetail.exam_type }}</label>
+          </div>
+
+          <!-- Duration -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="duration" class="col-lg-12 p-2 mb-0">Duration </label>
+            <div class="d-flex">
+              <label type="text" class="form-control col-lg-7 p-2 form-control-sm" id="duration"
+                name="duration">{{examDetail.duration }} {{examDetail.duration_type}}</label>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+
+  </div>
+
+</div>

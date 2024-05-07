@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-min">
+
+      <div class="card-header">
+        <div class="header-flex-container">
+          <div class="card-title col-4">EXAM # {{examNumber||'Exam Number'}} <span id="shift">SHIFT
+              {{shiftNo}}/{{totalShift}} </span>
+            <!-- <span id="shift">TOTAL CANDIDATES {{normalCandidates + phCandidates}} </span> -->
+          </div>
+          <div class="paging-block col-4">
+            <ngx-ixcheck-table-outer-pagination *ngIf="notFound == false " [itemCount]="itemCount"
+              [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+              (loadTable)="reloadItems($event,false)">
+            </ngx-ixcheck-table-outer-pagination>
+
+          </div>
+          <div class="filter-container col-3">
+            <!-- <input type="button" class="btn btn-primary" value="BACK TO SHIFT LIST" routerLink="/admitcard/registration/{{registrationId}}/snapshot/{{snapshotId}}/manage"> -->
+
+            <div id="bubbleBlock" class="bubble-block">
+              <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+              </app-ngx-ixcheck-bubble>
+            </div>
+            <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table p-0" *ngIf="notFound == false ">
+            <!-- table start -->
+            <ngx-ixcheck-table id="admit-card-list" headerTitle="Admit Cards" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false" [expandOnIndexColClick]="true"
+              [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+              <ng-template #rowDetailExpand let-rowitem="item">
+                <app-networkgroup-details [rowItemData]="rowitem"></app-networkgroup-details>
+              </ng-template>
+              <ngx-ixcheck-table-column [property]="'id'" [header]="'ID'" [sortable]="false" [resizable]="true"
+                [width]="70" [visible]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'state'" [header]="'STATE'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'city'" [header]="'CITY'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'allocated_normal_seats'" [header]="'Allocated Seats'"
+                [sortable]="false">
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+            <!-- table end -->
+          </div>
+          <div class="not-found-container" *ngIf="notFound == true ">
+            <h5>
+              No Data Available.
+            </h5>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" type="submit">VERIFY</button>
+        </div> -->
+
+    </div>
+  </div>
+</div>
+
+
+<app-admit-card-centres-view-filter #featureFilter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag"
+  [updatedFilter]="count">
+</app-admit-card-centres-view-filter>

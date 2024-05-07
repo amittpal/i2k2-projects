@@ -1,0 +1,165 @@
+    .header-container{
+        //Mobile First and Common
+        position: fixed;
+        top: 0;
+        width: 100%;  
+        background-color: $page-head-bg;
+        border-bottom: 1px solid $page-head-border;
+        height: $page-head-height;    
+        z-index: 500;
+        display: flex;
+        @include media-breakpoint-up(lg) { 
+            //desktop
+            width: calc(100% - #{$icon-bar-width});  
+        }
+    }
+    .mob-menu-block{
+        //margin-top: 5px;
+        display: block;
+        @include media-breakpoint-up(lg) { 
+            display: none; 
+        }
+    }
+    .icon-header-block{
+        display: none;
+        justify-content: flex-start;
+        @include media-breakpoint-up(lg) { 
+            display: block;
+        }
+    }
+    .icon-filter-block{
+        width: 40px;
+        display: block;
+        justify-content: flex-start;
+        @include media-breakpoint-up(lg) { 
+            display: block;
+        }
+    }
+    .icon-filter-block-new{
+        justify-content: flex-end;
+        @include media-breakpoint-up(lg) { 
+
+        }
+    }
+    .heading-block{
+        //Mobile First and Common
+        // font-weight: 700;
+        //margin-top: 8px;
+        // line-height: 1;
+        // font-family: montserrat;
+        // text-transform: uppercase;
+        // font-size: 12px;
+        display: flex;
+        justify-content: center;
+        word-wrap: break-word;
+        text-align: center;
+        align-items: center; 
+
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+        //display: inline-block;
+        letter-spacing: 0.06em;
+        font-size: 14px;
+        font-weight: 500;
+        //margin: 0;
+        //padding: 0;
+        line-height: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-text-stroke:0px;
+        filter: alpha(opacity=40);
+        @include transition(opacity .3s ease);
+
+        @include media-breakpoint-up(lg) { 
+            //desktop
+            font-size: 14px;
+            //margin-top: 13px;
+        }
+        
+    }
+    .user-block {
+        margin-top: 0px;
+        padding-top: 0;
+        display: flex;
+        justify-content: flex-end;        
+        .btn-group{
+            margin-top: 0px;
+            padding-right: 10px;
+            padding: 0;
+            .btn{
+                padding-right: 10px;
+                
+                color: $body-color;
+            }
+            .btn-link {
+                padding-right: 10px;
+                margin-top: 0px;
+                padding: 0;
+            }
+            .dropdown-menu{
+                margin-top: 0;                
+            }
+        }
+        @include media-breakpoint-up(lg) { 
+
+        }
+    }
+    //header items center align
+    .header-row{
+        height: 100%;
+        button.btn.btn-link{
+            height: 100%;
+        }
+    }  
+    .head-icon{
+        &:first-child{
+            margin-left: 0;
+        }
+        &:last-child{
+            margin-right: 20px;
+        }
+    }
+    .icon-menu{
+        margin-top: 8px;
+        margin-left: 0px;
+        width: 20px;
+        height: 20px;
+        justify-content: flex-start;
+    }
+    .icon-user{
+        justify-content: flex-end;
+        @include media-breakpoint-up(lg) { 
+            
+        }
+    }
+    .icon-user-downarrow{
+        width: 15px;
+        height: 15px;
+        vertical-align: bottom;
+        margin-bottom: 5px;
+        margin-left: -2px;
+        @include media-breakpoint-up(lg) { 
+
+        }
+    }
+    .icon-filter{
+        margin-top: 0px;
+        
+        justify-content: flex-start;
+    
+        @include media-breakpoint-up(lg) { 
+            margin-left: 0px;
+            padding-left: 0px;
+        }
+    }
+    .icon-down-arrow{
+        width: 8px;
+        height: 8px;
+        margin-left: 3px;
+    }  
+    .header-back-button {
+        word-wrap: break-word;
+        align-items: center;
+        display: flex;
+    }
+    

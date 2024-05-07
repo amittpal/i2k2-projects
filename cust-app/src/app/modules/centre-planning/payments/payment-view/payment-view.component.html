@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="table-container">
+        <div class="card card-bordered fullheight-fixed">
+            <div class="card-header">
+                <label class="p-1">EXAM # CustC/Ord101/430</label>
+                <tabset filterClose class="tabset-container" #tabset>
+                    <tab heading="Live Payments"></tab>
+                    <tab heading="Trial Payments"></tab>
+                </tabset>
+            </div>
+
+            <div class="card-body scrollable inside-footer-fixed">
+                <div *ngIf="tabset.tabs[0].active == true">
+                    <app-live-payment></app-live-payment>
+                    <!-- <app-book (nextTab)="nextTab($event)" [exam_details]="exam_details"></app-book> -->
+                </div>
+                <div *ngIf="tabset.tabs[1].active == true">
+                    <app-trial-payment></app-trial-payment>
+                    <!-- <app-pages (nextTab)="nextTab($event)"></app-pages> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

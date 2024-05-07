@@ -1,0 +1,56 @@
+tbody {
+    .flx-col-1 {
+        margin-right: 3rem !important;
+        justify-content: left;
+        order: 1;
+        width: 292px !important;
+    }
+}
+
+:host ::ng-deep {
+  .fa-plus-circle {
+    background: url(../../../../../../assets/icons/plus.svg) 0 0/35px 35px !important;
+    cursor: pointer;
+  }
+  .fa-newlist {
+    background: url(../../../../../../assets/icons/list.svg) 0 0/15px 15px !important;
+    cursor: grab;
+  }
+  .fa-trash {
+    background: url(../../../../../../assets/icons/garbage-bin.svg) 0 0/15px 15px !important;
+    cursor: pointer;
+    width: 15px !important;
+  }
+}
+
+:host ::ng-deep {
+  ngx-ixcheck-table3 {
+    table {
+      thead {
+        .flx-th-4 {
+          order: 4;
+          width: 25%;
+          margin-right: 4rem !important;
+          color: #7a8994;
+        }
+      }
+
+      tbody {
+        .flx-col-3 {
+          margin-right: 3rem !important;
+          justify-content: left;
+        }
+        .flx-col-4 {
+          margin-right: 3rem !important;
+          justify-content: left;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+ .fullheight-fixed-allocate {
+        height: calc(100vh - 200px);
+      }
+ }

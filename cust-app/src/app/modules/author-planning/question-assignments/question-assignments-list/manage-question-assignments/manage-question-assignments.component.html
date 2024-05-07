@@ -1,0 +1,213 @@
+<div class="container-fluid">
+  <form class="app-form" [formGroup]="examShiftFormGroup" novalidate="">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-md-3 col-lg-3">
+            <!-- Exam No -->
+            <div class="form-group trad foc">              
+                <label>Exam Number</label>
+                <label type="text" 
+                class="form-control p-2 form-control-sm" 
+                id="shift"
+                name="shift">
+                {{examShiftDetails.exam_number}}</label>
+              
+            </div>
+
+            <!-- Total Candidates -->
+            <!-- <div class="form-group trad foc">
+              <div class="col-md-10">
+                <label>Total Candidates</label>
+              </div>
+              <div class="col-md-9">
+                <input type="number" class="form-control" min="0" max="99999999"
+                  (blur)="onTotalStudentTextboxChange($event.target.value)" formControlName="total_students">
+              </div>
+            </div> -->
+
+          </div>
+
+          <div class="col-md-3 col-lg-3">
+            <!-- Exam Type -->
+            <div class="form-group trad foc">              
+                <label>Exam Type</label>              
+                <label 
+                type="text" 
+                class="form-control p-2 form-control-sm" 
+                id="shift"
+                name="shift">{{examShiftDetails.exam_type}}</label>              
+            </div>
+
+            <!-- TOTAL ALLOCATED CANDIDATES -->
+            <!-- <div class="form-group trad foc">
+              <div class="col-md-12">
+                <label>TOTAL ALLOCATED CANDIDATES</label>
+              </div>
+              <div class="col-md-9">
+                <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                  name="shift">{{total_assigned_students }}</label></div>
+            </div> -->
+
+          </div>
+
+          <div class="col-md-3 col-lg-3">
+
+            <!-- Exam Code -->
+            <div class="form-group trad foc">              
+                <label>Exam Code</label>                            
+                <label 
+                type="text" 
+                class="form-control p-2 form-control-sm" 
+                id="shift"
+                name="shift">{{examShiftDetails.exam_code}}</label>
+              
+            </div>
+
+            <!-- BALANCE CANDIDATES -->
+            <!-- <div class="form-group trad foc">
+              <div class="col-md-10">
+                <label>BALANCE CANDIDATES</label>
+              </div>
+              <div class="col-md-9">
+                <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                  name="shift">{{total_remaining_students }}</label>
+              </div>
+            </div> -->
+
+          </div>
+
+          <!-- Exam Grade -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">              
+                <label>Exam Grade</label>                          
+                <label type="text" 
+                class="form-control p-2 form-control-sm" 
+                id="shift"
+                name="shift">{{examShiftDetails.exam_grade}}</label>             
+            </div>
+          </div>
+
+        </div>
+
+
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer mt-5">
+          <div class="d-flex mb-2">
+            <strong>Manage Assignments</strong>
+            <div class="paging-block col-lg">            
+            </div>
+          </div>         
+          <br>
+          <div class="card card-borderless">
+            <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false">
+
+              <!-- Shift Number -->
+              <ngx-ixcheck-table-column [property]="'shift_number'" [header]="'Shift Number'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Section Number -->
+              <ngx-ixcheck-table-column [property]="'section_name'" [header]="'Section Name'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Subject -->
+              <ngx-ixcheck-table-column [property]="'subject'" [header]="'Subject'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Language -->
+              <ngx-ixcheck-table-column [property]="'language'" [header]="'Language'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- difficulty Level -->
+              <ngx-ixcheck-table-column [property]="'difficulty_level'" [header]="'difficulty Level'"
+                [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Question Type -->
+              <ngx-ixcheck-table-column [property]="'question_type'" [header]="'Question Type'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- # of Questions -->
+              <ngx-ixcheck-table-column [property]="'no_of_questions'" [header]="'# of Questions'"
+                [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Assigned -->
+              <ngx-ixcheck-table-column [property]="'number_of_questions_assigned'" [header]="'Assigned'"
+                [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Balance -->
+              <ngx-ixcheck-table-column [property]="'number_of_questions_balance'" [header]="'Unassigned'"
+                [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Created -->
+                 <ngx-ixcheck-table-column [property]="'number_of_questions_created'" [header]="'Created'"
+                 [sortable]="false">
+               </ngx-ixcheck-table-column>
+
+              <!-- Approved -->
+              <ngx-ixcheck-table-column [property]="'Approved'" [header]="'Approved'"
+              [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+ 
+
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <div class="btn-group" dropdown>
+                    <a href="/#/author/assignments/{{rowitem.author_assigment_id}}/exams/{{examId}}/shifts/{{shiftNumber}}/language/{{langGuid}}/primary/{{primary}}/manage/question" (click)="$event.stopPropagation();">Manage
+                    </a>                    
+                  </div>
+
+                </ng-template>
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+            <hr>
+            <div class="row">             
+              <div class="col-md-4"></div>
+              <div class="col-md-7">
+                <div class="row text-center">
+                  <div class="col-md-2" style="padding-right: 2rem;">Total</div>
+                  <div class="col-md-2" style="padding-right: 5rem;">{{totalQuestions}}</div>
+                  <div class="col-md-2" style="padding-left: 2.5rem;">{{totalQuestionAssigned}}</div>
+                  <div class="col-md-2" style="padding-right: 2rem;">{{totalQuestionBalance}}</div>
+                  <div class="col-md-2" style="padding-right: 4rem;">{{totalQuestionCreated}}</div>
+                  <div class="col-md-2"  style="padding-right: 6rem;">{{totalQuestionApproved}}</div>                
+                </div>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
+            <!-- <table class="table flex-t1">
+              <tbody>
+                <tr class="">
+                  <td class=""></td>
+                  <td class=""></td>
+                  <td class=""></td>
+                  <td class=""></td>
+                  <td class=""> <div>Total</div> </td>
+                  <td class=""> <div>5</div></td>
+                  <td class="">6</td>
+                  <td class="">7</td>
+                  <td class="">8</td>
+                  <td class="">9</td>
+                  <td class="">12</td>                                    
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+          <!-- <div class="not-found-container" *ngIf="notFound">
+            <h5>
+              No Data Available...
+            </h5>
+          </div> -->
+        </div>
+      </div>    
+    </div>
+  </form>
+
+</div>

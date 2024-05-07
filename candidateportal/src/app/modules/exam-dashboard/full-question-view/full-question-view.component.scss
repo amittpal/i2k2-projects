@@ -1,0 +1,39 @@
+:host::ng-deep {
+
+  #question-card-wrapper {
+    height: calc(100vh - 225px);
+    margin-top: 0.5rem;
+
+    #question-card {
+      img{
+        max-width: 35vw;
+      }
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+
+      [class*='col-'] {
+        flex-grow: 1;
+      }
+
+      .card {
+        min-height: 40vh;
+      }
+
+      #status-wrapper {
+        .badge {
+          border-radius: 0;
+          //padding: 0.5rem;
+          //width: 2rem;
+          padding: 0.4rem 0.2rem;
+          width: 1.6rem;
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+ 
+
+  //--------------------------------------
+}

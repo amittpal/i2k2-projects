@@ -1,0 +1,27 @@
+<div class="card card-bordered">
+    <div class="card-body">
+        <form class="app-form" name="qualification" id="qualificationFormGroup" [formGroup]="qualificationFormGroup">
+            <div class="row">
+                <div class="col-lg-3 col-sm-4 form-group trad foc mb-0">
+                    <label for="qualified" class="mb-0">Qualified</label>
+                    <select class="form-control form-control-sm" name="qualified" id="qualified"
+                        formControlName="qualified">
+                        <option value="0"> Yes</option>
+                        <option value="1"> No</option>
+                    </select>
+                </div>
+                
+                <div class="col-lg-3 col-sm-4 form-group mb-0">
+                    <label for="remarks" class="mb-0">Remarks*</label>
+                    <textarea type="text" rows="2" class="form-control form-control-sm" name="remarks" id="remarks"
+                        formControlName="remarks" required></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm btn-primary" type="submit" (click)="updateExam()">UPDATE</button>
+        <!-- <button class="btn btn-sm btn-default ml-2" type="submit" (click)="onCancel()">CANCEL</button> -->
+    </div>
+</div>

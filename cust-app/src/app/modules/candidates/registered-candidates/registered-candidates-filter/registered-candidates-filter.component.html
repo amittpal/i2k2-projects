@@ -1,0 +1,150 @@
+<aside class="filter-menu" id="filterDiv">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-header">
+      <div class="card-title">Filter</div>
+      <div class="card-controls">
+        <ul>
+          <li>
+            <a class="icon-filter-close" filterToggle bubbleClose>
+              <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <tabset #tabset>
+        <tab #first heading="REGISTRATION"></tab>
+        <tab #second heading="AI"></tab>
+      </tabset>
+    </div>
+
+    <div class="card-body scrollable">
+      <div class="card-body section-body section-body-sm p-2">
+        <form novalidate [formGroup]="registeredCandidateFormGroup" (submit)="onRegisteredCandidateFormSubmit()"
+          class="p-0">
+          <div *ngIf="tabset.tabs[0].active == true">
+
+            <div class="form-group mb-0">
+              <label for="reg_id" class="mb-0">Reg #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!registeredCandidateFormGroup.controls['reg_id'].valid}" name="reg_id" id="reg_id"
+                formControlName="reg_id">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!registeredCandidateFormGroup.controls['name'].valid}" maxlength="50" name="name"
+                id="name" formControlName="name">
+            </div>
+
+
+            <div class="form-group mb-0">
+              <label for="father_name" class="mb-0">Father Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!registeredCandidateFormGroup.controls['father_name'].valid}" maxlength="50"
+                name="father_name" id="father_name" formControlName="father_name">
+            </div>
+            <div class="form-group mb-0">
+              <label for="dob" class="mb-0">Dob</label>
+              <input type="date" class="form-control form-control-sm" name="dob" id="dob" formControlName="dob">
+            </div>
+            <div class="form-group mb-0">
+              <label for="gender" class="mb-0">Gender</label>
+              <select class="form-control form-control-sm" id="gender" name="gender" formControlName="gender">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let gender of genderList" [value]="gender.gender_guid">
+                  {{gender.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="ph" class="mb-0">Ph</label>
+              <select class="form-control form-control-sm" id="ph" name="ph" formControlName="ph">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let ph of phList" [value]="ph.value">
+                  {{ph.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="category" class="mb-0">Category</label>
+              <select class="form-control form-control-sm" id="category" name="category" formControlName="category">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let category of categoryList" [value]="category.category_guid">
+                  {{category.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="special" class="mb-0">Special</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!registeredCandidateFormGroup.controls['special'].valid}" maxlength="50" name="special"
+                id="special" formControlName="special">
+            </div>
+
+            <!-- Status -->
+            <div class="form-group mb-0">
+              <label for="registration_status" class="mb-0">Registration STATUS</label>
+              <select class="form-control form-control-sm" id="registration_status" name="registration_status"
+                formControlName="registration_status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of registrationStatusList" [value]="status.status_guid">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="payment_status" class="mb-0">Payment STATUS</label>
+              <select class="form-control form-control-sm" id="payment_status" name="payment_status"
+                formControlName="payment_status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of PaymentStatusList" [value]="status.status_guid">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="tabset.tabs[1].active == true">
+            <div class="form-group mb-0">
+              <label for="color_percent_min" class="mb-0">Color Percent</label>
+              <div class="form-row">
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input placeholder="Min" type="text" class="form-control form-control-sm" title="Color Percent Min"
+                    name="color_percent_min" id="color_percent_min" formControlName="color_percent_min" (keypress)="checkInput($event)">
+                </div>
+                <div class="col-lg-2 col-sm-2  col-2" style="text-align: center;"> - </div>
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input placeholder="Max" type="text" class="form-control form-control-sm" title="Color Percent Max"
+                    name="color_percent_max" id="color_percent_max" formControlName="color_percent_max" (keypress)="checkInput($event)">
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <label for="face_percent" class="mb-0">Face Percent</label>
+              <div class="form-row">
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input placeholder="Min" type="text" class="form-control form-control-sm" title="Face Percent Min"
+                    name="face_percent_min" id="face_percent_min" formControlName="face_percent_min" (keypress)="checkInput($event)">
+                </div>
+                <div class="col-lg-2 col-sm-2  col-2" style="text-align: center;"> - </div>
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input placeholder="Max" type="text" class="form-control form-control-sm" title="Face Percent Max"
+                    name="face_percent_max" id="face_percent_max" formControlName="face_percent_max" (keypress)="checkInput($event)">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit"
+        (click)="onRegisteredCandidateFormSubmit()" form="permissionForm">Apply</button>
+      <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+        (click)="resetFilters()">Reset</button>
+    </div>
+  </div>
+</aside>

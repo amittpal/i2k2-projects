@@ -1,0 +1,25 @@
+:host ::ng-deep{
+    .bg-light-blue{
+        border: 1px solid #adcdeb;
+        padding: 20px;
+        z-index: 0;
+        .card-title{
+            color: #000000;
+            font-weight: 600;
+        }
+    }
+    
+    .panel-heading{
+        padding: 10px;
+        background-color: #f2f2f2;
+        .btn.btn-link
+        {
+            color: #000000;
+            text-transform: inherit;
+        }
+    }
+    .bg-light{
+        background-color: #f5f5f5;
+    }
+    
+}

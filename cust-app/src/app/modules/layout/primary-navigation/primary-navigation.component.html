@@ -1,0 +1,76 @@
+<div class="az-iconbar">
+  <div class="icon-logo-container">
+    <a>
+      <!--onclick="return false;"-->
+      <!-- <svg class="icon icon-hexbluelight">
+        <use xlink:href="assets/images/icon-hexbluelight.svg#icon-hexbluelight"></use>
+      </svg> -->
+      <!-- <svg-icon src="assets/images/layers.svg"></svg-icon> -->
+      <img src="assets/images/logo_vcheck_grey.png" alt="iXcheck" height="32" width="32">
+    </a>
+  </div>
+  <!-- <nav *ngIf="boolDataLoaded" class="nav" id="side-nav" routerLinkActive="on-active">
+    <a *ngFor="let appModule of navModules" class="nav-link" id="icon-mod{{appModule.id}}"
+    (click)="showMenu($event,'mod'+appModule.id)" (mouseenter)="showMenu($event,'mod'+appModule.id)">
+      <svg-icon src="{{appModule.icon}}"></svg-icon>
+    </a>
+  </nav> -->
+  <!-- nav-icon -->
+  <nav *ngIf="boolDataLoaded && navOpenStyle==true; else showNavOpenStyle" class="nav" id="side-nav"
+    routerLinkActive="on-active">
+    <a *ngFor="let appModule of navModules" class="nav-link" id="icon-mod{{appModule.id}}"
+      (mouseenter)="showMenu($event,'mod'+appModule.id)">
+      <svg-icon src="{{appModule.icon}}"></svg-icon>
+    </a>
+  </nav>
+  <ng-template #showNavOpenStyle>
+    <nav *ngIf="boolDataLoaded" class="nav" id="side-nav" routerLinkActive="on-active">
+      <a *ngFor="let appModule of navModules" class="nav-link" id="icon-mod{{appModule.id}}"
+        (click)="showMenu($event,'mod'+appModule.id)">
+        <svg-icon src="{{appModule.icon}}"></svg-icon>
+      </a>
+    </nav>
+  </ng-template>
+  <!-- nav-icon -->
+  <!-- logout Start -->
+  <div class="az-iconbar-bottom">
+    <a (click)="logout()">
+      <svg class="icon-logout">
+        <use xlink:href="assets/images/icon-logout.svg#icon-logout"></use>
+      </svg>
+      <br><br>
+    </a>
+  </div>
+  <!-- logout End -->
+</div>
+<!-- nav-icon onclick-->
+<div #aside class="az-iconbar-aside">
+  <div class="az-iconbar-header">
+    <a class="az-logo">{{navDesc}}</a>
+    <!--onclick="return false;"-->
+    <a (click)="clickClose($event,false,null)">
+      <svg class="iconclose icon-cross">
+        <use xlink:href="assets/images/icon-cross.svg#icon-cross"></use>
+      </svg>
+    </a>
+  </div>
+  <div class="az-iconbar-body">
+    <!--class="az-iconbar-pane" is important this will HIDE the panel if not used properly-->
+    <div *ngFor="let appModules of navModules" id="mod{{appModules.id}}" class="az-iconbar-pane">
+      <div *ngFor="let appModule of appModules.main_modules">
+        <!-- <h6 class="az-iconbar-title">{{appModule.name}}</h6> -->
+        <h6 *ngIf="appModule.selected_sub_modules.length > 0" class="az-iconbar-title">{{appModule.name}}</h6>
+        <nav class="nav">
+          <!-- <a filterClose routerLink="{{subModule.route}}" routerLinkActive="on-active" [routerLinkActiveOptions]="{exact:
+              true}" (click)="modClose($event, true, appModules.id)" *ngFor="let subModule of appModule.sub_modules"
+            class="nav-link">{{subModule.name}}</a> -->
+          <a filterClose routerLink="{{subModule.route}}" routerLinkActive="on-active" [routerLinkActiveOptions]="{exact:
+              true}" (click)="modClose($event, true, appModules.id)"
+            *ngFor="let subModule of appModule.selected_sub_modules" class="nav-link">{{subModule.name}}</a>
+        </nav>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- nav-icon onclick-->

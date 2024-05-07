@@ -1,0 +1,116 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body scrollable">    
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate name="importedAuthorsListForm" id="importedAuthorsListForm" [formGroup]="importedAuthorsListFormGroup" (submit)="onimportedAuthorsListFormSubmit($event)"
+            class="p-0">
+
+            <div class="form-group mb-0">
+              <label for="Import#" class="mb-0">Author#</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!importedAuthorsListFormGroup.controls['id'].valid}" name="id" id="id" formControlName="id">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="code" class="mb-0">Author Code</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!importedAuthorsListFormGroup.controls['code'].valid}" name="code" id="code" formControlName="code">
+            </div>
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">Author Name</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!importedAuthorsListFormGroup.controls['name'].valid}" name="name" id="name" formControlName="name">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="address" class="mb-0">Address</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!importedAuthorsListFormGroup.controls['address'].valid}" name="address" id="address" formControlName="address">
+            </div>
+          
+
+            <div class="form-group mb-0">
+              <label for="Subject" class="mb-0">Subject</label>
+              <select class="form-control form-control-sm" id="subject" name="subject" formControlName="subject">
+                <option value="">All</option>
+                <option *ngFor="let _states of statesList" [value]="_states.guid">
+                  {{_states.name}}
+                </option>
+              </select>
+            </div> 
+
+
+            <div class="form-group mb-0">
+              <label for="Language" class="mb-0">Language</label>
+              <select class="form-control form-control-sm" id="language" name="language" formControlName="language">
+                <option value="">All</option>
+                <option *ngFor="let _states of statesList" [value]="_states.guid">
+                  {{_states.name}}
+                </option>
+              </select>
+            </div> 
+
+            <div class="form-group mb-0">
+              <label for="OrganizationName" class="mb-0">Organization Name</label>
+              <input type="text" class="form-control form-control-sm" [ngClass]="{red:!importedAuthorsListFormGroup.controls['organization_name'].valid}" name="organization_name" id="organization_name" formControlName="organization_name">
+            </div>
+
+            <div class="form-group mb-0">
+                <label for="State" class="mb-0">State</label>
+                <select class="form-control form-control-sm" id="state_guid" name="state_guid" formControlName="state_guid">
+                  <option value="">All</option>
+                  <option *ngFor="let _states of statesList" [value]="_states.guid">
+                    {{_states.name}}
+                  </option>
+                </select>
+              </div> 
+
+
+              <div class="form-group mb-0">
+                <label for="city" class="mb-0">City</label>
+                <select class="form-control form-control-sm" id="city_guid" name="city_guid" formControlName="city_guid">
+                  <option value="">All</option>
+                  <option *ngFor="let _city of citiesList" [value]="_city.guid">
+                    {{_city.name}}
+                  </option>
+                </select>
+              </div> 
+
+              <div class="form-group mb-0">
+                <label for="rating" class="mb-0">Rating</label>
+                <select class="form-control form-control-sm" id="rating" name="rating" formControlName="rating">
+                  <option value="">All</option>
+                  <option *ngFor="let _status of status" [value]="_status.value">
+                    {{_status.name}}
+                  </option>
+                </select>
+              </div> 
+
+            <div class="form-group mb-0">
+              <label for="status" class="mb-0">Status</label>
+              <select class="form-control form-control-sm" id="status" name="status" formControlName="status">
+                <option value="">All</option>
+                <option *ngFor="let _status of status" [value]="_status.value">
+                  {{_status.name}}
+                </option>
+              </select>
+            </div>              
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onimportedAuthorsListFormSubmit($event)">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

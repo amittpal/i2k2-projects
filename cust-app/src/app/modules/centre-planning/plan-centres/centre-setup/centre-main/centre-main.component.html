@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div>
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">        
+        <tabset filterClose class="tabset-container" #tabset>
+          <tab heading="INFO"></tab>
+          <tab heading="REG DATA"></tab>
+          <tab heading="Shifts"></tab>
+          <tab heading="Centres"></tab>          
+          <tab heading="Allot"></tab>
+          <tab [disabled]="disableSwitching" heading="Allotted pref 1"></tab>
+          <tab [disabled]="disableSwitching" heading="Allotted pref 2"></tab>
+          <tab [disabled]="disableSwitching" heading="Allotted pref 3"></tab>
+          <tab [disabled]="disableReviewAncReport" heading="Review"></tab>
+          <tab [disabled]="disableReviewAncReport" heading="Report"></tab>
+        </tabset>
+      </div>
+
+      <div class="card-body scrollable inside-footer-fixed">
+        <div *ngIf="tabset.tabs[0].active == true">
+          <app-exam (exam_num)="exam_num($event)" [examGuid]="examGuid" [snapShotId]="snapShotId"></app-exam>
+        </div>
+        <div *ngIf="tabset.tabs[1].active == true">
+          <app-regdata [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-regdata>
+        </div>
+        <div *ngIf="tabset.tabs[2].active == true">
+          <app-shift [regGuid]="examGuid" [snapShotId]="snapShotId"></app-shift>
+        </div>
+        <div *ngIf="tabset.tabs[3].active == true">
+          <app-centre-list [regGuid]="examGuid" [snapShotId]="snapShotId"></app-centre-list>
+        </div>
+        <div *ngIf="tabset.tabs[4].active == true">
+          <app-allocate (enableTab)="disableTabs($event)" [registrationGuid]="examGuid" [snapShotId]="snapShotId"></app-allocate>
+        </div>
+        <div *ngIf="tabset.tabs[5].active == true">
+          <app-assign-pref-1 [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-assign-pref-1>
+        </div>
+        <div *ngIf="tabset.tabs[6].active == true">
+          <app-assign-pref-2 [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-assign-pref-2>
+        </div>
+        <div *ngIf="tabset.tabs[7].active == true">
+          <app-assign-pref-3 [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-assign-pref-3>
+        </div>
+        <div *ngIf="tabset.tabs[8].active == true">
+          <app-final-view [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-final-view>
+        </div>
+        <div *ngIf="tabset.tabs[9].active == true">
+          <app-center-allocation-report [selectedExamGuid]="selectedExamGuid" (setExamGuid)="setExamGuid($event)" [regGuid]="examGuid" [snapShotId]="snapShotId"></app-center-allocation-report>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+html{
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+}
+#yellow {
+    height: 100%;
+    background: yellow;
+  }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    height: 100%;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    color: $black;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 300;
+    // color: #373e43;
+    color: $black;
+}
+h1 {
+    font-size: 44px;
+    line-height: 55px;
+    letter-spacing: -0.08px;
+}
+h2 {
+    font-size: 31px;
+    line-height: 40px;
+}
+h3 {
+    font-size: 27px;
+    line-height: 35px;
+}
+h4 {
+    font-size: 22px;
+    line-height: 31.88px;
+}
+h5{
+    font-size: 18px;
+    line-height: 25.88px;
+}
+app-footer{
+    background: #f6f9fa;
+    
+    border-top: 1px solid #eaecee;
+}
+.btn-group{
+    position: relative;
+    display: inline-block;
+    &.dropup{
+        display: inline-flex;
+    }
+    .dropdown-menu{
+        border: 1px solid $control-border;
+        box-shadow: 0 1px 3px 1px rgba($black, .13);
+    }
+}
+.btn-primary{
+    color: $white;
+}
+ngx-ixcheck-loading-spinner{
+    .spinner{
+        background: rgba($white, .7);
+    }
+    .lds-roller div:after {        
+        background: $primary;
+    }
+}
+.tab-container{
+    .nav-tabs .nav-link{
+        border-radius: 0;
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600');
+
+.topmargin{
+    //margin-top: 100px;
+    @include media-breakpoint-up(lg) { 
+      margin-top: 0px
+    }
+  }
+  
+.fullheight {
+    position: relative;
+    height: 100vh;
+    //margin-top: 50px;
+    @include media-breakpoint-up(lg) { 
+        height: 100vh;
+    }
+}
+.fullheight-min {
+    position: relative;
+    min-height: calc(100vh - 85px );
+    margin: 0;
+    @include media-breakpoint-up(lg) { 
+        min-height: calc(100vh - 85px );
+    }
+}
+.fullheight-fixed {
+    position: relative;
+    height: calc(100vh - 85px );
+    margin: 0;
+    @include media-breakpoint-up(lg) { 
+        height: calc(100vh - 85px );
+    }
+}
+.font-16 {
+    font-size: 16px;
+}
+.logo-center {
+    display:block;
+    margin:auto;
+}
+
+//---- css for dropdown item delete ----
+a.dropdown-item:not([href]):not([tabindex]) {
+    color: #212529 !important;    
+}
+a.dropdown-item:not([href]):not([tabindex]):hover, a.dropdown-item:not([href]):not([tabindex]):focus {
+    text-decoration: none;
+    cursor: pointer;
+}   
+  
+.bg-gray{
+    background-color: #d9d9d9;
+}
+
+.question_answer_fix_height {
+    img {
+        //width: 100%;
+    }
+}

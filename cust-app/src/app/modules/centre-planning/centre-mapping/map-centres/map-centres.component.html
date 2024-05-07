@@ -1,0 +1,142 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <form class="app-form" [formGroup]="mapCentreFormGroup" novalidate="">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">
+              <label></label>
+            </div>
+            <div class="paging-block col-4">
+            </div>
+            <div class="filter-container col-4">
+              <div id="bubbleBlock" class="bubble-block">
+              </div>
+              <div class="filter-block" filterToggle>
+                <a class="filter-slider">
+                  <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="row form-group  foc">
+                <div class="col-md-4">
+                  <label for="exam_code" class="col-lg-6 p-2 mb-0">EXAM NUMBER</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="exam_number"
+                    id="exam_number" formControlName="exam_number" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="exam_code" class="col-lg-6 p-2 mb-0">EXAM NAME</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="name" id="name"
+                    formControlName="name" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label>IMPORTED CENTRE CODE</label><br>
+                  <select class="form-control form-control-sm" id="importedCentreCode" name="importedCentreCode"
+                    formControlName="importedCentreCode" (change)="onChangeCentreCode($event)">
+                    <option value="">Please select</option>
+                    <option *ngFor="let _code of importedCentresCode" [value]="_code.id">
+                      {{_code.code}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="row form-group  foc">
+                <div class="col-md-4">
+                  <label for="exam_code" class="col-lg-6 p-2 mb-0">EXAM CODE</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="code" id="code"
+                    formControlName="code" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="exam_code" class="col-lg-6 p-2 mb-0">EXAM TYPE</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="exam_type" id="exam_type"
+                    formControlName="exam_type" required>
+                </div>
+
+                <div class="col-md-4 ">
+                  <label for="exam_code" class="col-lg-6 p-2 mb-0">IMPORTED CENTRE NAME</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="imported_centre_name"
+                    id="imported_centre_name" formControlName="imported_centre_name" required>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="col-md-4">
+                <div class="row form-group ">
+                  <label class="mapcentrecolor">Centres List</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="data-table p-0" *ngIf="!notFound">
+
+              <!-- table start -->
+              <ngx-ixcheck-table id="mapCentreslist" headerTitle="Imported centres" [items]="items"
+                [indexColumn]="false" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+                [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [selectColumn]="false"
+                [expandOnIndexColClick]="true" [expandOnRowClick]="false">
+
+
+                <ng-template #rowDetailExpand let-rowitem="item">
+                  <app-map-centres-details [item]="rowitem" [rowItemData]=rowitem>
+                  </app-map-centres-details>
+                </ng-template>
+                <!-- City   -->
+                <ngx-ixcheck-table-column [property]="'city_name'" [header]="'City'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- State -->
+                <ngx-ixcheck-table-column [property]="'state_name'" [header]="'State'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Ph Seat -->
+                <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'Ph Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Normal Seat -->
+                <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'Normal Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Total Seat -->
+                <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seat'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+              </ngx-ixcheck-table>
+              <!-- table end -->
+            </div>
+            <div class="not-found-container" *ngIf="notFound">
+              <h5>
+                No Data Available...
+              </h5>
+            </div>
+          </div>
+
+        </div>
+        <!-- Form Submit -->
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" [disabled]="!mapCentreFormGroup.valid" type="submit"
+            (click)="formSubmit()">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-map-centres-filter #featureFilter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag">
+</app-map-centres-filter>

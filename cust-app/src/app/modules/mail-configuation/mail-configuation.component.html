@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-fixed ">
+        <div class="card-header">
+          <div class="header-flex-container">
+          </div>
+         
+        </div>
+        <div class="card-body fullheight-fixed">
+            <form autocomplete="off" class="app-form" id="addOutgoingMailForm" [formGroup]="addOutgoingMailFormGroup"
+                novalidate="">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group trad foc required">
+                                    <label for="code" class="mb-0">Code</label>
+                                    <input type="text" class="form-control form-control-sm" name="code" id="code" formControlName="code"
+                                        required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="name" class="mb-0">Name</label>
+                                    <input type="text" class="form-control form-control-sm" name="name" id="name"
+                                         formControlName="name" required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="smtp" class="mb-0">Smtp Server</label>
+                                    <input type="text" class="form-control form-control-sm" name="smtp" id="smtp" formControlName="smtp"
+                                        required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="smtp_port" class="mb-0">Smtp Port</label>
+                                    <input type="text" class="form-control form-control-sm" name="smtp_port" id="smtp_port"
+                                        (keypress)="checkInput($event)" formControlName="smtp_port" required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="sender_email" class="mb-0">Sender's Email Id</label>
+                                    <input type="text" class="form-control form-control-sm" formControlName="sender_email" required>
+                                </div>
+                
+                                <div class="form-group trad foc required">
+                                    <label for="sender_name" class="mb-0">Sender's Name</label>
+                                    <input type="text" class="form-control form-control-sm" name="sender_name" id="sender_name"
+                                        formControlName="sender_name" required>
+                                </div>                             
+                                <div class="form-group trad foc required">
+                                    <label for="verify_email_id" class="mb-0">Verify E-mail Account</label>
+                                    <input type="text" class="form-control form-control-sm" formControlName="verify_email_id" required>
+                                </div>
+                               <div class="verify-button">
+                                <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="verifiedMail()">Verify</button>              
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group trad foc required">
+                                    <label for="password" class="mb-0">Sender's Email Password</label>
+                                    <input type="password" class="form-control form-control-sm" name="password" id="password" formControlName="password"
+                                        required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="confirm_password" class="mb-0">Confirm Email Password</label>
+                                    <input type="password" class="form-control form-control-sm" name="confirm_password" id="confirm_password"
+                                    formControlName="confirm_password" required>
+                                </div>
+                                <div class="form-group trad foc required">
+                                    <label for="email_subject" class="mb-0">Email Subject</label>
+                                    <input type="text" class="form-control form-control-sm" name="email_subject" id="email_subject"
+                                        formControlName="email_subject" required>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group trad foc required">
+                                    <label for="email_template" class="mb-0">TEMPLATE</label>
+                                    <quill-editor formControlName="email_template">
+                                   </quill-editor>
+                                </div>
+                                    <!-- <div class="form-group trad foc required">
+                                        <label for="email_template" class="mb-0">Template</label>
+                                        <quill-editor formControlName="email_template"
+                                        [ngClass]="{red:!addOutgoingMailFormGroup.controls['email_template'].valid && submitted }"
+                                            formControlName="email_template" name="email_template" id="email_template"
+                                            required>
+                                        </quill-editor>
+                                         <textarea style="height:100px"
+                                            [ngClass]="{red:!addOutgoingMailFormGroup.controls['email_template'].valid && submitted }"
+                                            formControlName="email_template" name="email_template" id="email_template"
+                                            class="form-control form-control-sm" placeholder="Email Template" required></textarea> 
+                                    </div> -->
+                               
+                                
+                            </div>
+                        </div>
+
+                      
+                        
+                    </div>
+                 
+                </div>
+            </form>
+        </div>
+        <div class="card-footer ">        
+            
+            <button class="btn btn-sm btn-primary buttonStyle" id="submitBtn" type="submit"
+                (click)="formSubmit()">Submit</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

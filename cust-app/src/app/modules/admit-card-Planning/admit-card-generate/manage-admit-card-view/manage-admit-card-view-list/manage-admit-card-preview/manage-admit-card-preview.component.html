@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">     
+        <div class="card-body scrollable app-form">
+            <div class="row">
+                <div class="card-title col-12">    
+                    <input 
+                    type="button" 
+                    class="btn btn-primary" 
+                    value="BACK TO ADMIT CARDS" routerLink="/admitcard/registration/{{regGuid}}/exam/{{examGuid}}/snapshot/{{snapShotId}}/view/{{shiftNumber}}">
+                </div>        
+              </div>
+            <div class="app-form" *ngIf="templateUrl != ''">
+                <div class="container-fluid">
+                    <div class="card card-bordered fullheight-fixed">
+                      <div class="card-body">  
+                        <ngx-ixcheck-reports-viewer  [template]="templateUrl" [data]="admitCardData" [templateName]="'AdmitCard'">
+                        </ngx-ixcheck-reports-viewer>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

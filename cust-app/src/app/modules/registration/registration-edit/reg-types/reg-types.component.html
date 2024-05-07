@@ -1,0 +1,84 @@
+<div class="card-body fullheight-fixed  ">
+    <form class="app-form m-0" id="regTypeFormGroup" name="regTypeFormGroup" [formGroup]="regTypeFormGroup">
+        <div class="row  p-0 ">
+
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group foc trad" *ngIf=!isDisable>
+                    <label>List Type</label>
+                    <select class="form-control" formControlName="reg_list_guid" name="reg_list_guid"
+                        (change)="onChangeTypeList($event.target.value)">
+                        <option value="">Select</option>
+                        <option *ngFor="let regType of regTypeList" [value]="regType.guid">{{regType.name}}</option>
+                    </select></div>
+                    <div class="form-group foc trad" *ngIf=isDisable>
+                        <label>List Type</label>
+                        <select class="form-control" formControlName="reg_list_guid" name="reg_list_guid"
+                            disabled (change)="onChangeTypeList($event.target.value)">
+                            <option value="">Select</option>
+                            <option *ngFor="let regType of regTypeList" [value]="regType.guid">{{regType.name}}</option>
+                        </select></div>
+            </div>
+        </div>
+    </form>
+    <label class="heading-block1">{{headerName}}S</label>
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table ">
+            <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="!isDisable"
+                [indexColumn]="!isDisable" [indexColumnHeader]="'#'" [itemCount]="itemCount"
+                [tableName]="'products-grid'" [selectColumn]="!isDisable" [expandOnIndexColClick]="!isDisable"
+                [expandOnRowClick]="!isDisable" [pagination]="false" [addRows]="false" [dragIcon]="" [dragCss]=""
+                [sortIndexOnDrop]="true"
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [deleteColumn]="false"
+                [sortIndexOnDrop]="true" [deleteCss]="{'color': 'red'}">
+                <!-- Child-Component -->
+                <ng-template #rowDetailExpand let-rowitem="item">
+                    <app-reg-types-row-edit [rowItemData]="rowitem" [item]="rowitem"
+                        (update)="updateProductDetails($event)" (updatedDetails)="getUpdatedDetails($event)">
+                    </app-reg-types-row-edit>
+                </ng-template>
+                <!-- Child-Component-end -->
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                    <ng-template #colHeaderComponent>
+                        <div class="text-center">#</div>
+                    </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="text-center">{{rowitem.line_num}}</div>
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent> Code </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="code"
+                            [(ngModel)]="rowitem.code" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent> Name</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="name"
+                            [(ngModel)]="rowitem.name" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+            </ngx-ixcheck-table3>
+            <br>
+            <div class="row">
+                <div class="col-7 pl-5" *ngIf="!isDisable">
+                    <button class="btn btn-sm btn-default add-rows" (click)="onAddRow()">add Rows</button>
+                    <button class="btn btn-sm btn-default add-rows ml-2" (click)="onClearRow()">Clear All
+                        Rows</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-footer " *ngIf="!isDisable">
+    <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onRegTypeFormSubmit()">Update</button>
+</div>

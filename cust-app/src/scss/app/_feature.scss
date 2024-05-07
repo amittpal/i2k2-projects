@@ -1,0 +1,48 @@
+$icon-color: #626262;
+$highlight-color: #f5f5f5;
+
+.icon-search{
+   margin-left: 10px;
+}
+.input-search{
+    border: none;
+    border-radius: 0;
+    width: 120px;
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+    font-size: 14px;
+    //background-color: transparent;
+
+}
+.search-block{
+    display: inline-block;
+    line-height: 33px;
+}
+
+
+.page-heading{
+    width: calc(100% - 242px);
+    font-size: 20px;
+}
+
+.not-found-container, .main{
+    text-align: center;
+    margin: 50px 0;
+    background: $highlight-color;
+    padding: 20px 0;
+    border-radius: 50px;
+    svg{
+        width: 50px;
+        height: 40px;
+        stroke: black;
+        fill: black;
+        opacity: 0.4;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .mob-hide{
+        display: none;
+    }
+}

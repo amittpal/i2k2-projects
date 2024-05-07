@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable">
+            <form class="app-form" id="updateJobsForm" [formGroup]="updateJobsFormGroup" novalidate="">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="form-group trad foc required">
+                            <label for="code" class="mb-0">Code</label>
+                            <input type="text" class="form-control form-control-sm" name="code" id="code"
+                                formControlName="code" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="job_type_id" class="mb-0">Job Type</label>
+                            <select class="form-control form-control-sm" id="job_type_id" name="job_type_id"
+                                formControlName="job_type_id">
+                                <option value="">Select</option>
+                                <option *ngFor="let job_type of jobTypes" [value]="job_type.id">{{job_type.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group trad foc required">
+                            <label for="job_access_counter" class="mb-0">Job Access Counter</label>
+                            <input type="text" class="form-control form-control-sm" name="job_access_counter"
+                                id="job_access_counter" formControlName="job_access_counter" (keypress)="checkInput($event)" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="run_date_time" class="mb-0">Run Date Time</label>
+                            <input type="date" class="form-control form-control-sm" name="run_date_time"
+                                id="run_date_time" formControlName="run_date_time" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="create_on_fail" class="mb-0">Default Threshold Limit</label>
+                            <input type="text" class="form-control form-control-sm" name="default_threshold_limit"
+                                id="default_threshold_limit" formControlName="default_threshold_limit" (keypress)="checkInput($event)" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="action" class="mb-0">parent job </label>
+                            <input type="text" class="form-control form-control-sm" name="parent_job_id"
+                                id="parent_job_id" formControlName="parent_job_id" required>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label for="recurring" class="mb-0">Recurring</label>
+                            <select class="form-control form-control-sm" id="recurring" name="recurring"
+                                formControlName="recurring">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="job_status_id" class="mb-0">Job Status</label>
+                            <select class="form-control form-control-sm" id="job_status_id" name="job_status_id"
+                                formControlName="job_status_id">
+                                <option value="">Select</option>
+                                <option *ngFor="let job_status of jobStatusList" [value]="job_status.id">
+                                    {{job_status.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label for="status" class="mb-0">Status</label>
+                            <select class="form-control form-control-sm" id="status" name="status"
+                                formControlName="status">
+                                <option value="">Select</option>
+                                <option value="fail">Failed</option>
+                                <option value="created">Created</option>
+                                <option value="success">Success</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Update</button>
+        </div>
+    </div>
+</div>

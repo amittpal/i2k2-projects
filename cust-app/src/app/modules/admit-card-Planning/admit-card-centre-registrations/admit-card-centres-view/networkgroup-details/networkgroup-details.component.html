@@ -1,0 +1,42 @@
+<div >
+    <ngx-ixcheck-table id="mapCentreslist" headerTitle="Imported centres" [items]="items" [indexColumn]="false"
+      [itemCount]="itemCount" [selectColumn]="false">
+  
+     
+  
+      <!-- Centre Code -->
+      <ngx-ixcheck-table-column [property]="'code'" [header]="'Network Group #'" [sortable]="false">
+      </ngx-ixcheck-table-column>
+  
+      <!-- Centre Name -->
+      <ngx-ixcheck-table-column [property]="'allocated_seats'" [header]="'Allocated Seats'" [sortable]="false">
+      </ngx-ixcheck-table-column>
+  
+      <!-- <ngx-ixcheck-table-column [colType]="'custom'">
+        <ng-template #colHeaderComponent>Action</ng-template>
+        <ng-template #colDetailComponent let-rowitem="item">
+          <div class="btn-group" dropdown>
+            <a href="/#/admitcard/centres/details/{{rowitem.id}}/{{rowitem.shifts}}" (click)="$event.stopPropagation();">View</a>  
+          
+          </div>
+        </ng-template>
+      </ngx-ixcheck-table-column> -->
+
+
+      <ngx-ixcheck-table-column [colType]="'custom'">
+        <ng-template #colHeaderComponent>Action</ng-template>
+        <ng-template #colDetailComponent let-rowitem="item">
+          <div class="btn-group" dropdown>
+           <div *ngIf="rowitem.allocated_seats!='0'">
+            <a  (click)="createPackage(rowitem.exam_guid,rowitem.centres_guid,rowitem.shifts,rowitem.assets_guid,rowitem.registration_guid);">Create Package</a>  
+          </div>
+          </div>
+        </ng-template>
+      </ngx-ixcheck-table-column>
+
+  
+    </ngx-ixcheck-table>
+  
+   
+  </div>
+  

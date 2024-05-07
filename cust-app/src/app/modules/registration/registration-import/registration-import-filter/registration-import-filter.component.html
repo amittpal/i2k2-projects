@@ -1,0 +1,62 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+            <div class="card-title">Filter</div>
+            <div class="card-controls">
+                <ul>
+                    <li>
+                        <a class="icon-filter-close" filterToggle bubbleClose>
+                            <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body scrollable">
+            <div class="card-body section-body section-body-sm p-2">
+                <form novalidate name="registrationImportForm" id="registrationImportForm"
+                    [formGroup]="registrationImportFormGroup" (submit)="onRegistrationImportFormSubmit($event)"
+                    class="p-0">
+
+                    <div class="form-group mb-0">
+                        <label for="code" class="mb-0">Registration COde</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationImportFormGroup.controls['code'].valid}" name="code"
+                            id="code" formControlName="code">
+                    </div>
+                    <div class="form-group mb-0">
+                        <label for="name" class="mb-0">Registration Name</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!registrationImportFormGroup.controls['name'].valid}" name="name"
+                            id="name" formControlName="name">
+                    </div>
+                    <div class="form-group mb-0">
+                        <label for="planning_status_guid" class="mb-0">Plan Status</label>
+                        <select class="form-control form-control-sm" id="planning_status_guid" name="planning_status_guid" title="Plan Status"
+                            formControlName="planning_status_guid">
+                            <option value="">All</option>
+                            <option *ngFor="let _planStatus of planStatusList" [value]="_planStatus.status_guid">
+                                {{_planStatus.planning_status}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <label for="status" class="mb-0">Status</label>
+                        <select class="form-control form-control-sm" id="status" name="status" formControlName="status">
+                            <option value="">All</option>
+                            <option *ngFor="let _status of status" [value]="_status.value">
+                                {{_status.name}}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit"
+                (click)="onRegistrationImportFormSubmit($event)">Apply</button>
+            <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+                (click)="resetFilters()">Reset</button>
+        </div>
+    </div>
+</aside>

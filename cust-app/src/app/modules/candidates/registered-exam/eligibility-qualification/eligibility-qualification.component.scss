@@ -1,0 +1,11 @@
+:host::ng-deep
+{
+    thead > tr{ 
+        
+            background-color: #f3f3f3;   
+    }
+    .table th, .table td {
+        padding: 0.75rem;
+    }
+}
+//*[@id="candidate-list"]/table/thead/tr

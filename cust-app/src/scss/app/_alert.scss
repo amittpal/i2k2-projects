@@ -1,0 +1,40 @@
+.modal-dialog{
+    // filter: blur(5px);
+    // -webkit-filter: blur(5px);
+    // -moz-filter: blur(5px);
+    // -o-filter: blur(5px);
+    // -ms-filter: blur(5px);
+    &.alert-dialog{
+        margin-top: $alert-from-top;
+    }
+    &.notification-dialog{
+        margin-top: $notification-from-top;
+        box-shadow: 1px 1px 10px rgba(34,34,34,0.2);
+    }
+    
+    .modal-content{
+        border-radius: 0;
+        .modal-header{
+            border-bottom: none;
+        }
+        .modal-body{
+            text-align: center;
+        }
+        .modal-title{
+            font-family: 'Montserrat';
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 14px;
+            font-weight: 500;
+            color: $body-color;
+            margin: 4px 0 0;
+        }
+        .modal-footer{
+            border-top: none;
+            justify-content: center;
+        }
+        button.btn{
+            min-width: 70px;
+        }
+    }
+}

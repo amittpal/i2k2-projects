@@ -1,0 +1,48 @@
+ELIGIBILITY
+<div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+    <div class="data-table p-0">
+        <ngx-ixcheck-table id="candidate-list" headerTitle="Eligibility List" [items]="eligibility"
+            [indexColumn]="false" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+            [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [selectColumn]="false">
+            <ngx-ixcheck-table-column [property]="'id'" [header]="'#'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'function_name'" [header]="'Function Name'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'input'" [header]="'Input'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'eligibility'" [header]="'Eligibility'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'criterion'" [header]="'Criterion'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+        </ngx-ixcheck-table>
+    </div>
+</div>
+
+QUALIFICATION
+<div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+    <div class="data-table p-0">
+        <ngx-ixcheck-table id="candidate-list" headerTitle="Qualification List" [items]="qualification"
+            [indexColumn]="false" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+            [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [selectColumn]="false"
+            [expandOnIndexColClick]="true">
+            <ng-template #rowDetailExpand let-rowitem="item">
+                <app-qualification-rowdetail [item]="rowitem" (updateEvent)="updateEventEmit()"></app-qualification-rowdetail>
+            </ng-template>
+            <ngx-ixcheck-table-column [property]="'id'" [header]="'#'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'code'" [header]="'Exam Code'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+            <ngx-ixcheck-table-column [property]="'qualified'" [header]="'Qualified'" [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <span>
+                        {{rowitem.qualified == 0||rowitem.qualified == ''?'YES':'NO'}}
+                    </span>
+                </ng-template>
+            </ngx-ixcheck-table-column>
+        </ngx-ixcheck-table>
+    </div>
+</div>

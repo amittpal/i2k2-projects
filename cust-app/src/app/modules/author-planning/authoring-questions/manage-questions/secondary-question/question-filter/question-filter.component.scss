@@ -1,0 +1,30 @@
+:host ::ng-deep {   
+    #checkboxDiv{
+         height: 28vh;
+         border-bottom: 2px solid #dee2e6
+        }
+            
+    .question_summary_item{
+        padding: 10px 20px;        
+        border-radius: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .question_number_item{
+        padding: 7px 20px;        
+        border-radius: 0;
+        text-align: center;
+        margin: 5px;
+        cursor: pointer;
+        display: inline-block;
+        
+    }
+    .large_checkbox{     
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+    }
+    .selected_question{
+        border:1.5px solid #48ab2d;
+    }
+}

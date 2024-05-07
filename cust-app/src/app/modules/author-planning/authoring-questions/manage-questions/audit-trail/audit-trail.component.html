@@ -1,0 +1,18 @@
+<div class="table-responsive">                 
+    <table  class="table table-min-height">
+      <thead>
+        <tr class="flex-tr">
+          <th  class="flex-th">Status</th>
+          <th  class="flex-th">User Name</th>                      
+          <th  class="flex-th">Date & Time</th>                      
+        </tr>
+      </thead>
+      <tbody>                    
+        <tr  class="flex-tr" *ngFor="let trail of questionAuditTrailList">
+          <td  class="flex-td">{{trail.completion_status_text}}</td>
+          <td  class="flex-td">{{trail.author_name}}</td>    
+          <td  class="flex-td">{{trail.log_date}}</td>                      
+        </tr>
+      </tbody>
+    </table>                  
+  </div>

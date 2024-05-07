@@ -1,0 +1,9 @@
+.action{
+    color:#65CF48;
+}
+:host::ng-deep
+{
+    .flex-t1-col-8,.flex-t1-th-8 {
+        text-align: right;
+    }
+}

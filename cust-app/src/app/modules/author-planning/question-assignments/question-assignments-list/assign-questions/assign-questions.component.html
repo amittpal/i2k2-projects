@@ -1,0 +1,259 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <form class="app-form" [formGroup]="examShiftFormGroup" id="examShiftForm" name="examShiftForm" novalidate="">
+        <div class="row">
+          <!-- Exam Type -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="exam_type">Exam Type </label>
+              <input type="text" 
+              class="form-control" 
+              id="exam_type"
+              name="exam_type"
+              [value]="examShiftDetails.exam_type"
+              disabled>
+            </div>
+          </div>
+          <!-- Exam Code -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="exam_code">Exam Code</label>
+              <input type="text" 
+              class="form-control" 
+              id="exam_code"
+              name="exam_code"
+              [value]="examShiftDetails.exam_code"
+              disabled>              
+            </div>
+          </div>
+          <!-- Exam Grade -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="exam_grade">Exam Grade</label>
+              <input type="text" 
+              class="form-control" 
+              id="exam_grade"
+              name="exam_grade"
+              [value]="examShiftDetails.exam_grade"
+              disabled>                          
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="subject">Subject</label>
+              <input type="text" 
+              class="form-control" 
+              id="subject"
+              name="subject"
+              [value]="examShiftDetails.subject"
+              disabled>                                    
+            </div>            
+          </div>
+          <!-- Language -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="language">Language</label>
+              <input type="text" 
+              class="form-control" 
+              id="language"
+              name="language"
+              [value]="examShiftDetails.language"
+              disabled>                                    
+            </div>         
+          </div>
+
+          <!-- Difficulty Level -->
+          <div class="col-md-3 col-lg-3">
+              <div class="form-group foc trad">
+              <label for="difficulty_level">Difficulty Level</label>
+              <input type="text" 
+              class="form-control" 
+              id="difficulty_level"
+              name="difficulty_level"
+              [value]="examShiftDetails.difficulty_level"
+              disabled>                                    
+            </div>
+          </div>
+          <!-- Question Type -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="question_type">Question Type</label>
+              <input type="text" 
+              class="form-control" 
+              id="question_type"
+              name="question_type"
+              [value]="examShiftDetails.question_type"
+              disabled>            
+            </div>
+          </div>
+          <!-- Total Question -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label for="total_question">Total Question</label>
+              <input type="text" 
+              class="form-control" 
+              id="total_question"
+              name="total_question"
+              [value]="examShiftDetails.number_of_questions"
+              disabled>            
+            </div>            
+          </div>                 
+        </div>
+       <div class="row mt-3">
+        <div class="col-md-12">
+          <table class="table" id="tbl-bulk-inputs">
+            <thead>
+              <th></th>
+              <th>Author</th>
+              <th>Reviewer</th>
+              <th>Approvar</th>             
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mt-3"> 
+                 <input
+                 type="button"
+                 class="btn btn-outline-primary btn-sm"
+                 id="btn-bulk-unlock"
+                 [value]="allowBulkUpdate ? 'Apply bulk changes':'Unlock bulk update' "
+                 (click)="onBulkUpdateButtonClick()">
+               </td>
+               <!-- Author -->
+                <td class="form-group">                                  
+                  <select 
+                  class="form-control form-control-sm" 
+                  id="author" 
+                  name="author"
+                  formControlName="author_id">
+                  <!--(change)="setAuthorType($event)"-->
+                  <option value="">Custom</option>
+                  <option *ngFor="let author of authorList" 
+                     [ngValue]="author">
+                    {{author.name}}
+                  </option>
+                </select>
+                </td>
+                <!-- Reviewer -->
+                <td class="form-group">                     
+                  <select class="form-control form-control-sm" 
+                      id="reviewer" 
+                      name="reviewer"
+                      formControlName="reviewer_id">
+                      <!--(change)="setReviewerType($event)"-->
+                      <option value="">Custom</option>
+                      <option *ngFor="let reviewer of authorList"
+                       [ngValue]="reviewer">
+                        {{reviewer.name}}
+                      </option>
+                    </select>                              
+                </td>   
+                <!-- Approvar -->
+                <td class="form-group">                
+                  <select class="form-control form-control-sm" 
+                  id="approvar" 
+                  name="approvar"
+                  formControlName="approvar_id">
+                  <!--(change)="setApprovarType($event)"-->
+                  <option value="">Custom</option>
+                  <option *ngFor="let approvar of authorList" 
+                     [ngValue]="approvar">
+                    {{approvar.name}}
+                  </option>
+                </select>
+                </td>                         
+              </tr>
+            </tbody>
+          </table>                    
+         </div>                                     
+       </div>
+      </form>
+
+      <div id="basicTable_wrapper" class="dataTables_wrapper no-footer mt-3">
+        <div class="d-flex m-2">
+          <strong>Assignments</strong>
+        </div>
+        <br>
+        <div class="card card-borderless">
+          <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="true"
+            [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+            [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+            [addRows]="false" [dragIcon]="" [dragCss]=""
+            [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+            [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [sortIndexOnDrop]="true"
+            [deleteCss]="{'color': 'red'}">
+
+            <!-- Child-Component -->
+            <ng-template #rowDetailExpand let-rowitem="item">
+              <assign-question-rowdetail 
+               [rowItemData]="rowitem" 
+               [examShiftDetails]="examShiftDetails"
+               [item]="rowitem"                             
+               (update)="updateProductDetails($event)">
+              </assign-question-rowdetail>
+            </ng-template>
+            <!-- Child-Component-end -->
+
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>
+                <div class="text-center">#</div>
+              </ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <div class="text-center">{{rowitem.line_num}}</div>
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Author -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Author</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input 
+                readonly 
+                type="text" 
+                class="form-control-sm col-sm-12 font-size-16" 
+                name="txt_desc"                 
+                [(ngModel)]="rowitem.author_name"
+                (click)="$event.stopPropagation();">                
+                
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Reviewer -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Reviewer</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                [(ngModel)]="rowitem.reviewer_name"
+                 (click)="$event.stopPropagation();">
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Approver -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Approver</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-lg-6 col-sm-12 font-size-16 "
+                  name="txt_units"
+                  [(ngModel)]="rowitem.approver_name"
+                  (click)="$event.stopPropagation();">
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+          </ngx-ixcheck-table3>
+        </div>
+        <div class="not-found-container" *ngIf="notFound">
+          <h5>
+            No Data Available...
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Submit -->
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Update</button>
+    </div>
+  </div>
+</div>

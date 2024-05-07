@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-min-height" *ngIf="candidateDetail.length > 0">
+    <thead>
+      <tr class="flex-tr">
+        <th class="flex-th">Exam</th>
+        <th class="flex-th ">Eligibility</th>
+        <th class="flex-th">Qualified</th>
+        <th class="flex-th">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="flex-tr" *ngFor="let candidate of candidateDetail; let i=index" [attr.data-index]="i">
+        <td class="flex-td">{{ candidate.name }}</td>
+        <td class="flex-td ">{{ candidate.eligibility }}</td>
+        <td class="flex-td ">{{ candidate.qualified }}</td>
+        <td class="flex-td">
+          <a
+            href="/#/candidates/registrations/{{registrationGUID}}/registered/candidates/{{candidates.candidate_guid}}/manage">Manage
+          </a> | <a href="/#/candidates/{{candidates.candidate_guid}}/view"
+            (click)="$event.stopPropagation();"> View </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="detailed-table" *ngIf="candidateDetail.length == 0">
+    <tr class="flex-tr txtalgn">
+      <td class="flex-td"><span>Data not available</span> </td>
+    </tr>
+  </table>
+
+
+</div>

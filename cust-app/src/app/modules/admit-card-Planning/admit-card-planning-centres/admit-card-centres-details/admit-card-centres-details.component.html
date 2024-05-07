@@ -1,0 +1,170 @@
+<div class="container-fluid">
+    
+      <div class="card card-bordered fullheight-min">
+
+        <div class="card-body">
+
+            <form class="app-form"  [formGroup]="centresDetaildFormGroup" novalidate="">
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+               <div class="row form-group  foc">
+                 <div class="col-md-3">
+                   <label for="exam_number" class="col-lg-6 p-2 mb-0">EXAM NUMBER</label>
+                   <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="exam_number" id="exam_number" formControlName="exam_number" required>
+                 </div>
+    
+                 <div class="col-md-3">
+                  <label for="centre_type" class="col-lg-6 p-2 mb-0">CENTRE TYPE</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="centre_type" id="centre_type" formControlName="centre_type" required>
+                </div>
+    
+                <div class="col-md-3">
+                    <label for="network_group" class="col-lg-6 p-2 mb-0"># OF NETWORK GROUP</label>
+                    <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="number_of_networkgroup" id="number_of_networkgroup" formControlName="number_of_networkgroup" required>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-sm btn-primary" id="submitBtn" type="button" (click)="btnClick()" >BACK TO CENTRE LIST</button>
+                  <!-- <label for="exam_code" class="col-lg-6 p-2 mb-0">BACK TO CENTRE LIST</label> -->
+                   
+                </div>
+              
+               </div>
+             </div>
+            </div>  
+    
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+               <div class="row form-group  foc">
+                 <div class="col-md-3">
+                
+                   <label for="exam_type" class="col-lg-6 p-2 mb-0">EXAM TYPE</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="exam_type" id="exam_type" formControlName="exam_type" required>
+                 </div>
+    
+                 <div class="col-md-3">
+                 
+                  <label for="centre_code" class="col-lg-6 p-2 mb-0">CENTRE CODE</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="centre_code" id="centre_code" formControlName="centre_code" required>
+                </div>
+    
+                <div class="col-md-3 ">
+                
+                  <label for="building" class="col-lg-6 p-2 mb-0"># OF BUILDING</label>
+                  <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="number_of_buiding" id="number_of_buiding" formControlName="number_of_buiding" required>
+                </div>
+              
+               </div>
+             </div>
+            </div>  
+
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                 <div class="row form-group  foc">
+                   <div class="col-md-3">
+                  
+                     <label for="exam_code" class="col-lg-6 p-2 mb-0">EXAM CODE</label>
+                    <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="exam_code" id="exam_code" formControlName="exam_code" required>
+                   </div>
+      
+                   <div class="col-md-3">
+                   
+                    <label for="centre_name" class="col-lg-6 p-2 mb-0">CENTRE NAME</label>
+                    <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="centre_name" id="centre_name" formControlName="centre_name" required>
+                  </div>
+      
+                  <div class="col-md-3 ">
+                  
+                    <label for="number_of_rooms" class="col-lg-6 p-2 mb-0"># OF ROOMS</label>
+                    <input type="text" class="col-lg-6 p-2 form-control form-control-sm" name="number_of_rooms" id="number_of_rooms" formControlName="number_of_rooms" required>
+                  </div>
+                 </div>
+               </div>
+              </div> 
+
+          
+            </form>
+    
+            <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+                <!-- tab area -->
+                <tabset  class="tabset-container" #tabset>
+                    <tab heading="POINTS OF CONTACT"></tab>
+                    <tab heading="NETWORK GROUP" ></tab>                  
+               </tabset>
+            </div>
+
+            <div *ngIf="tabset.tabs[0].active == true">
+              <div  *ngIf="!pocNotFound"  class="card-body scrollable">
+                
+                <ngx-ixcheck-table id="orders-list" headerTitle="Orders" [items]="pocData" [indexColumn]="false"
+                [itemCount]="itemPocCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                [lastOffset]="lastOffset" [selectColumn]="false">
+                
+                <ngx-ixcheck-table-column [property]="'index'" [header]="'#'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'state'" [header]="'Name'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'city'" [header]="'Departmrnt'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'code'" [header]="'Designation'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'centre_name'" [header]="'Mobile Number'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Phone Number'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+                <ngx-ixcheck-table-column [property]="'allocated_seats'" [header]="'Email'" [sortable]="false">
+                </ngx-ixcheck-table-column>              
+              </ngx-ixcheck-table>
+
+
+              </div>   
+              <div class="not-found-container" *ngIf="pocNotFound">
+                <h5>
+                  No Data Available...
+                </h5>
+              </div>
+          </div>
+
+          <div *ngIf="tabset.tabs[1].active == true">
+            <div  *ngIf="!notFound"  class="card-body scrollable">
+                
+              <ngx-ixcheck-table id="orders-list" headerTitle="Orders" [items]="networkGroupData" [indexColumn]="false"
+              [itemCount]="itemNetworkCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false"[expandOnIndexColClick]="true" [expandOnRowClick]="false"
+              (rowClick)="rowClick($event)" (rowDoubleClick)="rowDoubleClick($event)">
+             
+              
+              <ngx-ixcheck-table-column [property]="'code'" [header]="'Network Group #'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'Normal Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'Ph Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'allocated_normal_seats'" [header]="'Allocated Normal Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'allocated_ph_seats'" [header]="'Allocated Ph Seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              
+                    
+            </ngx-ixcheck-table>
+
+
+            </div>   
+            <div class="not-found-container" *ngIf="notFound">
+              <h5>
+                No Data Available...
+              </h5>
+            </div>
+          
+          </div>
+         
+          </div>
+
+         
+      </div>
+    
+  </div>
+
+  

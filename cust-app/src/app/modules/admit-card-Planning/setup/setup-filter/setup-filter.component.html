@@ -1,0 +1,89 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+  
+          <form novalidate name="examsForm" id="examsForm" [formGroup]="examsFormGroup" (submit)="onexamsFormSubmit()"
+            class="p-0">
+  
+            <!-- Exam # -->
+            <div class="form-group mb-0">
+              <label for="examNumber" class="mb-0">Registration #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!examsFormGroup.controls['examNumber'].valid}" maxlength="50" name="examNumber" id="examNumber"
+                formControlName="examNumber">
+            </div>
+  
+            <!-- Code -->
+            <div class="form-group mb-0">
+              <label for="code" class="mb-0">Registration Code</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!examsFormGroup.controls['code'].valid}" maxlength="50" name="code" id="code"
+                formControlName="code">
+            </div>     
+            
+            <div class="form-group mb-0">
+              <label for="examName" class="mb-0">Registration Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!examsFormGroup.controls['examName'].valid}" maxlength="50" name="examName" id="examName"
+                formControlName="examName">
+            </div>   
+  
+            <!--Exam Type  -->
+            <div class="form-group mb-0">
+              <label for="examType" class="mb-0">Registration Type</label>
+              <select class="form-control form-control-sm" id="examType" name="examType" formControlName="examType">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let type of examTypeList" [value]="type.name">
+                  {{type.name}}
+                </option>
+              </select>
+            </div>
+  
+            <!-- Language -->
+            <div class="form-group mb-0">
+              <label for="planStatusGuid" class="mb-0">Setup Status</label>
+              <select class="form-control form-control-sm" id="planStatusGuid" name="planStatusGuid" formControlName="planStatusGuid">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of planstatusList" [value]="status.status_guid">
+                  {{status.plan_status_text}}
+                </option>
+              </select>
+            </div>
+  
+            <!-- Primary Language -->
+            <div class="form-group mb-0">
+              <label for="status" class="mb-0">Status</label>
+              <select class="form-control form-control-sm" id="status" name="status"
+                formControlName="status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of statusList" [value]="status.value">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>         
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onexamsFormSubmit()"
+          form="permissionForm">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

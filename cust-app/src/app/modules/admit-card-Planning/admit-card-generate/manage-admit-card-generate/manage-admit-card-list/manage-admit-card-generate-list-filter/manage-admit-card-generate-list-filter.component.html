@@ -1,0 +1,117 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+            <div class="card-title">Filter</div>
+            <div class="card-controls">
+                <ul>
+                    <li>
+                        <a class="icon-filter-close" filterToggle bubbleClose>
+                            <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body scrollable">
+            <div class="card-body section-body section-body-sm p-2" id="filterCard">
+                <form novalidate name="admitCardViewForm" id="admitCardViewForm" [formGroup]="admitCardViewFormGroup"
+                    class="p-0">
+                    <!--Bind States in Multiselect Dropdown -->
+                    <div class="form-group mb-0">
+                        <label for="city" class="mb-0">STATES</label>
+                        <ng-multiselect-dropdown #multiSelect name="state" placeholder="Select State" [data]="states"
+                            formControlName="states" [settings]="stateMultiSelectDrpDwnSettings"
+                            (onSelect)="getCities()" (onDeSelect)="getCities()">
+                        </ng-multiselect-dropdown>
+                    </div>
+
+                    <!--Bind Cities in Multiselect Dropdown -->
+                    <div class="form-group mb-0">
+                        <label for="city" class="mb-0">CITIES</label>
+                        <ng-multiselect-dropdown #multiSelect name="city" placeholder="Select City" [data]="cities"
+                            formControlName="cities" [settings]="cityMultiSelectDrpDwnSettings">
+                        </ng-multiselect-dropdown>
+                    </div>
+
+                    <!-- Registration Number -->
+                    <div class="form-group mb-0">
+                        <label for="registration_number" class="mb-0">REGISTRATION NUMBER</label>
+                        <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardViewFormGroup.controls['registration_number'].valid}"
+                            maxlength="50" name="registration_number" id="registration_number" formControlName="registration_number">
+                    </div>
+
+                    <!-- ROLL NUMBER -->
+                    <div class="form-group mb-0">
+                        <label for="roll_number" class="mb-0">ROLL NUMBER</label>
+                        <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardViewFormGroup.controls['roll_number'].valid}"
+                            maxlength="50" name="roll_number" id="roll_number" formControlName="roll_number">
+                    </div>
+                    <!-- FIRST NAME -->
+                    <div class="form-group mb-0">
+                        <label for="first_name" class="mb-0">FIRST NAME</label>
+                        <input type="text" class="form-control form-control-sm" [ngClass]="{red:!admitCardViewFormGroup.controls['first_name'].valid}"
+                            name="first_name" id="first_name" formControlName="first_name">
+                    </div>
+                    <!-- MIDDLE NAME -->
+                    <div class="form-group mb-0">
+                        <label for="middle_name" class="mb-0">MIDDLE NAME</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!admitCardViewFormGroup.controls['middle_name'].valid}" name="middle_name"
+                            id="middle_name" formControlName="middle_name">
+                    </div>
+                    <!-- LAST NAME -->
+                    <div class="form-group mb-0">
+                        <label for="last_name" class="mb-0">LAST NAME</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!admitCardViewFormGroup.controls['last_name'].valid}" name="last_name"
+                            id="last_name" formControlName="last_name">
+                    </div>
+                    <!-- FATHER NAME -->
+                    <div class="form-group mb-0">
+                        <label for="father_name" class="mb-0">FATHER NAME</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!admitCardViewFormGroup.controls['father_name'].valid}" name="father_name" id="father_name"
+                            formControlName="father_name">
+                    </div>
+                    <!-- GENDER -->
+                    <div class="form-group mb-0">
+                        <label for="gender" class="mb-0">GENDER</label>
+                        <select class="form-control form-control-sm" id="gender" name="gender" formControlName="gender">
+                            <option value="" [selected]="true" disabled>Select</option>
+                            <option *ngFor="let type of genderList" [value]="type.value">
+                                {{type.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- EMAIL -->
+                    <div class="form-group mb-0">
+                        <label for="email" class="mb-0">EMAIL</label>
+                        <input type="text" class="form-control form-control-sm"
+                            [ngClass]="{red:!admitCardViewFormGroup.controls['email'].valid}" name="email" id="email"
+                            formControlName="email">
+                    </div>
+                    <!-- MOBILE -->
+                    <div class="form-group mb-0">
+                        <label for="mobile_number" class="mb-0">MOBILE</label>
+                        <input type="number" class="form-control form-control-sm"
+                            [ngClass]="{red:!admitCardViewFormGroup.controls['mobile_number'].valid}" name="mobile_number" id="mobile_number"
+                            formControlName="mobile_number">
+                    </div>
+                    <!-- DOB -->
+                    <div class="form-group mb-0">
+                        <label for="dob" class="mb-0">DOB</label>
+                        <input type="date" class="form-control form-control-sm" formControlName="dob"
+                        [ngClass]="{red:!admitCardViewFormGroup.controls['dob'].valid}" >
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onFormSubmit()"
+                form="permissionForm">Apply</button>
+            <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+                (click)="resetFilters()">Reset</button>
+        </div>
+    </div>
+</aside>

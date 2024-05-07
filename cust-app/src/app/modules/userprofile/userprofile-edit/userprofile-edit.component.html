@@ -1,0 +1,305 @@
+
+<div class="container-fluid">
+
+  <tabset class="tabset-container" #tabset>
+    <tab heading="User">
+      <div class="card card-bordered fullheight-fixed">
+        <div class="card-body" style="min-height: 73vh;">
+          <form novalidate class="app-form" name="editOrgsUserForm" id="editOrgsUserForm"
+            [formGroup]="editOrgsUserFormGroup">
+            <div class="row">
+              <div class="col-lg-2 col-sm-4">
+                <div class="form-group  trad foc required">
+                  <label for="user_type" class="mb-0">User Type</label>
+                  <input class="form-control form-control-sm" id="user_type" name="user_type"
+                    formControlName="user_type" disabled required>
+
+                </div>
+                <div class="form-group  trad foc">
+                  <label for="user_name" class="mb-0">User Name</label>
+                  <input type="text" class="form-control form-control-sm" name="user_name" id="user_name"
+                    formControlName="user_name" disabled>
+                </div>
+                <div class="form-group  trad foc">
+                  <label for="org_name" class="mb-0">Orgnization Name</label>
+                  <input type="text" class="form-control form-control-sm" name="org_name" id="org_name"
+                    formControlName="org_name" disabled>
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-sm-4">
+                <div class="form-group  trad foc required">
+                  <label for="title" class="mb-0">Title</label>
+                  <select class="form-control form-control-sm" id="title" name="title" formControlName="title" required>
+                    <option value="">Please select</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Ms">Ms</option>
+                  </select>
+                </div>
+                <div class="form-group trad foc required">
+                  <label for="first_name" class="mb-0">First Name</label>
+                  <input type="text" class="form-control form-control-sm" name="first_name" maxlength="50"
+                    id="first_name" formControlName="first_name" required>
+                </div>
+                <div class="form-group trad foc ">
+                  <label for="middle_name" class="mb-0">Middle Name</label>
+                  <input #sd type="text" class="form-control form-control-sm" name="middle_name" maxlength="50"
+                    id="middle_name" formControlName="middle_name">
+                </div>
+                <div class="form-group trad foc ">
+                  <label for="last_name" class="mb-0">Last Name</label>
+                  <input type="text" class="form-control form-control-sm" name="last_name" maxlength="50" id="last_name"
+                    formControlName="last_name">
+                </div>
+              </div>
+
+              <div class="col-lg-2 col-sm-4">
+                <div class="form-group  trad foc required">
+                  <label for="email" class="mb-0">Email</label>
+                  <input type="text" class="form-control form-control-sm" name="email" id="email"
+                    formControlName="email" required>
+                </div>
+                <div class="form-group  trad foc required">
+                  <label for="mobile" class="mb-0">Mobile</label>
+                  <input type="text" class="form-control form-control-sm" name="mobile" id="mobile"
+                    formControlName="mobile" maxlength="10" (keypress)="checkInput($event)" required>
+                </div>
+                <div class="form-group  trad foc">
+                  <label for="phone_number" class="mb-0">Phone</label>
+                  <input type="text" class="form-control form-control-sm" name="phone_number" id="phone_number"
+                    formControlName="phone_number" maxlength="11" (keypress)="checkInput($event)">
+                </div>
+                <div class="form-group  trad foc required">
+                  <label for="status" class="mb-0">Status</label>
+                  <select class="form-control form-control-sm" id="status" name="status" formControlName="status"
+                    disabled required>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+          <label for="_search" class="mb-0">
+            <span class="strong"> Effective Assigned App And Groups</span>
+          </label>
+
+          <div class="col-sm-12" style="padding: 0px;padding-right: 5px;">
+            <div class="row ">
+              <div class="form-group col-sm-4 ">
+                <input type="search" class="form-control form-control-sm" maxlength="256"
+                  [(ngModel)]="filterModel.appName" placeholder="App" name="search" id="search">
+              </div>
+              <div class="form-group col-sm-4 pl-0 ">
+                <input type="search" class="form-control form-control-sm" maxlength="256" placeholder="Groups"
+                  [(ngModel)]="filterModel.groupName" name="search" id="search">
+              </div>
+              <div class="form-group col-sm-4 ">
+                <button class="btn btn-sm btn-primary" style="float: right;" (click)="filterData()">Filter</button>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 p-0">
+              <table class="table table-striped table-min-height">
+
+                <thead>
+                  <tr>
+                    <th>App</th>
+                    <th>Group</th>
+                    <th>
+
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let assigned of dataAddedPermissions ;let i=index" [attr.data-index]="i">
+                    <td> {{assigned.app_name}}</td>
+                    <td> {{assigned.group_name}}</td>
+                    <td>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onformSubmit()">Update</button>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Author Details" *ngIf="userTypeId==='7'">
+      <div class="card card-bordered fullheight-fixed">
+        <div class="card-body" style="min-height: 73vh;">
+          <div class="app-form">
+            <form autocomplete="off" novalidate name="updateAuthorDetailsForm" id="updateAuthorDetailsForm"
+              [formGroup]="updateAuthorDetailsForm">
+              <div class="row">
+
+                <div class="col-lg-2 col-sm-4 required">
+
+                  <div class="form-group  trad foc required">
+                    <label for="Name" class="mb-0">Author Code</label>
+                    <input type="text" class="form-control form-control-sm" name="code" id="code" formControlName="code"
+                      disabled required>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="Title" class="mb-0">Title</label>
+                    <select class="form-control form-control-sm" id="title" name="title" formControlName="title"
+                      disabled>
+                      <option value="Mr">Mr</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Ms">Ms</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="Name" class="mb-0">Name</label>
+                    <input type="text" class="form-control form-control-sm" name="name" id="name" formControlName="name"
+                      disabled required>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Organization Name </label>
+                    <!-- <select class="form-control form-control-sm" id="organization_id" name="organization_id" disabled
+                      formControlName="organization_id" required>
+                      <option value="">Please Select</option>
+                      <option *ngFor="let org of organizationData" [value]="org.id">
+                        {{org.org_name}}
+                      </option>
+                    </select> -->
+                    <input type="text" class="form-control form-control-sm" name="auth_org_name" id="auth_org_name"
+                      formControlName="auth_org_name" disabled>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Department </label>
+                    <select class="form-control form-control-sm" id="department_guid" name="department_guid" disabled
+                      formControlName="department_guid" required>
+                      <option value="">Please Select</option>
+                      <option *ngFor="let department of departmentData" [value]="department.department_guid">
+                        {{department.name}}
+                      </option>
+
+                    </select>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-2 col-sm-4">
+
+
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Designation</label>
+                    <select class="form-control form-control-sm" id="designation_guid" name="designation_guid" disabled
+                      formControlName="designation_guid" required>
+                      <option value="">Please Select</option>
+                      <option *ngFor="let designation of designationData " [value]="designation.designation_guid">
+                        {{designation.name}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Highest Qualification</label>
+                    <select class="form-control form-control-sm" id="highest_qualification_guid"
+                      name="highest_qualification_guid" formControlName="highest_qualification_guid" disabled required>
+                      <option value="">Please Select</option>
+                      <option *ngFor="let qualification of qualificationData"
+                        [value]="qualification.highest_qualification_guid">
+                        {{qualification.name}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Subject Matter Expert </label>
+                    <select [compareWith]="multisubjectComp" class="form-control form-control-sm" disabled
+                      formControlName="subject_guid" id="subject_guid" multiple>
+                      <option *ngFor="let subject of subjectData" [ngValue]="subject">
+                        {{subject.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-4">
+
+                  <div class="form-group  trad foc required">
+                    <label for="confirmedPassword" class="mb-0">Experience(Years)</label>
+                    <input type="text" class="form-control form-control-sm" name="experience" id="experience" disabled
+                      formControlName="experience" required>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="language_guid" class="mb-0">Languages</label>
+                    <select [compareWith]="multiLangComp" class="form-control form-control-sm"
+                      formControlName="language_guid" id="language_guid" id="language_guid" name="language_guid"
+                      disabled multiple>
+                      <option *ngFor="let subject of languageData" [ngValue]="subject">
+                        {{subject.name}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="status" class="mb-0">Identity Type</label>
+                    <select class="form-control form-control-sm" id="identity_Type_guid" name="identity_Type_guid"
+                      disabled formControlName="identity_Type_guid" required>
+                      <option value="">Please Select</option>
+                      <option *ngFor="let item of identityTypeList" [value]="item.identity_type_guid">{{item.name}}
+                      </option>
+
+                    </select>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-2 col-sm-4">
+
+                  <div class="form-group  trad foc required">
+                    <label for="IdentityNumber" class="mb-0">Identity Number</label>
+                    <input type="text" class="form-control form-control-sm" name="identity_number" id="identity_number"
+                      disabled formControlName="identity_number" required>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="MobileNumber" class="mb-0">Mobile Number</label>
+                    <input type="text" class="form-control form-control-sm" name="mobile_number" id="mobile_number"
+                      disabled maxlength="10" formControlName="mobile_number" (keypress)="checkInput($event)" required>
+                  </div>
+
+                  <div class="form-group  trad foc required">
+                    <label for="AlternateMobileNumber" class="mb-0">Alternate Mobile Number</label>
+                    <input type="text" class="form-control form-control-sm" name="alternate_mobile_number" disabled
+                      id="alternate_mobile_number" formControlName="alternate_mobile_number"
+                      (keypress)="checkInput($event)" maxlength="10">
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-4">
+
+                  <div class="form-group  trad foc required">
+                    <label for="Rating" class="mb-0">Rating</label>
+                    <input type="text" class="form-control form-control-sm" name="rating" id="rating" disabled
+                      formControlName="rating" required>
+                  </div>
+                  <div class="form-group  trad foc required">
+                    <label for="Image" class="mb-0">Image</label>
+                    <input type="file" accept="image/*" (change)="changeListener($event)" disabled>
+                  </div>
+                  <div class="form-group  trad foc required">
+                    <img [src]="img_source" height="80" width="80">
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+
+</div>

@@ -1,0 +1,50 @@
+<div id="question-card-wrapper">
+    <div class="row">
+        <div class="col-md-3 mb-1 d-flex">
+            <label class="font-weight-bold mr-2">Language:</label>
+            <select class="form-control form-control-sm"
+            (change)="onLanguageChange($event.target.value)">
+                <option *ngFor="let language of LanguagesList"
+                [value]="language.guid"
+                [selected]="language.guid === SelectedLanguageGuid">
+                    {{language.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="row" *ngFor="let item of group | keyvalue">  
+        <div class="col-md-12 p-0 text-center">
+            <div class="bg-gray mb-3">
+                <div class="p-1">
+                    <strong>{{item.key}}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mb-1" 
+                id="question-card" 
+                *ngFor="let details of item.value"
+                (click)="onQuestionCardClick(details[0].question_guid)">       
+                    <div class="card card-bordered">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div id="status-wrapper">
+                                    <span class="badge {{details[0].status_css_tag}} shaped">{{details[0].question_number}}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-11">
+                                <div [innerHTML]="details[0].question_description | sanitizeHtml"></div>
+                            </div>
+                        </div>                
+                      
+                    </div>
+                </div>                     
+            </div>
+            </div> 
+        </div>       
+    </div>
+</div>
+
+

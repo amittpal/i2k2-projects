@@ -1,0 +1,60 @@
+<div class="container-fluid">
+<form autocomplete="off" class="app-form" id="editCentreForm" [formGroup]="centreFormGroup" novalidate="">
+
+    <div class="row align-items-center">
+        <div class="col-md-12">
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    <!-- Centre Import Code # -->
+                    <div class="form-group foc trad">
+                        <label for="importCode" class="mb-0">CENTRE IMPORT CODE</label>
+                        <select class="form-control" id="importCode" name="importCode"
+                            (change)="populateCentreList()" formControlName="importCode">
+                            <option value="" disabled [selected]="true">Select</option>
+                            <option *ngFor="let item of importCodeList" [value]="item.id">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2" *ngIf="addedFlag">
+                    <!-- Exam Code # -->
+                    <div class="form-group foc trad">
+                        <label for="examCode" class="mb-0">EXAM CODE</label>
+                        <select class="form-control" id="examCode" name="examCode"
+                            (change)="getShiftNumbers()" formControlName="examCode">
+                            <option value="" disabled [selected]="true">{{addedFlag?'Select':'All'}}</option>
+                            <option *ngFor="let item of examList" [value]="item.exam_guid">
+                                {{item.code}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2" *ngIf="addedFlag">
+                    <!-- Shift Number # -->
+                    <div class="form-group  foc trad">
+                        <label for="shiftNumber" class="mb-0">SHIFT NUMBER</label>
+                        <select class="form-control" id="shiftNumber" name="shiftNumber" 
+                         (change)="setInputFields()" formControlName="shiftNumber">
+                            <option value="" disabled [selected]="true">Select</option>
+                            <option *ngFor="let item of shiftNumberList" [value]="item.no_of_shifts">
+                                {{item.shift_number}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</form>
+</div>
+
+
+<app-centre-list-add *ngIf="!addedFlag" (updateCentreList)="updateCentreList($event)" (resetCentreList)="resetCentreList($event)" [regGuid]="regGuid" [snapShotId]="snapShotId" [items]="items" [examList]="examList" [importId]="importId"></app-centre-list-add>
+
+<app-centre-list-edit *ngIf="addedFlag" [regGuid]="regGuid" [snapShotId]="snapShotId" [addedItems]="items" [examCode]="examCode" [shiftNumber]="shiftNumber" [importId]="importId"></app-centre-list-edit>

@@ -1,0 +1,67 @@
+<div *ngIf="itemCount>0">
+  <ngx-ixcheck-table id="mapCentreslist" headerTitle="Imported centres" [items]="items" [indexColumn]="false"
+    [itemCount]="itemCount" [selectColumn]="false">
+
+    <!-- Selected -->
+    <ngx-ixcheck-table-column [colType]="'custom'">
+      <ng-template #colHeaderComponent>Select</ng-template>
+      <ng-template #colDetailComponent let-rowitem="item">
+        <div class="fa-plus-circle" [ngClass]="rowitem.is_select==='0' ? 'fa-minus-circle' : 'fa-plus-circle'"
+          (click)="addRow(rowitem)"></div>
+
+      </ng-template>
+    </ngx-ixcheck-table-column>
+
+    <!-- Centre Code -->
+    <ngx-ixcheck-table-column [property]="'code'" [header]="'Centre Code'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Centre Name -->
+    <ngx-ixcheck-table-column [property]="'name'" [header]="'Centre Name'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- City   -->
+    <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- State -->
+    <ngx-ixcheck-table-column [property]="'address'" [header]="'Address'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Centre Address -->
+    <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'Ph Seat'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+
+    <!-- Normal Seat -->
+    <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'Normal Seat'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Total Seat -->
+    <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seat'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- RATING -->
+    <ngx-ixcheck-table-column [colType]="'custom'">
+      <ng-template #colHeaderComponent>Rating</ng-template>
+      <ng-template #colDetailComponent let-rowitem="item">
+        <div class="d-flex">
+          <div *ngFor="let x of selectedStar" class="d-flex justify-content-end form-group trad foc rating">
+            <span>☆</span>
+            <!-- <input type="checkbox" [checked]="rowitem.isSelected" (change)="onCentreChange($event,rowitem)"> -->
+          </div>
+          </div>
+      </ng-template>
+    </ngx-ixcheck-table-column>
+
+  </ngx-ixcheck-table>
+
+  <div class="form-row">
+    <div class="form-group d-flex col-lg-2 col-sm-4">
+      <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;" type="button"
+        (click)="sendToParent()">Update</button>
+      <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+        (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>

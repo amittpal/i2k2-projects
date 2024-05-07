@@ -1,0 +1,39 @@
+:host ::ng-deep {  
+    
+ quill-editor.Punjabi .ql-editor, quill-view.Punjabi .ql-editor,input.Punjabi,select.Punjabi {           
+            font-family: 'gurbaniLipi'!important;
+            font-size: 16px !important;                
+      }
+ quill-editor.Hindi .ql-editor, quill-view.Hindi .ql-editor,input.Hindi,select.Hindi {           
+        font-family: 'krutidev' !important;  
+        font-size: 16px !important;                        
+  }
+
+    #logo{ visibility: hidden;}
+    .fr-toolbar.fr-top, .second-toolbar{border-radius: 0;}
+    #checkboxDiv{
+         height: 28vh;
+         border-bottom: 2px solid #dee2e6
+        }
+    
+    
+        .large_checkbox,.large_radio{     
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: middle;
+        }
+    #questionTab .ql-editor{
+        min-height: 100px;
+    }
+    quill-view .ql-editor{
+        padding: 2px;
+    }
+    .was-validated {
+        input.ng-invalid,
+        select.ng-invalid,
+        quill-editor.ng-invalid > .ql-container.ql-snow {
+            border: 1px solid lightcoral !important;
+        }
+       
+      }
+}

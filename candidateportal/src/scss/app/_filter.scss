@@ -1,0 +1,218 @@
+//vars
+$app-filter-width: $az-width-iconbar-aside - 10px;
+
+.filter-menu{
+  opacity: 0;
+  display: none;
+  .card{
+    .card-body.scrollable{
+      margin-bottom: 0;
+    }
+    .card-footer{
+      background-color: transparent;
+    }
+  }
+  .form-group{
+    label{
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: montserrat;
+      font-size: 10.5px;
+      letter-spacing: .06em;
+      vertical-align: middle;
+      color: rgba(44, 44, 44, 0.35);
+    }
+    input,select,textarea{
+      &.form-control-sm{
+        border-radius: 0;
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  //slider style
+    .ng5-slider{
+      .ng5-slider-pointer {        
+        width: 20px;
+        height: 20px;
+        top: -8px;
+        border-radius: 50%;
+        background-color : $primary;
+        &.ng5-slider-active{
+          outline: none;
+          &:after {    
+            background-color:yellow;
+          }
+        }
+        &:after {    
+          width: 8px;
+          height: 8px;
+          top: 6px;
+          left: 6px;
+          border-radius: 50%;
+        }        
+    }
+    .ng5-slider-selection{
+      background : $primary;
+    }
+  }
+}
+
+.filter-show,
+.filter-mobile{
+  .table-container{
+    display: none;
+    margin-right: 100%;
+    margin-left:  0;
+    @include media-breakpoint-up(lg) { 
+      //desktop
+      display: block;
+      margin-right: $az-width-iconbar-aside; 
+    }
+  }
+  .filter-menu {
+    // @media screen and (max-width: 767px) {
+    //   left: 0;
+    // }
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: auto;
+    width: 100%;
+    z-index: 400;
+    opacity: 1;
+    //tablet-mobile dynamic close
+    //display: block;
+    display: none;
+    
+    background-color: $iconbar-bg;
+    border-right: 1px solid $icon-logo-border;
+    padding: ($page-head-height + 15px) 15px 15px 15px;
+    
+    -webkit-animation-duration: 0.35s;
+    animation-duration: 0.35s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    -webkit-animation-name: slideInRight;
+    animation-name: slideInRight;
+
+    @-webkit-keyframes slideInRight {
+      from {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+      }
+    
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+      }
+    
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    .slideInRight {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: slideInRight;
+      animation-name: slideInRight;
+    }
+    @include media-breakpoint-up(lg) { 
+      //desktop
+      width: ($az-width-iconbar-aside + 15px);
+      //tablet-mobile dynamic close
+      display: block;
+      
+    }
+    // &.show{   
+    //   -webkit-animation-duration: 0.24s;
+    //   animation-duration: 0.24s;
+    //   -webkit-animation-fill-mode: both;
+    //   animation-fill-mode: both;
+
+    //   -webkit-animation-name: slideOut;
+    //   animation-name: slideOut;
+    // }
+    // &.in-transit{
+    //   -webkit-animation-duration: 0.24s;
+    //   animation-duration: 0.24s;
+    //   -webkit-animation-fill-mode: both;
+    //   animation-fill-mode: both;
+
+    //   -webkit-animation-name: slideIn;
+    //   animation-name: slideIn;
+    // }
+
+    .card { 
+      &.card-transparent{
+        height: 100%;
+      }
+      .filter-close{
+        color: $body-color;
+        .iconclose{
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .card-body{
+      overflow: auto;
+    }
+  }
+  .icon-filter-close{
+    margin-left: 0px;
+    justify-content: flex-end;
+    fill:  black;
+    stroke:  black;
+    @include media-breakpoint-up(lg) { 
+
+      }
+  }
+}
+//tablet-mobile dynamic close
+.filter-mobile{
+  .table-container{
+    display: block;
+    margin-right: 0;
+    margin-left:  0;      
+  }
+  .filter-menu {      
+    display: block;
+  }
+  
+  @include media-breakpoint-up(lg){
+    .table-container, .filter-menu{
+      display: none;     
+    }
+  }
+}
+.filter-slider{
+  fill:  black;
+  stroke:  black;
+}
+.red {
+  border-color : #dc3545
+}
+
+
+
+
+// #filterDiv{
+//   @media screen and (max-width: 991px) {
+//       display: none;
+//     }
+  
+// }

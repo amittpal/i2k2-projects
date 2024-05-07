@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="table-container" *ngIf="questionDetails !== undefined">
+    <ng-container [ngSwitch]="questionType">
+      <!--single selection question-->
+      <ng-container *ngSwitchCase="'SingleChoice'">
+        <app-single-choice-manage [QuestionDetails]="questionDetails"></app-single-choice-manage>
+      </ng-container>
+
+      <!--multiple selection question-->
+      <ng-container *ngSwitchCase="'MultipleChoice'">
+        <app-multiple-choice-manage [QuestionDetails]="questionDetails"></app-multiple-choice-manage>
+      </ng-container>
+
+      <!--question with true false option-->
+      <ng-container *ngSwitchCase="'TrueFalse'">
+        <app-true-false-manage [QuestionDetails]="questionDetails"></app-true-false-manage>
+      </ng-container>
+
+      <!-- fill blank question -->
+      <ng-container *ngSwitchCase="'FillBlank'">
+        <app-fill-blank-manage [QuestionDetails]="questionDetails"></app-fill-blank-manage>
+      </ng-container>
+
+      <!-- Short Answer question -->
+      <ng-container *ngSwitchCase="'ShortAnswer'">
+        <app-fill-blank-manage [QuestionDetails]="questionDetails"></app-fill-blank-manage>
+      </ng-container>
+
+      <!-- match question -->
+      <ng-container *ngSwitchCase="'Match'">
+        <app-match-manage [QuestionDetails]="questionDetails"></app-match-manage>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<app-question-filter *ngIf="questionDetails !== undefined" [QuestionStatusList]="questionDetails.requirement_summary"
+  [QuestionNumbersList]="questionDetails.requirement_details" [DetailId]="detailId"
+  [AssingmentId]="this.questionDetails.question_summary[0].author_assigment_id"
+  (selectedQuestionOutput)="onQuestionNumberSelect($event)"></app-question-filter>

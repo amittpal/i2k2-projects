@@ -1,0 +1,83 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+  
+          <form novalidate name="admitCardListForm" id="admitCardListForm" [formGroup]="admitCardRegListFormGroup" (submit)="onadmitCardListFormSubmit()"
+            class="p-0">
+  
+            <!-- Code -->
+            <div class="form-group mb-0">
+              <label for="code" class="mb-0">Resistration Code</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!admitCardRegListFormGroup.controls['code'].valid}" maxlength="50" name="code" id="code"
+                formControlName="code">
+            </div>     
+            
+            <!-- Exam Name -->
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">Resistration Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!admitCardRegListFormGroup.controls['name'].valid}" maxlength="50" name="examName" id="examName"
+                formControlName="name">
+            </div>   
+  
+            <!--Exam Type  -->
+            <div class="form-group mb-0">
+              <label for="examType" class="mb-0">Resistration Type</label>
+              <select class="form-control form-control-sm" id="examType" name="examType" formControlName="examType">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let type of examTypeList" [value]="type.name">
+                  {{type.name}}
+                </option>
+              </select>
+            </div>
+  
+          <!--Plan Status  -->
+          <div class="form-group mb-0">
+            <label for="examtype" class="mb-0">PLAN STATUS</label>
+            <select class="form-control form-control-sm" id="planning_status" name="planning_status" formControlName="planStatusGuid">
+              <option value="">Please Select</option>
+              <option *ngFor="let planStatus of planstatusList" [value]="planStatus.status_guid">
+                {{planStatus.plan_status_text}}
+              </option>
+            </select>
+          </div>
+          <!-- Plan Status -->
+  
+            <!-- Exam Status -->
+            <div class="form-group mb-0">
+              <label for="status" class="mb-0">Exam Status</label>
+              <select class="form-control form-control-sm" id="status" name="status"
+                formControlName="status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of statusList" [value]="status.value">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>         
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onadmitCardListFormSubmit()"
+          form="admitCardListForm">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

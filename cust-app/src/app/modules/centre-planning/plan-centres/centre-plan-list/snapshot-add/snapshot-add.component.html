@@ -1,0 +1,125 @@
+
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table p-0" *ngIf="items.length > 0">
+          <!-- table start -->
+          <ngx-ixcheck-table id="exam-list" headerTitle="Exam List" [items]="items" [indexColumn]="false" [selectColumn]="false">           
+
+            <!--Snapshot -->
+            <ngx-ixcheck-table-column [property]="'id'" [header]="'Snapshot#'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Snapshot Code -->
+            <ngx-ixcheck-table-column [property]="'code'" [header]="'Snapshot Code'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+             <!-- Snapshot Name -->
+             <ngx-ixcheck-table-column [property]="'name'" [header]="'Snapshot Name'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+
+
+            <!-- Status -->
+            <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'" [visible]="true" [colType]="'custom'">
+              <ng-template #colDetailComponent let-rowitem="item">
+                <span class="badge {{ rowitem.status_css_tag }}">{{
+                  rowitem.planning_status
+                  }}</span>
+              </ng-template>
+            </ngx-ixcheck-table-column>
+
+            <!-- Action -->
+            <ngx-ixcheck-table-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Action</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+              
+                  <div *ngIf="rowitem.planning_status == 'Alloted' || rowitem.planning_status == 'In-Progress' || rowitem.planning_status == 'Shift Planned' || rowitem.planning_status == 'Centre Assigned' || rowitem.planning_status == 'Archived'"  class=" btn-group" dropdown>
+                    <a class="cs-clr p-0" href="/#/centre/registration/{{ rowitem.guid }}/snapshot/{{ rowitem.id }}/setup" (click)="$event.stopPropagation();">Manage</a>
+                    <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                      placement="right">
+                      <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                    </a>
+                    <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                      aria-labelledby="button-autoclose1">
+                      <li role="menuitem">
+                        <a href="/#/centre/planning/finalize/registrations/{{ rowitem.guid }}/snapshots/{{ rowitem.id }}/setup" (click)="$event.stopPropagation();"
+                          class="dropdown-item">View</a>
+                      </li>
+
+                      <li role="menuitem">
+                        <a  (click)="openCopySnapshotModel(copySnapshotModalTemplate,rowitem.id)"
+                          class="dropdown-item">Copy Snapshot</a>
+                      </li>
+
+                      <li role="menuitem">
+                        <a href="/#/centre/{{ rowitem.exam_guid }}/view" (click)="$event.stopPropagation();"
+                          class="dropdown-item">Archive</a>
+                      </li>
+
+                     
+                    </ul>
+                  </div>
+
+                  <div
+                    *ngIf="rowitem.planning_status == 'Pending'"
+                    class=" btn-group" dropdown>
+                    <a class="cs-clr p-0" href="/#/centre/registration/{{ rowitem.guid }}/snapshot/{{ rowitem.id }}/setup"
+                      (click)="$event.stopPropagation();">Manage</a>
+                  </div>
+
+                  <div *ngIf="rowitem.planning_status == 'Finalized'" class=" btn-group" dropdown>
+                    <a href="/#/centre/planning/finalize/registrations/{{ rowitem.guid }}/snapshots/{{ rowitem.id }}/setup" class="cs-clr p-0" (click)="$event.stopPropagation();">View</a>
+                  </div>
+
+                  <div *ngIf="rowitem.planning_status == 'Archived'" class=" btn-group" dropdown>
+                    <a class="cs-clr p-0" (click)="$event.stopPropagation();">Unarchive</a>
+                  </div>
+              
+              </ng-template>
+            </ngx-ixcheck-table-column>
+          </ngx-ixcheck-table>
+          <!-- table end -->
+        </div>
+        <div class="not-found-container" *ngIf="items.length == 0">
+          <h5>
+            No Data Available...
+          </h5>
+        </div>
+      </div>
+
+
+      <!--Modals for copy snapshot-->
+  <ng-template #copySnapshotModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Copy Snapshot</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="copySnapshotModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <form [formGroup]="copySnapshotForm" id="copySnapshot" (ngSubmit)="onCopySnapshotSubmit()" class="app-form">
+        <div class="form-group trad foc">
+          <label>Options</label>
+          <select class="form-control form-control-sm" formControlName="options">
+            <option *ngFor="let option of optionsList" [value]="option.copy_options_id">
+              {{option.options}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group trad foc">
+          <label>Snapshot Code</label>
+         <input type="text" class="form-control form-control-sm" id="code" name="code" formControlName="code" required>
+        </div>
+
+        <div class="form-group trad foc">
+          <label>Snapshot Name</label>
+         <input type="text" class="form-control form-control-sm" id="name" name="name" formControlName="name" required>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-sm btn-primary" value="Copy">
+        </div>
+      </form>
+  
+    </div>
+  </ng-template>

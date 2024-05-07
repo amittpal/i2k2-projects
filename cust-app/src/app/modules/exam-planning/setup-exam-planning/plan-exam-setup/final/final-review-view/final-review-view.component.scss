@@ -1,0 +1,24 @@
+:host ::ng-deep {
+  // .flex-t1-th-9,
+  // .flex-t1-col-9,
+  // .flex-t1-th-10,
+  // .flex-t1-col-10 {
+  // .text-align: right;
+  // }
+  .credit {
+    color: coral;
+  }
+}
+.cs-click {
+  color: #65cf48;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:host ::ng-deep {
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      height: calc(100vh - 203px);
+    }
+  }
+}

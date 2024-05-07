@@ -1,0 +1,188 @@
+<aside class="filter-menu" id="filterDiv">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-header">
+      <div class="card-title">Filter</div>
+      <div class="card-controls">
+        <ul>
+          <li>
+            <a class="icon-filter-close" filterToggle bubbleClose>
+              <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <tabset #tabset>
+        <tab #first heading="Candidate"></tab>
+        <tab #second heading="Payment"></tab>
+      </tabset>
+    </div>
+
+    <div class="card-body scrollable">
+      <div class="card-body section-body section-body-sm p-2">
+        <form novalidate [formGroup]="PaymentManagementFormGroup" (submit)="onRegisteredCandidateFormSubmit()"
+          class="p-0">
+          <div *ngIf="tabset.tabs[0].active == true">
+
+            <!-- <div class="form-group mb-0 d-none">
+              <label for="candidate_guid" class="mb-0">Candidate #</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['candidate_guid'].valid}" name="candidate_guid" id="candidate_guid"
+                formControlName="candidate_guid">
+            </div> -->
+
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['name'].valid}" maxlength="50" name="name"
+                id="name" formControlName="name">
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="father_name" class="mb-0">Father</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['father_name'].valid}" maxlength="50"
+                name="father_name" id="father_name" formControlName="father_name">
+            </div>
+            <div class="form-group mb-0">
+              <label for="dob" class="mb-0">Dob</label>
+              <input type="date" class="form-control form-control-sm" name="dob" id="dob" formControlName="dob">
+            </div>
+            <div class="form-group mb-0">
+              <label for="gender" class="mb-0">Gender</label>
+              <select class="form-control form-control-sm" id="gender" name="gender" formControlName="gender">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let gender of genderList" [value]="gender.id">
+                  {{gender.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="ph" class="mb-0">Ph</label>
+              <select class="form-control form-control-sm" id="ph" name="ph" formControlName="ph">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let ph of phList" [value]="ph.value">
+                  {{ph.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="category" class="mb-0">Category</label>
+              <select class="form-control form-control-sm" id="category" name="category" formControlName="category">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let category of categoryList" [value]="category.id">
+                  {{category.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group mb-0">
+              <label for="special" class="mb-0">Special</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['special'].valid}" maxlength="50" name="special"
+                id="special" formControlName="special">
+            </div>
+
+            <!-- Status -->
+            <div class="form-group mb-0">
+              <label for="registration_status" class="mb-0">Registration STATUS</label>
+              <select class="form-control form-control-sm" id="registration_status" name="registration_status"
+                formControlName="registration_status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of registrationStatusList" [value]="status.status_guid">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="tabset.tabs[1].active == true">
+
+            <div class="form-group mb-0">
+              <label for="transaction_id" class="mb-0">Transaction Id</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['transaction_id'].valid}" maxlength="50"
+                name="transaction_id" id="transaction_id" formControlName="transaction_id">
+            </div>
+            <div class="form-group mb-0">
+              <label for="bank_name" class="mb-0">Bank Name</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!PaymentManagementFormGroup.controls['bank_name'].valid}" maxlength="50"
+                title="Bank Name" name="bank_name" id="bank_name" formControlName="bank_name">
+            </div>
+            <div class="form-group mb-0">
+              <label for="from_date" class="mb-0">Payment From Date</label>
+              <input type="date" class="form-control form-control-sm" title="From Date" name="from_date" id="from_date"
+                formControlName="from_date">
+            </div>
+            <div class="form-group mb-0">
+              <label for="to_date" class="mb-0">Payment To Date</label>
+              <input type="date" class="form-control form-control-sm" title="To Date" name="to_date" id="to_date"
+                formControlName="to_date">
+            </div>
+            <div class="form-group mb-0">
+              <label for="fee_amount" class="mb-0">Fee Amount</label>
+              <div class="form-row">
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Fee Amount Min" name="fee_amount_min"
+                    id="fee_amount_min" formControlName="fee_amount_min">
+                </div>
+                <div class="col-lg-2 col-sm-2  col-2" style="text-align: center;"> - </div>
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Fee Amount Max" name="fee_amount_max"
+                    id="fee_amount_max" formControlName="fee_amount_max">
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <label for="paid_amount" class="mb-0">Total Paid Amount</label>
+              <div class="form-row">
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Paid Amount Min"
+                    name="payment_amount_min" id="payment_amount_min" formControlName="payment_amount_min">
+                </div>
+                <div class="col-lg-2 col-sm-2  col-2" style="text-align: center;"> - </div>
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Paid Amount Max"
+                    name="payment_amount_max" id="payment_amount_max" formControlName="payment_amount_max">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="balance_amount" class="mb-0">Balance Amount</label>
+              <div class="form-row">
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Balance Amount Min"
+                    name="balance_amount_min" id="balance_amount_min" formControlName="balance_amount_min">
+                </div>
+                <div class="col-lg-2 col-sm-2  col-2" style="text-align: center;"> - </div>
+                <div class="col-lg-5 col-sm-5  col-5">
+                  <input type="text" class="form-control form-control-sm" title="Balance Amount Max"
+                    name="balance_amount_min" id="balance_amount_max" formControlName="balance_amount_max">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-0">
+              <label for="payment_status" class="mb-0">Payment Status</label>
+              <select class="form-control form-control-sm" id="payment_status" name="payment_status"
+                formControlName="payment_status">
+                <option value="" [selected]="true">All</option>
+                <option *ngFor="let status of PaymentStatusList" [value]="status.status_guid">
+                  {{status.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit"
+        (click)="onRegisteredCandidateFormSubmit()" form="permissionForm">Apply</button>
+      <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+        (click)="resetFilters()">Reset</button>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <form class="app-form" id="examShiftForm" [formGroup]="examShiftFormGroup" novalidate="">
+        <div class="row">
+          <div class="col-md-4 col-lg-4">
+            <!-- Shift # -->
+            <div class="form-group trad foc">
+              <div class="col-md-12">
+                <label>REGISTRATION DATA COPY OPTION</label>
+              </div>
+              <div class="col-md-7">
+                <select class="form-control" (change)="valueChange($event)" formControlName="shift_no">
+                  <option value="">Select</option>
+                  <option *ngFor="let name of optionList" [value]="name.id">{{
+                    name.options
+                  }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-8">
+            <!-- Algorithm # -->
+            <div class="form-group trad foc" formArrayName="algorithmArray"
+              *ngFor="let algo of getAlgorithmFormArray().controls; let i=index">
+              <div [formGroupName]="i">
+                <div class="col-md-12">
+                  <label>Allocation Algorithm</label>
+                </div>
+                <div class="col-md-7">
+                  <select class="form-control" formControlName="algorithm">
+                    <option value="" disabled>Select</option>
+                    <option *ngFor="let name of algoList" [value]="name.guid">{{
+                      name.name
+                      }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br />
+      <div class="card card-bordered">
+        <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="false"
+          [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+          [selectColumn]="false" [expandOnIndexColClick]="false" [expandOnRowClick]="false" [pagination]="false"
+          [addRows]="false" [dragIcon]="" [dragCss]="" [expandRowIcons]="{
+            expanded: 'fa fa-plus-circle fa-lg',
+            closed: 'fa fa-plus-circle fa-lg'
+          }" [expandRowCss]="{
+            expanded: { color: 'green' },
+            closed: { color: 'gray' }
+          }" [sortIndexOnDrop]="true" [deleteCss]="{ color: 'red' }">
+          <!-- Child-Component -->
+          <ng-template #rowDetailExpand let-rowitem="item">
+            <!-- view-only -->
+          </ng-template>
+          <!-- Child-Component-end -->
+
+          <!-- Exam Date -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>Exam Date</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                [(ngModel)]="rowitem['exam_date']" (click)="$event.stopPropagation()" />
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          <!-- Shift Reporting time -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>Shift Reporting time</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="txt_desc"
+                [(ngModel)]="rowitem['exam_reporting_time']" (click)="$event.stopPropagation()" />
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          <!-- Shift Start time -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>Shift Start time</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <input readonly type="text" class="form-control-sm col-lg-7 col-sm-12 font-size-16 " name="txt_units"
+                [(ngModel)]="rowitem['exam_start_time']" (click)="$event.stopPropagation()" />
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          <!-- Shift End time -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>Shift End time</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <input readonly type="text" class="form-control-sm col-lg-7 col-sm-12 font-size-16 " name="txt_units"
+                [(ngModel)]="rowitem['exam_end_time']" (click)="$event.stopPropagation()" />
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          <!-- Distribution -->
+          <ngx-ixcheck-table3-column *ngIf="showdistribution" [colType]="'custom'">
+            <ng-template #colHeaderComponent>Reg Data Distribution %</ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <input readonly type="text" class="form-control-sm col-lg-6 col-sm-12 font-size-16 " name="txt_units"
+                [(ngModel)]="rowitem['distribution']" (click)="$event.stopPropagation()" />
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+        </ngx-ixcheck-table3>
+
+
+        <div class="row mt-1" *ngIf="showdistribution">
+          <div class="col-7"></div>
+          <label class="col-1 mr-2">Total</label>
+          <div class="col-2" style="padding: 0;">
+            <div class="text-dark col-6 form-control-sm font-size-16 ng-pristine ng-valid ng-touched">
+              {{ totalQuestion }}
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

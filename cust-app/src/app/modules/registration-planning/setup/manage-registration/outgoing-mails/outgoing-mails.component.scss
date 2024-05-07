@@ -1,0 +1,19 @@
+:host ::ng-deep {
+  .card .card-body.scrollable {
+    margin-bottom: 45px;
+  }
+
+  .red {
+    border: 1px solid lightcoral !important;
+  }
+
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      height: calc(100vh - 203px);
+    }
+  }
+}
+
+.buttonStyle{
+  margin-left: 10px;
+}

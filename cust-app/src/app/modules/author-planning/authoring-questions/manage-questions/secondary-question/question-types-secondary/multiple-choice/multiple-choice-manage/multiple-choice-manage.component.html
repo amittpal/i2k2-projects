@@ -1,0 +1,173 @@
+<div class="card card-bordered fullheight-fixed" *ngIf="QuestionDetails !== undefined">
+  <div class="card-header">
+    <div class="header-flex-container">
+      <div class="card-title col-4">
+      </div>
+      <div class="paging-block col-4">
+      </div>
+      <div class="filter-container col-4">
+        <div class="filter-block" filterToggle>
+          <a class="filter-slider">
+            <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body scrollable app-form">
+    <form class="app-form" [formGroup]="questionAddSetupFormGroup">
+      <div class="row">
+        <div class="col-lg-3 col-sm-3 form-group trad foc">
+          <label for="exam_number">Exam Number</label>
+          <input type="text" class="form-control form-control-sm" formControlName="exam_number">
+        </div>
+
+
+        <div class="col-lg-3 col-sm-3 form-group trad foc">
+          <label for="subject">Subject</label>
+          <input type="text" class="form-control form-control-sm" formControlName="subject">
+        </div>
+
+        <div class="col-lg-3 col-sm-3 form-group trad foc">
+          <label for="language">Language</label>
+          <input type="text" class="form-control form-control-sm" formControlName="language">
+        </div>
+
+
+        <div class="col-lg-3 col-sm-3 form-group trad foc">
+          <label for="questions">Question #</label>
+          <input type="text" class="form-control form-control-sm" formControlName="questions">
+        </div>
+
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <form class="app-form" [formGroup]="questionAddFormGroup" id="questionAddForm">
+          <tabset class="tabset-container" #tabset>
+            <!--Question Tab-->
+            <tab heading="QUESTION" class="mt-3" [active]="true" id="questionTab">
+              <strong class="font-weight-bold">English</strong>
+              <div class="card card-body mt-2">                   
+                <quill-view [content]="QuestionDetails.question_primary[0].description" style="height: 100px;"></quill-view>
+              </div>
+              <strong class="font-weight-bold">{{QuestionDetails.question_summary[0].language}}</strong>
+              <div class="mt-2">                   
+                <quill-editor 
+                formControlName="question" 
+                [modules]="quillConfig" 
+                id="question"
+                [class]="QuestionDetails.question_summary[0].language">
+              </quill-editor>
+              </div>                  
+            </tab>
+            <ng-container formArrayName="optionsArray">
+              <ng-container *ngFor="let option of QuestionDetails.options; index as i">
+                <!--Option Tab-->
+                <tab heading="OPTION {{option.option_number}}" class="mt-3">
+                  <strong class="font-weight-bold">English</strong>
+                  <div class="card card-body mt-2">
+                    <quill-view [content]="QuestionDetails.option_primary[i].description"></quill-view>
+                  </div>
+                  <strong class="font-weight-bold">{{QuestionDetails.question_summary[0].language}}</strong>
+                  <div class="mt-2"> 
+                    <quill-editor 
+                     [formControlName]="i" 
+                     [modules]="quillConfig"
+                     [class]="QuestionDetails.question_summary[0].language"></quill-editor>
+                  </div>                      
+                </tab>
+                <ng-container *ngIf="i===QuestionDetails.options.length-1">
+                 <!--Reference Tab-->
+                  <tab heading="REFERENCES" class="mt-3">
+                    <div class="table-responsive">
+                      <table class="table table-min-height">
+                        <thead>
+                          <tr class="flex-tr">
+                            <th class="flex-th">Reference</th>
+                            <th class="flex-th">Remark</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="flex-tr" *ngFor="let ref of QuestionDetails.question_references_primary">
+                            <td class="flex-td">{{ref.reference}}</td>
+                            <td class="flex-td">{{ref.remark}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </tab>
+                     <!--Final View Tab-->
+                  <tab heading="FINAL VIEW" class="mt-3">                        
+                    <!--Primary question answer-->
+                    <strong class="font-weight-bold">English</strong>
+                    <div class="mt-2 mb-3">                    
+                      <div class="card card-bordered mb-0">
+                        <div class="card-body mb-0">
+                          <!-- <span>Q {{questionDetails.question_primary[0].question_number}}. &nbsp;</span>                             -->
+                          <quill-view [content]="QuestionDetails.question_primary[0].description"></quill-view>
+                        </div>
+                      </div>
+                      <div class="card card-bordered mb-0" *ngFor="let option of QuestionDetails.option_primary;">
+                        <div class="card-body mb-0 d-flex">
+                          <span>{{optionList[i]}} &nbsp;</span>                          
+                          <quill-view [content]="option.description"></quill-view>
+                          <div class="ml-auto">
+                            <span> Right Answer </span>
+                            <input 
+                            type="checkbox" 
+                            class="large_checkbox"
+                            [checked]="option.selected"
+                            [disabled]="true">                               
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                 <!--Secondary question answer-->
+                  <strong class="font-weight-bold">{{QuestionDetails.question_summary[0].language}}</strong>
+                    <div class="mt-2"> 
+                      <div class="card card-bordered mb-0">
+                        <div class="card-body mb-0 d-flex">
+                          <span>Q {{QuestionDetails.question_summary[0].question_number}}. &nbsp;</span>                            
+                          <quill-view 
+                           [content]="questionAddFormGroup.get('question').value"
+                           [class]="QuestionDetails.question_summary[0].language"
+                           ></quill-view>
+                        </div>
+                      </div>
+                      <div class="card card-bordered mb-0" *ngFor="let option of QuestionDetails.options; index as i">
+                        <div class="card-body mb-0 d-flex">
+                          <span>{{optionList[i]}} &nbsp;</span>                          
+                          <quill-view 
+                          [content]="questionAddFormGroup.get('optionsArray').value[i]"
+                          [class]="QuestionDetails.question_summary[0].language"
+                          ></quill-view>
+                          <div class="ml-auto">
+                            <span> Right Answer </span>
+                            <input type="checkbox"
+                             class="large_checkbox"
+                             [checked]="option.selected"
+                             [disabled]="true">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </tab>
+                  <tab  heading="AUDIT TRAIL" class="mt-3">
+                    <app-audit-trail [QuestionId]="QuestionDetails.question[0].question_id"></app-audit-trail>
+                  </tab> 
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </tabset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <input type="button" class="btn btn-primary" value="Submit" (click)="onAddQuestionFormsubmit()">
+    <input type="button" class="btn btn-default float-right" value="Reset">
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">   
+
+        <!-- <div class="card-header">
+            <div class="header-flex-container">
+              <div class="card-title col-4">
+                <label class="" *ngIf="examNumber">EXAM # {{examNumber||'Exam Number'}}</label>
+              </div>  
+            <div class="paging-block col-4">
+                <ngx-ixcheck-table-outer-pagination *ngIf="notFound == false " [itemCount]="itemCount"
+                    [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                    (loadTable)="reloadItems($event,false)">
+                </ngx-ixcheck-table-outer-pagination>
+            
+            </div>
+            <div class="filter-container col-3">            
+                <div id="bubbleBlock" class="bubble-block">
+                    <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                        [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+                    </app-ngx-ixcheck-bubble>
+                </div>
+                <div class="filter-block" filterToggle>
+                    <a class="filter-slider">
+                        <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                    </a>
+                </div>
+            </div>
+         </div> 
+        </div> -->
+
+        <div class="card-body">            
+               <div *ngIf="notFound == false ">
+                <ng-container *ngFor="let exams of items;let i = index">
+                    <label>{{exams.exam_name}}</label>
+                    <ngx-ixcheck-table id="admit-card-shifts" headerTitle="SHIFTS" [items]="exams['shifts']"
+                    [indexColumn]="false" [indexColumnHeader]="'#'" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+                    [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+                    [expandOnIndexColClick]="false" [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+        
+                    <ng-template #rowDetailExpand let-rowitem="item">
+                    </ng-template> 
+
+                    <ngx-ixcheck-table-column [property]="'shifts'" [header]="'#'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+                    
+                    <ngx-ixcheck-table-column [property]="'exam_date'" [header]="'EXAM DATE'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'exam_reporting_time'" [header]="'SHIFT REPORTING TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'exam_start_time'" [header]="'SHIFT START TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'exam_end_time'" [header]="'SHIFT END TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+                    
+                    <ngx-ixcheck-table-column [colType]="'custom'">
+                        <ng-template #colHeaderComponent>ACTION</ng-template>
+                        <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="btn-group" dropdown>                            
+                            <a href="/#/admitcard/registrations/{{regGuid}}/exams/{{exams.exam_guid}}/snapshot/{{snapshotId}}/shift/{{rowitem.shifts}}">Manage</a>
+                        </div>
+                        </ng-template>
+                    </ngx-ixcheck-table-column>
+
+                    </ngx-ixcheck-table>
+                 </ng-container>
+                </div>
+                <div class="not-found-container" *ngIf="notFound == true ">
+                    <h5>
+                        No Data Available...
+                    </h5>
+                </div>
+
+        </div>
+        <!-- <div class="card-footer border-0">`
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="button">VERIFY & SEND</button>
+        </div> -->
+     </div>
+</div>
+</div>  
+
+<!-- <app-manage-admit-card-generate-list-filter #featureFilter (updateEvent)="updateTable($event)"
+    [resetFlter]="resetFilterFlag" [updatedFilter]="count" [states]="states">
+</app-manage-admit-card-generate-list-filter> -->

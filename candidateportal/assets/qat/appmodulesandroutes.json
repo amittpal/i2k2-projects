@@ -1,0 +1,155 @@
+{
+  "app_id": "abcd-1234-efgh-5678-ijkl",
+  "app_name": "ixcheck-candidateportal-app",
+  "app_desc": "Candidate Portal App",
+  "app_icon": "assets/images/icon-hexbluelight.svg#icon-hexbluelight",
+  "data_type": "full",
+  "app_modules": [
+    {
+      "id": 1,
+      "name": "New Registration",
+      "desc": "Various module dashboards for access, select any.",
+      "route": "/module",
+      "icon": "assets/images/edit.svg",
+      "css": "",
+      "sub_modules": [
+        {
+          "id": 1,
+          "name": "Resume Registration",
+          "desc": "",
+          "route": "/registration/add",
+          "icon": "",
+          "css": ""
+        },
+        {
+          "id": 2,
+          "name": "View Your Application",
+          "desc": "",
+          "route": "/candidates/registration",
+          "icon": "",
+          "css": ""
+        },
+        {
+          "id": 2,
+          "name": "Download Application Copy",
+          "desc": "",
+          "route": "/candidates/registration",
+          "icon": "",
+          "css": ""
+        }
+      ]
+    }
+  ],
+  "app_routes": {
+    "_dashboard": {
+      "getCandidateDetailsByGuid": {
+        "desc": "get candidate details by guid",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/#guid/getCandidateDetail"
+      },
+      "getCandidateInitialInfo": {
+        "desc": "get candidate initial info",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/reg/#guid/candidateInitialInfo"
+      },
+      "generateOTP": {
+        "desc": "generate otp",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/generateotp"
+      },
+      "verifyOTP": {
+        "desc": "validate otp",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/validateotp"
+      },
+      "updateCandidateEmail": {
+        "desc": "update candidate email",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/reg/updateemailinfo"
+      },
+      "getPaymentStatus": {
+        "desc": "get payment status",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/PaymentGateways/payments/#registrationGuid/#candidateGuid/status"
+      }
+    },
+    "_registration": {
+      "addFormValueByRegistrationGuid": {
+        "desc": "add form value by exam guid",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/postFormValue"
+      },
+      "getCandidateDetailsByGuid": {
+        "desc": "get candidate details by guid",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/#guid/getCandidateDetail"
+      },
+      "getLayoutDetailByExamGuid": {
+        "desc": "get layout detail by exam guid",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/OpenRegistration/#layoutType/getForm"
+      },
+      "submitCandidateRegistration": {
+        "desc": "submit candidate registration",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/reg/registrationsubmit"
+      },
+      "paytmPaymentGateway": {
+        "desc": "get payment mapping list",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/PaymentGateways/#registrationGuid/add/#candidateGuid"
+      },
+      "getPaymentPaymentInfo": {
+        "desc": "get payment info",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/PaymentGateways/payments/#candidateGuid/info"
+      },
+      "offlinePaymentAdd": {
+        "desc": "offline Payment Add",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/PaymentGateways/offline/#candidateGuid"
+      },
+      "getCandidateInitialInfo": {
+        "desc": "get candidate initial info",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/reg/#guid/candidateInitialInfo"
+      },
+      "getPaymentPaytmResponse": {
+        "desc": "get payment paytm response",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/PaymentGateways/payment/response/#candidateGuid"
+      }
+    },
+    "_admitcard": {
+      "getAdmitCardPreviewDetails": {
+        "desc": "Get Admit Card Preview Details",
+        "method": "GET",
+        "url": "https://qat.api.admitcard.ixcheck.io/api/v1/AdmitCard/#examGuid/admitcardbyregid/#regId"
+      }
+    },
+    "_changepassword": {
+      "getCandidateInitialInfo": {
+        "desc": "get candidate initial info",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/reg/#guid/candidateInitialInfo"
+      },
+      "changePassword": {
+        "desc": "change Password",
+        "method": "PUT",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/Reg/user/changepassword"
+      }
+    },
+    "_login": {
+      "getCaptcha": {
+        "desc": "get captcha",
+        "method": "GET",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/Shared/captcha/#id"
+      },
+      "validateCaptcha": {
+        "desc": "validate captcha",
+        "method": "POST",
+        "url": "https://qat.api.candidateportal.ixcheck.io/api/v1/Token/captcha/validate"
+      }
+    }
+  }
+}

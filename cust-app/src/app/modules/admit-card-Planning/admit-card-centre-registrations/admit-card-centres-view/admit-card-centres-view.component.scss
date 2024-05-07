@@ -1,0 +1,15 @@
+:host ::ng-deep {
+    input{
+       margin-right: 50px;
+    }
+    #shift{
+      margin-left: 50px;
+   }
+
+    @media (min-width: 992px) {
+      .fullheight-min {
+        height: calc(100vh - 203px);
+      }
+    }
+  }
+  

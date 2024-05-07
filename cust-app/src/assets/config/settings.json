@@ -1,0 +1,21 @@
+{
+    "application_guid": "j20caa40-6aa6-47ba-b763-f5c5f29fa0e9",
+    "application_type": "development",
+    "token": {
+        "url": "https://qat.api.examauth.ixcheck.io/api/v1/token",
+        "method": "POST"
+    },
+    "tokenCrm": {
+        "url": "https://qat.api.examauth.ixcheck.io/api/v1/token/crm",
+        "method": "POST"
+    },
+    "Crm_token": {
+        "url": "",
+        "method": "",
+        "token": "T1"
+    },
+    "appmodulesandroutes": {
+        "url": "./assets/config/appmodulesandroutes.json",
+        "method": "GET"
+    }
+}

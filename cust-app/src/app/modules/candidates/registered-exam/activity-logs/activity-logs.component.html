@@ -1,0 +1,28 @@
+<div class="table-responsive mt-3">
+    <table class="table table-min-height" *ngIf="activityLogList.length > 0">
+        <thead>
+            <tr class="flex-tr">
+                <th class="flex-th">Id</th>
+                <th class="flex-th ">Name</th>
+                <th class="flex-th">Date & Time</th>
+                <th class="flex-th">Logs</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="flex-tr" *ngFor="let candidate of activityLogList; let i=index" [attr.data-index]="i">
+                <td class="flex-td">{{ candidate.id }}</td>
+                <td class="flex-td ">{{ candidate.activity_type }}</td>
+                <td class="flex-td ">{{ candidate.timestamp }}</td>
+                <td class="flex-td ">{{ candidate.log_description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="detailed-table" *ngIf="activityLogList.length == 0">
+        <tr class="flex-tr txtalgn">
+            <td class="flex-td"><span>Data not available</span> </td>
+        </tr>
+    </table>
+
+
+</div>

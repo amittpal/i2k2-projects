@@ -1,0 +1,22 @@
+.cs-clr {
+  color: #65cf48;
+  text-decoration: none;
+  background-color: transparent;
+  //padding-right: 23px;
+}
+
+.cs-clr:hover {
+  color: #44a02a;
+  text-decoration: underline;
+}
+
+.withoutdrp {
+  // padding-right: 27px;
+}
+
+:host::ng-deep
+{
+    .flex-t1-col-13,.flex-t1-th-13 {
+        text-align: center;
+    }
+}

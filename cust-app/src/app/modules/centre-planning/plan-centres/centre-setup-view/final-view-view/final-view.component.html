@@ -1,0 +1,277 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <div *ngIf="itemJson.length > 0">
+        <form class="app-form" id="finalViewForm" [formGroup]="finalViewFormGroup" novalidate="">
+          <div class="row">
+            <div class="col-md-4 col-lg-4">
+              <!-- CITIES PRIORITY # -->
+              <div class="form-group trad foc">
+                <div class="col-md-12">
+                  <label>CITIES PRIORITY</label>
+                </div>
+                <div class="col-md-7">
+                  <select class="form-control" (change)="valueChange($event)" formControlName="shift_no">
+                    <option value="" disabled>Select</option>
+                    <option *ngFor="let number of priorityList" [value]="number">
+                      {{ number + 1 }} of {{ cityPriority }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="card-body">
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="col-md-12">
+              <label>REGISTRATION DATA (CITIES PRIORITY #{{priorityId}}) </label>
+            </div>
+
+            <div class="data-table p-0">
+              <!-- table start -->
+              <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+                [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                [lastOffset]="lastOffset" [selectColumn]="false">
+                <!-- shift # -->
+                <ngx-ixcheck-table-column [property]="'city_name'" [header]="'CITY'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- date -->
+                <ngx-ixcheck-table-column [property]="'state_name'" [header]="'STATE'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Start Time -->
+                <ngx-ixcheck-table-column [property]="'ph_female'" [header]="'PH FEMALE'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- End Time -->
+                <ngx-ixcheck-table-column [property]="'ph_others'" [header]="'PH OTHER'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- End Time -->
+                <ngx-ixcheck-table-column [property]="'reserved_female'" [header]="'RESERVED FEMALE'"
+                  [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- End Time -->
+                <ngx-ixcheck-table-column [property]="'other_reserved'" [header]="'RESERVED OTHER'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- total candidates -->
+                <ngx-ixcheck-table-column [property]="'others_female'" [header]="'OTHER FEMALE'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- Allocated in cities -->
+                <ngx-ixcheck-table-column [property]="'other_other'" [header]="'OTHER'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- balance -->
+                <ngx-ixcheck-table-column [property]="'total'" [header]="'TOTAL'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+              </ngx-ixcheck-table>
+              <!-- <hr />
+              <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                  <span class="pl-2">Total</span>
+                </div>
+                <div class="col">
+                  <span class="pl-3">{{ phFemale }}</span>
+                </div>
+                <div class="col">
+                  <span class="pl-4 ml-3">{{ phOther }}</span>
+                </div>
+                <div class="col">
+                  <span class="pl-4 ml-2">{{ otherFemale }}</span>
+                </div>
+                <div class="col text-center">
+                  <span class="pl-4">{{ other }}</span>
+                </div>
+                <div class="col">
+                  <span class="pl-5">{{ total }}</span>
+                </div>
+              </div> -->
+              <!-- table end -->
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <div class="col-md-12">
+              <label>ALLOCATION SUMMARY
+                <span *ngIf="allocationPercentage > 0">({{ allocationPercentage }}% ALLOCATED)</span></label>
+            </div>
+
+            <div class="data-table p-0">
+              <!-- table start -->
+              <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="allocationItem" [indexColumn]="false"
+                [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                [lastOffset]="lastOffset" [selectColumn]="false">
+                <!-- shift # -->
+                <ngx-ixcheck-table-column [property]="'city_name'" [header]="'CITY'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <!-- date -->
+                <ngx-ixcheck-table-column [property]="'state_name'" [header]="'STATE'" [sortable]="false">
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'ph_female'" [header]="'PH FEMALE'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.ph_female}}
+                    <span class="d-inline-block" *ngIf="rowitem.ph_female_balance">
+                      <div class="text-success" *ngIf="rowitem.ph_female_balance>0; else prompt">
+                        (+{{rowitem.ph_female_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger"> ({{rowitem.ph_female_balance }})</div>
+                      </ng-template>
+
+                    </span>
+                    <!-- <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span> -->
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'ph_others'" [header]="'PH OTHER'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.ph_others}}
+                    <span class="d-inline-block" *ngIf="rowitem.ph_others_balance">
+                      <div class="text-success" *ngIf="rowitem.ph_others_balance>0; else prompt">
+                        (+{{rowitem.ph_others_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger">({{rowitem.ph_others_balance }})</div>
+                      </ng-template>
+                    </span>
+                    <!-- <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span> -->
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'reserved_female'" [header]="'RESERVED FEMALE'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.reserved_female}}
+                    <span class="d-inline-block" *ngIf="rowitem.reserved_female_balance">
+                      <div class="text-success" *ngIf="rowitem.reserved_female_balance>0; else prompt">
+                        (+{{rowitem.reserved_female_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger">({{rowitem.reserved_female_balance }})</div>
+                      </ng-template>
+                    </span>
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'other_reserved'" [header]="'RESERVED OTHER'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.other_reserved}}
+                    <span class="d-inline-block" *ngIf="rowitem.reserved_others_balance">
+                      <div class="text-success" *ngIf="rowitem.reserved_others_balance>0; else prompt">
+                        (+{{rowitem.reserved_others_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger">({{rowitem.reserved_others_balance }})</div>
+                      </ng-template>
+                    </span>
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'others_female'" [header]="'OTHER FEMALE'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.others_female}}
+                    <span class="d-inline-block" *ngIf="rowitem.others_female_balance">
+                      <div class="text-success" *ngIf="rowitem.others_female_balance>0; else prompt">
+                        (+{{rowitem.others_female_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger">({{rowitem.others_female_balance }})</div>
+                      </ng-template>
+                    </span>
+                    <!-- <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span> -->
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'other_other'" [header]="'OTHER'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    {{ rowitem.other_other}}
+                    <span class="d-inline-block" *ngIf="rowitem.other_other_balance">
+                      <div class="text-success" *ngIf="rowitem.other_other_balance>0; else prompt">
+                        (+{{rowitem.other_other_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger"> ({{rowitem.other_other_balance }})</div>
+                      </ng-template>
+                    </span>
+                    <!-- <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span> -->
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+
+                <ngx-ixcheck-table-column [property]="'total'" [header]="'TOTAL'" [sortable]="false"
+                  [colType]="'custom'">
+                  <ng-template class="d-flex" #colDetailComponent let-rowitem="item">
+                    {{ rowitem.total }}
+                    <span class="d-inline-block " *ngIf="rowitem.total_balance">
+                      <div class="text-success" *ngIf="rowitem.total_balance>0; else prompt">
+                        (+{{rowitem.total_balance }})
+                      </div>
+                      <ng-template #prompt>
+                        <div class="text-danger"> ({{rowitem.total_balance }})</div>
+                      </ng-template>
+                    </span>
+                    <!-- <span class="badge {{rowitem.completion_status_css_tag}}">{{rowitem.completion_status_text}}</span> -->
+                  </ng-template>
+                </ngx-ixcheck-table-column>
+              </ngx-ixcheck-table>
+
+              <!-- <hr />
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2 text-center">
+                  <span class="pl-3">Total</span>
+                </div>
+                <div class="col-1 text-right">
+                  <span class="pr-4 mr-2">{{ phFemaleAllo }}</span>
+                </div>
+                <div class="col-2 text-right">
+                  <span class="pr-5">{{ phOtherAllo }}</span>
+                </div>
+                <div class="col-2 text-center">
+                  <span class="pl-4 ml-4">{{ otherFemaleAllo }}</span>
+                </div>
+                <div class="col-2 text-right">
+                  <span class="pr-4 mr-4">{{ otherAllo }}</span>
+                </div>
+                <div class="col-1 pr-4 text-right">
+                  <span>{{ totalAllo }}</span>
+                </div>
+              </div> -->
+              <!-- table end -->
+            </div>
+          </div>
+        </div>
+
+        <div id="scrolldown"></div>
+        <div *ngIf="itemJson.length == 0" class="not-found-container">
+          <h5>
+            No Data Available...
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Submit -->
+    <!-- <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">
+        FINALIZE
+      </button>
+    </div> -->
+
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="card-body fullheight-fixed  ">
+    <label class="heading-block1">Cities</label>
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table ">
+            <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="true"
+                [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [selectColumn]="true"
+                [expandOnIndexColClick]="true" [pagination]="false" [addRows]="false" [dragIcon]="" [dragCss]=""
+                [sortIndexOnDrop]="true" (onDrag)="onDragged($event)" [deleteColumn]="false"
+                [deleteCss]="{'color': 'red'}">
+                <!-- Child-Component -->
+                <ng-template #rowDetailExpand let-rowitem="item">
+                    <app-exam-cities-row-edit [rowItemData]="rowitem" [item]="rowitem"
+                        (update)="updateProductDetails($event)" (updatedDetails)="getUpdatedDetails($event)">
+                    </app-exam-cities-row-edit>
+                </ng-template>
+                <!-- Child-Component-end -->
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                    <ng-template #colHeaderComponent>
+                        <div class="text-center">#</div>
+                    </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="text-center">{{rowitem.line_num}}</div>
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent> State </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="code"
+                            [(ngModel)]="rowitem.state_name" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent> City</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="name"
+                            [(ngModel)]="rowitem.name" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+            </ngx-ixcheck-table3>
+            <br>
+            <div class="row">
+                <div class="col-7 pl-5" *ngIf="true">
+                    <button class="btn btn-sm btn-default add-rows" (click)="onAddRow()">add Rows</button>
+                    <button class="btn btn-sm btn-default add-rows ml-2" (click)="onClearRow()">Clear All
+                        Rows</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-footer " *ngIf="true">
+    <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onExamCityFormSubmit()">Update</button>
+</div>

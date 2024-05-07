@@ -1,0 +1,81 @@
+<aside class="filter-menu" id="filterDiv">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-header">
+      <div class="card-title">Filter</div>
+      <div class="card-controls">
+        <ul>
+          <li>
+            <a class="icon-filter-close" filterToggle bubbleClose>
+              <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-body scrollable">
+      <div class="card-body section-body section-body-sm p-2">
+
+        <form novalidate name="examsForm" id="examsForm" [formGroup]="examsFormGroup" (submit)="onexamsFormSubmit()"
+          class="p-0">
+
+          <!-- Exam # -->
+          <div class="form-group mb-0">
+            <label for="exam_number" class="mb-0">Exam #</label>
+            <input type="text" class="form-control form-control-sm"
+              [ngClass]="{red:!examsFormGroup.controls['exam_number'].valid}" maxlength="50" name="exam_number" id="exam_number"
+              formControlName="exam_number">
+          </div>
+
+          <!-- Code -->
+          <div class="form-group mb-0">
+            <label for="code" class="mb-0">Exam Code</label>
+            <input type="text" class="form-control form-control-sm"
+              [ngClass]="{red:!examsFormGroup.controls['code'].valid}" maxlength="50" name="code" id="code"
+              formControlName="code">
+          </div>       
+
+          <!--Exam Type  -->
+          <div class="form-group mb-0">
+            <label for="grade_type_guid" class="mb-0">Exam Grade</label>
+            <select class="form-control form-control-sm" id="grade_type_guid" name="grade_type_guid" formControlName="grade_type_guid">
+              <option value="null">All</option>
+              <option *ngFor="let grade of gradeList" [value]="grade.guid">
+                {{grade.name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- Language -->
+          <div class="form-group mb-0">
+            <label for="plan_status_guid" class="mb-0">Assignement Status</label>
+            <select class="form-control form-control-sm" id="plan_status_guid" name="plan_status_guid" formControlName="plan_status_guid">
+              <option value="null">All</option>
+              <option *ngFor="let status of planstatusList" [value]="status.guid">
+                {{status.name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- Primary Language -->
+          <div class="form-group mb-0">
+            <label for="status" class="mb-0">Status</label>
+            <select class="form-control form-control-sm" id="status" name="status"
+              formControlName="status">
+              <option value="null">All</option>
+              <option *ngFor="let status of statusList" [value]="status.value">
+                {{status.name}}
+              </option>
+            </select>
+          </div>         
+        </form>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onexamsFormSubmit()"
+        form="permissionForm">Apply</button>
+      <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+        (click)="resetFilters()">Reset</button>
+    </div>
+  </div>
+</aside>

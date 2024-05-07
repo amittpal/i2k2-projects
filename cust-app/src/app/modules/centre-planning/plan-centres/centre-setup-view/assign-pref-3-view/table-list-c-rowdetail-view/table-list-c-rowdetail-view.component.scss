@@ -1,0 +1,51 @@
+.table-responsive {
+  background-color: #f3f3f3;
+}
+.cs-click {
+  color: #65cf48;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   left: 0;
+   color: gold;
+}
+
+:host ::ng-deep {
+  .flex-t1-col-4 {
+    display: block;
+  }
+}
+
+.fa-plus-circle{
+  width: 40px;
+  height: 40px;
+  background: url(../../../../../../../assets/icons/plus.svg)!important;//url(../../../../assets/icons/plus.svg)
+
+  background-size: 40px 70px;
+}
+.fa-minus-circle{
+  width: 40px;
+  height: 40px;
+  background: url(../../../../../../../assets/icons/minus.svg)!important;
+  background-size: 40px 70px;
+}

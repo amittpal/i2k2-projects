@@ -1,0 +1,13 @@
+
+  
+    @media (min-width: 992px) {
+      .fullheight-fixed {
+        height: calc(100vh - 400px);
+      }
+    }
+
+    @media (min-width: 992px){
+        .fullheight-min {
+            min-height: calc(100vh - 85px )!important;
+        }
+    }

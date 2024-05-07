@@ -1,0 +1,114 @@
+:host ::ng-deep {
+  .card .card-body {    
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+  }   
+      
+  .scrollable {
+      margin-top: 20px !important;
+  }
+  
+}
+
+// :host ::ng-deep {
+//     .fa-plus-circle{
+//         width: 100px;
+//         height: 82px;
+//         background: url(./../../../../../../../assets/icons/plus.svg);//url(../../../../assets/icons/plus.svg) 
+//         background-size: 100px 82px;
+//     }
+//     .fa-minus-circle{
+//         width: 100px;
+//         height: 82px;
+//         background: url(./../../../../../../../assets/icons/minus.svg);
+//         background-size: 100px 82px;
+//     }
+// }
+
+.fa-plus-circle{
+  width: 25px;
+  height: 40px;
+  background: url(./../../../../../../assets/icons/plus.svg);//url(../../../../assets/icons/plus.svg) 
+  background-size: 40px 70px;
+}
+.fa-minus-circle{
+  width: 25px;
+  height: 40px;
+  background: url(./../../../../../../assets/icons/minus.svg);
+  background-size: 40px 70px;
+}
+
+
+
+.table-min-height {
+  tbody {
+    display: block;
+    height: 200px;
+    overflow-y: auto;
+    border: 10px;
+  }
+  thead {
+     tr {
+       th {
+         font-weight: normal;
+         font-size: 13px;
+       }
+     }
+  }
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* even columns width , fix width of table too*/     
+  }
+}
+
+.table thead tr th {
+  padding-left: 2px !important
+}
+.table tbody tr td {
+  padding-left: 2px !important
+}
+.was-validated .form-group.trad{
+input.ng-invalid,  
+select.ng-invalid {
+    border: 1px solid lightcoral;
+}
+input.ng-valid, 
+select.ng-valid {
+    border: 1px solid lightgreen;
+}
+}
+
+
+.table-min-height {
+tbody {
+  display: block;
+  height: 400px;
+  overflow-y: auto;
+  border: 10px;
+}
+thead {
+   tr {
+     th {
+       font-weight: normal;
+       font-size: 13px;
+     }
+   }
+}
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  /* even columns width , fix width of table too*/     
+}
+}
+
+@media (min-width: 992px)
+{
+.fullheight-fixed {
+  height: calc(100vh - 305px );
+}
+}

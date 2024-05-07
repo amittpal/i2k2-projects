@@ -1,0 +1,397 @@
+.was-validated {
+  input.ng-invalid,
+  select.ng-invalid {
+    border: 1px solid lightcoral;
+  }
+  input.ng-valid,
+  select.ng-valid {
+    border: 1px solid lightgreen;
+  }
+}
+.cs-height {
+  height: 35px !important;
+}
+:host ::ng-deep {
+  #products-grid
+    > table
+    > tbody:last-child
+    > tr
+    > td.flex-t2-td.flex-t1-col-1.cs-wd.data-column {
+    visibility: hidden;
+
+    .plus-icon {
+      display: none !important;
+    }
+  }
+
+  #products-grid
+    > table
+    > tbody:last-child
+    > tr
+    > td.flex-t1-td.flex-t1-col-1.data-column {
+    visibility: hidden;
+  }
+
+
+  .card .card-body.scrollable {
+    margin-bottom: 45px;
+  }
+
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      height: calc(100vh - 203px);
+    }
+  }
+  .p-2 {
+    padding: 0.5rem !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .multiselect-dropdown {
+    .dropdown-list {
+      border: 1px solid #ced4da !important;
+      padding-top: 0;
+      border-radius: 0;
+      margin-top: 0;
+      box-shadow: 0 0 0;
+    }
+    .dropdown-btn {
+      border: 1px solid #ced4da !important;
+      border-radius: 0.1rem !important;
+      .dropdown-down {
+        border-top: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .dropdown-up {
+        border-bottom: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .selected-item {
+        border-color: #dddddd !important;
+        background-color: #dddddd !important;
+        color: #7a8994 !important;
+        a {
+          color: #7a8994 !important;
+        }
+      }
+    }
+  }
+
+  .item1 {
+    .multiselect-item-checkbox {
+      border-bottom: 1px solid #ced4da !important;
+    }
+  }
+
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:before {
+      border: 1px solid #ced4da !important;
+    }
+  }
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:after {
+      border-color: #7a8994 !important;
+    }
+  }
+
+  .multiselect-item-checkbox input[type="checkbox"]:checked + div:before {
+    -webkit-animation: none !important;
+    animation: none !important;
+
+    background: white !important;
+    border: 1px solid #ced4da !important;
+  }
+  .form-control {
+    padding: 6px 12px !important;
+  }
+}
+.table-min-height {
+  tbody {
+    display: block;
+    height: 200px;
+    overflow-y: auto;
+    border: 10px;
+  }
+  thead {
+    tr {
+      th {
+        font-weight: normal;
+      }
+    }
+  }
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* even columns width , fix width of table too*/
+  }
+}
+
+.table thead tr th {
+  padding-left: 2px !important;
+}
+.table tbody tr td {
+  padding-left: 2px !important;
+}
+
+.was-validated {
+  input.ng-invalid,
+  select.ng-invalid {
+    border: 1px solid lightcoral;
+  }
+  input.ng-valid,
+  select.ng-valid {
+    border: 1px solid lightgreen;
+  }
+}
+.cs-height {
+  height: 35px !important;
+}
+.cs-space {
+  min-height: 35px;
+  padding: 6px 12px !important;
+}
+:host ::ng-deep {
+  .card .card-body.scrollable {
+    margin-bottom: 45px;
+    .plus-icon{
+      display: none;
+
+    }
+  }
+
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      // height: calc(100vh - 77px);
+    }
+  }
+  .p-2 {
+    padding: 0.5rem !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .multiselect-dropdown {
+    .dropdown-list {
+      border: 1px solid #ced4da !important;
+    }
+    .dropdown-btn {
+      border: 1px solid #ced4da !important;
+      border-radius: 0.1rem !important;
+      .dropdown-down {
+        border-top: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .dropdown-up {
+        border-bottom: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .selected-item {
+        border-color: #dddddd !important;
+        background-color: #dddddd !important;
+        color: #7a8994 !important;
+        a {
+          color: #7a8994 !important;
+        }
+      }
+    }
+  }
+
+  .item1 {
+    .multiselect-item-checkbox {
+      border-bottom: 1px solid #ced4da !important;
+    }
+  }
+
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:before {
+      border: 1px solid #ced4da !important;
+    }
+  }
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:after {
+      border-color: #7a8994 !important;
+    }
+  }
+
+  .multiselect-item-checkbox input[type="checkbox"]:checked + div:before {
+    -webkit-animation: none !important;
+    animation: none !important;
+
+    background: white !important;
+    border: 1px solid #ced4da !important;
+  }
+  .form-control {
+    padding: 6px 12px !important;
+  }
+  .app-form .form-group.trad select.form-control,
+  .app-form .form-group.trad .form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ced4da;
+    font-family: Arial, sans-serif;
+    color: inherit;
+    outline: 0;
+    padding: 8px 12px;
+    line-height: normal;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+    min-height: 30px !important;
+    height: auto;
+    border-radius: 2px;
+  }
+}
+
+.was-validated {
+  input.ng-invalid,
+  select.ng-invalid {
+    border: 1px solid lightcoral;
+  }
+  input.ng-valid,
+  select.ng-valid {
+    border: 1px solid lightgreen;
+  }
+}
+
+.cs-flex {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.was-validated .custom-select:valid,
+.custom-select.is-valid {
+  border-color: #28a745;
+  padding-right: calc(0.75em + 2.3125rem);
+  background: white !important;
+}
+.mr-8 {
+  margin-right: 8rem !important;
+}
+:host ::ng-deep {
+  .card .card-body.scrollable {
+    margin-bottom: 45px;
+  }
+
+  .flex-t1-th-6 {
+    text-align: center;
+  }
+
+  .flex-t1-col-6 {
+    text-align: center;
+  }
+
+  .flex-t1-th-4 {
+    width: 1% !important;
+  }
+  .flex-t1-col-4 {
+    width: max-content !important;
+  }
+  .mg-l-4 {
+    margin-left: 4%;
+  }
+  .flex-t1-col-5 {
+    text-align: center !important;
+  }
+  .flex-t1-th-5 {
+    text-align: center !important;
+  }
+
+  // Hide extra di
+
+  @media (min-width: 992px) {
+    .fullheight-fixed {
+      // height: calc(100vh - 77px);
+    }
+  }
+  // Multiselect Dropdown
+  .cs-height {
+    height: 35px !important;
+  }
+  .p-2 {
+    padding: 0.5rem !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .multiselect-dropdown {
+    .dropdown-list {
+      border: 1px solid #ced4da !important;
+    }
+    .dropdown-btn {
+      border: 1px solid #ced4da !important;
+      border-radius: 0.1rem !important;
+      .dropdown-down {
+        border-top: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .dropdown-up {
+        border-bottom: 5px solid #7a8994 !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+      .selected-item {
+        border-color: #dddddd !important;
+        background-color: #dddddd !important;
+        color: #7a8994 !important;
+        a {
+          color: #7a8994 !important;
+        }
+      }
+    }
+  }
+
+  .item1 {
+    .multiselect-item-checkbox {
+      border-bottom: 1px solid #ced4da !important;
+    }
+  }
+
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:before {
+      border: 1px solid #ced4da !important;
+    }
+  }
+
+  .multiselect-item-checkbox {
+    input[type="checkbox"] + div:after {
+      border-color: #7a8994 !important;
+    }
+  }
+
+  .multiselect-item-checkbox input[type="checkbox"]:checked + div:before {
+    -webkit-animation: none !important;
+    animation: none !important;
+
+    background: white !important;
+    border: 1px solid #ced4da !important;
+  }
+
+  .form-control {
+    padding: 6px 12px !important;
+  }
+}
+
+:host ::ng-deep {
+  .fa-plus-circle {
+    display: none;
+    background: url(../../../../../../assets/icons/plus.svg) 0 0/35px 35px !important;
+    cursor: pointer;
+  }
+  .fa-newlist {
+    display: none;
+    background: url(../../../../../../assets/icons/list.svg) 0 0/15px 15px !important;
+    cursor: grab;
+  }
+  .fa-trash {
+    display: none;
+    background: url(../../../../../../assets/icons/garbage-bin.svg) 0 0/15px
+      15px !important;
+    cursor: pointer;
+    width: 15px !important;
+  }
+}

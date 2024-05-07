@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable">
+            <!-- <center>
+        <h1>Please do not refresh this page...</h1>
+      </center> -->
+            <div class="app-form">
+                <form novalidate name="paytmPaymentGatewayForm" id="paytmPaymentGatewayForm"
+                    [formGroup]="paytmPaymentGatewayFormGroup">
+                    <div class="col-lg-2 col-sm-4 form-group trad foc required">
+                        <label for="customer_name" class="mb-0">Student Name</label>
+                        <input type='text' class="form-control form-control-sm" formControlName="customer_name" name='customer_name'
+                            required readonly>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-4 form-group trad foc required">
+                        <label for="email" class="mb-0">Email</label>
+                        <input type='text' class="form-control form-control-sm" formControlName="email" name='email'
+                            required readonly>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-4 form-group trad foc required">
+                        <label for="mobile" class="mb-0">Mobile #</label>
+                        <input type='text' class="form-control form-control-sm" formControlName="mobile" name='mobile'
+                            required readonly>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-4 form-group trad foc required">
+                        <label for="tax_amount" class="mb-0">Payment Amount</label>
+                        <input type='text' class="form-control form-control-sm" formControlName="tax_amount"
+                            name='tax_amount' required readonly>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="onFormSubmit()">Pay Now</button>
+            <!-- <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button> -->
+        </div>
+    </div>
+</div>

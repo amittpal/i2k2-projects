@@ -1,0 +1,61 @@
+<div class="row">
+<div class="col-3">    
+  <input placeholder="Search Candidate" type="search" class="form-control form-control-sm" maxlength="256" [(ngModel)]="searchCandidateModel"
+    (ngModelChange)="filterCandidateData($event)" [ngModelOptions]="{standalone: true}" name="search"
+    id="search">
+</div>
+</div><br>
+<div class="table-responsive">
+    <table class="table table-min-height">
+      <thead>
+        <tr class="flex-tr">
+          <th class="flex-th">NAME</th>
+          <th class="flex-th">FATHER NAME</th>
+          <th class="flex-th">GENDER</th>
+          <th class="flex-th">DOB</th>
+          <th class="flex-th">CENTRE CODE</th>
+          <th class="flex-th">ROLL#</th>
+          <th class="flex-th">MAIL SENT</th>
+          <th class="flex-th">SMS SENT</th>
+          <th class="flex-th">ACTION</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="rowDetailsId" *ngFor="let admitCard of admitCardList; let i=index" [attr.data-index]="i" class="flex-tr">          
+          <td class="flex-td">{{ admitCard.name }}</td>
+          <td class="flex-td">{{ admitCard.father_name }}</td>
+          <td class="flex-td">{{ admitCard.gender }}</td>
+          <td class="flex-td">{{ admitCard.dob }}</td>
+          <td class="flex-td">{{ admitCard.code }}</td>
+          <td class="flex-td">{{ admitCard.roll_number }}</td>
+          <td class="flex-td">{{ admitCard.mail_sent }}</td>
+          <td class="flex-td">{{ admitCard.sms_sent }}</td>          
+          <td class="btn-group" dropdown>
+            <a class="cs-click" href="/#/admitcard/registration/{{regGuid}}/exam/{{admitCardItem.exam_guid}}/snapshot/{{snapshotId}}/shiftNo/{{admitCardItem.shift_number}}/candidate/{{admitCard.candidate_guid}}/admitcard/preview">Preview</a>
+            
+              <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1"
+                placement="right">
+                <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+              </a>
+              <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                aria-labelledby="button-autoclose1">
+                <li role="menuitem">
+                  <a href="/#/admitcard/registration/{{regGuid}}/exam/{{admitCardItem.exam_guid}}/snapshot/{{snapshotId}}/shiftNo/{{admitCardItem.shift_number}}/candidate/{{admitCard.candidate_guid}}/admitcard/email/preview" (click)="$event.stopPropagation();"
+                    class="dropdown-item">Email Preview</a>
+                </li>
+                <li role="menuitem">
+                  <a href="" (click)="downloadAdmitCard(admitCard.candidate_guid)"
+                    class="dropdown-item">Download</a>
+                </li>
+              </ul>
+            
+          </td>
+        </tr>
+        <tr *ngIf="admitCardList.length == 0">
+          <td class="flex-td">No Record Found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

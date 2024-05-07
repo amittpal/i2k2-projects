@@ -1,0 +1,217 @@
+//page variables
+$active-color:#65CF48;
+$hover-color: #65CF48;
+$iconbar-width: 64px;
+
+//page styles
+:host ::ng-deep {
+    .icon {
+      display: inline-block;
+      width: 2.2em;
+      height: 2.5em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+    .icon-logout {
+      display: inline-block;
+      width: 2.2em;
+      height: 2.5em;
+      stroke-width: 0;
+      // stroke: currentColor;
+      // fill: currentColor;
+    }
+    .iconclose {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;      
+    }
+    svg-icon.grey {
+      fill: grey;
+    }
+    svg-icon.green {
+      fill: green;
+    }
+    .az-iconbar-aside{
+      // background-color: #EFF2F9;
+      // background-image: none;
+  
+      /* display: none; */
+      display: initial;
+      visibility: hidden;
+  
+      // -webkit-animation-duration: 0.24s;
+      // animation-duration: 0.24s;
+      // -webkit-animation-fill-mode: both;
+      // animation-fill-mode: both;
+  
+      // -webkit-animation-name: slideIn;
+      // animation-name: slideIn;
+      
+      &.show{   
+        -webkit-animation-duration: 0.24s;
+        animation-duration: 0.24s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+
+        -webkit-animation-name: slideOut;
+        animation-name: slideOut;
+      }
+      &.in-transit{
+        -webkit-animation-duration: 0.24s;
+        animation-duration: 0.24s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+  
+        -webkit-animation-name: slideIn;
+        animation-name: slideIn;
+      }
+      
+    }
+    
+    
+    //svg on-hover active inactive
+    .az-iconbar{
+      z-index: 700;
+      nav.nav{
+        .nav-link{        
+          svg-icon > svg {
+            align-items: center;
+            //width: 32px;
+            //height: 32px;
+            fill: #c1c1c1;
+          }
+          &.on-hover{        
+            svg-icon > svg {
+              //width: 32px;
+              //height: 32px;
+              fill: $hover-color;
+            }
+          }
+          &.on-active{ 
+            svg-icon > svg {
+              //width: 32px;
+              //height: 32px;
+              fill: $active-color;
+            }
+          }
+        }
+      }
+    }
+
+    .az-iconbar-body{
+      .nav-link{
+        &.on-active{
+          color: $active-color;
+          font-weight: 700;
+        }
+      }
+      
+    }
+
+
+    .app-head-container{
+      left: $iconbar-width;
+    }
+    .app-head-container,
+    .page-head-container{
+      width: calc(100% - #{$iconbar-width});
+    }
+
+  }
+
+
+  //page content underlapping
+  @media (min-width: 1200px){
+    :host ::ng-deep {
+      .az-iconbar-aside.show + .az-content {
+        margin-left: $iconbar-width;
+      }
+    }
+  }
+  @media (min-width: 992px){
+    :host ::ng-deep{
+      .az-iconbar-aside.show {
+        /* display: block; */
+        display: initial;
+        visibility: visible;
+      }
+    }
+  }
+  @media (max-width: 991px){
+    :host ::ng-deep{
+      .az-iconbar-aside.show {
+       width: calc(100% - #{$iconbar-width});
+      }
+      .app-head-container{
+        left: 0;
+      }
+      .app-head-container,
+      .page-head-container{
+        width: 100%;
+      }
+    }
+  }
+  
+  //Animations
+  @-webkit-keyframes slideOut {
+    from {
+      visibility: hidden;
+      //opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      visibility: visible;
+      //opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      visibility: hidden;
+      //opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      visibility: visible;
+      //opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @-webkit-keyframes slideIn {
+    from {
+      visibility: visible;
+      //opacity: 1;
+    }
+  
+    to {
+      visibility: hidden;
+      //opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      visibility: visible;
+      //opacity: 1;
+    }
+  
+    to {
+      visibility: hidden;
+      //opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }

@@ -1,0 +1,38 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-body scrollable">    
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate name="subjectsListForm" id="subjectsListForm" [formGroup]="subjectsListFormGroup"
+            class="p-0">
+            <div class="form-group mb-0">
+              <label for="Subjects" class="mb-0">Subjects</label>
+              <select class="form-control form-control-sm" id="subject_guid" name="subject_guid" formControlName="subject_guid">
+                <option value="">All</option>
+                <option *ngFor="let subject of subjectsList" [value]="subject.subject_guid">
+                  {{subject.name}}
+                </option>
+              </select>
+            </div>              
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onsubjectsFormSubmit($event)">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

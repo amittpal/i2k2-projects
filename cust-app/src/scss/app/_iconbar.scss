@@ -1,0 +1,205 @@
+.az-iconbar-show {
+  @include media-breakpoint-down(md) {
+    .az-iconbar { 
+      display: block;
+     }
+    .az-iconbar-aside { 
+      display: block; 
+    }
+  }
+}
+
+.az-iconbar {
+  width: $icon-bar-width;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $iconbar-bg;
+  z-index: 500;
+  border-right: 1px solid $icon-logo-border;
+
+  @include media-breakpoint-up(lg) { 
+    display: block;
+  }
+
+  .icon-logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $page-head-height;
+    background-color: $icon-logo-bg;
+    border-bottom: 1px solid $icon-logo-border;
+  }
+  .nav {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0;
+    color: $body-color;
+    width: $az-height-base;
+    height: $az-height-base;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+
+    &.active { color: $az-color-primary; }
+
+    + .nav-link { margin-top: 20px; }
+  }
+}
+
+.az-iconbar-bottom {
+  position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    > a{
+      display: inline-block;
+    }
+  align-items: center;
+}
+
+
+.az-iconbar-aside {
+  width: $az-width-iconbar-aside;
+  height: 100%;
+  border-right: 1px solid $icon-logo-border;
+  position: fixed;
+  top: 0;
+  left: $icon-bar-width;
+  overflow-y: auto;
+  z-index: 600;
+  display: none;
+
+  background-color: $iconbar-aside-bg;
+
+  &.show {
+    @include media-breakpoint-up(lg) { display: block; }
+    @include media-breakpoint-up(xl) {
+      + .az-content { margin-left: $icon-bar-width + $az-width-iconbar-aside; }
+    }
+  }
+}
+
+.az-iconbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: $page-head-height;
+  background-color: $iconbar-aside-header;
+  border-bottom: 1px solid $icon-logo-border;
+  //padding-left: 0;
+
+  .az-logo { 
+    font-family: montserrat;
+    display: inline-block;
+    letter-spacing: .06em;
+    font-size: 18px;
+    font-weight: 700;
+    color: $gray-900 !important;
+   }
+}
+
+.az-iconbar-toggle-menu {
+  display: block;
+  position: relative;
+  line-height: 0;
+  color: $gray-900;
+  font-size: 28px;
+  opacity: .5;
+
+  @include media-breakpoint-up(xl) {
+    font-size: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      left: -1px;
+      border-left: 2px solid $gray-900;
+    }
+  }
+}
+
+.az-iconbar-body {
+  padding: 20px;
+  height: calc(100vh - 68px);
+  
+  .nav {
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+
+  .nav-link {
+    position: relative;
+    color: $body-color;
+    font-size: 12px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: $az-height-base;
+
+    font-family: montserrat;
+    text-transform: uppercase;
+
+    + .nav-link {
+      margin-top: -1px;
+      border-top: 1px dotted $iconbar-aside-header;
+    }
+
+    &.active {
+      color: $az-color-primary;
+      //font-weight: 400;
+    }
+  }
+}
+
+.az-iconbar-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1;
+  font-family: montserrat;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: .06em;
+  font-size: 12px;
+  color: $gray-900 !important;
+}
+
+.az-iconbar-text {
+  display: block;
+  font-size: 12px;
+  color: $gray-600;
+  margin-bottom: 12px;
+}
+.az-iconbar-pane {
+  margin-bottom: 20px;
+  display: none;
+
+  &.show { display: block; }
+}
+/* ###### 8.3 Dashboard Three  ###### */
+.az-content-dashboard-three {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: ($page-head-height + 15px) 0 0 0;
+  @include media-breakpoint-up(lg) {
+    margin-left: $icon-bar-width;
+  }
+}
+
+
+

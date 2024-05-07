@@ -1,0 +1,236 @@
+<div class="container-fluid">
+
+  <div class="card card-bordered fullheight-fixed" *ngIf="displayData">
+    <div class="card-body">
+      <form autocomplete="off" class="app-form" id="addExamForm" [formGroup]="addExamFormGroup" novalidate="">
+
+        <div class="row">
+
+          <div class="col-md-3 col-lg-3">
+
+            <!-- Exam Public Label -->
+            <div class="col-lg-12  col-sm-12 form-group trad foc required">
+              <label for="exam_public_label" class="col-lg-12 p-2 mb-0">Exam Public Label</label>
+              <input type="text" class="col-lg-10 p-2 form-control form-control-sm" name="exam_public_label" id="exam_public_label"
+                formControlName="exam_public_label">
+            </div>
+
+            <!-- Exam Code -->
+            <div class="col-lg-12  col-sm-12 form-group trad foc required">
+              <label for="exam_code" class="col-lg-12 p-2 mb-0">Exam Code</label>
+              <input type="text" class="col-lg-10 p-2 form-control form-control-sm" name="exam_code" id="exam_code"
+                formControlName="code" required>
+            </div>
+
+            <!-- Exam Name -->
+            <div class="col-lg-12  col-sm-12 form-group trad foc required">
+              <label for="name" class="col-lg-12 p-2 mb-0">Exam Name</label>
+              <input type="text" class="col-lg-10 p-2 form-control form-control-sm" name="name" id="name" formControlName="name"
+                required>
+            </div>
+
+            <!-- Description-->
+            <div class=" col-lg-12 col-sm-12 form-group trad foc required">
+              <label for="description" class="col-lg-12 p-2 mb-0">Exam Description</label>
+              <input type="text" class="col-lg-10 p-2 form-control form-control-sm" name="description" id="description"
+                formControlName="description" required>
+            </div>
+
+            <!-- Exam Type -->
+            <div class=" col-lg-12 col-sm-12 form-group trad foc">
+              <label for="exam_type" class="col-lg-12 p-2 mb-0">Exam Type</label>
+              <select class="col-lg-10 p-2 form-control cs-height form-control-sm" id="exam_type" name="exam_type"
+                formControlName="exam_type_guid">
+                <option value="">Please Select</option>
+                <option *ngFor="let examType of examTypeList" [value]="examType.guid">
+                  {{examType.name}}
+                </option>
+              </select>
+            </div>
+
+            <!-- Number of Unique Shifts-->
+            <div class="col-lg-12 col-sm-12 form-group trad foc required">
+              <label for="shifts" class="col-lg-12 p-2 mb-0">Number of Unique Shifts</label>
+              <input type="number" min="1" onlyNumber class="col-lg-10 p-2 form-control form-control-sm" name="shifts" id="shifts"
+                formControlName="shifts" required>
+            </div>
+
+          </div>
+
+          <div class="col-md-3 col-lg-3">
+
+            <!-- Duration -->
+            <div class="col-lg-12 col-sm-12 form-group trad foc required">
+              <label for="duration" class="col-lg-12 p-2 mb-0">Duration </label>
+              <div class="d-flex">
+                <input type="number" onlyNumber class="mr-1 col-lg-6 cs-height p-2 form-control form-control-sm" name="duration"
+                  id="duration" formControlName="duration" required>
+                <!-- duration_uom -->
+                <select class="col-lg-4 p-2 form-control cs-height form-control-sm" id="duration_uom" name="duration_uom"
+                  formControlName="duration_uom_guid">
+                  <option value="">Select</option>
+                  <option *ngFor="let uoms of uomsList" [value]="uoms.guid">
+                    {{uoms.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Number of Sections -->
+            <div *ngIf="!Id" class="col-lg-12 col-sm-12 form-group trad foc">
+              <label for="sections" class="col-lg-12 p-2 mb-0">Number of Sections</label>
+              <input type="number" onlyNumber class="col-lg-10 p-2 form-control form-control-sm" name="sections" id="sections"
+                formControlName="sections" required>
+            </div>
+
+            <div *ngIf="Id" class="col-lg-12 col-sm-12 form-group trad foc">
+              <label for="sections" class="col-lg-12 p-2 mb-0">Number of Sections</label>
+              <div class="d-flex">
+                <input type="number" onlyNumber class="col-lg-5 mr-1 p-2 form-control form-control-sm" name="sections" id="sections"
+                  formControlName="sections" required>
+                <button class="btn col-lg-5 btn-sm btn-primary" id="sectionBtn" (click)="addNewSection()">Add
+                  Section</button>
+              </div>
+            </div>
+
+            <!-- Negative Marking -->
+            <div class="col-lg-12 col-sm-12 form-group trad foc">
+              <label for="negative_mark" class="col-lg-12 p-2 mb-0">Negative Marking</label>
+              <select class="col-lg-10 p-2 form-control form-control-sm" id="negative_mark" name="negative_mark"
+                formControlName="negative_marking">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+
+            <!-- QUESTION OPTIONS SEQUENCE -->
+            <div class=" col-lg-12 col-sm-12 form-group trad foc">
+              <label for="question_option_sequence" class="col-lg-12 p-2 mb-0">QUESTION OPTIONS SEQUENCE</label>
+              <select class="col-lg-10 p-2 form-control cs-height form-control-sm" id="question_option_sequence"
+                name="question_option_sequence" formControlName="question_option_sequence">
+                <option value="" disabled>Please Select</option>
+                <option *ngFor="let option of questionOptionSequenceList" [value]="option.sequence_option_guid">
+                  {{option.sequence_option_name}}
+                </option>
+              </select>
+            </div>
+
+            <!-- QUESTION PAPER RANDOMIZATION -->
+            <div class=" col-lg-12 col-sm-12 form-group trad foc">
+              <label for="question_paper_randomization" class="col-lg-12 p-2 mb-0">QUESTION PAPER RANDOMIZATION</label>
+              <select class="col-lg-10 p-2 form-control cs-height form-control-sm" id="question_paper_randomization"
+                name="question_paper_randomization" formControlName="question_paper_randomization">
+                <option value="" disabled>Please Select</option>
+                <option *ngFor="let option of questionRandomizationOptionList" [value]="option.randomization_option_guid">
+                  {{option.name}}
+                </option>
+              </select>
+            </div>
+
+            <!-- FULL QUESTION PAPER VIEW -->
+            <div class=" col-lg-12 col-sm-12 form-group trad foc">
+              <label for="full_question_paper" class="col-lg-12 p-2 mb-0">FULL QUESTION PAPER VIEW</label>
+              <select class="col-lg-10 p-2 form-control cs-height form-control-sm" id="full_question_paper"
+                name="full_question_paper" formControlName="full_question_paper">
+                <option value="" disabled>Please Select</option>
+                <option *ngFor="let option of questionViewOptionList" [value]="option.view_option_guid">
+                  {{option.name}}
+                </option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="col-md-3 col-lg-3">
+
+              <!-- Languages -->
+              <div class="col-lg-12 col-sm-12 mb-3 form-group trad foc required">
+                <label for="languages" class="col-lg-12 p-2 mb-0">Languages</label>
+                <select [compareWith]="multiLangComp" (ngModelChange)="valueChange($event)"
+                  class="form-control form-control-sm col-lg-10 p-2" formControlName="languages" id="languages" multiple size="6">
+                  <option *ngFor="let language of languageList" [ngValue]="language">
+                    {{language.name}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Primary Language  -->
+              <div class=" col-lg-12  col-sm-12 form-group trad foc">
+                <label for="Primang_lg" class="mb-0 col-lg-12 p-2">Primary Language </label>
+                <select class="form-control col-lg-10 p-2 form-control-sm" id="Primang_lg" name="Primang_lg"
+                  formControlName="primary_language_guid">
+                  <option value="">Please Select</option>
+                  <option *ngFor="let Language of primLangList " [value]="Language.guid">
+                    {{Language.name}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Dual Show Primary  -->
+              <div class="col-lg-12 col-sm-12 mb-3 form-group trad foc">
+                <label for="dual_show_primary" class="col-lg-12 p-2 mb-0">Dual Show Primary</label>
+                <select class="form-control col-lg-10 p-2 form-control-sm" id="dual_show_primary" name="dual_show_primary"
+                  formControlName="dual_show_primary">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+
+              <!-- Subjects  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="subjects" class=" col-lg-12 p-2 mb-0">Subjects </label>
+                <select [compareWith]="multisubjectComp" class="col-lg-10 p-2 form-control form-control-sm" formControlName="subjects"
+                  id="subjects" multiple size="6">
+                  <option *ngFor="let subject of subjectList" [ngValue]="subject">
+                    {{subject.name}}
+                  </option>
+                </select>
+              </div>
+
+
+          </div>
+
+          <div class="col-md-3 col-lg-3">
+
+              <!-- Exam Grade -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                <label for="grade" class="col-lg-12 p-2 mb-0">Exam Grade</label>
+                <select class="form-control col-lg-10 p-2 form-control-sm" id="grade" name="grade" formControlName="grade_type_guid">
+                  <option value="">Please Select</option>
+                  <option *ngFor="let grade of gradeList" [value]="grade.guid">
+                    {{grade.name}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- priority  -->
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="priority" class="col-lg-12 p-2 mb-0">NUMBER OF CITY’S PRIORITY</label>
+                <select class="form-control col-lg-10 p-2 form-control-sm" id="priority" name="priority"
+                  formControlName="no_of_city_priority">
+                  <option value="">Please Select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Form Submit -->
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Update</button>
+      <button *ngIf="newUser" class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+    </div>
+  </div>
+  <div class="not-found-container" *ngIf="!displayData">
+    <h5>
+      No Data Available...
+    </h5>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="text-center mt-2">
+    <b style="font-size: large;">POST EXAM</b> <br><br>
+    <div>
+        <div class="outer-container">
+            <div class="inner-container mr-4">
+                <b class="" style="font-size: medium;">CALL LETTERS</b><br>
+                <b style="color: black;font-size: large;">{{postExamDetail ? postExamDetail["call_letter_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b style="font-size: medium;">INTERVIEWED</b><br>
+                <b style="color: black;font-size: large;">{{postExamDetail ? postExamDetail["interviewed_count"] : 'NA'}}</b>
+            </div>
+            <div class="inner-container mr-4">
+                <b style="font-size: medium;">ACCEPTED</b><br>
+                <b style="color: green;font-size: large;">{{postExamDetail ? postExamDetail["selected_count"] : 'NA'}}</b>
+            </div>
+        </div>
+    </div>
+</div>

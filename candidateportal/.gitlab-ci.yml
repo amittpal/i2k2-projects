@@ -1,0 +1,229 @@
+image: docker:latest
+
+services:
+  - docker:dind
+stages:
+    - build
+    - test
+    - deploy
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEV - BUILD - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+build_dev:
+  tags:
+    - ixcheck-build
+  only:
+      - developer
+  except:
+      - master
+      - demo
+      - qat
+      - feature
+  stage: build
+  script:
+    - docker build -t dev-candidateportal-app -f Dockerfile.dev .
+    - docker rmi -f $(docker images -q --filter label=stage=dev-candidateportal-app.intermediate) || true
+    - docker tag dev-candidateportal-app hub.ixcheck.io/frontend/dev-candidateportal-ixcheck-app
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker push hub.ixcheck.io/frontend/dev-candidateportal-ixcheck-app
+  environment:
+    name: developer
+ 
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEV- BUILD - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  QAT - BUILD - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+build_qat:
+  tags:
+    - qat-ixcheck-build
+  only:
+      - qat
+  except:
+      - master
+      - demo
+      - developer
+      - feature
+  stage: build
+  script:
+    - docker build -t qat-candidateportal-app -f Dockerfile.qat .
+    - docker rmi -f $(docker images -q --filter label=stage=qat-candidateportal-app.intermediate) || true
+    - docker tag qat-candidateportal-app hub.ixcheck.io/frontend/qat-candidateportal-ixcheck-app
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker push hub.ixcheck.io/frontend/qat-candidateportal-ixcheck-app
+  environment:
+    name: qat
+ 
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  QAT- BUILD - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEMO - BUILD - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+build_demo:
+  tags:
+    - demo-ixcheck-build
+  only:
+      - demo
+  except:
+      - master
+      - qat
+      - developer
+      - feature
+  stage: build
+  script:
+    - docker build -t demo-candidateportal-app -f Dockerfile.demo .
+    - docker rmi -f $(docker images -q --filter label=stage=demo-candidateportal-app.intermediate) || true
+    - docker tag demo-candidateportal-app hub.ixcheck.io/frontend/demo-candidateportal-ixcheck-app
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker push hub.ixcheck.io/frontend/demo-candidateportal-ixcheck-app
+  environment:
+    name: demo
+ 
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEMO- BUILD - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  PROD - BUILD - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+build_production:
+  tags:
+    - prod-ixcheck-build
+  only:
+      - tags
+  except:
+      - demo
+      - qat
+      - developer
+      - feature
+  stage: build
+  script:
+    - docker build -t prod-candidateportal-app -f Dockerfile.prod .
+    - docker rmi -f $(docker images -q --filter label=stage=prod-candidateportal-app.intermediate) || true
+    - docker tag prod-candidateportal-app hub.ixcheck.io/frontend/prod-candidateportal-ixcheck-app
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker push hub.ixcheck.io/frontend/prod-candidateportal-ixcheck-app
+  environment:
+    name: master
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  BUILD - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEV DEPLOY - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+deploy_dev:dev-ixcheck-saas:
+  tags:
+    - dev-ixcheck-saas
+  only:
+      - developer
+  except:
+      - master
+      - demo
+      - qat
+      - feature
+  stage: test
+  script:
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker stop dev.candidateportal.ixcheck.io || true
+    - docker rm dev.candidateportal.ixcheck.io || true
+    - docker rmi dev-candidateportal-app | grep dev-candidateportal-app || true
+    - docker rmi hub.ixcheck.io/frontend/dev-candidateportal-ixcheck-app | grep dev-candidateportal-app || true
+    - docker pull hub.ixcheck.io/frontend/dev-candidateportal-ixcheck-app
+    - docker run --name dev.candidateportal.ixcheck.io -d -p 20004:80 --restart=always hub.ixcheck.io/frontend/dev-candidateportal-ixcheck-app
+  environment:
+    name: developer
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEV DEPLOY - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  QAT DEPLOY - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+deploy_qat:qat-ixcheck-saas:
+  tags:
+    - qat-ixcheck-saas
+  only:
+      - qat
+  except:
+      - master
+      - demo
+      - developer
+      - feature
+  stage: test
+  script:
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker stop qat.candidateportal.ixcheck.io || true
+    - docker rm qat.candidateportal.ixcheck.io || true
+    - docker rmi qat-candidateportal-app | grep qat-candidateportal-app || true
+    - docker rmi hub.ixcheck.io/frontend/qat-candidateportal-ixcheck-app | grep qat-candidateportal-app || true
+    - docker pull hub.ixcheck.io/frontend/qat-candidateportal-ixcheck-app
+    - docker run --name qat.candidateportal.ixcheck.io -d -p 20004:80 --restart=always hub.ixcheck.io/frontend/qat-candidateportal-ixcheck-app
+  environment:
+    name: qat
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  QAT DEPLOY - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEMO DEPLOY - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+deploy_demo:demo-ixcheck-deploy:
+  tags:
+    - demo-ixcheck-deploy
+  only:
+      - demo
+  except:
+      - master
+      - qat
+      - developer
+      - feature
+  stage: test
+  script:
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker stop demo.candidateportal.ixcheck.io || true
+    - docker rm demo.candidateportal.ixcheck.io || true
+    - docker rmi demo-candidateportal-app | grep demo-candidateportal-app || true
+    - docker rmi hub.ixcheck.io/frontend/demo-candidateportal-ixcheck-app | grep demo-candidateportal-app || true
+    - docker pull hub.ixcheck.io/frontend/demo-candidateportal-ixcheck-app
+    - docker run --name demo.candidateportal.ixcheck.io -d -p 20004:80 --restart=always hub.ixcheck.io/frontend/demo-candidateportal-ixcheck-app
+  environment:
+    name: demo
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  DEMO DEPLOY - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  PROD DEPLOY - START
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+deploy_production:prod-ixcheck-deploy:
+  tags:
+    - prod-ixcheck-deploy
+  only:
+      - tags
+  except:
+      - demo
+      - qat
+      - developer
+      - feature
+  stage: deploy
+  script:
+    - docker login -u $HUB_IXCHECK_IO_USER -p $HUB_IXCHECK_IO_PASS hub.ixcheck.io
+    - docker stop prod.candidateportal.ixcheck.io || true
+    - docker rm prod.candidateportal.ixcheck.io || true
+    - docker rmi prod-candidateportal-app | grep prod-candidateportal-app || true
+    - docker rmi hub.ixcheck.io/frontend/prod-candidateportal-ixcheck-app | grep prod-candidateportal-app || true
+    - docker pull hub.ixcheck.io/frontend/prod-candidateportal-ixcheck-app
+    - docker run --name prod.candidateportal.ixcheck.io -d -p 20004:80 --restart=always hub.ixcheck.io/frontend/prod-candidateportal-ixcheck-app
+  environment:
+    name: master
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+##  PROD DEPLOY - END
+## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 

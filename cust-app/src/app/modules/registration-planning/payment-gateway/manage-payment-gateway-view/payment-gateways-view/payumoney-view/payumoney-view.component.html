@@ -1,0 +1,61 @@
+<div class="card card-bordered fullheight-fixed" style="height: calc(100vh - 440px );">
+    <div class="card-body ">
+        <div class="app-form">
+            <form autocomplete="off" id="paytmGatewayForm" [formGroup]="paytmGatewayForm" novalidate="" class="p-0">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                         <!--  Merchant Key-->
+                         <div class=" form-group trad foc required">
+                            <label for="merchant_key" class=" mb-0">Merchant Key</label>
+                            <input 
+                            type="text" 
+                            class=" form-control form-control-sm"
+                            name="merchant_key" 
+                            id="merchant_key"
+                            formControlName="merchant_key" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                          <!--Merchant Salt-->
+                          <div class="form-group trad foc required">
+                            <label for="merchant_salt" class=" mb-0">Merchant Salt</label>
+                            <input type="text" class=" form-control form-control-sm" 
+                            name="merchant_salt" 
+                            id="merchant_salt"
+                            formControlName="merchant_salt" 
+                            required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                        <!-- auth_header-->
+                        <div class="form-group trad foc required">
+                            <label for="auth_header" class=" mb-0">Auth Header</label>
+                            <input 
+                            type="text" 
+                            class=" form-control form-control-sm" 
+                            name="auth_header" id="auth_header"
+                            formControlName="auth_header" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                           <!-- PAYMENT URL -->
+                           <div class="form-group trad foc required">
+                            <label for="payment_url" class=" mb-0">PAYMENT URL</label>
+                            <input type="text" class=" form-control form-control-sm" name="payment_url" id="payment_url"
+                                formControlName="payment_url" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">                           
+                        <!-- RETURN URL-->
+                        <div class="form-group trad foc required">
+                            <label for="return_url" class=" mb-0">RETURN URL</label>
+                            <input type="text" class=" form-control form-control-sm" name="return_url" id="return_url"
+                                formControlName="return_url" required>
+                        </div>
+                    </div>                                       
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

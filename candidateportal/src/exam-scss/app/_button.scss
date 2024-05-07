@@ -1,0 +1,23 @@
+.btn{
+    border-radius: 0.30rem;
+    padding: 0.375rem 0.75rem;
+    // color: black;
+    font-weight: 600;
+    font-size: 11px;
+}
+.btn-info-light
+{
+    border-color: #adcdeb;
+    background-color: #d6e6f5;
+    &:hover{
+        // color: black; 
+        background-color: #adcdeb;
+    }
+}
+
+.btn-light-green{
+    background-color: #a9d18e;
+   &:hover{
+        color: white !important;
+    }
+}

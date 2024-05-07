@@ -1,0 +1,54 @@
+<div *ngIf="items.length>0">
+  <ngx-ixcheck-table id="orders-list" headerTitle="Orders" [items]="items" [indexColumn]="false" [itemCount]="itemCount"
+    [selectColumn]="false" [expandOnIndexColClick]="true" [expandOnRowClick]="false">
+
+    <ng-template #rowDetailExpand let-rowitem="item">
+      <!-- view only -->
+    </ng-template>
+
+    <!-- name -->
+    <ngx-ixcheck-table-column [property]="'name'" [header]="'name'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Ph female -->
+    <ngx-ixcheck-table-column [property]="'ph_female'" [header]="'Ph female'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Ph other -->
+    <ngx-ixcheck-table-column [property]="'ph_other'" [header]="'Ph other'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- Reserved Female -->
+    <ngx-ixcheck-table-column [property]="'reserved_female'" [header]="'Reserved Female'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+    
+    <!-- Reserved other -->
+    <ngx-ixcheck-table-column [property]="'other_reserved'" [header]="'Reserved Other'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- other female -->
+    <ngx-ixcheck-table-column [property]="'other_female'" [header]="'other female'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- others -->
+    <ngx-ixcheck-table-column [property]="'others'" [header]="'other'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- ph_total -->
+    <ngx-ixcheck-table-column [property]="'ph_total'" [header]="'Ph'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- other_total -->
+    <ngx-ixcheck-table-column [property]="'other_total'" [header]="'other'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- total capacity-->
+    <ngx-ixcheck-table-column [property]="'total_capacity'" [header]="'total capacity'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+    <!-- total -->
+    <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'total'" [sortable]="false">
+    </ngx-ixcheck-table-column>
+
+  </ngx-ixcheck-table>
+</div>

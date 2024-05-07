@@ -1,0 +1,154 @@
+<div class="row" *ngIf="_summaryView === false">
+    <div class="col-md-9 pl-0" id="question-numbers">
+        <tabset class="tabset-container" #sectionsTabs>
+            <!-- <tab heading="Full Question Paper" class="mt-1" (selectTab)="onSectionClick(-1,'')">
+            </tab>
+            <tab *ngFor="let section of SectionsList; let i= index;" heading="{{section.section_name}}"
+                class="ml-3 mt-1" (selectTab)="onSectionClick(i, section)">
+                <span *ngFor="let question of SectionQuestionStatus">
+                    <ng-container *ngIf="question.section_guid === section.section_guid">
+                        <button *ngIf="question.question_number !== SelectedQuestionNumber  else activeQuestion"
+                            class="badge {{question.status_css_tag}} shaped"
+                            (click)="onQuestionNumberClick(question.question_guid)">
+                            {{question.question_number}}</button>
+                        <ng-template #activeQuestion>
+                            <button class="badge {{question.status_css_tag}} badge-active shaped"
+                                (click)="onQuestionNumberClick(question.question_guid)">
+                                {{question.question_number}}</button>
+                        </ng-template>
+                    </ng-container>
+                </span>
+            </tab> -->
+
+            <ng-container *ngFor="let section of SectionsList; let i= index;">
+                <tab heading="{{section.section_name}}" class="ml-3 mt-1" (selectTab)="onSectionClick(i, section)">
+                    <span *ngFor="let question of SectionQuestionStatus">
+                        <ng-container *ngIf="question.section_guid === section.section_guid">
+                            <button *ngIf="question.question_number !== SelectedQuestionNumber  else activeQuestion"
+                                class="badge {{question.status_css_tag}} shaped"
+                                (click)="onQuestionNumberClick(question.question_guid)">
+                                {{question.question_number}}</button>
+                            <ng-template #activeQuestion>
+                                <button class="badge {{question.status_css_tag}} badge-active shaped"
+                                    (click)="onQuestionNumberClick(question.question_guid)">
+                                    {{question.question_number}}</button>
+                            </ng-template>
+                        </ng-container>
+                    </span>
+                </tab>
+                <tab 
+                *ngIf="i+1 === SectionsList.length" 
+                heading="Full Question Paper" 
+                class="mt-1"
+                (selectTab)="onSectionClick(-1,'')">
+                </tab>
+            </ng-container>
+        </tabset>
+    </div>
+    <div class="col-md-3 text-right" id="question_status_wrapper">
+        <div class="row" *ngIf="SectionStatus">
+            <div class="col-md-7 col-sm-7 pl-1 pr-1">
+                <div>
+                    <button class="badge badge-white">Total</button>
+                    <button class="badge badge-white">{{total}}</button>
+                </div>
+
+                <div *ngFor="let answer_status of SectionStatus">
+                    <button class="badge {{answer_status.status_css_tag}}">{{answer_status.status_name}}</button>
+                    <button
+                        class="badge {{answer_status.status_css_tag}} shaped">{{answer_status.no_of_questions}}</button>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-sm-5 pl-0 pr-1">
+                <div class="row">
+                    <div class="col-12">
+                        <img *ngIf="CandidateInformation" [src]="CandidateInformation.photo"
+                            class="img-fluid image-container" alt="User image">
+                        <img *ngIf="!CandidateInformation" src="../../../exam-assets/images/user.jpg" height="100">
+                    </div>
+                    <div class="col-12">
+                        <img *ngIf="CandidateInformation" [src]="CandidateInformation.signature"
+                            class="img-fluid sign-container" alt="User signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row" *ngIf="_summaryView === true && examDetails">
+    <div class="col-md-9">
+        <div class="row">
+            <div *ngIf="photo" class="col-md-2">
+                <div id="profile-image-container">
+
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label class="font-weight-bold">Name</label>
+                    </div>
+                    <div class="col-md-11">
+                        <label class="text-uppercase">{{examDetails.name}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <label class="font-weight-bold">Roll#</label>
+                    </div>
+                    <div class="col-md-11">
+                        <label class="text-uppercase">{{examDetails.roll_number}}</label>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="examDetails.email">
+                    <div class="col-md-1">
+                        <label class="font-weight-bold">Email#</label>
+                    </div>
+                    <div class="col-md-11">
+                        <label>{{examDetails.email}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3 text-right" id="question_status_wrapper">
+
+        <div class="row ">
+            <div class="col-md-7 pl-1 pr-1" *ngIf="AnswerSummary">
+                <div>
+                    <button class="badge badge-white">Total</button>
+                    <button class="badge badge-white shaped">{{summaryTotal}}</button>
+                </div>
+
+                <div *ngFor="let answer_status of AnswerSummary.section_status">
+                    <button class="badge {{answer_status.status_css_tag}}">{{answer_status.status_name}}</button>
+                    <button
+                        class="badge {{answer_status.status_css_tag}} shaped">{{answer_status.no_of_questions}}</button>
+                </div>
+            </div>
+
+            <div class="col-md-5 pl-0 pr-1">
+                <div class="row">
+                    <div class="col-12">
+                        <img *ngIf="CandidateInformation" [src]="CandidateInformation.photo"
+                            class="img-fluid image-container" alt="User image">
+                        <img *ngIf="!CandidateInformation" src="../../../exam-assets/images/user.jpg"
+                            class="img-fluid image-container" alt="Responsive image">
+                    </div>
+                    <div class="col-12">
+                        <img *ngIf="CandidateInformation" [src]="CandidateInformation.signature"
+                            class="img-fluid sign-container" alt="User signature">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

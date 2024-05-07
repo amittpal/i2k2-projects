@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">      
+      <div>
+       <ng-container *ngFor="let exams of items;let i = index">
+         <label>{{exams.name}}</label>
+          <ngx-ixcheck-table3 [id]="'products-grid'+i" [headerTitle]="'Product'+i" [items]="exams['shifts']" [dragColumn]="false"
+            [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'+i"
+            [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+            [addRows]="false" [dragIcon]="" [dragCss]="" [expandRowIcons]="{
+              expanded: 'fa fa-plus-circle fa-lg',
+              closed: 'fa fa-plus-circle fa-lg'
+            }" [expandRowCss]="{
+              expanded: { color: 'green' },
+              closed: { color: 'gray' }
+            }" [sortIndexOnDrop]="true" [deleteCss]="{ color: 'red' }">
+            <!-- Child-Component -->
+            <ng-template #rowDetailExpand let-rowitem="item">
+              <shift-rowdetail [rowItemData]="rowitem" [item]="rowitem" [visibilty]="showdistribution"
+                [examGuid]="exams['exam_guid']" [regGuid]="regGuid" [snapShotId]="snapShotId" (childComponentData)="getChildComponentData($event)"
+                (update)="updateProductDetails($event)">
+              </shift-rowdetail>
+            </ng-template>
+            <!-- Child-Component-end -->
+
+            <!-- Shift Number -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>#</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                 {{rowitem['shifts']}}
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Exam Date -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Exam Date</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="exam_date"
+                  [(ngModel)]="rowitem['exam_date']" (click)="$event.stopPropagation()" />
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Shift Reporting time -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Shift Reporting time</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="shift_report_time"
+                  [(ngModel)]="rowitem['exam_reporting_time']" (click)="$event.stopPropagation()" />
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Shift Start time -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Shift Start time</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-lg-7 col-sm-12 font-size-16 "
+                  name="shift_start_time" [(ngModel)]="rowitem['exam_start_time']" (click)="$event.stopPropagation()" />
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Shift End time -->
+            <ngx-ixcheck-table3-column [colType]="'custom'">
+              <ng-template #colHeaderComponent>Shift End time</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-lg-7 col-sm-12 font-size-16 " name="shift_end_time"
+                  [(ngModel)]="rowitem['exam_end_time']" (click)="$event.stopPropagation()" />
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+
+            <!-- Distribution -->
+            <ngx-ixcheck-table3-column *ngIf="showdistribution" [colType]="'custom'">
+              <ng-template #colHeaderComponent>Reg Data Distribution %</ng-template>
+              <ng-template #colDetailComponent let-rowitem="item">
+                <input readonly type="text" class="form-control-sm col-lg-6 col-sm-12 font-size-16 " name="distribution"
+                  [(ngModel)]="rowitem['reg_distributions']" (click)="$event.stopPropagation()" />
+              </ng-template>
+            </ngx-ixcheck-table3-column>
+          </ngx-ixcheck-table3>
+
+          <div class="row mt-1" *ngIf="showdistribution">
+            <div class="col-7"></div>
+            <label class="mr-4 ml-5">Total</label>
+            <div class="col-2 mr-0 ml-5" style="padding: 0;">
+              <div class="text-dark col-6 form-control-sm font-size-16 ng-pristine ng-valid ng-touched">
+                {{ exams.totalQuestion }}
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+       </ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>

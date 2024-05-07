@@ -1,0 +1,41 @@
+:host ::ng-deep {
+
+
+
+
+  .ngx-ixcheck-error-container {
+    text-align: right;
+  }
+
+  .btn-primary {
+    background-color: #a9d18e;
+    border-color: #89bc66;
+    color: #000 !important;
+
+    &:hover {
+      background-color: #a9d18e;
+      border-color: #89bc66;
+      color: #000 !important;
+    }
+  }
+
+  .btn {
+    border-radius: 0;
+  }
+
+
+  .section-education-grid gridster {
+    height: auto !important;
+    gridster-item {
+      position: inherit;
+    }
+  }
+
+  .section-no-header {   
+    .section-header {
+      display: none;
+    }
+  }
+
+
+}

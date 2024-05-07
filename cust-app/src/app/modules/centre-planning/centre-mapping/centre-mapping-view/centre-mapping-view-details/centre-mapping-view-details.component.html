@@ -1,0 +1,40 @@
+<div *ngIf="itemCount>0">
+    <ngx-ixcheck-table id="mapCentreslist" headerTitle="Imported centres" [items]="items" [indexColumn]="false"
+        [itemCount]="itemCount" [selectColumn]="false">
+
+ <!-- City   -->
+ <ngx-ixcheck-table-column [property]="'city_name'" [header]="'City'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+<!-- State -->
+<ngx-ixcheck-table-column [property]="'state_name'" [header]="'State'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+<!-- Centre Code -->
+<ngx-ixcheck-table-column [property]="'code'" [header]="'Centre Code'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+  <!-- Centre Name -->
+  <ngx-ixcheck-table-column [property]="'name'" [header]="'Centre Name'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+  <!-- Centre Address -->
+  <ngx-ixcheck-table-column [property]="'address'" [header]="'Centre Address'" [sortable]="false">
+  </ngx-ixcheck-table-column>
+
+  
+  <!-- Ph Seat -->
+  <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'Ph Seat'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+  <!-- Normal Seat -->
+  <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'Normal Seat'" [sortable]="false">
+  </ngx-ixcheck-table-column>
+
+
+  <!-- Total Seat -->
+  <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'Total Seat'" [sortable]="false">
+</ngx-ixcheck-table-column>
+
+    </ngx-ixcheck-table>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable">
+            <form class="app-form" id="addApprovalAuthorityForm" [formGroup]="addApprovalAuthorityFormGroup" novalidate="">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="form-group trad foc required">
+                            <label for="number" class="mb-0">Exam Number</label>
+                            <input type="text" class="form-control form-control-sm" name="number" id="number"
+                                formControlName="number" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="type" class="mb-0">Exam Type</label>
+                            <input type="text" class="form-control form-control-sm" name="type" id="type"
+                                formControlName="type" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="code" class="mb-0">Exam Code</label>
+                            <input type="text" class="form-control form-control-sm" name="code" id="code" formControlName="code" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="name" class="mb-0">Exam Name</label>
+                            <input type="text" class="form-control form-control-sm" name="name" id="name" formControlName="name" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="grade" class="mb-0">Exam Grade</label>
+                            <input type="text" class="form-control form-control-sm" name="grade" id="grade" formControlName="grade" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="label" class="mb-0">Exam Public Label</label>
+                            <input type="text" class="form-control form-control-sm" name="label" id="label" formControlName="label" required>
+                        </div>
+
+                        <div class="form-group trad foc">
+                            <label for="approver" class="mb-0">PRINCIPAL APPROVAL AUTHORITY</label>
+                            <select class="form-control form-control-sm" id="approver" name="approver"
+                                formControlName="approver">
+                                <option value="" disabled>Select</option>
+                                <option *ngFor="let item of authorList" [value]="item.guid">{{item.name}}</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Submit</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</div>

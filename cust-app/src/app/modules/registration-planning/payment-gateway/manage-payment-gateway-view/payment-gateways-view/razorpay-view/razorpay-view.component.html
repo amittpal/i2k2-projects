@@ -1,0 +1,44 @@
+<div class="card card-bordered fullheight-fixed" style="height: calc(100vh - 440px );">
+    <div class="card-body ">
+        <div class="app-form">
+            <form autocomplete="off" id="razorpayForm" [formGroup]="razorpayForm" novalidate="" class="p-0">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                        <!-- RETURN URL-->
+                        <div class="form-group trad foc required">
+                            <label for="bank_name" class=" mb-0">BANK NAME</label>
+                            <input type="text" class=" form-control form-control-sm" name="bank_name" id="bank_name"
+                                formControlName="bank_name" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                        <!-- Merchant Key-->
+                        <div class=" form-group trad foc required">
+                            <label for="key_id" class=" mb-0">KEY ID</label>
+                            <input type="text" class=" form-control form-control-sm" name="key_id" id="key_id"
+                                formControlName="key_id" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                        <!-- Merchant Salt -->
+                        <div class="form-group trad foc required">
+                            <label for="key_secret" class=" mb-0">KEY SECRET</label>
+                            <input type="text" class=" form-control form-control-sm" name="key_secret" id="key_secret"
+                                formControlName="key_secret" required>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-sm-4">
+                        <!-- RETURN URL-->
+                        <div class="form-group trad foc required">
+                            <label for="return_url" class=" mb-0">RETURN URL</label>
+                            <input type="text" class=" form-control form-control-sm" name="return_url" id="return_url"
+                                formControlName="return_url" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

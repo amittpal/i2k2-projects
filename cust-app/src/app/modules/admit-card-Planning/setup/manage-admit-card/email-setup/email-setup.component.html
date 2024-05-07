@@ -1,0 +1,110 @@
+<div class="container-fluid" >
+    <div class="table-container">
+      <div class="card card-bordered fullheight-fixed">
+
+        <div class="card-body scrollable app-form" >
+          <form class="app-form" [formGroup]="emailSetupFormGroup" id="emailSetupFormGroup">
+            <div class="row">                 
+              <div class="col-lg-4 col-sm-4 form-group trad foc">
+
+                <div class="row">                 
+                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                        <label for="smtp_server">SMTP SERVER</label>
+                        <input type="text" class="form-control form-control-sm" [ngClass]="{red:!emailSetupFormGroup.controls['smtp_server'].valid && submitted }" formControlName="smtp_server" id="smtp_server">
+                    </div>
+               </div> 
+              
+            <div class="row">    
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="smtp_port">SMTP PORT</label>
+                <input type="number" min="0" max="9999" class="form-control form-control-sm" [ngClass]="{red:!emailSetupFormGroup.controls['smtp_port'].valid && submitted }" formControlName="smtp_port" id="smtp_port">
+              </div> 
+            </div> 
+
+           <div class="row">      
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="sender_email">SENDER'S EMAIL ID</label>
+                <input type="text" autocomplete="nope" class="form-control form-control-sm"  [ngClass]="{red:!emailSetupFormGroup.controls['sender_email'].valid && submitted }" formControlName="sender_email" id="sender_email">
+              </div> 
+           </div>  
+
+           <div class="row">    
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="sender_name">SENDER'S NAME</label>
+                <input type="text" class="form-control form-control-sm"  [ngClass]="{red:!emailSetupFormGroup.controls['sender_name'].valid && submitted }" formControlName="sender_name" id="sender_name">
+              </div> 
+           </div> 
+
+           <div class="row">    
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="verify_email">E-MAIL ACCOUNT (FOR VERIFICATION)</label>
+                <input type="text" autocomplete="nope" class="form-control form-control-sm"  [ngClass]="{red:!emailSetupFormGroup.controls['verify_email'].valid && submitted }" formControlName="verify_email" id="verify_email">
+              </div> 
+           </div> 
+
+           <div class="row">    
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="password">PASSWORD</label>
+                <input type="password" autocomplete="new-password" class="form-control form-control-sm"  [ngClass]="{red:!emailSetupFormGroup.controls['password'].valid && submitted }" formControlName="password" id="password">
+              </div> 
+            </div> 
+
+           <div class="row">    
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <label for="email_sub_text">EMAIL SUBJECT'S TEMPLATE TEXT</label>
+                <textarea style="height: 130px;" type="text" class="form-control form-control-sm"  [ngClass]="{red:!emailSetupFormGroup.controls['email_sub_text'].valid && submitted }" formControlName="email_sub_text" id="email_sub_text"></textarea>
+              </div> 
+            </div>  
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 form-group trad foc">                
+                 <input 
+                 type="checkbox" 
+                 class="large_checkbox" formControlName="attach_admit_card" id="attach_admit_card">
+                 <label for="attach_admit_card">ATTACH ADMIT CARD</label>
+                </div>                                       
+           </div>
+        </div>   
+              <div class="col-lg-8 col-sm-8 form-group trad foc">
+                <div class="row">  
+                  <div class="col-lg-12 col-sm-12 form-group trad foc">
+                  <label for="email_placeholder">EMAIL'S PLACEHOLDER TAGS</label>
+                  <div class="card card-bordered" style="height: 110px;">
+                    <div class="card-body">
+                      <div class="row" >                 
+                        <div class="col-lg-12 col-sm-12">
+                          <div class="row" id="email_placeholder_row">                 
+                            <div class="col-lg-4 col-sm-4" *ngFor="let tag of emailPlaceHolderTags">
+                              <span (dblclick)="tagDblclick($event)">{{tag}}</span>  
+                            </div>
+                          </div>       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+
+               <div class="row">                 
+                <div class="col-lg-12 col-sm-12">
+                    <label for="email_body_template">EMAIL'S BODY TEMPLATE</label>
+                    <quill-editor formControlName="email_body_template" [ngClass]="{error:!emailSetupFormGroup.controls['email_body_template'].valid && submitted }"></quill-editor>
+                </div>
+              </div>
+              </div>
+           </div>
+         </form>          
+             
+        </div>
+
+        <div class="card-footer">         
+          <input id="submitBtn"
+          type="button" 
+          class="btn btn-primary" 
+          value="Submit"          
+          (click)="onAddEmailSetupFormsubmit()">
+          <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+
+      </div>
+    </div> 
+    </div>

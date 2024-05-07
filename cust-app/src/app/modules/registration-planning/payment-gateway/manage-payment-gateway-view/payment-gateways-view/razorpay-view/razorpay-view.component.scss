@@ -1,0 +1,7 @@
+.was-validated {
+    input.ng-invalid,
+    select.ng-invalid,
+    textarea.ng-invalid {
+        border: 1px solid lightcoral !important;
+    }       
+}

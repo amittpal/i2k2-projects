@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div class="table-container">
+        <div class="card card-bordered fullheight-min">
+            <div class="card-header ml-2 mr-2">
+                <div class="row">
+                    <div class="card-title col-4">
+                        REGISTRATION LIST
+                    </div>
+
+                    <div class="paging-block col-4">
+                        <!--pagination html start-->
+                        <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+                            [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                            (loadTable)="reloadItems($event, false)">
+                        </ngx-ixcheck-table-outer-pagination>
+                        <!--pagination html ends-->            
+                    </div>
+
+                    <div class="text-right d-flex flex-row-reverse filter-container col-4">
+                        <div id="bubbleBlock" class="bubble-block">
+                            <!-- bubble start -->
+                            <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)"
+                                (resetFilterData)="resetFilter()" [items]="config.data[0]"
+                                [showCountIcon]="config.settings.show_count_icon">
+                            </app-ngx-ixcheck-bubble>
+                            <!-- bubble start -->
+                        </div>
+
+                        <div class="filter-block" filterToggle>
+                            <a class="filter-slider">
+                                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="data-table p-0" *ngIf="!notFound">
+                        <!-- table start -->
+                        <ngx-ixcheck-table id="exam-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+                            [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                            [lastOffset]="lastOffset" [selectColumn]="false" [expandOnIndexColClick]="true"
+                            [expandOnRowClick]="true" (rowClick)="rowClick($event)">
+
+
+                            <ng-template #rowDetailExpand let-rowitem="item">
+                                <app-snapshot-view *ngIf="rowitem.final_snapshot_id == 0 && rowitem.planning_status == 'Centre Plan In-Progress'" [rowItemDetails]="rowitem" [items]="snapShotList">
+                                </app-snapshot-view>
+                            </ng-template>
+
+                            <!--Registration Code -->
+                            <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Registration Name -->
+                            <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+
+                            <!-- Plan Status -->
+                            <ngx-ixcheck-table-column [property]="'plan_status'" [header]="'Plan Status'"
+                                [visible]="true" [colType]="'custom'">
+                                <ng-template #colDetailComponent let-rowitem="item">
+                                    <span class="badge {{ rowitem.planning_status_css }}">{{
+                                        rowitem.planning_status
+                                        }}</span>
+                                </ng-template>
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Status -->
+                            <ngx-ixcheck-table-column [property]="'status'" [header]="'Status'" [visible]="true"
+                                [colType]="'custom'">
+                                <ng-template #colDetailComponent let-rowitem="item">
+                                    <span class="badge {{ rowitem.status_css_tag }}">{{
+                                        rowitem.status_text
+                                        }}</span>
+                                </ng-template>
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Manage Exam -->
+                            <ngx-ixcheck-table-column [colType]="'custom'">
+                                <ng-template #colHeaderComponent>Action</ng-template>
+                                <ng-template #colDetailComponent let-rowitem="item">
+
+                                    <div *ngIf="rowitem.final_snapshot_id == 0 && rowitem.planning_status == 'Centre Plan In-Progress'" class=" btn-group" dropdown>
+                                        <a class="cs-clr p-0">Finalize</a>                                       
+                                    </div>
+
+                                    <div *ngIf="rowitem.final_snapshot_id > 0" class=" btn-group" dropdown>
+                                        <a href="/#/centre/planning/finalize/registrations/{{ rowitem.guid }}/snapshots/{{ rowitem.final_snapshot_id }}/setup" class="cs-clr p-0">View</a>
+                                    </div>
+
+                                </ng-template>
+                            </ngx-ixcheck-table-column>
+                        </ngx-ixcheck-table>
+                        <!-- table end -->
+                    </div>
+                    <div class="not-found-container" *ngIf="notFound">
+                        <h5>
+                            No Data Available...
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-centre-plan-list-view-filter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag" [updatedFilter]="count">
+</app-centre-plan-list-view-filter>

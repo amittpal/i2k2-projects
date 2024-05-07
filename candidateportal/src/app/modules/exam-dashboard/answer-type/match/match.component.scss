@@ -1,0 +1,11 @@
+
+
+:host ::ng-deep{
+    .was-validated {      
+        select.ng-invalid
+        {
+            border: 1px solid lightcoral !important;
+        }
+       
+      }     
+}

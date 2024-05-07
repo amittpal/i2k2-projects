@@ -1,0 +1,25 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+ixcheck-common-lib/src/bin
+ixcheck-common-lib/src/obj
+ixcheck-common-lib/test/bin
+ixcheck-common-lib/test/obj
+src/bin
+src/obj
+src/.vs
+/bin
+/obj
+/.vs
+src/appsettings.Development.json
+src/appsettings.json
+src/appsettings.linux.json
+src/appsettings.windows.json
+src/c3.base.api.csproj.user
+src/Images
+src/Files
+src/wwwroot
+/appsettings.Development.json
+/appsettings.json
+/appsettings.linux.json
+/appsettings.windows.json

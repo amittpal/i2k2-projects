@@ -1,0 +1,142 @@
+<div class="card card-bordered fullheight-fixed" >
+    <div class="card-header">
+      <div class="header-flex-container">
+        <div class="card-title col-4">
+        </div>
+        <div class="paging-block col-4">        
+        </div>
+        <div class="filter-container col-4">          
+          <div class="filter-block" filterToggle>
+            <a class="filter-slider">
+              <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+            </a>
+          </div>    
+        </div>           
+      </div>            
+    </div>
+    <div class="card-body scrollable app-form" >
+      <form class="app-form" [formGroup]="questionApproveFormGroup" id="questionApproveForm">
+        <div class="row">                 
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="exam_number">Exam Number</label>
+            <input type="text" class="form-control form-control-sm" formControlName="exam_number">
+          </div> 
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="exam_grade">Exam Grade</label>
+            <input type="text" class="form-control form-control-sm" formControlName="exam_grade">
+          </div> 
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="difficulty_level">Difficulty Level</label>
+            <input type="text" class="form-control form-control-sm" formControlName="difficulty_level">
+          </div> 
+
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="exam_type">Exam Type</label>
+            <input type="text" class="form-control form-control-sm" formControlName="exam_type">
+          </div> 
+
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control form-control-sm" formControlName="subject">
+          </div> 
+
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="question_type">Question Type</label>
+            <input type="text" class="form-control form-control-sm" formControlName="question_type">
+          </div> 
+
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="exam_code">Exam Code</label>
+            <input type="text" class="form-control form-control-sm" formControlName="exam_code">
+          </div> 
+
+          
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="language">Language</label>
+            <input type="text" class="form-control form-control-sm" formControlName="language">
+          </div> 
+
+          
+          <div class="col-lg-4 col-sm-4 form-group trad foc">
+            <label for="questions">Question #</label>
+            <input type="text" class="form-control form-control-sm" formControlName="questions">
+          </div> 
+            <!--Review Status -->                    
+            <div class="col-lg-4 col-sm-4 form-group trad foc">
+              <label for="reviewStatus">Approval Status</label>
+              <select class="form-control form-control-sm" formControlName="reviewStatus">
+                <option value="" [selected]="true">Select</option>
+                <option *ngFor="let status of approveStatusList" [value]="status.guid">{{status.name}}</option>
+              </select>               
+            </div> 
+             <!--Remarks -->                    
+             <div class="col-lg-8 col-sm-8 form-group trad foc">
+              <label for="remarks">Remarks</label>
+              <textarea type="text" class="form-control form-control-sm" rows="3" formControlName="remarks"></textarea>
+            </div>    
+                                                                                                  
+        </div>   
+      </form>                         
+      <div class="row">
+        <div class="col-md-12 mt-3">
+
+          <tabset class="tabset-container" #tabset>
+            <tab heading="QUESTION" class="mt-3" [active]="true" id="questionTab">
+              <div class="card card-bordered mb-0">
+                <div class="card-body mb-0 d-flex">
+                  <span>Q {{QuestionDetails.question_summary[0].question_number}}. &nbsp;</span>                                   
+                  <quill-view [content]="QuestionDetails.question[0].description"></quill-view>
+                </div>
+              </div> 
+              <div class="card card-bordered mb-0" *ngFor="let option of QuestionDetails.options; index as i">
+                <div class="card-body mb-0 d-flex">
+                  <span>{{optionList[i]}} &nbsp;</span>
+                  <quill-view [content]="option.description"></quill-view>
+                
+                  <div class="ml-auto">
+                   <span> Right Answer </span>
+                    <input 
+                    type="checkbox" class="large_checkbox"
+                    [checked]="option.selected"                         
+                    [disabled]="true">                                          
+                  </div>
+                </div>
+              </div>    
+            </tab>
+            <tab heading="REFERENCES" class="mt-3">            
+            <div class="table-responsive">                 
+              <table  class="table table-min-height">
+                <thead>
+                  <tr class="flex-tr">
+                    <th  class="flex-th">Reference</th>
+                    <th  class="flex-th">Remark</th>                      
+                  </tr>
+                </thead>
+                <tbody>                    
+                  <tr  class="flex-tr" *ngFor="let ref of QuestionDetails.question_references">
+                    <td  class="flex-td">{{ref.reference}}</td>
+                    <td  class="flex-td">{{ref.remark}}</td>                      
+                  </tr>
+                </tbody>
+              </table>                  
+            </div>
+            </tab>      
+            <tab  heading="AUDIT TRAIL" class="mt-3">
+              <app-audit-trail [QuestionId]="QuestionDetails.question[0].question_id"></app-audit-trail>
+            </tab>      
+          </tabset>
+           
+        </div>            
+      </div>                  
+    </div>
+    <div class="card-footer">         
+      <input 
+      type="button" 
+      class="btn btn-primary" 
+      value="Submit"          
+      (click)="onQuestionApproveClick()">          
+    </div>
+  </div>
+    
+   
+   

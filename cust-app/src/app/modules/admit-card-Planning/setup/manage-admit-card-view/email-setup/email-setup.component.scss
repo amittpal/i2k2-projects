@@ -1,0 +1,26 @@
+:host ::ng-deep {
+    .card .card-body.scrollable {
+      margin-bottom: 45px;
+    }
+  
+    @media (min-width: 992px) {
+      .fullheight-fixed {
+        height: calc(100vh - 230px);
+      }
+    }
+
+    .large_checkbox{     
+      width: 1.5rem;
+      height: 1.2rem;
+      vertical-align: middle;
+  }
+
+  span{
+    font-weight: bold;
+  }
+
+    quill-editor .ql-editor{
+      min-height: 225px;
+    }
+}
+

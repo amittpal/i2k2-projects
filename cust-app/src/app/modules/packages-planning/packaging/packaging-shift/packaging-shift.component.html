@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">   
+
+        <div class="card-header">
+            <div class="header-flex-container">
+              <div class="card-title col-4">
+                <label class="" *ngIf="examNumber">EXAM # {{examNumber||'Exam Number'}}</label>
+              </div>  
+         </div> 
+        </div>
+
+        <div class="card-body">
+            <div>SHIFTS</div>  
+            
+            <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+                <div class="data-table p-0">
+                    <ngx-ixcheck-table id="packaging-shifts" headerTitle="SHIFTS" [items]="items"
+                    [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+                    [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+                    [expandOnIndexColClick]="false" [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+        
+                    <ng-template #rowDetailExpand let-rowitem="item">
+                    </ng-template> 
+        
+                    <ngx-ixcheck-table-column [property]="'exam_date'" [header]="'EXAM DATE'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'reporting_time'" [header]="'SHIFT REPORTING TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'start_time'" [header]="'SHIFT START TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+
+                    <ngx-ixcheck-table-column [property]="'end_time'" [header]="'SHIFT END TIME'" [sortable]="false">
+                    </ngx-ixcheck-table-column>
+                    
+                    <ngx-ixcheck-table-column [colType]="'custom'">
+                        <ng-template #colHeaderComponent>ACTION</ng-template>
+                        <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="btn-group" dropdown>
+                            <!-- <a href="/#/admitcard/generate/{{examGuid}}/view/{{rowitem.shift_number}}">Create Package</a> -->
+                                <a class="custom-link"  (click)="$event.stopPropagation();onCreate(rowitem.exam_guid,rowitem.shift_guid);">Create Package</a>
+                        </div>
+                        </ng-template>
+                    </ngx-ixcheck-table-column>
+
+                </ngx-ixcheck-table>
+                </div>
+            </div>        
+        </div>
+        <!-- <div class="card-footer border-0">`
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="button">VERIFY & SEND</button>
+        </div> -->
+     </div>
+</div>
+</div>  

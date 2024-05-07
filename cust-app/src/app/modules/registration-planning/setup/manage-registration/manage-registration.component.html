@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class=" col-4">             
+            </div>             
+         </div>      
+          <tabset  class="tabset-container" #tabset>
+            <tab heading="BASIC SETUP"></tab>
+            <tab heading="Mail Server Configuration"></tab>            
+            <tab heading="APPLICABLE FEES"></tab>
+            <tab heading="FINAL REVIEW"></tab>  
+          </tabset>
+        </div>  
+        <div class="card-body scrollable inside-footer-fixed p-0">             
+          <div *ngIf="tabset.tabs[0].active == true">
+            <app-basic-setup [tabset]="tabset"></app-basic-setup>         
+          </div>          
+          <div *ngIf="tabset.tabs[1].active == true">
+            <app-outgoing-mails [tabset]="tabset"></app-outgoing-mails>
+          </div>          
+          <div *ngIf="tabset.tabs[2].active == true">
+            <app-applicable-fees [tabset]="tabset"></app-applicable-fees>            
+          </div>
+          <div *ngIf="tabset.tabs[3].active == true">
+            <app-final-review></app-final-review>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,68 @@
+:host ::ng-deep {  
+    gridster {
+      //display: flex;
+      //height: calc(100vh - 300px);
+      min-height: 200px;
+      //width:960px;
+      //flex-direction: column;
+      background: #f1f1f1 !important;
+
+    }
+    .draggable {
+      padding: 5px;
+      border: 1px solid #d8d8d8;
+      margin: 10px auto;
+      text-align: center; 
+      background-color: #17a2b8 !important; 
+      border-radius: 2rem;
+      color: white;     
+    }
+    gridster-item{
+      padding: 5px;
+    }
+    gridster-item:hover .actions_div, gridster:hover .actions_div{
+    display: block;
+    }
+
+    #divfinalResult gridster{
+     background: transparent !important;
+    }
+    .actions_div{
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      display: none;
+      cursor: pointer;
+      margin-right: .5rem;
+    }
+    .sectionButtons a{
+      cursor: pointer;      
+    }
+
+    .actions_div svg{
+      height: 20px !important;
+      width: 20px !important;
+     }
+     & .icon_setting svg
+     {
+       height: 15px !important;
+       width: 15px !important;
+
+     }
+     .active_section{
+       border:1px solid;
+     }
+
+.page_actions
+{
+  display: inline;
+  margin-left: 10px;
+ 
+}
+.action_icon svg{
+  height: 15px !important;
+  width: 15px !important;
+}
+
+}
+ 

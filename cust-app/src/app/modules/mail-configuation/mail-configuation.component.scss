@@ -1,0 +1,53 @@
+:host ::ng-deep {
+    .card .card-body.scrollable {
+      margin-bottom: 45px;
+    }
+
+    .red{
+      border: 1px solid red !important;
+    }
+  
+    @media (min-width: 992px) {
+      .fullheight-fixed {
+        height: calc(100vh - 85px);
+      }
+    }
+    // .was-validated {
+    //   input.ng-invalid,
+    //   select.ng-invalid,
+    //   quill-editor.ng-invalid > .ql-container.ql-snow {
+    //       border: 1px solid lightcoral !important;
+    //   }
+     
+    // }
+
+    .was-validated {
+      input.ng-invalid,
+      select.ng-invalid
+      {
+           border: 1px solid lightcoral !important;
+       }
+     
+    }
+
+
+    .ql-container{
+      height: 170px !important;
+    }
+  }
+  
+  .buttonStyle{
+    margin-left: 10px;
+  }
+  .verify-button{
+    float: right;
+  }
+
+  
+  
+
+ 
+  // quill-editor .ql-editor{
+  //   border: 1px solid red !important;
+  // }
+  

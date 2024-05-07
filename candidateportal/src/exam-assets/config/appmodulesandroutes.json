@@ -1,0 +1,78 @@
+{
+  "app_id": "abcd-1234-efgh-5678-ijkl",
+  "app_name": "ExamDeskAppGui",
+  "app_desc": "ixcheck ExamDesk App",
+  "app_icon": "exam-assets/images/icon-hexbluelight.svg#icon-hexbluelight",
+  "data_type": "full",
+  "app_modules": [],
+
+  "app_routes": {
+    "_exam": {
+      "getLanguageList": {
+        "desc": "get languages list",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/languages"
+      },
+      "getCandidateInformation": {
+        "desc": "get candidate information",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/#userGuid/candidate"
+      },
+      "addQuestionAnswer": {
+        "desc": "add question answer",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/answer/update"
+      },
+      "addQuestionMarkToReview": {
+        "desc": "add question mark to review",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/#candidateGuid/#questionGuid/marktoreview"
+      },
+      "submitExam": {
+        "desc": "add exam submit",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/#candidateGuid/submitexam"
+      },
+      "getAnswerSummary": {
+        "desc": "on finish exam view answer summary",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/all/sections/questions"
+      },
+      "clearQuestionAnswers": {
+        "desc": "clear question answer",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/answer/reset"
+      }, 
+      "examInstructions": {
+        "desc": "get exam user instructions",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/user/instructions"
+      },
+      "getInstructionStatus": {
+        "desc": "get exam user instructions",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/user/#guid/instructions"
+      },
+      "updateUserInstructionStatus": {
+        "desc": "update user instruction status",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/user/instructions/status"
+      },
+      "getAllExamQuestions": {
+        "desc": "get all questions",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/Exam/#examGuid/#candidateGuid/all/questions"
+      },
+      "updateHeartbeat": {
+        "desc": "save system infra heartbeat",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/system/infra/heartbeat/update/local"        
+      },
+      "bulkUpdateAnswers": {
+        "desc": "bulk update answers",
+        "method": "POST",
+        "url": "http://localhost:55527/api/v1/exam/resume/bulk/update"        
+      }             
+    }    
+  }
+}

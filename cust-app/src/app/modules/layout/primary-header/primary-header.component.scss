@@ -1,0 +1,33 @@
+.dropdown-list{
+    min-width: 300px;
+    text-align: right;
+    .txt-user-details{
+        font-weight: 500;
+    }
+}
+.type-container{
+    margin-top: -5px;
+    margin-bottom: 2px;
+}
+.type-style{
+    font-size: 11px;
+    color: black;
+}
+.type-user {
+    margin-top: 2px;
+}
+ b{
+    font-size: 15px;
+}
+.text_L{
+    text-align: left;
+
+}
+.user-area {
+    position: absolute;
+    left: 90px;
+    width: calc(100% - 100px);
+    padding: 5px;
+    text-align: center;
+  }
+  

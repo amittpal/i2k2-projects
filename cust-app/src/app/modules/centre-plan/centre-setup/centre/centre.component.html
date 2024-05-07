@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <form class="app-form" [formGroup]="examShiftFormGroup" novalidate="">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-body">
+        <div class="row">
+
+          <!-- Shift # -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <div class="col-md-6">
+                <label>Shift #</label>
+              </div>
+              <div class="col-md-9">
+                <select class="form-control" formControlName="shift_no"
+                  (change)="onShiftNumberChange($event.target.value)">
+                  <option *ngFor="let shift of numberOfShifts" [value]="shift.no_of_shifts"
+                    [selected]="shift.no_of_shifts===1">
+                    {{shift.shift_number}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exam Date -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <div class="col-md-12">
+                <label>Exam Date</label>
+              </div>
+              <div class="col-md-9">
+                <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                  name="shift">{{examShiftDetails.exam_date}}</label></div>
+            </div>
+          </div>
+
+          <!-- Shift Start Time -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <div class="col-md-12">
+                <label>Shift Start Time</label>
+              </div>
+              <div class="col-md-9">
+                <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                  name="shift">{{examShiftDetails.exam_start_time}}</label></div>
+            </div>
+          </div>
+
+          <!-- Shift End Time -->
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <div class="col-md-12">
+                <label>Shift End Time</label>
+              </div>
+              <div class="col-md-9">
+                <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                  name="shift">{{examShiftDetails.exam_end_time}}</label></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer mt-5">
+          <div class="d-flex mb-2">
+            <strong>Centres List</strong>
+            <div class="paging-block col-lg">
+              <!--pagination html start-->
+              <ngx-ixcheck-table-outer-pagination [itemCount]="itemCount" *ngIf="!notFound"
+                [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+                (loadTable)="reloadItems($event,false)">
+              </ngx-ixcheck-table-outer-pagination>
+              <!--pagination html ends-->
+            </div>
+          </div>
+          <div class="row form-group trad foc">
+            <!-- Select -->
+
+
+            <!-- Search Centre -->
+            <div class="col-md-8">
+              <div>
+                <label>Search Centre</label>
+              </div>
+              <div class="col-md-12">
+                <input type="number" class="row form-control" min="0" max="99999999"
+                  (blur)="onTotalStudentTextboxChange($event.target.value)">
+              </div>
+            </div>
+
+            <!-- Rating -->
+            <div class="col-md-3">
+              <div>
+                <label  for="rating" >Rating</label>
+              </div>
+              <div class="col-md-12">
+                <!-- Sample -->
+                <select class="row form-control" id="rating" name="rating">
+                  <option value="">Please Select</option>
+                  <option *ngFor="let rating of ratingList">
+                    {{rating}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Rating -->
+            <!-- <div class="col-md-2">
+                <label>Rating</label>
+              </div> -->
+
+            <!-- <div class="col-md-8">
+                <select class="form-control" formControlName="shift_no"
+                  (change)="onShiftNumberChange($event.target.value)">
+                  <option *ngFor="let shift of numberOfShifts" [value]="shift.no_of_shifts"
+                    [selected]="shift.no_of_shifts===1">
+                    {{shift.shift_number}}
+                  </option>
+                </select>
+              </div> -->
+
+          </div>
+          <br>
+          <div class="card card-bordered">
+            <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="items" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false">
+
+              <!-- city -->
+              <ngx-ixcheck-table-column [property]="'city_name'" [header]="'city'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- state -->
+              <ngx-ixcheck-table-column [property]="'state_name'" [header]="'state'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- centre code -->
+              <ngx-ixcheck-table-column [property]="'code'" [header]="'centre code'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- centre name -->
+              <ngx-ixcheck-table-column [property]="'name'" [header]="'centre name'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- centre address -->
+              <ngx-ixcheck-table-column [property]="'locality'" [header]="'centre address'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- total seats -->
+              <ngx-ixcheck-table-column [property]="'total_seats'" [header]="'total seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- normal seats -->
+              <ngx-ixcheck-table-column [property]="'normal_seats'" [header]="'normal seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- ph seats -->
+              <ngx-ixcheck-table-column [property]="'pwd_seats'" [header]="'ph seats'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- Rating -->
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Rating</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <div class="d-flex justify-content-end form-group trad foc rating">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    <!-- <input type="checkbox" [checked]="rowitem.isSelected" (change)="onCentreChange($event,rowitem)"> -->
+                  </div>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <!-- Selected -->
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent></ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <span type="button" [ngClass]=" rowIsSelected ? 'fa-plus-circle' : 'fa-minus-circle'"
+                  (click)="addRow(rowitem)"></span>
+                  <!-- (click)="rowitem.isSelected = !rowitem.isSelected"></span> -->
+                  <!-- <div [ngClass]=" rowitem.isSelected ? 'primary' : 'secondary'" class="form-group trad foc">
+                    {{rowitem.isSelected}}
+                  </div> -->
+                </ng-template>
+              </ngx-ixcheck-table-column>
+
+              <!-- <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Seat Status</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <!- - <input type="button" class="btn btn-primary btn-sm" value="OK"> - ->
+                </ng-template>
+              </ngx-ixcheck-table-column> -->
+            </ngx-ixcheck-table>
+          </div>
+          <!-- <div class="not-found-container" *ngIf="notFound">
+            <h5>
+              No Data Available...
+            </h5>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Form Submit -->
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary" id="submitBtn" [disabled]="!examShiftFormGroup.valid" type="submit"
+          (click)="formSubmit()">Update</button>
+
+      </div>
+    </div>
+  </form>
+
+</div>

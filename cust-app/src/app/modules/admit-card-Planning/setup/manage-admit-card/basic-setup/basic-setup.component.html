@@ -1,0 +1,146 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable p-0">
+
+            <form [formGroup]="basicSetupFormGroup" id="basicSetupFormGroup">
+                <div class="row app-form">
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group trad foc">
+                            <label>Registration CODE</label>
+                            <input type="text" class="form-control" formControlName="code">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>Registration NAME</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>LOGO IMAGE</label><br>
+                            <input type="file" accept="image/*" id="logo_img_visible"
+                                (change)="changeListener($event,'logo_image')" formControlName="logo_img_visible"
+                                class="inputfile">
+                            <label [ngClass]="{red:!basicSetupFormGroup.controls['logo_img'].valid && submitted }"
+                                for="logo_img_visible">Choose File</label>
+                            <input type="hidden" #logo_img name="logo_img_Hidden" formControlName="logo_img" />
+                            <!-- Validation Field -->
+                        </div>
+
+                        <!--Image Preview-->
+                        <div class="form-group foc trad" *ngIf="logo_img.value">
+                            <!-- <a (click)="openImgInNewTab(logo_img.value)">View</a> -->
+                            <img [src]="logo_img.value">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>Registration TYPE</label>
+                            <input type="text" class="form-control" formControlName="reg_list_type_name">
+                        </div>
+                        <!-- <div class="form-group trad foc">
+                            <label>RANDOMIZE REGISTRATIONS</label>
+                            <select class="form-control" id="randomize_reg"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['randomize_reg'].valid && submitted }"
+                                formControlName="randomize_reg">
+                                <option [selected] [disabled]="true" value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group foc trad">
+                            <label>QR/BAR CODE</label>
+                            <select class="form-control" id="qr_barcode"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['qr_barcode'].valid && submitted }"
+                                formControlName="qr_barcode">
+                                <option [selected] [disabled]="true" value="">Select</option>
+                                <option [value]="item.id" *ngFor="let item of qrBarCode">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>AUTHORIZED SIGNATORY IMAGE</label><br>
+                            <input type="file" accept="image/*" (change)="changeListener($event,'sign_image')"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['sign_img_visible'].valid && submitted }"
+                                formControlName="sign_img_visible" id="sign_img_visible" class="inputfile">
+                            <label [ngClass]="{red:!basicSetupFormGroup.controls['sign_img'].valid && submitted }"
+                                for="sign_img_visible">Choose File</label>
+                            <input type="hidden" #sign_img name="sign_img_Hidden" formControlName="sign_img" />
+                            <!-- Validation Field -->
+                        </div>
+
+                        <div class="form-group foc trad" *ngIf="sign_img.value">
+                            <!-- <a (click)="openImgInNewTab(sign_img.value)">View</a> -->
+                            <img [src]="sign_img.value">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>ADMIT CARD DISTRIBUTION SCHEDULE</label>
+                            <select class="form-control" id="distribution_schedule"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['distribution_schedule'].valid && submitted }"
+                                formControlName="distribution_schedule">
+                                <option [selected] [disabled]="true" value="0">Select</option>
+                                <option [value]="item.id" *ngFor="let item of admitCardDistributionSchedule">
+                                    {{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label for="days_for_distribution">DAYS FOR DISTRIBUTION</label>
+                            <input type="number" id="days_for_distribution"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['days_for_distribution'].valid && submitted }"
+                                min="0" class="form-control" formControlName="days_for_distribution">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>BACKGROUND IMAGE</label><br>
+                            <input type="file" accept="image/*" (change)="changeListener($event,'bg_image')"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['bg_img_visible'].valid && submitted }"
+                                formControlName="bg_img_visible" id="bg_img_visible" class="inputfile">
+                            <label for="bg_img_visible"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['bg_img'].valid && submitted }">Choose
+                                File</label>
+                            <input type="hidden" #bg_img name="bg_img_Hidden" formControlName="bg_img" />
+                            <!-- Validation Field -->
+                            <div class="form-group foc trad" *ngIf="bg_img.value">
+                                <!-- <a (click)="openImgInNewTab(bg_img.value)">View</a> -->
+                                <img [src]="bg_img.value">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>SHOW CENTRE'S MAP</label>
+                            <select class="form-control" id="centre_map"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['centre_map'].valid && submitted }"
+                                formControlName="centre_map">
+                                <option [selected] [disabled]="true" value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label>DISTRIBUTION METHOD</label>
+                            <select class="form-control" id="distribution_method"
+                                [ngClass]="{red:!basicSetupFormGroup.controls['distribution_method'].valid && submitted }"
+                                formControlName="distribution_method">
+                                <option [selected] [disabled]="true" value="0">Select</option>
+                                <option [value]="item.id" *ngFor="let item of admitCardDistributionMethod">{{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="card-footer border-0">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+                (click)="onBasicSetupFormSubmit()">Submit</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+    </div>
+
+</div>

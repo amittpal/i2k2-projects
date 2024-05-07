@@ -1,0 +1,54 @@
+// //css for shapes
+//badge
+$badge-default:#e6e600;
+$badge-success:#7bbe2e;
+$badge-warning:#ed5012;
+$badge-info:#7e5d9c;
+$badge-white:#fff;
+
+
+.badge-warning.shaped{
+  //clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 60% 100%, 40% 100%, 0% 50%);
+
+}
+
+.badge-success.shaped{
+  //clip-path: polygon(0 35%, 50% 0, 100% 35%, 100% 100%, 0% 100%);
+  clip-path: polygon(40% 0, 60% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+}
+
+.badge-info.shaped{
+  clip-path: circle(50% at 50% 50%);
+}
+
+
+//css for badges
+
+.badge { //-- unread
+  //background-color: #e0e0df;
+  background-color: $badge-default;
+  color: #000;
+}  
+.badge-white { //-- total
+  background-color: $badge-white;  
+  color: #000;
+}
+.badge-warning {  //-- not answered
+  background-color: $badge-warning;  
+  color: #000;
+}
+.badge-success { //-- answered
+  background-color: $badge-success;
+  color: #000;
+  
+}
+.badge-info { //-- mark to review
+  background-color: $badge-info;  
+  color: #000;
+}
+
+//--------------------------------------
+
+
+

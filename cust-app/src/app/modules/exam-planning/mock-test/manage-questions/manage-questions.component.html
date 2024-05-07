@@ -1,0 +1,146 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-min">
+      <div class="card-header">
+        <div id="heading-section" class="row app-form" *ngIf="items.length > 0">
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="exam_number">EXAM NUMBER</label><br>
+            <label type="text" class="lbl" id="exam_number" name="exam_number">
+              {{items[0]["exam_number"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="exam_type">EXAM TYPE</label><br>
+            <label type="text" class="lbl" id="exam_type" name="exam_type">
+              {{items[0]["exam_type"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="exam_code">EXAM CODE</label><br>
+            <label type="text" class="lbl" id="exam_code" name="exam_code">
+              {{items[0]["exam_code"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="exam_grade">EXAM GRADE</label><br>
+            <label type="text" class="lbl" id="exam_grade" name="exam_grade">
+              {{items[0]["exam_grade"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="total_question">TOTAL QUESTIONS</label><br>
+            <label type="text" class="lbl" id="total_question" name="total_question">
+              {{items[0]["total_question"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="created_questions">CREATED QUESTIONS</label><br>
+            <label type="text" class="lbl" id="created_questions" name="created_questions">
+              {{items[0]["number_of_questions_created"]}}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc">
+            <label for="created_questions">PENDING QUESTIONS</label><br>
+            <label type="text" class="lbl" id="created_questions" name="created_questions">
+              {{items[0]["total_question"] - items[0]["number_of_questions_created"] }}
+            </label>
+          </div>
+          <div class="col-lg-2 col-sm-2 form-group trad foc pl-0">
+            <label for="status">STATUS</label><br>
+            <label type="text" class="lbl" id="status" name="status">
+              <span [class]="exam_status_css_tag">
+                {{exam_status}}
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="header-flex-container mt-1">
+          <div class="card-title col-4">Questions List
+          </div>
+
+          <div class="paging-block col-4">
+            <ngx-ixcheck-table-outer-pagination *ngIf="notFound == false " [itemCount]="itemCount"
+              [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset"
+              (loadTable)="reloadItems($event,false)">
+            </ngx-ixcheck-table-outer-pagination>
+          </div>
+          <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+              <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+              </app-ngx-ixcheck-bubble>
+            </div>
+            <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="data-table p-0" *ngIf="notFound == false ">
+            <ngx-ixcheck-table id="questions-list" headerTitle="Question List" [items]="items" [indexColumn]="true"
+              [indexColumnHeader]="'#'" [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax"
+              [lastSeenIdMin]="lastSeenIdMin" [lastOffset]="lastOffset" [offset]="offset" [selectColumn]="false"
+              [expandOnIndexColClick]="false" [expandOnRowClick]="false" [paginationStyleType]="paginationStyle">
+              <ngx-ixcheck-table-column [property]="'subject'" [header]="'Subject'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'language'" [header]="'Language'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'level'" [header]="'Level'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'question_type'" [header]="'Type'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [property]="'plan_status_text'" [header]="'Status'" [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <span class="badge {{rowitem.plan_status_css_tag}}">{{rowitem.plan_status_text}}</span>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+              <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+                  <!--Routes primary question-->
+                  <div *ngIf="rowitem.primary_question==='1'">
+                    <div *ngIf="rowitem.plan_status_text === 'Pending'" class="btn-group">
+                      <a href="/#/exam/mock-test/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary"
+                        (click)="$event.stopPropagation();">Create</a>
+                    </div>
+                    <div *ngIf="rowitem.plan_status_text !== 'Pending'" class="btn-group">
+                      <a href="/#/exam/mock-test/{{rowitem.answer_type}}/{{rowitem.id}}/add/primary"
+                        (click)="$event.stopPropagation();">Update</a>
+                    </div>
+                  </div>
+                  
+                  <!--Routes secondary question-->
+                  <div *ngIf="rowitem.primary_question==='0'">
+                    <div *ngIf="rowitem.plan_status_text === 'Pending'" class="btn-group">
+                      <a href="/#/exam/mock-test/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary"
+                        (click)="$event.stopPropagation();">Create</a>
+                    </div>
+                    <div *ngIf="rowitem.plan_status_text !== 'Pending'" class="btn-group">
+                      <a href="/#/exam/mock-test/{{rowitem.answer_type}}/{{rowitem.id}}/add/secondary"
+                        (click)="$event.stopPropagation();">Update</a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+          </div>
+          <div class="not-found-container" *ngIf="notFound == true ">
+            <h5>
+              No Data Available...
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-manage-questions-filter #featureFilter (updateEvent)="updateTable($event)" [resetFlter]="resetFilterFlag"
+  [updatedFilter]="count">
+</app-manage-questions-filter>

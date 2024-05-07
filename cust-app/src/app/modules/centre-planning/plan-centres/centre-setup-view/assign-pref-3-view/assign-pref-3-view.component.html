@@ -1,0 +1,212 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body">
+      <div *ngIf="itemJson.length > 0">
+        <div *ngFor="let item of itemJson; let i = index">
+          <div *ngIf="itemJson.length > 0" id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <!-- SHIFT -->
+            <div class="row form-group trad foc">
+              <div class="col-md-10">
+                <label>SHIFT {{ i + 1 }} OF {{ priority }}</label>
+              </div>
+            </div>
+
+            <div class="card card-bordered pb-3">
+              <ngx-ixcheck-table4 id="products-grid" headerTitle="Product" [items]="item" [dragColumn]="false"
+                [indexColumn]="false" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+                [selectColumn]="false" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+                [addRows]="false" [dragIcon]="" [dragCss]="" [expandRowIcons]="{
+                  expanded: 'fa fa-plus-circle fa-lg',
+                  closed: 'fa fa-plus-circle fa-lg'
+                }" [expandRowCss]="{
+                  expanded: { color: 'green' },
+                  closed: { color: 'gray' }
+                }" [sortIndexOnDrop]="true" [deleteCss]="{ color: 'red' }">
+                <ng-template #rowDetailExpand let-rowitem="item">
+                  <app-table-list-c-rowdetail (childComponentData)="getChildComponentData($event)"
+                    [rowItemData]="rowitem">
+                  </app-table-list-c-rowdetail>
+                </ng-template>
+
+                <!-- Second table -->
+                <ng-template #plusIconExpand let-rowitem="item">
+                  <app-first-tab-c-rowdetail (childComponentData)="getChildComponentData($event)"
+                    (update)="updateProductDetails($event)" [rowItemData]="rowitem">
+                  </app-first-tab-c-rowdetail>
+                </ng-template>
+
+                <!-- Mapped Center -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{rowitem.selectedcenters}}{{rowitem.selectedcenters ? '/' :
+                      ''}}{{rowitem.totalcenters}}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- city name -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>city</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.city_name }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- State name -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>State</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.state_name }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- Ph female -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Ph female</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.ph_female }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- Ph other -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Ph other</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.ph_others }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- reserved female -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Reserved female</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.reserved_female }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- reserved other -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Reserved other</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.other_reserved }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- other female -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>other female</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.others_female }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- other -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>other</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.other_other }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+
+                <!-- total -->
+                <ngx-ixcheck-table4-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>total</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <label>{{ rowitem.total }}</label>
+                  </ng-template>
+                </ngx-ixcheck-table4-column>
+              </ngx-ixcheck-table4>
+              <!-- <hr /> -->
+              <!-- <div class="row">
+                <div class="col-2 mr-4 "></div>
+                <div class="col-1 text-center pr-4"><span>Total</span></div>
+                <div class="mg-l-4 pl-4 col-1 text-right">{{ ph_female[i] }}</div>
+                <div class="col-1 text-right">{{ ph_other[i] }}</div>
+                <div class="col-2 mg-l-4 text-center">
+                  {{ other_female[i] }}
+                </div>
+                <div class="col-2 text-center pl-5 ml-5">{{ other[i] }}</div>
+                <div class="col pl-4 ml-4">{{ total[i] }}</div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <br />
+        <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+          <div class="row form-group trad foc">
+            <div class="col-md-12">
+              <label>ALLOCATION SUMMARY <span *ngIf="allocationPercentage > 0">({{ allocationPercentage }}%
+                  ALLOCATED)</span></label>
+            </div>
+          </div>
+
+          <div class="data-table p-0">
+            <!-- table start -->
+            <ngx-ixcheck-table id="banks-list" headerTitle="Exam List" [items]="allocationItem" [indexColumn]="false"
+              [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+              [lastOffset]="lastOffset" [selectColumn]="false">
+              <!-- CITY # -->
+              <ngx-ixcheck-table-column [property]="'city_name'" [header]="'CITY'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- STATE -->
+              <ngx-ixcheck-table-column [property]="'state_name'" [header]="'STATE'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- PH FEMALE -->
+              <ngx-ixcheck-table-column [property]="'ph_female'" [header]="'PH FEMALE'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- PH OTHER -->
+              <ngx-ixcheck-table-column [property]="'ph_others'" [header]="'PH OTHER'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- OTHER FEMALE -->
+              <ngx-ixcheck-table-column [property]="'others_female'" [header]="'OTHER FEMALE'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- OTHER -->
+              <ngx-ixcheck-table-column [property]="'other_other'" [header]="'OTHER'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+
+              <!-- TOTAL -->
+              <ngx-ixcheck-table-column [property]="'total'" [header]="'TOTAL'" [sortable]="false">
+              </ngx-ixcheck-table-column>
+            </ngx-ixcheck-table>
+            <!-- <hr /> -->
+
+
+
+            <!-- <div class="row">
+              <div class="col-1"></div>
+              <div class="col-2">
+                <span class="pl-5">Total</span>
+              </div>
+              <div class="col-1 text-center">
+                <span class="pl-2">{{ phFemaleAllo }}</span>
+              </div>
+              <div class="col-1 text-right">
+                <span class="pr-4">{{ phOtherAllo }}</span>
+              </div>
+              <div class="col-2 text-right">
+                <span class="pr-4 mr-3">{{ otherFemaleAllo }}</span>
+              </div>
+              <div class="col-3 text-right">
+                <span class="mr-5 pr-5">{{ otherAllo }}</span>
+              </div>
+              <div class="col-2 text-center">
+                <span class="pr-5 mr-5">{{ totalAllo }}</span>
+              </div>
+            </div> -->
+
+            <!-- table end -->
+          </div>
+        </div>
+      </div>
+      <div *ngIf="itemJson.length == 0" class="not-found-container">
+        <h5>
+          No Data Available...
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>

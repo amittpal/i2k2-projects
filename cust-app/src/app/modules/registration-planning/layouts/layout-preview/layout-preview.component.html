@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">              
+            </div>  
+            <div class="paging-block col-4">
+             
+            </div>
+  
+            <div class="filter-container col-4">
+              <div id="bubbleBlock" class="bubble-block">
+                <!-- bubble start -->
+                <app-ngx-ixcheck-bubble (updateSearchData)="updateSearch($event)" (resetFilterData)="resetFilter()"
+                  [items]="config.data[0]" [showCountIcon]="config.settings.show_count_icon">
+                </app-ngx-ixcheck-bubble>
+                <!-- bubble start -->
+              </div>
+  
+              <div class="filter-block" filterToggle>
+                <a class="filter-slider">
+                  <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                </a>
+              </div>
+  
+            </div>
+          </div>
+        </div>  
+        <div class="card-body">
+            <div class="row app-form mb-3" *ngIf="layoutDetails!=undefined">
+                <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutExamType">Layout Code</label>
+                    <select class="form-control form-control-sm" (change)="onLayoutChange($event.target.value)">
+                     <option *ngFor="let layout of layouts" [value]="layout.layout_id" [selected]="layout.layout_id === templateId">
+                       {{layout.code}}
+                     </option>
+                    </select>
+                   </div> 
+                   <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label>Layout Name</label>
+                     <input class="form-control" type="text" [value]="layoutDetails.layout.name" disabled>                     
+                  </div> 
+                  <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label>Registration Name</label>
+                    
+                    <input class="form-control" type="text" [value]="layoutDetails.layout.layout_registrations_name" disabled>                      
+                  </div>
+            </div>
+            <div class="app-form">
+                <form [formGroup]="templateForm" (ngSubmit)="onFormSubmit()">
+                  <div class="row" *ngIf="layoutDetails!=undefined">                   
+                     <div class="col-md-12">
+                         <tabset            
+                            class="tabset-container"
+                            #pagesTabs>
+                            <tab
+                            *ngFor="let page of layoutDetails.layout.pages"
+                             heading="{{page.page_name}}"
+                                 
+                             >     
+                             <!--[disabled]="true"   -->        
+                            </tab>
+                          </tabset>
+                          <div   
+                          *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index"
+                          [formGroupName]="page.page_guid">
+                              <div *ngIf="pagesTabs.tabs[pageIndex].active == true">                     
+                                      <div class="row mt-3"
+                                      *ngFor="let section of page.sections"
+                                      [formGroupName]="section.section_guid">                                             
+                                    <ng-container *ngIf="section.section_visibility === 1"> 
+                                        <div class="col-md-12 mb-2 mt-2"><h4>{{section.section_name}}</h4> <hr> </div>                                                                                                                                                              
+                                        <div class="col-md-12">
+                                          <gridster 
+                                          [options]="gridsterConfigration" 
+                                          class="gridster-view mt-3">                           
+                                          <gridster-item 
+                                          *ngFor="let component of section.comps" 
+                                          [item]="component">
+                                            <ng-container
+                                            LoadComponent
+                                            [componentDetails]="component"                                
+                                            [group]="templateForm.get(page.page_guid).get(section.section_guid)" 
+                                            [additionalDetails]="additionalDetails"                                  
+                                            (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                                         </ng-container>                                          
+                                           <ng-container *ngIf="component.settings.setting_type !=='button'">
+                                            <ngx-ixcheck-showerrormessage
+                                            [control]="templateForm.get(page.page_guid).get(section.section_guid).get(component.comp_name)"
+                                            [controlName]="component.settings.setting_description">
+                                           </ngx-ixcheck-showerrormessage>
+                                           </ng-container>                                         
+                                          </gridster-item>
+                                        </gridster>
+                                        </div>
+                                      </ng-container>
+                                                                                                                                                                                            
+                                      </div>
+                              </div>
+                          </div>
+                     </div> 
+                    
+                   </div>
+                  </form>  
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-layout-preview-filter
+   (updateEvent)="updateTable($event)"
+   [resetFlter]="resetFilterFlag"
+   [updatedFilter]="count">
+  </app-layout-preview-filter>
+  

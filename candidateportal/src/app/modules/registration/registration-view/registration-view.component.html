@@ -1,0 +1,64 @@
+<div class="card card-borderless mt-3" id="form-container">    
+      <div class="card-body">            
+        <form [formGroup]="templateForm">
+            <div class="row" *ngIf="layoutDetails!=undefined">                   
+               <div class="col-md-12">
+                   <tabset            
+                      class="tabset-container"
+                      #pagesTabs>
+                      <tab
+                      *ngFor="let page of layoutDetails.layout.pages"
+                       heading="{{page.page_name}}">             
+                      </tab>
+                    </tabset>
+                    <div   
+                    *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index"
+                    [formGroupName]="page.page_name">
+                    <div *ngIf="pagesTabs.tabs[pageIndex].active == true">
+                                                                     
+                            <div class="row mt-3"
+                            *ngFor="let section of page.sections">       
+                            <div class="col-md-12">
+                               <div class="section-header p-1 mb-1">
+                                <h4>{{section.section_name}}</h4> 
+                               </div> 
+                                <hr>
+                             </div>                                                                                                                                                                                                                                  
+                                <!-- <div
+                                *ngFor="let component of section.comps"
+                                class="col-md-{{component.cols}} col-lg-{{component.cols}}">
+                                <ng-container *ngIf="!skipComponents.includes(component.comp_name) && component.settings.setting_type !=='button'">                                
+                                <ng-container
+                                   LoadComponent
+                                   [componentDetails]="component"                                
+                                   [group]="templateForm.get(page.page_name)"
+                                   [additionalDetails]="additionalDetails">
+                                </ng-container>                                              
+                                </ng-container>                                       
+                               </div> -->
+
+                               <gridster 
+                             [options]="gridsterConfigration" 
+                             class="gridster-view mt-3">                           
+                             <gridster-item 
+                             *ngFor="let component of section.comps" 
+                             [item]="component">
+                             <ng-container *ngIf="!skipComponents.includes(component.comp_name) && component.settings.setting_type !=='button'">
+                              <ng-container
+                              LoadComponent
+                              [componentDetails]="component"                                
+                              [group]="templateForm.get(page.page_name)" 
+                              [additionalDetails]="additionalDetails">
+                           </ng-container>  
+                             </ng-container>                                
+                                                                                                                                         
+                             </gridster-item>
+                           </gridster>
+                            </div>
+                        </div>
+                    </div>
+               </div>                   
+             </div>
+            </form> 
+      </div>     
+  </div>

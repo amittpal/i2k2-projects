@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="table-container">
+    <div class="card card-bordered fullheight-min">
+      <div class="card-header">
+        <div class="header-flex-container">
+          <div class=" col-4">
+          </div>
+
+          <div class="col-4">           
+          </div>
+
+          <div class="filter-container col-4">
+            <div id="bubbleBlock" class="bubble-block">
+            </div>
+
+            <div class="filter-block" filterToggle>
+              <a class="filter-slider">
+                <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+              </a>
+            </div>
+
+          </div>
+       </div>
+
+       <form class="app-form" id="addImportData" [formGroup]="addImportDataFromGroup" novalidate="">
+       <div class="row">
+         
+        <!-- Import Number -->
+        <div class="col-lg-3 col-sm-3 form-group trad foc required">
+          <label for="exam_code">IMPORT NUMBER</label>
+          <input type="text" class="form-control form-control-sm" name="import_number" id="import_number" formControlName="import_number" required disabled>         
+        </div>
+
+        <!-- Registration Name-->
+        <div class="col-lg-2 col-sm-2 form-group trad foc">
+          <label for="layoutRegType">Registration Name</label>
+          <select class="form-control form-control-sm" formControlName="regName" (change)=onChange($event) >
+           <option *ngFor="let type of registrationList" [value]="type.guid">
+             {{type.name}}
+           </option>
+          </select>
+         </div>
+
+        <!-- Import Code-->
+        <div class="col-lg-2 col-sm-2 form-group trad foc required">
+          <label for="exam_code">IMPORT CODE</label>
+          <input type="text" class="form-control form-control-sm" name="import_code" id="import_code" formControlName="import_code" required>
+        </div>
+
+           <!-- Import Name -->
+           <div class="col-lg-2 col-sm-2 form-group trad foc required">
+            <label for="exam_code">IMPORT NAME</label>
+            <input type="text" class="form-control form-control-sm" name="import_name" id="import_name" formControlName="import_name" required>
+          </div>
+
+        <!-- Status  -->
+        <div class="col-lg-2 col-sm-2 form-group trad foc">
+          <label for="weekend" >STATUS</label>
+          <select class="form-control form-control-sm" id="status" name="status" formControlname="status">
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+        <tabset  class="tabset-container" #tabset>
+          <tab heading="State"></tab>
+          <tab heading="City"></tab>
+          <tab heading="Centres"></tab>  
+        </tabset>
+      </div>
+
+      <div class="card-body scrollable inside-footer-fixed">
+        <div *ngIf="tabset.tabs[0].active == true">
+          <app-state [regGuid]="regGuid" [tabset]="tabset"></app-state>
+        </div>
+        <div *ngIf="tabset.tabs[1].active == true">
+          <app-city [regGuid]="regGuid" [tabset]="tabset"></app-city>
+          
+        </div>
+        <div *ngIf="tabset.tabs[2].active == true">
+          <app-centres [stateId]="stateId" [importData]="addImportDataFromGroup.value" [centresData]="centresData"></app-centres>  
+        </div>      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="tabset.tabs[0].active == true">
+  <app-state-filter (updateEvent)="updateStateTable($event)"></app-state-filter>
+  </div>
+
+  <div *ngIf="tabset.tabs[1].active == true">
+    <app-city-filter (updateEvent)="updateCityTable($event)"></app-city-filter>
+    </div>
+
+  <div *ngIf="tabset.tabs[2].active == true">
+    <app-centres-filter (updateEvent)="updateCentreTable($event)"></app-centres-filter>
+    </div> -->

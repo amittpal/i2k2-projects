@@ -1,0 +1,51 @@
+<div class="card card-borderless mt-3" id="form-container">
+  <div class="card-body">
+    <form [formGroup]="templateForm" (ngSubmit)="onFormSubmit()">
+      <div class="row" *ngIf="layoutDetails!=undefined">
+        <div class="col-md-12">
+          <tabset class="tabset-container card-header" #pagesTabs>
+            <tab *ngFor="let page of layoutDetails.layout.pages let pageIndex=index" heading="{{page.page_name}}"
+              [disabled]="page.disabled" [active]="page.active">
+              <div [formGroupName]="page.page_guid" *ngIf="pagesTabs.tabs[pageIndex].active == true">
+                <!--*ngIf="pagesTabs.tabs[pageIndex].active == true"-->
+                <div class="row mt-3 {{section.section_css_class}}"
+                [formGroupName]="section.section_guid"
+                 *ngFor="let section of page.sections">
+                  <div class="col-md-12 ">
+                    <div class="section-header p-1 mb-1">
+                      <h4>{{section.section_name}}</h4>
+                    </div>
+                    <hr>
+                  </div>
+
+                  
+                  <gridster [options]="gridsterConfigration" class="gridster-view mt-3">
+                    <gridster-item *ngFor="let component of section.comps" [item]="component">
+                      <ng-container>
+                        <ng-container LoadComponent [componentDetails]="component"
+                          [group]="templateForm.get(page.page_guid).get(section.section_guid)"
+                          [additionalDetails]="additionalDetails"
+                          (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                        </ng-container>
+                        <ng-container *ngIf="component.settings.setting_type !=='button'">
+                          <ngx-ixcheck-showerrormessage
+                            [control]="templateForm.get(page.page_guid).get(section.section_guid).get(component.comp_name)"
+                            [controlName]="component.settings.setting_description">
+                          </ngx-ixcheck-showerrormessage>
+                        </ng-container>
+                      </ng-container>
+
+                    </gridster-item>
+                  </gridster>
+
+                </div>
+
+              </div>
+            </tab>
+          </tabset>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

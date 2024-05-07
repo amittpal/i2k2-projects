@@ -1,0 +1,92 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+
+  <div class="col-sm-12">
+    <form autocomplete="off" name="childFromGroup" id="childFrom" [formGroup]="childFromGroup">
+      <div class="form-row text-uppercase">
+
+        <!-- Child-Subject -->
+        <div class="form-group col-lg-2 d-flex flex-column col-sm-3 ">
+          <label for="subject" class="mb-0">Subject</label>
+
+          <select class="custom-select custom-select-dd custom-select-sm" name="subject" id="subject"
+            formControlName="subject_guids">
+            <option value="">Select</option>
+            <option *ngFor="let subject of selectedSubject" [ngValue]="subject.guid">
+              {{subject.name}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Child-Difficulty Level -->
+        <div class="form-group col-lg-2 col-sm-3">
+          <label for="difficulty_level" class="mb-0">Difficulty Level</label>
+
+          <select class="custom-select custom-select-dd custom-select-sm" name="difficulty_level" id="difficulty_level"
+            formControlName="difficulty_level_guids">
+            <option value="">Select</option>
+            <option *ngFor="let level of difficultyLevels" [ngValue]="level.guid">
+              {{level.name}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Child-Duration/Question -->
+        <div class="form-group col-lg-2 col-sm-3" *ngIf="allowDurationStatus">
+          <label for="duration" class="d-flex justify-content-center mb-0">Duration/Question</label>
+          <input type="number" onlyNumber class="custom-select col-lg-6 custom-select-dd custom-select-sm"
+            formControlName="duration" name="txt_desc" (click)="$event.stopPropagation();">
+
+          <select class="custom-select col-lg-6 custom-select-dd custom-select-sm" name="duration_uom_guids" id="duration_uom_guids"
+            formControlName="duration_uom_guids">
+            <option value="">Select</option>
+
+            <option *ngFor="let uoms of uomsList" [ngValue]="uoms.guid">{{uoms.name}}</option>
+          </select>
+        </div>
+
+        <!-- Child-QUESTION TYPE -->
+        <div class="form-group col-lg-2 col-sm-3">
+          <label for="question_type" class="mb-0">QUESTION TYPE</label>
+          <select class="custom-select custom-select-dd custom-select-sm" id="subjects" name="subjects"
+            formControlName="question_type">
+            <option value="">Custom</option>
+            <option *ngFor="let question of questionTypeList" [ngValue]="question.question_type_guid">
+              {{question.questionType}}
+            </option>
+          </select>
+
+        </div>
+
+        <!-- Child-Marks -->
+        <div class="form-group col-lg-2 d-flex flex-column col-sm-3">
+          <label for="marks" class="mb-0">
+            Marks
+          </label>
+          <input type="text" placeholder="00.00" appTwoDigitDecimaNumber formControlName="marks"
+            class="custom-select custom-select-dd custom-select-sm" name="marks" (click)="$event.stopPropagation();">
+        </div>
+
+        <!-- Child-Negative Marks -->
+        <div class="form-group col-lg-2 col-sm-3" *ngIf="isNegativeMarkingEnabled">
+          <label for="negative_marks" class="mb-0">
+            Negative Marks
+          </label>
+          <input type="text" placeholder="00.00" appTwoDigitDecimaNumber formControlName="negative_marks"
+            class="custom-select custom-select-dd custom-select-sm" name="negative_marks"
+            (click)="$event.stopPropagation();">
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group d-flex col-lg-2 col-sm-4">
+          <button class="btn btn-sm btn-primary px-4" style="margin-top: 2em;"
+            type="button" (click)="sendToParent()">Update</button>
+          <button class="btn btn-sm btn-default px-4" style="margin-top: 2em;" type="button"
+            (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

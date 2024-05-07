@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class="table table-min-height" *ngIf="paymentsDetail.length > 0">
+    <thead>
+      <tr class="flex-tr">
+        <th class="flex-th">Transaction ID</th>
+        <th class="flex-th">Order ID</th>
+        <th class="flex-th">Requested Date</th>
+        <th class="flex-th text-right">Payment Amount (&#8377;)</th>
+        <th class="flex-th">Payment Date</th>
+        <th class="flex-th">Payment Bank </th>
+        <th class="flex-th">Payment Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="flex-tr" *ngFor="let payment of paymentsDetail; let i=index" [attr.data-index]="i">
+        <td class="flex-td">{{ payment.transaction_id }}</td>
+        <td class="flex-td">{{ payment.order_id }}</td>
+        <td class="flex-td">{{ payment.request_datetime }}</td>
+        <td class="flex-td text-right">{{ payment.payment_amount }}</td>
+        <td class="flex-td">{{ payment.payment_date }}</td>
+        <td class="flex-td">{{ payment.payment_bank}}</td>
+        <td class="flex-td {{payment.payment_status_css_tag}}">{{ payment.payment_status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="detailed-table" *ngIf="paymentsDetail.length == 0">
+    <tr class="flex-tr txtalgn">
+      <td class="flex-td"><span>Data not available</span> </td>
+    </tr>
+  </table>
+</div>

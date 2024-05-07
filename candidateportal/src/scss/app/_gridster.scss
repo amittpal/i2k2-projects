@@ -1,0 +1,35 @@
+// .gridster-view
+// {
+//     min-height:100vh;
+//     background: transparent !important;                           
+            
+//       gridster-item{
+//         height: auto !important;        
+//       }   
+//       .form-group{
+//         margin-bottom: 0;
+//       }
+// }
+
+gridster
+{       
+  //height: auto !important;
+  //min-height: 100px;    
+  //min-height:100vh;
+  width: 100% !important;
+  background: transparent !important;                                       
+      gridster-item{
+        height: auto !important; 
+        //padding: 2rem;       
+      } 
+      
+      .form-group{
+        margin-bottom: 0!important;
+        label{
+          margin-bottom: 0.2rem;
+        }
+      }
+      .form-control{
+        height: auto !important;
+      }
+    }                

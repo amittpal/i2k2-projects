@@ -1,0 +1,420 @@
+<div class="row" id="step-card-wrapper" *ngIf="registrationsGuid !== ''">
+  <!--Identity-->
+  <div class="col-md-5">
+    <div class="step-container">
+      <div class="pointer bg-complete text-center">
+        <div class="step-header-text">Identity</div>
+      </div>
+    </div>
+    <div class="card card-bordered card-height">
+      <div class="card-body">
+        <ng-container *ngIf="candidateInitialInfo === undefined">
+          <div class="row border-bottom">
+            <div class="col-md-12 p-4 text-center">
+              <span class="card-label">Create New Identity Username/Password</span>
+            </div>
+          </div>
+
+          <div class="row border-bottom">
+            <div class="col-md-12 p-5 text-center">
+              <input id="start-registration" type="button" class="btn btn-light-green px-5" value="Start"
+                (click)="onStartRegistrationClick()" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 p-5 text-center">
+              <div class="p-5">
+                <span class="card-label text-uppercase">Help</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="candidateInitialInfo">
+          <div class="row border-bottom">
+            <div class="col-md-12 p-3">
+              <div class="row">
+                <div class="col-md-3 card-label">Name:</div>
+                <div class="col-md-9 card-label">
+                  {{
+                  candidateInitialInfo.first_name +
+                  " " +
+                  candidateInitialInfo.last_name
+                  }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 card-label">Address:</div>
+                <div class="col-md-9 card-label">
+                  {{ candidateInitialInfo.address }}
+                </div>
+              </div>
+              <!-- <span class="card-label">Create New Identity Username/Password</span> -->
+            </div>
+          </div>
+
+          <ng-container *ngIf="candidateInitialInfo.email_verified === '0'">
+            <div class="row border-bottom">
+              <div class="col-md-12 p-3">
+                <form [formGroup]="sendOtpFromGroup" class="app-form">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label class="card-label text-uppercase">Email</label>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group trad foc">
+                        <input type="text" class="form-control" formControlName="email" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="button" class="btn btn-light-green px-3"
+                        [value]="emailControlEnabled === true ? 'Save':'Edit'" (click)="onEditEmailClick()" />
+                    </div>
+
+                    <div class="col-md-6 offset-md-3">
+                      <input id="send-otp" type="button" class="btn btn-info btn-block" value="Send otp"
+                        (click)="onSendOtpClick()" />
+                      <!-- value="Resend Email"  -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 p-5 text-center">
+                <div class="p-5">
+                  <span class="card-label text-uppercase">Help</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="candidateInitialInfo.email_verified === '1'">
+            <div class="col-md-12 p-0 pt-4">
+              <div class="row app-form">
+                <div class="col-md-2">
+                  <label class="card-label">Email</label>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group foc trad">
+                    <input type="text" class="form-control" [value]="candidateInitialInfo.email" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!--OTP Verification-->
+  <div class="col-md-3">
+    <div class="step-container">
+      <div class="pointer {{
+        candidateInitialInfo && candidateInitialInfo.email_verified == '1'
+          ? 'bg-complete'
+          : 'bg-pending'
+      }} text-center">
+        <div class="step-header-text">Verify</div>
+      </div>
+    </div>
+    <div class="card card-bordered card-height">
+      <div class="card-body">
+        <ng-container *ngIf="candidateInitialInfo === undefined">
+          <div class="row">
+            <div class="col-md-12 p-3 text-center">
+              <span class="card-label">Email Verification is pending</span>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="candidateInitialInfo">
+          <ng-container *ngIf="candidateInitialInfo.email_verified === '0'">
+            <div class="row border-bottom p-3">
+              <div class="col-md-12 p-3">
+                <span class="card-label">Email Verification is pending</span>
+              </div>
+            </div>
+            <form [formGroup]="verifyOtpFromGroup" class="app-form">
+              <div class="row p-3 border-bottom">
+                <div class="col-md-3">
+                  <label class="card-label text-uppercase">OTP</label>
+                </div>
+                <div class="col-md-9">
+                  <div class="trad foc form-group">
+                    <input id="email-otp" type="text" class="form-control" formControlName="otp" />
+                  </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                  <input id="verify-email" type="button" class="btn btn-light-green btn-block" value="Verify"
+                    (click)="onVerifyEmailClick()" />
+                </div>
+              </div>
+            </form>
+
+            <div class="row">
+              <div class="col-md-12 p-5 text-center">
+                <div class="p-5">
+                  <span class="card-label text-uppercase">Help</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="candidateInitialInfo.email_verified === '1'">
+            <div class="row p-3">
+              <div class="col-md-12 p-3 text-center">
+                <span class="card-label">Email is successfully verified</span>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!--Registration-->
+  <div class="col-md-2">
+    <div class="step-container">
+      <div class="pointer {{
+        candidateInitialInfo && candidateInitialInfo.registration_status === 'Submitted'
+          ? 'bg-complete'
+          : 'bg-pending'
+      }} text-center">
+        <div class="step-header-text">Register</div>
+      </div>
+    </div>
+    <!--if email is not verified and registration is pending -->
+    <div class="card card-bordered card-height">
+      <div class="card-body">
+        <ng-container *ngIf="candidateInitialInfo === undefined || candidateInitialInfo.email_verified === '0'">
+          <div class="row">
+            <div class="col-md-12 p-3 text-center">
+              <span class="card-label">Pending</span>
+            </div>
+          </div>
+        </ng-container>
+        <!--if email is verified and registration is pending -->
+        <ng-container *ngIf="
+            candidateInitialInfo &&
+            candidateInitialInfo.email_verified === '1' &&
+            candidateInitialInfo.registration_status === 'Initiated'">
+          <div class="row border-bottom p-3">
+            <input id="continue-registration" type="button" class="btn btn-light-green btn-block" value="Start"
+              (click)="onRegistrationContinueClick()" />
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 p-5 text-center">
+              <div class="p-5">
+                <span class="card-label text-uppercase">Help</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <!--if email is verified and registered successfully -->
+        <ng-container *ngIf="
+            candidateInitialInfo &&
+            candidateInitialInfo.email_verified === '1' &&
+            candidateInitialInfo.registration_status === 'Submitted'">
+          <div class="row border-bottom p-3">
+            <div class="col-md-12 text-center">
+              <div class="">
+                <span class="card-label">Registered Successfully</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row p-3">
+            <div class="text-center mt-5">
+              <!-- <span class="card-label">View Application From</span> -->
+              <span class="card-label">Edit Application From</span>
+              <input type="button" class="btn btn-light-green px-3 mt-2" value="Edit"
+                (click)="onRegistrationContinueClick()" />
+              <!--value="View"
+                   (click)="onViewRegistrationClick()" -->
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!--Payment-->
+  <div class="col-md-2">
+    <div class="step-container">
+      <div class="pointer {{
+        candidateInitialInfo && candidateInitialInfo.payment_status =='Success'
+          ? 'bg-complete'
+          : 'bg-pending'
+      }} text-center">
+        <div class="step-header-text">Payment</div>
+      </div>
+    </div>
+    <div class="card card-bordered card-height">
+      <div class="card-body">
+        <ng-container *ngIf="
+        candidateInitialInfo === undefined        
+       || candidateInitialInfo.email_verified === '0'
+       || candidateInitialInfo.registration_status === 'Initiated'">
+          <div class="row">
+            <div class="col-md-12 p-3 text-center">
+              <span class="card-label">Pending</span>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="candidateInitialInfo 
+         && candidateInitialInfo.email_verified === '1'
+         && candidateInitialInfo.registration_status === 'Submitted'
+         && (candidateInitialInfo.payment_status === 'Un-Paid')">
+          <div class="row border-bottom">
+            <div class="col-md-12 p-3 text-center">
+              <input id="pay-now" type="button" class="btn btn-light-green px-5" value="Pay Now"
+                (click)="onPayClick()" />
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12 p-5 text-center">
+              <div class="p-5">
+                <span class="card-label text-uppercase">Help</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="candidateInitialInfo 
+         && candidateInitialInfo.email_verified === '1'
+         && candidateInitialInfo.registration_status === 'Submitted'
+         && (candidateInitialInfo.payment_status === 'Failed' || candidateInitialInfo.payment_status === 'Success')">
+          <div class="row border-bottom p-3">
+            <div class="col-md-12 p-3 text-center">
+              <ng-container *ngIf="paymentDetails.txn_status === 'FAILED'">
+                <div class="text-center">
+                  <span class="card-label">Payment Failed</span>
+                </div>
+                <input type="button" class="btn btn-light-green mt-2 px-4" value="Pay Now" (click)="onPayClick()" />
+              </ng-container>
+
+              <ng-container *ngIf="paymentDetails.txn_status === 'SUCCESS'">
+                <div class="text-center">
+                  <span class="card-label">Payment Successful</span>
+                </div>
+              </ng-container>
+
+            </div>
+          </div>
+          <div class="row p-3">
+            <div class="col-md-12 p-3 text-center">
+              <div class="text-center">
+                <span class="card-label">View Payment Receipt</span>
+                <input type="button" class="btn btn-light-green px-5 mt-2" value="View"
+                  (click)="onViewPaymentClick()" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--Mock Test-->
+  <div class="col-md-5 mt-4">
+    <div class="step-container">
+      <div class="pointer {{
+              candidateInitialInfo 
+              && candidateInitialInfo.email_verified === '1'
+              && candidateInitialInfo.registration_status === 'Submitted'
+              && (candidateInitialInfo.payment_status === 'Success')
+                ? 'bg-complete'
+                : 'bg-pending'
+            }} text-center">
+        <div class="step-header-text">MOCK TEST</div>
+      </div>
+    </div>
+    <div class="card card-bordered">
+      <div class="card-body">
+
+        <ng-container *ngIf="candidateInitialInfo === undefined        
+                || candidateInitialInfo.email_verified === '0'
+                || candidateInitialInfo.registration_status === 'Initiated'
+                || candidateInitialInfo.payment_status === 'Un-Paid'">
+          <div class="row">
+            <div class="col-md-12 p-3 text-center">
+              <span class="card-label">Pending</span>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="candidateInitialInfo 
+              && candidateInitialInfo.email_verified === '1'
+              && candidateInitialInfo.registration_status === 'Submitted'
+              && (candidateInitialInfo.payment_status === 'Success')">
+          <div class="row p-3">
+            <div class="col-md-12 p-3 text-center">
+              <div class="text-center">
+                <span class="card-label">Start Mock Test</span><br>
+                <input type="button" 
+                class="btn btn-light-green px-5 mt-2" 
+                value="Start"
+                (click)="onStartMockTestClick()"/>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+  <!--Admit Card-->
+  <div class="col-md-3 mt-4">
+    <div class="step-container">
+      <div class="pointer {{
+                      candidateInitialInfo 
+                      && candidateInitialInfo.email_verified === '1'
+                      && candidateInitialInfo.registration_status === 'Submitted'
+                      && (candidateInitialInfo.payment_status === 'Success')
+                        ? 'bg-complete'
+                        : 'bg-pending'
+                    }} text-center">
+        <div class="step-header-text">ADMIT CARD</div>
+      </div>
+    </div>
+    <div class="card card-bordered">
+      <div class="card-body">
+
+        <ng-container *ngIf="candidateInitialInfo === undefined        
+                          || candidateInitialInfo.email_verified === '0'
+                          || candidateInitialInfo.registration_status === 'Initiated'
+                          || candidateInitialInfo.payment_status === 'Un-Paid'">
+          <div class="row">
+            <div class="col-md-12 p-3 text-center">
+              <span class="card-label">Pending</span>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="candidateInitialInfo 
+                        && candidateInitialInfo.email_verified === '1'
+                        && candidateInitialInfo.registration_status === 'Submitted'
+                        && (candidateInitialInfo.payment_status === 'Success')">
+          <div class="row p-3">
+            <div class="col-md-12 p-3 text-center">
+              <div class="text-center">
+                <span class="card-label">View Admit Card</span><br>
+                <input type="button" class="btn btn-light-green px-5 mt-2" value="View"
+                  (click)="onViewAdmitCardClick()" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

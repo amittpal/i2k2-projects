@@ -1,0 +1,133 @@
+<div class="container-fluid">
+    <div *ngIf="payment_gateway_details !== undefined">
+        <div class="card card-bordered fullheight-fixed">
+            <div class="card-header">
+                <div class="app-form">
+                    <form autocomplete="off" id="paymentGatewayManageForm" [formGroup]="paymentGatewayFormGroup"
+                        novalidate="" class="p-0">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <!-- Gateway -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="gateway" class="col-lg-12 p-2 mb-0">GATEWAY#</label>
+                                        <label type="text" class="lbl ml-2" id="gateway"
+                                            name="gateway">{{payment_gateway_details ?
+                                            payment_gateway_details.gateway_no : ""}}</label>
+                                    </div>
+
+                                    <!-- Registration Code -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="regCode" class="col-lg-12 p-2 mb-0">REGISTRATION CODE</label>
+                                        <label type="text" class="lbl ml-2" id="regCode"
+                                            name="regCode">{{payment_gateway_details ?
+                                            payment_gateway_details.registration_code: ""}}</label>
+                                    </div>
+
+                                    <!-- Registration Name -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="regName" class="col-lg-12 p-2 mb-0">REGISTRATION NAME</label>
+                                        <label type="text" class="lbl ml-2" id="regName"
+                                            name="regName">{{payment_gateway_details ?
+                                            payment_gateway_details.registration_name: ""}}</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-1"></div>
+
+                            <div class="col-md-3">
+                                <div class="row">
+
+                                    <!--Gateway Type  -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="gatewayType" class="col-lg-12 p-2 mb-0">TYPE</label>
+                                        <select class="col-lg-12 p-2 form-control form-control-sm"
+                                            formControlName="gatewayType" id="gatewayType"
+                                            (change)="onPaymentTypeChange($event)">
+                                            <option value="" disabled>Select</option>
+                                            <option *ngFor="let item of payment_gateway_types" [value]="item.id">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <!--Gateway Code -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                                        <label for="gatewayCode" class="col-lg-12 p-2 mb-0">CODE</label>
+                                        <input type="text" class="form-control form-control-sm" name="gatewayCode"
+                                            id="gatewayCode" formControlName="gatewayCode">
+                                    </div>
+
+                                    <!--Gateway Name -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc required">
+                                        <label for="gatewayName" class="col-lg-12 p-2 mb-0">NAME</label>
+                                        <input type="text" class="form-control form-control-sm" name="gatewayName"
+                                            id="gatewayName" formControlName="gatewayName">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-1"></div>
+
+                            <div class="col-md-3">
+                                <div class="row">
+
+                                    <!--Environment  -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="environment" class="col-lg-12 p-2 mb-0">ENVIRONMENT</label>
+                                        <select class="col-lg-12 p-2 form-control form-control-sm"
+                                            formControlName="environment" id="environment">
+                                            <option value="" disabled>Select</option>
+                                            <option *ngFor="let item of payment_gateway_environments" [value]="item.id">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <!--Production  -->
+                                    <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                        <label for="production" class="col-lg-12 p-2 mb-0">PRODUCTION</label>
+                                        <select class="col-lg-12 p-2 form-control form-control-sm"
+                                            formControlName="production" id="production">
+                                            <option value="" disabled>Select</option>
+                                            <option *ngFor="let item of productionList" [value]="item.id">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card-body scrollable inside-footer-fixed">
+                <label
+                    *ngIf="selectedPaymentGatewayTypeId=='1' || selectedPaymentGatewayTypeId =='2'">CONFIGURATION</label>
+                <ng-container [ngSwitch]="selectedPaymentGatewayTypeId">
+                    <app-paytm *ngSwitchCase="'1'" [paymentGatewayConfigurationDetail]="payment_gateway_configuration"
+                        (submitPaymentGatewayDetailEmitter)="submit($event)" (resetPaymentGatewayFormEmitter)="reset()">
+                    </app-paytm>
+                    <app-payumoney *ngSwitchCase="'2'"
+                        [paymentGatewayConfigurationDetail]="payment_gateway_configuration"
+                        (submitPaymentGatewayDetailEmitter)="submit($event)" (resetPaymentGatewayFormEmitter)="reset()">
+                    </app-payumoney>
+                    <app-razorpay *ngSwitchCase="'3'"
+                    [paymentGatewayConfigurationDetail]="payment_gateway_configuration"
+                    (submitPaymentGatewayDetailEmitter)="submit($event)" (resetPaymentGatewayFormEmitter)="reset()">
+                </app-razorpay>
+                </ng-container>
+            </div>
+            <div *ngIf="selectedPaymentGatewayTypeId > 3"
+                class="card-body scrollable inside-footer-fixed">
+                <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+                    (click)="submitPayment()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="desk-menu-block">
+  <div class="row m-1 border-bottom pt-1">
+    <div class="col-md-2 p-0">
+      <div class="section-head">Question #{{QuestionDetails.question[0].question_number}}</div>
+    </div>
+    <div class="col-md-6 text-center">
+      <!-- <span class="font-weight-bold">Subject </span> <span>{{QuestionDetails.question[0].subject}}</span> -->
+      <div class="trad foc d-flex " *ngIf="LanguagesList.length > 1; else displayLabel">
+        <span class="font-weight-bold  text-center">Language: </span>
+        <select class="form-control form-control-sm pb-0 control-size" (change)="onLanguageChange($event)">
+          <option *ngFor="let language of LanguagesList" [selected]="language.guid === SelectedLanguageGuid"
+            [value]="language.guid">{{language.name}}</option>
+        </select>
+
+      </div>
+      <ng-template #displayLabel>
+        <div class="trad foc d-flex ">
+          <span class="font-weight-bold ml-2 text-center">Language: </span>
+          <span class="ml-2 mb-2">{{LanguagesList[0].name}} </span></div>
+      </ng-template>
+    </div>
+    <div class="col-md-4 text-right p-0">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="font-weight-bold ml-2"
+            *ngIf="QuestionDetails.question[0].negative_marks != undefined && QuestionDetails.question[0].negative_marks != 0">
+            Marks(-): </span>
+          <span
+            *ngIf="QuestionDetails.question[0].negative_marks != undefined && QuestionDetails.question[0].negative_marks != 0">{{QuestionDetails.question[0].negative_marks}}</span>
+        </div>
+        <div class="col-md-6">
+          <span class="font-weight-bold">
+            Marks(+): </span>
+          <span>{{QuestionDetails.question[0].positive_marks ? QuestionDetails.question[0].positive_marks: '0'}}</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 m-1 question_answer_fix_height">
+      <div [innerHTML]="QuestionDetails.question[0].question_description | sanitizeHtml"
+        [class]="QuestionDetails.question[0].language_name"></div>
+
+      <ng-container *ngIf="QuestionDetails.question[0].answer_type_code == 'Match'">
+        <div class="row" *ngFor="let option of QuestionDetails.option; index as i">
+          <div class="col-md-1"></div>
+          <div class="col-md-4 d-flex">
+            <span class="pr-2">{{option.option_number}}.</span>
+            <div [innerHTML]="option.description | sanitizeHtml" [class]="QuestionDetails.question[0].language_name">
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <span class="pr-2">{{option.match_option_number}}.</span>
+            <div [innerHTML]="option.match_description | sanitizeHtml"
+              [class]="QuestionDetails.question[0].language_name"></div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="mob-menu-block">
+  <div class="row m-1 border-bottom pt-1">
+    <div class="col-md-3 p-0">
+    <div class="section-head">Question #{{QuestionDetails.question[0].question_number}}</div>
+    </div>
+    <div class="col-md-4 p-0">
+      <!-- <span class="font-weight-bold">Subject </span> <span>{{QuestionDetails.question[0].subject}}</span> -->
+      <div class="trad foc d-flex " *ngIf="LanguagesList.length > 1; else displayLabel">
+        <span class="font-weight-bold ">Language: </span>
+        <select class="form-control form-control-sm p-0 control-size" (change)="onLanguageChange($event)">
+          <option value="">Select</option>
+          <option *ngFor="let language of LanguagesList" [selected]="language.guid === SelectedLanguageGuid"
+            [value]="language.guid">{{language.name}}</option>
+        </select>
+
+      </div>
+      <ng-template #displayLabel>
+        <div class="trad foc d-flex ">
+          <span class="font-weight-bold ">Language: </span>
+          <span class="ml-2 mb-2">{{LanguagesList[0].name}} </span></div>
+      </ng-template>
+    </div>
+    <div class="col-md-5 text-right p-0">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="font-weight-bold ml-2"
+            *ngIf="QuestionDetails.question[0].negative_marks != undefined && QuestionDetails.question[0].negative_marks != 0">
+            Marks(-): </span>
+          <span
+            *ngIf="QuestionDetails.question[0].negative_marks != undefined && QuestionDetails.question[0].negative_marks != 0">{{QuestionDetails.question[0].negative_marks}}</span>
+        </div>
+        <div class="col-md-6">
+          <span class="font-weight-bold">
+            Marks(+): </span>
+          <span>{{QuestionDetails.question[0].positive_marks ? QuestionDetails.question[0].positive_marks: '0'}}</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 m-1 question_answer_fix_height">
+      <div [innerHTML]="QuestionDetails.question[0].question_description | sanitizeHtml"
+        [class]="QuestionDetails.question[0].language_name"></div>
+
+      <ng-container *ngIf="QuestionDetails.question[0].answer_type_code == 'Match'">
+        <div class="row" *ngFor="let option of QuestionDetails.option; index as i">
+          <div class="col-md-6 col-6 d-flex">
+            <span class="pr-2">{{option.option_number}}.</span>
+            <div [innerHTML]="option.description | sanitizeHtml" [class]="QuestionDetails.question[0].language_name">
+            </div>
+          </div>
+          <div class="col-md-6 col-6 d-flex">
+            <span class="pr-2">{{option.match_option_number}}.</span>
+            <div [innerHTML]="option.match_description | sanitizeHtml"
+              [class]="QuestionDetails.question[0].language_name"></div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

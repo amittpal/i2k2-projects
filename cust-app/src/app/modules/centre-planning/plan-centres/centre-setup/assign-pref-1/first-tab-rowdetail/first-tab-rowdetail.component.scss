@@ -1,0 +1,67 @@
+
+.custom-select-dd {
+  width: 204px;
+  padding: 0.25rem 0.5rem;
+  //padding: .375rem .75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+  background: #fff;
+  -webkit-appearance: none;
+  margin-left: 0em;
+}
+.btn-default {
+  margin-left: 1.5em;
+}
+
+.table-responsive {
+  background-color: #f3f3f3;
+}
+.cs-click {
+  color: #65cf48;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  color: gold;
+  content: "\2605";
+}
+.rating > span,
+.rating > span ~ span {
+  color: transparent;
+}
+.rating > span:before,
+.rating > span ~ span:before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
+}
+
+:host ::ng-deep {
+  .flex-t1-th-4 {
+    text-align: center;
+  }
+  .flex-t1-th-5 {
+    width: 11%;
+  }
+  .flex-t1-th-6 {
+    text-align: -webkit-center;
+  }
+  .flex-t1-col-6 {
+    text-align: -webkit-center;
+  }
+  .flex-t1-col-4 {
+    text-align: -webkit-right;
+  }
+}
+

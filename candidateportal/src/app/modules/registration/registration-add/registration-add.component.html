@@ -1,0 +1,61 @@
+<div class="container-fulid"> 
+  <div class="card card-bordered mt-3 mb-0" id="form-container">
+    <div class="card-header text-center bg-light-blue">
+      <div class="card-title">
+        Create New Identity
+      </div>
+    </div>
+      <div class="card-body">            
+        <form [formGroup]="templateForm" (ngSubmit)="onFormSubmit()">
+            <div class="row" *ngIf="layoutDetails!=undefined">                   
+              <div class="col-md-12">
+                
+                    <div   
+                    *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index"
+                    [formGroupName]="page.page_guid">                                                                                        
+                      <div 
+                      [formGroupName]="section.section_guid"
+                      *ngFor="let section of page.sections; let sectionIndex=index"
+                      class="row"> 
+                      <ng-container *ngIf="section.section_visibility == '1'"> 
+                        <div 
+                        class="col-md-12 {{section.section_css_class}} section-wrapper mt-3">
+                        <div class="section-header p-1">
+                            <!-- <strong>{{section.section_name}}</strong> -->
+                                                  
+                          </div> 
+                            <!-- <hr> -->
+                            <div class="row">
+                              <gridster 
+                              [options]="gridsterConfigration" 
+                              class="gridster-view mt-4 mb-4">                           
+                              <gridster-item 
+                              *ngFor="let component of section.comps" 
+                              [item]="component">
+                                <ng-container
+                                LoadComponent
+                                [componentDetails]="component"                                
+                                [group]="templateForm.get(page.page_guid).get(section.section_guid)" 
+                                [additionalDetails]="additionalDetails"                                  
+                                (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                            </ng-container>                                          
+                              <ng-container *ngIf="component.settings.setting_type !=='button'">
+                                <ngx-ixcheck-showerrormessage
+                                [control]="templateForm.get(page.page_guid).get(section.section_guid).get(component.comp_name)"
+                                [controlName]="component.settings.setting_description">
+                              </ngx-ixcheck-showerrormessage>
+                              </ng-container>                                         
+                              </gridster-item>
+                            </gridster>
+                            </div>                      
+                        </div>  
+                      </ng-container>      
+                                                                                                          
+                    </div>                          
+                    </div>
+              </div>                   
+            </div>
+            </form> 
+      </div>     
+  </div>
+</div>

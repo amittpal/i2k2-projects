@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="card-body">
+      <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">                          
+        <div class="data-table">
+          <ngx-ixcheck-table3 id="reference-grid" headerTitle="References" [items]="refrences" [dragColumn]="true"
+          [indexColumn]="true" [indexColumnHeader]="'#'"  [tableName]="'reference-grid'"
+          [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+          [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}"
+          [selectColumn]="true" [expandOnIndexColClick]="true"  [pagination]="false"
+          [addRows]="false"  [dragIcon]="" [dragCss]=""
+          [sortIndexOnDrop]="true" (onDrag)="onDragged($event)">
+          <ng-template #rowDetailExpand let-rowitem="item">
+            <app-row-details
+            [rowItemData]="rowitem"
+            (updatedDetails)="getUpdatedDetails($event)">                
+            </app-row-details>                                              
+          </ng-template>
+
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>
+              <div class="text-center">#</div>
+            </ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <div class="text-center">{{rowitem.line_num}}</div>
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          <!-- Reference -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>
+              <div>Reference</div>
+            </ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <div class="row mt-2">
+                <div class="col-lg-12 form-group trad foc">
+                  <textarea readonly  class="form-control  font-size-16" rows="2" [value]="rowitem.reference"></textarea>
+                </div>                     
+              </div>
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+         <!-- Remark -->
+          <ngx-ixcheck-table3-column [colType]="'custom'">
+            <ng-template #colHeaderComponent>
+              <div class="text-right">Remark</div>
+            </ng-template>
+            <ng-template #colDetailComponent let-rowitem="item">
+              <div  class="row mt-2">
+                  <div class="col-lg-12 form-group trad foc">
+                      <textarea readonly  class="form-control  font-size-16 ml-3" rows="2" [value]="rowitem.remark"></textarea>
+                    </div>
+              </div>
+            </ng-template>
+          </ngx-ixcheck-table3-column>
+
+          
+        </ngx-ixcheck-table3>
+          <br>
+          <div class="row">
+            <div class="col-7">
+              <button class="btn btn-sm btn-default add-rows" (click)="onAddRow()">add Rows</button>
+              <button class="btn btn-sm btn-default add-rows ml-2">Clear All Rows</button>
+            </div>                
+          </div>                  
+        </div>
+      </div>
+      <!--End of table 3 -->
+    </div>
+  </div>
+  

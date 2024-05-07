@@ -1,0 +1,14 @@
+.card_height {
+    height: calc(100vh - 230px );
+}
+
+.was-validated {
+    input.ng-invalid,
+    select.ng-invalid {
+      border: 1px solid lightcoral;
+    }
+    input.ng-valid,
+    select.ng-valid {
+      border: 1px solid lightgreen;
+    }
+  }

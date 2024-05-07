@@ -1,0 +1,31 @@
+<div class="table-responsive">
+    <table class="table table-min-height" *ngIf="paymentsRegistrationDetail.length > 0">
+        <thead>
+            <tr class="flex-tr">
+                <th class="flex-th">Payment Status</th>
+                <th class="flex-th ">Count</th>
+                <th class="flex-th">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="flex-tr" *ngFor="let payment of paymentsRegistrationDetail; let i=index" [attr.data-index]="i">
+                <td class="flex-td">{{ payment.pay_status }}</td>
+                <td class="flex-td ">{{ payment.status_count }}</td>
+                <td class="flex-td">
+                    <a *ngIf="payment.status_count > 0"
+                        href="/#/payments/candidates/registration/{{registrations.guid}}/payment/manage"
+                        (click)="updateService(payment.status_guid)">Manage</a>
+                    <span *ngIf="payment.status_count <= 0">Manage</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="detailed-table" *ngIf="paymentsRegistrationDetail.length == 0">
+        <tr class="flex-tr txtalgn">
+            <td class="flex-td"><span>Data not available</span> </td>
+        </tr>
+    </table>
+
+
+</div>

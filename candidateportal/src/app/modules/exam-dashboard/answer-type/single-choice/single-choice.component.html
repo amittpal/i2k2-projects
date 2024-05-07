@@ -1,0 +1,20 @@
+
+  <div class="row m-2" *ngFor="let option of QuestionDetails.option; index as i">
+    <div class="col-md-12 border-bottom p-0 d-flex"> 
+      <span>({{alphabet[i]}}) &nbsp;</span>        
+      <div 
+      [innerHTML]="option.description | sanitizeHtml"
+      [class]="QuestionDetails.question[0].language_name"></div>    
+      
+      <div class="ml-auto">   
+        <input 
+        type="radio" 
+        class="large_radio"
+        [checked]="option.selected"
+        (change)="onAnswerCheckboxChange($event,option)">                                          
+      </div>
+    </div>
+  </div> 
+
+
+ 

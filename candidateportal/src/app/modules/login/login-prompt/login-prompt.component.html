@@ -1,0 +1,77 @@
+
+
+<div class="container-fluid h-100">    
+  <div class="h-100">
+    <div class="align-items-center h-100 row">      
+      <div class="col-md-6 p-0">
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+            <div class=" text-center align-items-center justify-content-center">
+              <div class="mb-3">
+                <strong class="section-header">New Candidate</strong>
+              </div>
+              <button id="register_candidate" class="btn btn-light-green btn-block" (click)="onStartRegistrationClick()">Register Yourself</button>                                              
+            </div>
+          </div>
+        </div>
+                      
+      </div>
+      <div class="col-md-6" id="login-container">
+        <div class="row">
+          <div class="col-md-7 offset-md-2">
+            <div class=" align-items-center justify-content-center">
+
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8 mb-4 text-center">
+                  <strong class="section-header">Returning Candidate</strong>
+                </div>
+              </div>
+              <form class="app-form needs-validation" novalidate name="loginForm" id="loginForm" [formGroup]="loginFormGroup">          
+                <div class="form-group trad foc row">  
+                    <label class="col-md-4 text-center align-self-center">Username</label>                          
+                    <div class="col-md-8">
+                      <input type="text" name="username" formControlName="username" class="form-control font-16">
+                    </div>
+                    
+                </div>
+                <div class="form-group trad foc row">
+                  <label class="col-md-4 text-center align-self-center">Password</label>  
+                  <div class="col-md-8">
+                    <input type="password" name="password" formControlName="password" class="form-control font-16">
+                  </div>                                                   
+                </div>
+
+                <div class="form-group trad foc row">
+                  <label class="col-md-4 text-center align-self-center">Captcha</label>  
+                  <div class="col-md-8">                    
+                    <img [src]="captchaImg" class="w3-round" alt="Captcha" style="width:100%;max-width:140px">
+                    <svg-icon (click)="reloadCaptcha()" class="ml-4 mb-0 tooltip" src="assets/icons/refresh.svg"></svg-icon>
+                  </div>                                                   
+                </div>
+
+                <div class="form-group trad foc row">                  
+                  <div class="col-md-8 offset-md-4">
+                    <input type="captcha" name="captcha" placeholder="Type Captcha" formControlName="captcha" class="form-control font-16">
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-8">
+                    <button (click)="validateCaptcha($event)" class="btn btn-light-green btn-block">Login</button>
+                  </div>
+                </div>
+
+              </form>                                            
+            </div>  
+          </div>
+        </div>                                    
+      </div>
+           
+  </div>
+  </div>
+   
+</div>
+
+

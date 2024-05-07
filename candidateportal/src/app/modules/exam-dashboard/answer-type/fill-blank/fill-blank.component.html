@@ -1,0 +1,13 @@
+<div class="col p-0">
+  <form class="app-form"  [formGroup]="answerFormGroup" id="answerForm">
+    <div class="form-group trad foc d-flex mb-0">                  
+      <textarea
+      rows="10"  
+      style="overflow-y: auto;"
+      class="form-control form-control-sm opt_max_height {{QuestionDetails.question[0].language_name}}" 
+      formControlName="answer_text"
+      (change)="onAnswerChange()"></textarea>
+    </div>
+  </form>   
+</div>  
+  

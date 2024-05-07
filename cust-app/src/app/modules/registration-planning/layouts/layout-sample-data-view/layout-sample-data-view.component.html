@@ -1,0 +1,103 @@
+<div class="container-fluid">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-body">
+            <div class="row app-form mb-3" *ngIf="layoutDetails!=undefined">
+                <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutExamType">Layout Code</label>
+                    <select class="form-control form-control-sm" (change)="onLayoutChange($event.target.value)">
+                     <option *ngFor="let layout of layouts" [value]="layout.layout_id" [selected]="layout.layout_id === templateId">
+                       {{layout.code}}
+                     </option>
+                    </select>
+                   </div> 
+                   <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label>Layout Name</label>
+                     <input class="form-control" type="text" [value]="layoutDetails.layout.name" disabled>                     
+                  </div> 
+                  <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label>Layout Type</label>
+                    <input class="form-control" type="text" [value]="layoutDetails.layout.layout_exam_type" disabled>                      
+                  </div>
+            </div>
+            <div class="app-form">
+                <form [formGroup]="templateForm" (ngSubmit)="onFormSubmit()">
+                  <div class="row" *ngIf="layoutDetails!=undefined">                   
+                     <div class="col-md-12">
+                         <tabset            
+                            class="tabset-container"
+                            #pagesTabs>
+                            <tab
+                            *ngFor="let page of layoutDetails.layout.pages"
+                             heading="{{page.page_name}}"
+                             [disabled]="true"       
+                             >             
+                            </tab>
+                          </tabset>
+                          <div   
+                          *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index"
+                          [formGroupName]="page.page_name">
+                              <div *ngIf="pagesTabs.tabs[pageIndex].active == true">                     
+                                      <div class="row mt-3"
+                                      *ngFor="let section of page.sections">       
+                                      <div class="col-md-12 mb-2 mt-2"><h4>{{section.section_name}}</h4> <hr> </div>                                                                                                                                                              
+                                            
+                                      <gridster 
+                                      [options]="gridsterConfigration" 
+                                      class="gridster-view mt-3">                           
+                                      <gridster-item 
+                                      *ngFor="let component of section.comps" 
+                                      [item]="component">
+                                        <ng-container
+                                        LoadComponent
+                                        [componentDetails]="component"                                
+                                        [group]="templateForm.get(page.page_name)" 
+                                        [additionalDetails]="additionalDetails"                                  
+                                        (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                                     </ng-container>                                          
+                                       <ng-container *ngIf="component.settings.setting_type !=='button'">
+                                        <ngx-ixcheck-showerrormessage
+                                        [control]="templateForm.get(page.page_name).get(component.comp_name)"
+                                        [controlName]="component.settings.setting_label">
+                                       </ngx-ixcheck-showerrormessage>
+                                       </ng-container>                                         
+                                      </gridster-item>
+                                    </gridster>
+                                      <!-- <div
+                                             *ngFor="let component of section.comps"
+                                             
+                                             class="col-md-{{component.cols}} col-lg-{{component.cols}}">                                                                                        
+                                            
+                                             <ng-container
+                                                LoadComponent
+                                                [componentDetails]="component"                                
+                                                [group]="templateForm.get(page.page_name)"     
+                                                [additionalDetails]="additionalDetails"                             
+                                                (outputEmitter)="onOutputEmitterSubmit($event,component,page.page_guid,section.section_guid)">
+                                             </ng-container>   
+                                             
+                                               <ng-container *ngIf="component.settings.setting_type !=='button'">
+                                                <ngx-ixcheck-showerrormessage
+                                                [control]="templateForm.get(page.page_name).get(component.comp_name)"
+                                                [controlName]="component.settings.setting_label"
+                                                >
+                                               </ngx-ixcheck-showerrormessage>
+                                               </ng-container>                           
+                                            </div> -->
+
+                                          
+                                            
+                                      </div>
+                              </div>
+                          </div>
+                     </div> 
+                    
+                   </div>
+                  </form>  
+              </div>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  

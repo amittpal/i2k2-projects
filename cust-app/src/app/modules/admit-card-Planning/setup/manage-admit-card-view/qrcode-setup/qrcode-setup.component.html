@@ -1,0 +1,43 @@
+<div class="container-fluid" >
+    <div class="table-container">
+      <div class="card card-bordered fullheight-fixed">
+  
+        <div class="card-body scrollable app-form" >
+          <form class="app-form" [formGroup]="qrCodeSetupFormGroup">
+            <div class="row">   
+              <div class="col-lg-12 col-sm-12 form-group trad foc">
+                <div class="row">  
+  
+                <div class="col-lg-6 col-sm-6 form-group trad foc">
+                  <label for="email_placeholder">QR Code'S PLACEHOLDER TAGS</label>
+                  <div class="card card-bordered" style="height: 110px;">
+                    <div class="card-body">
+                      <div class="row" >                 
+                        <div class="col-lg-12 col-sm-12">
+                          <div class="row">                 
+                            <div class="col-lg-4 col-sm-4" *ngFor="let tag of qrCodePlaceHolderTags">
+                              <span>{{tag}}</span>  
+                            </div>
+                          </div>       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="col-lg-6 col-sm-6 form-group trad foc">
+                  <label for="qrCode_body_template">QR Code'S BODY TEMPLATE</label>
+                  <textarea style="height: 110px;" class="form-control" formControlName="qrCode_body_template"></textarea> 
+                </div>
+  
+               </div>
+  
+              </div>
+           </div>
+         </form>          
+             
+        </div>  
+  
+      </div>
+    </div> 
+    </div>

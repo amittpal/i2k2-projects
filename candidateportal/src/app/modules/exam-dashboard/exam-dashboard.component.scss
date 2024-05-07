@@ -1,0 +1,173 @@
+:host::ng-deep {
+  @import '../../../exam-scss/app/shapes';
+  
+  .btn-upload-image
+  {
+    border-color: #2E75B6;
+    background-color: #deebf7;
+  }
+  .badge-default{
+    background-color: #808080;
+    color: white;
+  }
+  #question_status_summary{
+    height: 135px;
+    overflow: hidden;
+  }
+
+  .fullheight-min{
+    //min-height: calc(90vh - 15vh)
+    min-height: calc(100vh - 180px)
+  }  
+
+  // .badge-warning{
+  //   color: #626262;
+  // }
+  
+  .dashboard-footer {
+    position: absolute;
+    bottom: 0;
+  }
+ 
+  #question-container {
+    //min-height: calc(100vh - 16vh);
+    height: calc(100vh - 22vh);
+    //overflow-y: auto;
+  }
+
+  .large_checkbox,
+  .large_radio {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+  }
+
+  .dashboard-header {
+    height: 130px;
+  }
+  .opt_max_height {
+    //height: 40vh;
+    overflow-y: auto;
+  }
+  .qus_max_height {
+    //height: 25vh;
+    overflow-y: auto;
+  }
+
+  .Punjabi {
+    font-family: "gurbaniLipi" !important;
+    font-size: 16px !important;
+  }
+  .Hindi {
+    font-family: "krutidev" !important;
+    font-size: 16px !important;
+  }
+
+  #footerContainer
+  {
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    //line-height: 60px; /* Vertically center the text there */
+    //background-color: #f5f5f5;
+  }
+  @media (max-width: 768px) {
+    #questionDiv{
+      margin-top: 10vh;
+    }
+    #footerContainer
+    {
+      position: inherit;
+    }
+   
+  }
+ .card-body {
+    padding: 15px;
+    margin-bottom: 0 !important;
+  }
+  strong{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .question_answer_fix_height{
+    max-height: 45vh;
+    overflow-y: hidden;
+    p{
+      font-size: 0.938rem;
+      color: #000;
+    }
+    @media(max-width: 1024px) and (max-height: 768px) {
+      max-height: 50vh;
+    }
+    &:hover{
+      overflow-y: auto;
+    }
+    
+  }
+
+  .section-head
+  {
+    background-color: #d9d9d9;
+    font-weight: bold;
+    width: 105px;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    height: 30px;
+  }
+
+  @media (max-width: 1367px) { 
+    #questionCard
+    {   
+      min-height: calc(100vh - 285px);
+    }
+  }
+  @media (min-width: 1367px) { 
+    #questionCard
+    {    
+      min-height: calc(100vh - 300px);
+    }
+  }
+  // @media (max-width: 769px) {
+  //   .question_answer_fix_height{
+  //     max-height: 50vh;
+  //   }
+  // } 
+}
+
+.badge {
+  color: #000;
+}  
+.badge-danger, .badge-default {
+  color: #fff;
+}
+.badge-success {
+  background-color: rgb(83, 168, 59);
+}
+
+.btn-review {
+  background-color: #8464a2 !important;
+  color: #fff !important;
+  border-color: #7e5d9c !important;
+  &:hover {
+    background-color: #7e5d9c !important;
+    border-color: #7e5d9c !important;
+  }
+}
+
+.col-md-4.left{
+  left: 100px;
+}
+
+.col-md-4.right{
+  right: 100px;
+}
+
+
+
+
+

@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <form class="app-form" novalidate="">
+        <div class="card card-bordered fullheight-fixed">
+            <div class="card-body">
+
+        <div class="row">
+        
+            <div class="col-md-2 col-lg-2">
+                <!-- Exam No -->
+                <div class="form-group trad foc">
+                    <label>Exam Number</label>
+                    <label type="text" class="form-control p-2 form-control-sm" id="shift" name="shift">
+                        {{examShiftDetails.exam_number}}</label>
+        
+                </div>
+        
+            </div>
+        
+            <div class="col-md-3 col-lg-3">
+                <!-- Exam Type -->
+                <div class="form-group trad foc">
+                    <label>Exam Type</label>
+                    <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                        name="shift">{{examShiftDetails.exam_type}}</label>
+                </div>
+        
+            </div>
+        
+            <div class="col-md-2 col-lg-2">
+        
+                <!-- Exam Code -->
+                <div class="form-group trad foc">
+                    <label>Exam Code</label>
+                    <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                        name="shift">{{examShiftDetails.exam_code}}</label>
+        
+                </div>
+        
+            </div>
+        
+            <!-- Exam Grade -->
+            <div class="col-md-3 col-lg-3">
+                <div class="form-group trad foc">
+                    <label>Exam Grade</label>
+                    <label type="text" class="form-control p-2 form-control-sm" id="shift"
+                        name="shift">{{examShiftDetails.exam_grade}}</label>
+                </div>
+            </div>
+
+            <!-- Exam Public Label -->
+            <div class="col-md-2 col-lg-2">
+                <div class="form-group trad foc">
+                    <label>Exam Public Label</label>
+                    <label type="text" class="form-control p-2 form-control-sm" id="publicname"
+                        name="publicname">{{examShiftDetails.exam_public_name}}</label>
+                </div>
+            </div>
+        
+        </div>
+
+                <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="d-flex mb-2">
+                        <strong>SHIFTS</strong>
+                        <div class="paging-block col-lg">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-borderless">
+                        <ngx-ixcheck-table id="banks-list" headerTitle="Shift List" [items]="items" [indexColumn]="false"
+                            [itemCount]="itemCount" [lastSeenIdMax]="lastSeenIdMax" [lastSeenIdMin]="lastSeenIdMin"
+                            [lastOffset]="lastOffset" [selectColumn]="false">
+
+                            <!-- Shift Number -->
+                            <ngx-ixcheck-table-column [property]="'shift_number'" [header]="'Shift Number'"
+                                [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Language -->
+                            <ngx-ixcheck-table-column [property]="'language'" [header]="'Language'" [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Total No Question -->
+                            <ngx-ixcheck-table-column [property]="'total_no_of_question'" [header]="'Total Question'" [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Assigned -->
+                            <ngx-ixcheck-table-column [property]="'number_of_questions_assigned'" [header]="'Assigned'"
+                                [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Balance -->
+                            <ngx-ixcheck-table-column [property]="'number_of_questions_balance'" [header]="'Unassigned'"
+                                [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <!-- Created -->
+                            <ngx-ixcheck-table-column [property]="'created'" [header]="'Created'" [sortable]="false">
+                            </ngx-ixcheck-table-column>
+
+                            <ngx-ixcheck-table-column [colType]="'custom'">
+                                <ng-template #colHeaderComponent>Action</ng-template>
+                                <ng-template #colDetailComponent let-rowitem="item">
+                                    <div class="btn-group" dropdown>
+                                        <!-- <a href="/#/author/assignments/{{rowitem.author_assigment_id}}/manage/question"
+                                            (click)="$event.stopPropagation();">Manage
+                                        </a> -->
+                                        <a href="/#/author/assignments/exams/{{examId}}/shifts/{{rowitem.shift_number}}/language/{{rowitem.language_guid}}/primary/{{rowitem.primary_question}}/manage"
+                                            (click)="$event.stopPropagation();">Manage
+                                        </a>
+                                    </div>
+
+                                </ng-template>
+                            </ngx-ixcheck-table-column>
+                        </ngx-ixcheck-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

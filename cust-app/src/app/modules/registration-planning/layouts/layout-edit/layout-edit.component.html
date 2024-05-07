@@ -1,0 +1,296 @@
+<div class="container-fluid" *ngIf="layoutDetails != undefined">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">
+            </div>
+            <div class="paging-block col-4">        
+            </div>
+            <div class="filter-container col-4">          
+              <div class="filter-block" filterToggle>
+                <a class="filter-slider">
+                  <svg-icon class="filter-slider" src="assets/images/sliders.svg"></svg-icon>
+                </a>
+              </div>
+    
+            </div>
+          </div>
+    
+        </div>
+        <div class="card-body scrollable app-form">
+            <form class="app-form" [formGroup]="initialLayoutFormGroup" id="initialLayoutForm">
+                <div class="row">                 
+                  <div class="col-lg-2 col-sm-2 form-group trad foc">
+                    <label for="layoutCode">Layout Code</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="layoutCode">
+                  </div> 
+                  <div class="col-lg-2 col-sm-2 form-group trad foc">
+                    <label for="layoutName">Layout Name</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="layoutName">
+                  </div> 
+                  <div class="col-lg-2 col-sm-2 form-group trad foc">
+                   <label for="layoutRegType">Registration Name</label>
+                   <select class="form-control form-control-sm" formControlName="layoutRegType">
+                    <option *ngFor="let type of registrationList" [value]="type.guid">
+                      {{type.name}}
+                    </option>
+                </select>
+                  </div> 
+                  <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutType">Layout Type</label>
+                    <select class="form-control form-control-sm" formControlName="layoutType">
+                     <option *ngFor="let type of layoutTypeList" [value]="type.layout_type_guid">
+                       {{type.name}}
+                     </option>
+                    </select>
+                   </div> 
+                  <div class="col-lg-3 col-sm-3 form-group trad foc mt-4">
+                    <input 
+                    type="button" 
+                    class="btn btn-primary" 
+                    value="Add Page" (click)="openAddPageModel(newPageModalTemplate)">
+                  </div>                                                                  
+                </div>        
+              </form>    
+          <div class="row">
+            <div class="col-md-12">
+              <tabset class="tabset-container" #pagesTabs>
+                <tab *ngFor="let page of layoutDetails.layout.pages" heading="{{page.page_name}}"
+                  (selectTab)="setActivePageId(page.page_guid)">
+                  <ng-template tabHeading>
+                    <div class="page_actions">
+                      <a>
+                        <svg-icon class="action_icon" src="assets/images/settings.svg"
+                          (click)="openEditPageModel(editPageModalTemplate)"></svg-icon>
+                      </a>
+                      <a>
+                        <svg-icon class="action_icon" src="assets/icons/garbage-bin.svg" (click)="onDeletePage(page.page_guid)">
+                        </svg-icon>
+                      </a>
+                    </div>
+                  </ng-template>
+                </tab>
+              </tabset>
+              <div *ngFor="let page of layoutDetails.layout.pages; let pageIndex=index">
+                <div *ngIf="pagesTabs.tabs[pageIndex].active == true">
+                  <div class="col-md-12 mt-3 text-right">
+                    <input (click)="openAddSectionModel(newSectionModalTemplate)" type="button" value="Add New Section"
+                      class="btn btn-default btn-sm">
+                  </div>
+                  <div class="col-md-12" *ngFor="let section of page.sections">
+                    <div class="d-flex">
+                      <h4>{{section.section_name}}</h4>
+                      <div class="sectionButtons p-3">
+                        <a (click)="openEditSectionModel(editSectionModalTemplate,section.section_guid)">
+                          <svg-icon class="action_icon" src="assets/images/settings.svg" ></svg-icon>
+                        </a>  
+                          <a (click)="deleteSection(page.page_guid,section.section_guid)">
+                            <svg-icon class="action_icon"   src="assets/icons/garbage-bin.svg"></svg-icon>
+                          </a>                   
+                      </div>                                   
+                    </div>   
+        
+                    <gridster [options]="gridsterConfigration" class="mt-3"
+                      (click)="setSectionId(section.section_guid,$event)"
+                      [ngClass]="{'active_section':currentSelectedSectionId===section.section_guid}">   
+        
+                      <gridster-item *ngFor="let component of section.comps" [item]="component">
+                        <ng-container
+                          LoadComponent                  
+                          [group]="templateForm"
+                          [componentDetails]="component" 
+                          >
+                        </ng-container
+                        >
+                        <div class="actions_div">
+                          <a>
+                            <svg-icon class="icon_setting" src="assets/images/settings.svg"
+                              (click)="openComponentSettingsModal(page.page_guid,section.section_guid,component.comp_guid,componentSettingsModalTemplate)">
+                            </svg-icon>
+                          </a>
+                          <a (click)="deleteComponent(page.page_guid,section.section_guid,component.comp_guid)">                    
+                            <svg-icon src="assets/icons/garbage-bin.svg" class="action_icon"></svg-icon>
+                          </a>
+                        </div>
+                      </gridster-item>
+                    </gridster>
+                  </div>
+                </div>
+              </div>
+            </div>                     
+          </div>
+        </div>
+        <div class="card-footer">
+          <input 
+          type="button" 
+          class="btn btn-primary" 
+          value="Confirm Changes"                
+          *ngIf="layoutDetails.layout.pages.length>0"
+          (click)="saveTemplateChanges()">
+        </div>
+  
+      </div>
+    </div>
+    <aside class="filter-menu" id="filterDiv">
+      <div class="card card-bordered fullheight-fixed">
+        <div class="card-header">
+          <div class="card-title">OPTIONS</div>
+          <div class="card-controls">
+            <ul>
+              <li>
+                <a #filterOpen class="icon-filter-close" filterToggle bubbleClose>
+                  <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    
+        <div class="card-body scrollable">
+          <div class="card-body section-body section-body-sm p-2 app-form">
+            <div class="form-group trad foc">
+              <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Search for components" 
+              #componentName
+              (keyup)="onComponentSearch(componentName.value)"        
+              >       
+            </div>
+            <div class="toolbar">
+              <div *ngFor="let item of searchedComponents" class="draggable" draggable="true"
+                (dragend)="onComponentDroped(item,componentSettingsModalTemplate)">
+                {{item.value}}
+              </div>
+            </div> 
+          </div>
+        </div>
+       
+      </div>
+    </aside>
+  
+  
+  </div>
+    
+   <!--Modals for page-->
+<ng-template #newPageModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Page</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="addPageModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <form [formGroup]="addPageForm" (ngSubmit)="onAddNewPageSubmit()" class="app-form">
+        <div class="form-group trad foc">
+          <label>Page Name</label>
+          <input type="text" class="form-control" formControlName="pageName">
+        </div>
+        <div class="form-group ">
+          <input type="submit" class="btn btn-sm btn-primary" value="Add">
+        </div>
+      </form>
+  
+    </div>
+  
+  </ng-template>
+  <ng-template #editPageModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Page Details</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="editPageModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <form [formGroup]="editPageForm" (ngSubmit)="onEditPageSubmit()" class="app-form">
+        <div class="form-group trad foc">
+          <label>Page Name</label>
+          <input type="text" class="form-control" formControlName="pageName">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-sm btn-primary" value="Submit">
+        </div>
+      </form>
+  
+    </div>
+  </ng-template>
+  
+  <!--Modals for section-->
+  <ng-template #newSectionModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Section</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="addSectionModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <form [formGroup]="addSectionForm" (ngSubmit)="onAddNewSectionSubmit()" class="app-form">
+        <div class="form-group trad foc">
+          <label>Section Name</label>
+          <input type="text" class="form-control" formControlName="sectionName">
+        </div>
+        <div class="form-group">
+          <label>Default Section Visibility</label>
+          <select class="form-control"  formControlName="visibility">
+            <option value="">Select</option>
+            <option value=1>Show</option>
+            <option value=0>Hide</option>
+          </select>        
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-sm btn-primary" value="Add">
+        </div>
+      </form>
+  
+    </div>
+  </ng-template>
+  <ng-template #editSectionModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Section Details</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="editSectionModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <form [formGroup]="editSectionForm" (ngSubmit)="onEditSectionSubmit()" class="app-form">
+        <div class="form-group trad foc">
+          <label>Section Name</label>
+          <input type="text" class="form-control " formControlName="sectionName">
+        </div>
+        <div class="form-group">
+          <label>Default Section Visibility</label>
+          <select class="form-control"  formControlName="visibility">
+            <option value="">Select</option>
+            <option value=1>Show</option>
+            <option value=0>Hide</option>
+          </select>        
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-sm btn-primary" value="Submit">
+        </div>
+      </form>
+  
+    </div>
+  </ng-template>
+  
+  <!--Modals for component setting-->
+  <ng-template #componentSettingsModalTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Component Settings</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="editComponentSettingsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body templateModal text-left">
+      <ngx-ixcheck-textboxsetting
+       [componentDetails]="componentObject" 
+       [addedComponents]="addedComponents"
+       [addedSections]="addedSections"   
+       (submittedComponentSettings)="getComponentSettings($event)">
+      </ngx-ixcheck-textboxsetting
+      >
+    </div>
+  </ng-template>
+  
+  

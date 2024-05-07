@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <form autocomplete="off" class="app-form" id="dashboardForm" [formGroup]="dashboardFormGroup"  novalidate="">
+
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                       SNAPSHOT UPDATED AS OF {{date | date:'medium'}}
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- registration # -->
+                        <div class="form-group foc trad">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-2 mt-1">
+                                    <span for="registration" class="mb-0">REGISTRATION</span>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-xl-10">
+                                    <select class="form-control" id="registration" name="registration" (change)="getExamList()" formControlName="registration">
+                                        <option value="" disabled>Select</option>
+                                        <option *ngFor="let item of registrationList" [value]="item.guid">
+                                            {{item.code}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group foc trad">
+                            <div class="row">
+                                <div class="col-md-2 mt-1">
+                                    <span for="examCode" class="mb-0">EXAM</span>
+                                </div>
+                                <div class="col-md-10">
+                                    <select class="form-control" id="examCode" name="examCode" (change)="getDashboardDetails()"
+                                        formControlName="examCode">
+                                        <option value="" disabled>Select</option>
+                                        <option *ngFor="let item of examList" [value]="item.exam_guid">
+                                            {{item.code}}
+                                        </option>
+                                    </select>
+                                </div>
+                        
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<div class="card-body section-body section-body-sm mb-0" *ngIf="enableDashboardDetail">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+
+            <div class="row">
+
+
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-2">
+                    <div class="card card-height">
+                        <div class="card-body">
+                                <app-total-exams [regGuid]="regGuid" [examGuid]="examGuid" ></app-total-exams>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                    <div class="card card-height">
+                        <div class="card-body">
+                                <app-question-papers [regGuid]="regGuid" [examGuid]="examGuid" ></app-question-papers>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
+                    <div class="card card-height">
+                        <div class="card-body">
+                                <app-authoring-status [regGuid]="regGuid" [examGuid]="examGuid" ></app-authoring-status>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-total-registrations [regGuid]="regGuid" [examGuid]="examGuid" ></app-total-registrations>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-registration-status [regGuid]="regGuid" [examGuid]="examGuid" ></app-registration-status>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-4">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-registration-per-hour [regGuid]="regGuid" [examGuid]="examGuid" ></app-registration-per-hour> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-2">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-total-centers [regGuid]="regGuid" [examGuid]="examGuid" ></app-total-centers>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-center-allocation [regGuid]="regGuid" [examGuid]="examGuid" ></app-center-allocation>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-2">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-admit-cards [regGuid]="regGuid" [examGuid]="examGuid" ></app-admit-cards>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-exam-status [regGuid]="regGuid" [examGuid]="examGuid" ></app-exam-status>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                    <div class="card card-height">
+                        <div class="card-body">
+                            <app-post-exam [regGuid]="regGuid" [examGuid]="examGuid" ></app-post-exam>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

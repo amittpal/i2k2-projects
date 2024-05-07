@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable">
+            <form class="app-form" id="addJobTypesForm" [formGroup]="addJobTypesFormGroup" novalidate="">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="form-group trad foc required">
+                            <label for="code" class="mb-0">Code</label>
+                            <input type="text" class="form-control form-control-sm" name="code" id="code"
+                                formControlName="code" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="name" class="mb-0">Name</label>
+                            <input type="text" class="form-control form-control-sm" name="name" id="name"
+                                formControlName="name" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="description" class="mb-0">Description</label>
+                            <input type="text" class="form-control form-control-sm" name="description" id="description"
+                                formControlName="description" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="default_timeout_minutes" class="mb-0">Default Timeout(minutes)</label>
+                            <input type="text" class="form-control form-control-sm" name="default_timeout_minutes"
+                                id="default_timeout_minutes" formControlName="default_timeout_minutes" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="recurring_interval_hour" class="mb-0">Recurring Interval(Hour)</label>
+                            <input type="text" class="form-control form-control-sm" name="recurring_interval_hour"
+                                id="recurring_interval_hour" formControlName="recurring_interval_hour" required>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="create_on_fail" class="mb-0">Create On Fail</label>
+                            <select class="form-control form-control-sm" id="create_on_fail" name="create_on_fail"
+                                formControlName="create_on_fail">
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc required">
+                            <label for="action" class="mb-0">Action</label>
+                            <input type="text" class="form-control form-control-sm" name="action" id="action"
+                                formControlName="action" required>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label for="recurring" class="mb-0">Recurring</label>
+                            <select class="form-control form-control-sm" id="recurring" name="recurring"
+                                formControlName="recurring">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">
+                            <label for="status" class="mb-0">Status</label>
+                            <select class="form-control form-control-sm" id="status" name="status"
+                                formControlName="status">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Submit</button>
+            <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</div>

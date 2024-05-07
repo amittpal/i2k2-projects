@@ -1,0 +1,42 @@
+<div class="header-container">
+  <div class="container-fluid">
+    <div class="row header-row" *ngIf="instructions">
+      <div class="col-12 text-center page-title">
+        {{page_title}} | <app-server-status-check></app-server-status-check>              
+      </div>
+    </div>
+    <div class="row header-row" *ngIf="!instructions">
+      <div class="col-5 page-title">
+        {{page_title}} | <app-server-status-check></app-server-status-check>
+        <!-- <ng-container *ngIf="examDetails">
+          | <app-server-status-check></app-server-status-check>
+        </ng-container>         -->
+      </div>
+      <div class="col-2 text-center font-weight-bold">
+        {{timer_value}}
+      </div>
+      <div class="col-5 text-right">
+        <ng-container *ngIf="examDetails">
+          <span class="mr-2">{{roll_number}}<span class="separator ml-2">|</span></span>
+          Name: <span class="text-uppercase">{{user_name}}</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="header-container">
+  <div class="container-fluid">
+    <div class="row header-row">
+      <div class="col-3 mob-menu-block">
+        
+      </div>
+      <div class="col-3 header-back-button">
+        
+      </div>
+      <div class="col-6 heading-block">{{page_title}}</div>
+      
+    </div>
+  </div>
+</div> -->

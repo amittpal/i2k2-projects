@@ -1,0 +1,55 @@
+<aside class="filter-menu" id="filterDiv">
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <div class="card-title">Filter</div>
+        <div class="card-controls">
+          <ul>
+            <li>
+              <a class="icon-filter-close" filterToggle bubbleClose>
+                <svg-icon class="icon-filter-close" src="assets/images/close.svg"></svg-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="card-body scrollable">
+        <div class="card-body section-body section-body-sm p-2">
+          <form novalidate  [formGroup]="sampleDataFormGroup" (submit)="onSampleDataFormSubmit()"
+            class="p-0">
+            <!-- LAYOUT -->
+            <div class="form-group mb-0">
+              <label for="candidate" class="mb-0">CANDIDATE #</label>
+              <input type="text" class="form-control form-control-sm"
+              [ngClass]="{red:!sampleDataFormGroup.controls['candidate'].valid}"  name="candidate" id="candidate" formControlName="candidate"
+              >
+              
+            </div>
+  
+            <!-- Code -->
+            <div class="form-group mb-0">
+              <label for="first_name" class="mb-0">FIRST NAME</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!sampleDataFormGroup.controls['first_name'].valid}"  name="first_name" id="first_name"
+                formControlName="first_name">
+            </div>
+  
+            <!-- Name -->
+            <div class="form-group mb-0">
+              <label for="name" class="mb-0">ADDRESS</label>
+              <input type="text" class="form-control form-control-sm"
+                [ngClass]="{red:!sampleDataFormGroup.controls['address'].valid}"  name="address" id="address"
+                formControlName="address">
+            </div>                         
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary btn-sm px-4" id="btnSubmit" type="submit" (click)="onSampleDataFormSubmit()"
+          form="permissionForm">Apply</button>
+        <button class="btn btn-default btn-sm px-4 float-right" id="btnReset" type="reset"
+          (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </aside>
+  

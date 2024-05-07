@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="table-container">
+      <div class="card card-bordered fullheight-min">
+        <div class="card-header">
+          <div class="header-flex-container">
+            <div class="card-title col-4">              
+            </div>  
+  
+          </div>
+        </div>  
+
+        <div class="card-body scrollable app-form">
+         <form class="app-form" [formGroup]="initialLayoutFormGroup">   
+           <div class="row">
+                <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutCode">Layout Code</label>                      
+                      <input class="form-control" type="text"  formControlName="layoutCode">
+                   </div> 
+                   <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutName">Layout Name</label>                     
+                     <input class="form-control" type="text" formControlName="layoutName">
+                  </div> 
+
+                  <div class="col-lg-3 col-sm-3 form-group trad foc">
+                    <label for="layoutExamType"> Type</label>  
+                    <input class="form-control" type="text" formControlName="layoutExamType">
+                   </div> 
+                   
+                   <div class="col-lg-3 col-sm-3 form-group trad foc mt-4">
+                     <input 
+                     type="button" id="backToList"
+                     class="btn btn-primary  btn-block" 
+                     value="BACK TO LAYOUT LIST" routerLink="/admitcard/layouts">
+                   </div>   
+                   
+            </div>
+         </form>   
+            <div class="app-form" *ngIf="templateUrl != ''">
+
+                <div class="container-fluid">
+                    <div class="card card-bordered fullheight-fixed">
+                      <div class="card-body">
+                        <ngx-ixcheck-reports-viewer  [template]="templateUrl" [data]="dataSet" [templateName]="'AdmitCardPreview'">
+                        </ngx-ixcheck-reports-viewer>
+                      </div>
+                    </div>
+                  </div>
+
+                
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

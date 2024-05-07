@@ -1,0 +1,116 @@
+<div class="card-body fullheight-fixed  ">
+    <form class="app-form m-0" id="basicSetupFormGroup" name="basicSetupFormGroup" [formGroup]="basicSetupFormGroup">
+        <div class="row  p-0 ">
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group trad foc">
+                    <label>Registration CODE</label>
+                    <input type="text" class="form-control" formControlName="code" maxlength="20">
+                </div>
+                <div class="form-group foc trad">
+                    <label>Registration NAME</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group trad foc">
+                    <label>Registration Start Date</label>
+                    <input type="date" class="form-control" formControlName="registration_start_date">
+                </div>
+                <div class="form-group foc trad">
+                    <label>Registration End Date</label>
+                    <input type="date" class="form-control" formControlName="registration_end_date">
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group foc trad">
+                    <label>Fee End Date</label>
+                    <input type="date" class="form-control" formControlName="fee_end_date">
+                </div>
+                <div class="form-group foc trad">
+                    <label>Url</label>
+                    <input type="text" class="form-control" formControlName="url">
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="form-group foc trad">
+                    <label>Required Prepayment</label>
+                    <select class="form-control" formControlName="required_payment" disabled>
+                        <option value="">Select</option>
+                        <option value="1">Yes</option>
+                        <option [selected] value="0">No</option>
+                    </select>
+                </div>
+                <div class="form-group foc trad">
+                    <label>Status</label>
+                    <select class="form-control" formControlName="status">
+                        <option value="">Select</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+        <div class="data-table ">
+            <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="true"
+                [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+                [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+                [addRows]="false" [dragIcon]="" [dragCss]="" [sortIndexOnDrop]="true"
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [deleteColumn]="false"
+                [sortIndexOnDrop]="true" [deleteCss]="{'color': 'red'}">
+                <!-- Child-Component -->
+                <ng-template #rowDetailExpand let-rowitem="item">
+                    <app-basic-setup-row-details [rowItemData]="rowitem" [rowItemData]="rowitem" [item]="rowitem"
+                        (update)="updateProductDetails($event)" (updatedDetails)="getUpdatedDetails($event)">
+                    </app-basic-setup-row-details>
+                </ng-template>
+                <!-- Child-Component-end -->
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+
+                    <ng-template #colHeaderComponent>
+                        <div class="text-center">#</div>
+                    </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <div class="text-center">{{rowitem.line_num}}</div>
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Exam Code </ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="code"
+                            [(ngModel)]="rowitem.code" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                    <ng-template #colHeaderComponent>Exam Name</ng-template>
+                    <ng-template #colDetailComponent let-rowitem="item">
+                        <input readonly type="text" class="form-control-sm col-sm-12 font-size-16" name="name"
+                            [(ngModel)]="rowitem.name" (click)="$event.stopPropagation();">
+
+                    </ng-template>
+                </ngx-ixcheck-table3-column>
+
+            </ngx-ixcheck-table3>
+            <br>
+            <div class="row">
+                <div class="col-7 pl-5">
+                    <button class="btn btn-sm btn-default add-rows" (click)="onAddRow()">add Rows</button>
+                    <button class="btn btn-sm btn-default add-rows ml-2" (click)="onClearRow()">Clear All
+                        Rows</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-footer  ">
+    <button class="btn btn-sm btn-primary" id="submitBtn" type="submit"
+        (click)="onBasicSetupFormSubmit()">Submit</button>
+    <button class="btn btn-sm btn-default float-right" (click)="resetFormData()" type="reset">Reset</button>
+</div>

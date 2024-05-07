@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="table-container" *ngIf="questionDetails !== undefined">
+      <ng-container [ngSwitch]="questionType">
+        <!--single selection question-->
+        <ng-container *ngSwitchCase="'SingleChoice'">
+          <app-single-choice [QuestionDetails]="questionDetails"></app-single-choice>
+        </ng-container>
+  
+        <!--multiple selection question-->
+        <ng-container *ngSwitchCase="'MultipleChoice'">
+          <app-multiple-choice [QuestionDetails]="questionDetails"></app-multiple-choice>
+        </ng-container>
+  
+        <!--question with true false option-->
+        <ng-container *ngSwitchCase="'TrueFalse'">
+          <app-true-false [QuestionDetails]="questionDetails"></app-true-false>
+        </ng-container>
+  
+        <!-- fill blank question -->
+        <ng-container *ngSwitchCase="'FillBlank'">
+          <app-fill-blank [QuestionDetails]="questionDetails"></app-fill-blank>
+        </ng-container>
+  
+        <!-- Short Answer question -->
+        <ng-container *ngSwitchCase="'ShortAnswer'">
+          <app-fill-blank [QuestionDetails]="questionDetails"></app-fill-blank>
+        </ng-container>
+  
+        <!-- match question -->
+        <ng-container *ngSwitchCase="'Match'">
+          <app-match [QuestionDetails]="questionDetails"></app-match>
+        </ng-container>
+      </ng-container>
+      
+     
+    </div>
+  </div>
+  
+  <app-mock-question-filter-secondary 
+  *ngIf="questionDetails !== undefined"
+  [MockQuestionId]="detailId">
+  </app-mock-question-filter-secondary>
+
+  <!-- *ngIf="questionDetails !== undefined" 
+  [QuestionStatusList]="questionDetails.requirement_summary"
+  [QuestionNumbersList]="questionDetails.requirement_details" [DetailId]="detailId"
+  [AssingmentId]="this.questionDetails.question_summary[0].author_assigment_id"
+  (selectedQuestionOutput)="onQuestionNumberSelect($event)" -->

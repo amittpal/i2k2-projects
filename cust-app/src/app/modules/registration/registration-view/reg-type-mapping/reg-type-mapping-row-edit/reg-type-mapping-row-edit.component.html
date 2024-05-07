@@ -1,0 +1,40 @@
+<div class="row" style="background-color: #dddddd; margin: auto">
+    <div class="col-sm-12 p-3">
+        <form [formGroup]="applicableFeeFormGroup" autocomplete="off" name="applicableFeeFormGroup"
+            id="applicableFeeFormGroup">
+            <div class="row app-form">
+
+                <div class="col-md-2 col-lg-2">
+                    <div class="form-group foc trad">
+                        <label>Exam Code</label>
+                        <select class="form-control" #drp1 formControlName="exam_guid" id="exam_guid" name="exam_guid" 
+                            (change)="onSelectExams($event.target.value)" disabled>
+                            <option value="" selected>Select</option>
+                            <option *ngFor="let type of examList" [value]="type.exam_guid">
+                                {{type.code}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <div class="form-group foc trad">
+                        <label>Reg Type</label>
+                        <select class="form-control " id="reg_types" name="reg_types" [compareWith]="multiRegTypeComp" disabled
+                            formControlName="reg_types" multiple>
+                            <option *ngFor="let regType of regTypeList" [ngValue]="regType">
+                                {{regType.name}}
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>

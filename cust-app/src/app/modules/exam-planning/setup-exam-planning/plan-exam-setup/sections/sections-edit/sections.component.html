@@ -1,0 +1,192 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-fixed">
+    <div class="card-body scrollable">
+      <form autocomplete="off" class="app-form" id="addSectionsForm" [formGroup]="addSectionsFormGroup" novalidate="">
+
+        <div class="row">
+
+          <!-- Section  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="section" class="col-lg-12 p-2 mb-0">Section #</label>
+            <select class="form-control col-lg-10 p-2 form-control-sm" id="section" name="section"
+              formControlName="section_id" (change)="valueChange($event)">
+              <option value="">Please Select</option>
+              <option *ngFor="let section of sectionList" [value]="section.id">
+                {{section.section_name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- Question Count  -->
+          <div class="col-lg-3  col-sm-4 form-group trad foc required">
+            <label for="question_count" class="col-lg-12 p-2 mb-0">Question Count</label>
+            <input type="number" onlyNumber class="col-lg-10 p-2 form-control form-control-sm" name="question_count"
+              id="question_count" formControlName="question_count" required>
+          </div>
+
+          <!-- Auto Switch  -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc">
+            <label for="auto_switch" class="col-lg-12 p-2 mb-0">Auto Switch QUESTIONS </label>
+            <select class="col-lg-10 p-2 form-control form-control-sm" id="auto_switch" name="auto_switch"
+              formControlName="auto_switch">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <!-- Name -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="name" class="col-lg-12 p-2 mb-0">Section Name</label>
+            <input type="text" class="col-lg-10 p-2 form-control form-control-sm" name="name" id="name"
+              formControlName="section_name" required>
+          </div>
+
+          <!-- Allow Duration -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="allow_duration" class="col-lg-12 p-2 mb-0">Allow Duration</label>
+            <select class="form-control col-lg-10 p-2 form-control-sm" id="allow_duration" name="allow_duration"
+              formControlName="allow_duration" (change)="disableDuration($event)">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <!-- Subjects -->
+          <div class="col-lg-3 col-sm-4 form-group trad foc required">
+            <label for="subjects" class="col-lg-12 p-2 mb-0">Subjects</label>
+            <select [compareWith]="multisubjectComp" (ngModelChange)="onSubjectChange($event)"
+              class="form-control form-control-sm col-lg-10 p-2" formControlName="subjects" id="subjects" multiple>
+              <option *ngFor="let subject of selectedSubject" [ngValue]="subject">
+                {{subject.name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- Duration -->
+          <div class=" col-lg-3 col-sm-4 form-group trad foc">
+            <label for="duration" class="col-lg-12 p-2 mb-0">Duration</label>
+            <div class="d-flex">
+              <input type="number" onlyNumber class="col-lg-6 mr-1 cs-height p-2 form-control form-control-sm" name="duration"
+                id="duration" formControlName="duration" required>
+              <!-- duration_uom -->
+              <select class="col-lg-4 p-2 form-control cs-height form-control-sm" id="duration_uom" name="duration_uom"
+                formControlName="duration_uom_guid">
+                <option value="">Select</option>
+                <option *ngFor="let uoms of uomsList" [value]="uoms.guid">
+                  {{uoms.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+
+      </form>
+
+      <div class="row">
+        <div class="card-body">
+          <!-- table 3 component for invoices add module-->
+          <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+            <!-- Question Level(s) -->
+            <label for="question_level" class="col-lg-2 p-3 mb-0">Difficulty Levels</label>
+            <div class="data-table">
+              <ngx-ixcheck-table3 id="products-grid" headerTitle="Product" [items]="items" [dragColumn]="true"
+                [indexColumn]="true" [indexColumnHeader]="'#'" [itemCount]="itemCount" [tableName]="'products-grid'"
+                [selectColumn]="true" [expandOnIndexColClick]="true" [expandOnRowClick]="true" [pagination]="false"
+                [addRows]="false" (clearAll)="clearAllRows($event)" [dragIcon]="" [dragCss]=""
+                [expandRowIcons]="{'expanded': 'fa fa-plus-circle fa-lg', 'closed': 'fa fa-plus-circle fa-lg'}"
+                [expandRowCss]="{'expanded': {'color': 'green'}, 'closed': {'color': 'gray'}}" [sortIndexOnDrop]="true"
+                (onDrag)="onDragged($event)" [deleteColumn]="true" [deleteCss]="{'color': 'red'}"
+                (onDeleteRow)="deleteRow($event)">
+
+                <ng-template #rowDetailExpand let-rowitem="item">
+                  <ngx-ixcheck-product-info [rowItemData]="rowitem" [examId]="examId"
+                    (childComponentData)="getChildComponentData($event)" [item]="rowitem"
+                    (update)="updateProductDetails($event)">
+                  </ngx-ixcheck-product-info>
+                </ng-template>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>
+                    <div class="text-center">#</div>
+                  </ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div class="text-center">{{rowitem.line_num}}</div>
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <!-- Subject -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>
+                    <div class="text-center">Subject</div>
+                  </ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div class="row">
+                      <div class="col-lg-4"></div>
+                      <input readonly type="text" class="col-lg-5  form-control-sm col-sm-12 font-size-16"
+                        name="txt_desc" [(ngModel)]="rowitem.name" (click)="$event.stopPropagation();">
+                    </div>
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <!-- Difficulty Level -->
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>Difficulty Level</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div [disabled]="true" class="row">
+                      <div class="col-lg-3"></div>
+                      <input readonly type="text" class="col-lg-6 form-control-sm col-sm-12 font-size-16"
+                        name="txt_desc" [(ngModel)]="rowitem.difficulty_levels" (click)="$event.stopPropagation();">
+                    </div>
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+
+                <ngx-ixcheck-table3-column [colType]="'custom'">
+                  <ng-template #colHeaderComponent>
+                    # Of Questions</ng-template>
+                  <ng-template #colDetailComponent let-rowitem="item">
+                    <div class="row">
+                      <div class="col-lg-4"></div>
+                      <input readonly type="text" class="col-lg-6 form-control-sm col-sm-12 font-size-16 text-right"
+                        name="txt_amount" [(ngModel)]="rowitem.number_of_questions" (click)="$event.stopPropagation();">
+                    </div>
+                  </ng-template>
+                </ngx-ixcheck-table3-column>
+
+
+              </ngx-ixcheck-table3>
+              <br>
+              <div class="row">
+                <div class="col-7 pl-5" [ngClass]=" addRowStatus ? 'primary' : 'secondary'">
+                  <button class="btn btn-sm btn-default add-rows" (click)="incrementRows()">add
+                    Rows</button>
+                </div>
+                <div class="col-2 text-center">
+                  Total
+                </div>
+                <div class="col-1">
+                  {{totalQuestion}}
+                </div>
+              </div>
+              <br>
+
+            </div>
+          </div>
+          <!--End of table 3 -->
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary" id="submitBtn" type="submit" (click)="formSubmit()">Update</button>
+      <button *ngIf="newUser" class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</div>

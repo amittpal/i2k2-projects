@@ -1,0 +1,100 @@
+:host ::ng-deep {
+    ngx-ixcheck-table3 {
+      table {
+        thead {
+          .flx-th-3 {
+            -webkit-box-ordinal-group: 4;
+            order: 3;
+            width: 5%;
+          }
+  
+          .flx-th-4 {
+            -webkit-box-ordinal-group: 5;
+            order: 4;
+            // width: 18%;
+          }
+          .flx-th-5 {
+            order: 5;
+            padding-left: 100px!important;
+            
+          }
+  
+          tr.flx-hr-tr {
+            th {
+              text-align: inherit;
+              font-weight: 400;
+              text-transform: uppercase;
+            }
+            border: 0 solid rgba(3, 3, 3, 0.2) !important;
+            border-bottom: 1px solid #f0f3f5 !important;
+           
+            background-color: #f9f9f9 !important;
+            margin-bottom: 5px !important;
+          }
+  
+      
+        }
+  
+        tbody {
+          .flx-col-3 {
+            width: 5% !important;
+          }
+          .flx-col-4 {
+            width: 40% !important;
+          }
+          .flx-col-5 {
+            order: 5;
+            width: 40% !important;
+          }
+          .flx-col-6 {
+            order: 6;
+            width: 19% !important;
+          }
+          .flx-col-7 {
+            //order: 5;
+            width: 18% !important;
+          }
+          .flx-col-8 {
+            //order: 5;
+            width: 10% !important;
+          }
+          .flx-col-9 {
+            //order: 5;
+            width: 15% !important;
+          }
+          .flx-col-10 {
+            //order: 5;
+            width: 5% !important;
+          }
+          .flx-col-11 {
+            //order: 5;
+            width: 5% !important;
+          }
+        }
+      }
+    }
+  }
+  
+  :host ::ng-deep {
+    .fa-plus-circle {
+      background: url(../../../../../../../assets/icons/plus.svg) 0 0/35px 35px !important;
+      cursor: pointer;
+    }
+    .fa-newlist {
+      background: url(../../../../../../../assets/icons/list.svg) 0 0/15px 15px !important;
+      cursor: grab;
+    }
+    .fa-trash {
+      background: url(../../../../../../../assets//icons/garbage-bin.svg) 0 0/15px 15px !important;
+      cursor: pointer;
+      width: 15px !important;
+    }
+  }
+  
+  :host ::ng-deep {
+    .form-control-sm {
+      border: 1px solid #ced4da;
+    }
+   
+  }
+  

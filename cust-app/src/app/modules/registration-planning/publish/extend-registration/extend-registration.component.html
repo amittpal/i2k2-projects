@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="card card-bordered fullheight-min">
+    <div class="card-body">
+      <form [formGroup]="basicSetupFormGroup">
+        <div class="row app-form">
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <label>EXAM CODE</label>
+              <input type="text" class="form-control" formControlName="code" />
+            </div>
+            <div class="form-group foc trad">
+              <label>EXAM NAME</label>
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+            <div class="form-group foc trad">
+              <label>EXAM TYPE</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="exam_type"
+              />
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group trad foc">
+              <label>Registration Start Date</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="registration_start_date"
+              />
+            </div>
+            <div class="form-group foc trad">
+              <label>Registration End Date</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="registration_end_date"
+              />
+            </div>
+            <div class="form-group foc trad">
+              <label>Fee End Date</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="fee_end_date"
+              />
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3">
+            <div class="form-group foc trad">
+              <label>Required Prepayment</label>
+              <select class="form-control" formControlName="required_payment">
+                <option [selected]>Select</option>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="card card-borderless">
+          <div class="card-header">
+            <label class="card-title">Applicable Fees</label>
+          </div>
+          <div class="card-body">
+            <div id="basicTable_wrapper" class="dataTables_wrapper no-footer">
+              <div class="data-table p-0" *ngIf="notFound == false">
+                <ngx-ixcheck-table
+                  id="registrations-setup-list"
+                  headerTitle="Applicable Fees List"
+                  [items]="items"
+                  [indexColumn]="false"
+                  [itemCount]="itemCount"
+                  [lastSeenIdMax]="lastSeenIdMax"
+                  [lastSeenIdMin]="lastSeenIdMin"
+                  [lastOffset]="lastOffset"
+                  [offset]="offset"
+                  [selectColumn]="false"
+                  [expandOnIndexColClick]="false"
+                  [expandOnRowClick]="false"
+                  [paginationStyleType]="paginationStyle"
+                >
+                  <ngx-ixcheck-table-column
+                    [property]="'level1'"
+                    [header]="'Level 1'"
+                    [sortable]="false"
+                  >
+                  </ngx-ixcheck-table-column>
+                  <ngx-ixcheck-table-column
+                    [property]="'level2'"
+                    [header]="'Level 2'"
+                    [sortable]="false"
+                  >
+                  </ngx-ixcheck-table-column>
+                  <ngx-ixcheck-table-column
+                    [property]="'level3'"
+                    [header]="'Level 3'"
+                    [sortable]="false"
+                  >
+                  </ngx-ixcheck-table-column>
+
+                  <ngx-ixcheck-table-column
+                    [property]="'priority'"
+                    [header]="'Priority'"
+                    [sortable]="false"
+                  ></ngx-ixcheck-table-column>
+
+                  <ngx-ixcheck-table-column
+                    [property]="'amount'"
+                    [header]="'Fees'"
+                    [sortable]="false"
+                  ></ngx-ixcheck-table-column>
+                </ngx-ixcheck-table>
+              </div>
+              <div class="not-found-container" *ngIf="notFound == true">
+                <h5>No Data Available...</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer border-0">
+      <button
+        class="btn btn-sm btn-primary"
+        id="submitBtn"
+        type="submit"
+        (click)="onExtendSubmit()"
+      >
+        Extend
+      </button>
+      <!-- <button class="btn btn-sm btn-default float-right" type="button" (click)="reset()">Reset</button> -->
+    </div>
+  </div>
+</div>

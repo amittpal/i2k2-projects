@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable p-0">
+
+            <form [formGroup]="smsSetupFormGroup">
+                <div class="row app-form">
+
+                    <div class="col-md-4 col-lg-4">
+                        <div class="form-group trad foc">
+                            <label>URL</label>
+                            <input type="text" class="form-control" formControlName="url">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>KEY/UID</label>
+                            <input type="text" autocomplete="false" class="form-control" formControlName="key_uid">
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>PASSWORD</label>
+                            <input type="password" autocomplete="false" class="form-control" formControlName="password">
+                        </div>
+
+                        <div class="form-group foc trad">
+                            <label>TEMPLATE TEXT</label>
+                            <textarea id="template" #templeteTxt (keyup)="countTextChar(templeteTxt.value)"
+                                class="form-control" formControlName="templete_text"></textarea>
+                            <!-- <span>{{charCount}}/160 CHARACTER(S)</span> -->
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 col-lg-8 form-group trad foc">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 form-group trad foc">
+                                <label for="sms_placeholder">SMS'S PLACEHOLDER TAGS</label>
+                                <div class="card card-bordered" style="height: 110px;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-sm-4"
+                                                        *ngFor="let tag of smsPlaceHolderTags">
+                                                        <span>{{tag}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div>
+    <div class="card card-bordered fullheight-fixed">
+      <div class="card-header">
+        <label class="p-1" *ngIf="examNumber">EXAM # {{examNumber||'Exam Number'}}</label>
+        <tabset filterClose class="tabset-container" #tabset>
+          <tab heading="Exam"></tab >
+          <tab heading="Sections"></tab>
+          <tab heading="Questions"></tab>
+          <tab heading="Final Review"></tab>
+        </tabset>
+      </div>
+
+      <div class="card-body scrollable inside-footer-fixed">
+        <div *ngIf="tabset.tabs[0].active == true">
+          <app-exam (nextTab)="nextTab($event)" (exam_num)="exam_num($event)"  [examId]="examId" [Id]="Id"></app-exam>
+        </div>
+        <div *ngIf="tabset.tabs[1].active == true">
+          <app-sections (nextTab)="nextTab($event)"></app-sections>
+        </div>
+        <div *ngIf="tabset.tabs[2].active == true">
+          <app-questions (nextTab)="nextTab($event)"></app-questions>
+        </div>
+        <div *ngIf="tabset.tabs[3].active == true">
+          <app-final-review (nextTab)="nextTab($event)"></app-final-review>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

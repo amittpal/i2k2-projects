@@ -1,0 +1,165 @@
+<div *ngIf="items">
+    <label>EXAMS</label>
+    <ngx-ixcheck-table id="orders-list" headerTitle="Orders" [items]="items" [indexColumn]="false"
+        [itemCount]="itemCount" [selectColumn]="false" [expandOnIndexColClick]="false" [expandOnRowClick]="false">
+
+        <!-- Exam # -->
+
+        <ngx-ixcheck-table-column [property]="'exam_number'" [header]="'#'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+
+        <!-- Exam Code -->
+        <ngx-ixcheck-table-column [property]="'exam_code'" [header]="'Code'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+
+        <!-- Exam Name -->
+        <ngx-ixcheck-table-column [property]="'exam_name'" [header]="'Name'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+
+        <!-- Exam Type -->
+        <ngx-ixcheck-table-column [property]="'exam_type'" [header]="'Type'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+        
+        <!-- Exam Duration -->
+        <ngx-ixcheck-table-column [property]="'exam_duration'" [header]="'Duration'" [sortable]="false">
+        </ngx-ixcheck-table-column>
+
+    </ngx-ixcheck-table>
+</div>
+
+<div>
+    <label>PAYMENT GATEWAYS</label>
+    <div *ngIf="paymentGatewayItems.length > 0">
+        <ngx-ixcheck-table id="payment-gateway-list" headerTitle="Gateway" [items]="paymentGatewayItems" [indexColumn]="false"
+            [itemCount]="itemCount" [selectColumn]="false" [expandOnIndexColClick]="false" [expandOnRowClick]="false">
+
+            <!-- Gateway # -->
+
+            <ngx-ixcheck-table-column [property]="'gateway_no'" [header]="'#'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Code -->
+            <ngx-ixcheck-table-column [property]="'code'" [header]="'Code'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Name -->
+            <ngx-ixcheck-table-column [property]="'name'" [header]="'Name'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Type -->
+            <ngx-ixcheck-table-column [property]="'payment_gateway_type'" [header]="'Type'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Environment -->
+            <ngx-ixcheck-table-column [property]="'payment_gateway_environment'" [header]="'Environment'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Production -->
+            <ngx-ixcheck-table-column [property]="'production_gateway_text'" [header]="'Production'" [sortable]="false">
+            </ngx-ixcheck-table-column>
+
+            <!-- Status -->
+            <ngx-ixcheck-table-column [property]="'status_text'" [header]="'Status'" [colType]="'custom'">
+                <ng-template #colDetailComponent let-rowitem="item">
+                    <span class="badge {{rowitem.status_css_tag}}">{{rowitem.status_text}}</span>
+                </ng-template>
+            </ngx-ixcheck-table-column>
+
+            <ngx-ixcheck-table-column [colType]="'custom'">
+                <ng-template #colHeaderComponent>Action</ng-template>
+                <ng-template #colDetailComponent let-rowitem="item">
+            
+                    <div *ngIf="rowitem.status_text ==='Configured' || rowitem.status_text ==='Pending'" class=" btn-group" dropdown>
+                        <a (click)="$event.stopPropagation();"
+                        href="/#/registration/payment/gateway/registration/{{rowItemData.guid}}/id/{{rowitem.id}}/manage"
+                            class="cs-clr p-0">Manage</a>
+
+                        <a *ngIf="rowitem.status_text ==='Configured'"
+                            class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1" placement="right">
+                            <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                        </a>
+                        <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                            aria-labelledby="button-autoclose1">
+                            <li role="menuitem">
+                                <a class="dropdown-item" (click)="$event.stopPropagation();"
+                                href="/#/registration/payment/gateway/registration/{{rowItemData.guid}}/id/{{rowitem.id}}/manage/view">
+                                    View
+                                </a>
+                            </li>
+                            <li role="menuitem" (click)="$event.stopPropagation();changeStatus('ARCHIVED',rowitem.id)">
+                                <a class="dropdown-item" >
+                                    Archive
+                                </a>
+                            </li>
+                            <li *ngIf="rowitem.production_gateway_text ==='YES'" role="menuitem">
+                                <a class="dropdown-item" (click)="$event.stopPropagation();changeStatus('FINALIZED',rowitem.id)">
+                                    Finalize
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div *ngIf="rowitem.status_text ==='Finalized'" class=" btn-group" dropdown>
+                        <a (click)="$event.stopPropagation();"
+                            href="/#/registration/payment/gateway/registration/{{rowItemData.guid}}/id/{{rowitem.id}}/manage/view"
+                            class="cs-clr p-0">View</a>
+                        <a  class="icon-action-dropdown" dropdownToggle
+                            aria-controls="dropdown-autoclose1" placement="right">
+                            <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                        </a>
+                        <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                            aria-labelledby="button-autoclose1">
+                            <li role="menuitem">
+                                <a class="dropdown-item" (click)="$event.stopPropagation();changeStatus('UNFINALIZED',rowitem.id)">
+                                    Unfinalize
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div *ngIf="rowitem.status_text ==='Archived'" class=" btn-group" dropdown>
+                        <a (click)="$event.stopPropagation();"
+                            href="/#/registration/payment/gateway/registration/{{rowItemData.guid}}/id/{{rowitem.id}}/manage/view"
+                            class="cs-clr p-0">View</a>
+                        <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1" placement="right">
+                            <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                        </a>
+                        <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                            aria-labelledby="button-autoclose1">
+                            <li role="menuitem">
+                                <a class="dropdown-item" (click)="$event.stopPropagation();changeStatus('UNARCHIVED',rowitem.id)">
+                                    Unarchive
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div *ngIf="rowitem.status_text ==='Unfinalized'" class=" btn-group" dropdown>
+                        <a (click)="$event.stopPropagation();"
+                            href="/#/registration/payment/gateway/registration/{{rowItemData.guid}}/id/{{rowitem.id}}/manage/view"
+                            class="cs-clr p-0">View</a>
+                        <a class="icon-action-dropdown" dropdownToggle aria-controls="dropdown-autoclose1" placement="right">
+                            <svg-icon src="assets/images/chevron-down.svg"></svg-icon>
+                        </a>
+                        <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                            aria-labelledby="button-autoclose1">
+                            <li role="menuitem">
+                                <a class="dropdown-item" (click)="$event.stopPropagation();changeStatus('FINALIZED',rowitem.id)">
+                                    Finalize
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            
+                </ng-template>
+            </ngx-ixcheck-table-column>
+
+        </ngx-ixcheck-table>
+    </div>
+    <div class="not-found-container" *ngIf="paymentGatewayItems.length == 0">
+        <h5>
+            No Data Available...
+        </h5>
+    </div>
+</div>

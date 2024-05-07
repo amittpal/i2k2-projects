@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="card card-bordered fullheight-fixed">
+        <div class="card-body scrollable p-0">
+            
+            <form [formGroup]="finalReviewFormGroup">
+                <div class="row app-form">
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group trad foc">
+                            <label>REGISTRATION CODE</label>
+                            <input type="text" class="form-control" formControlName="code">
+                        </div>
+                        <div class="form-group foc trad">
+                            <label>REGISTRATION NAME</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>REGISTRATION TYPE</label>
+                            <input type="text" class="form-control" formControlName="reg_list_type_name">
+                        </div>
+                        <div class="form-group trad foc">
+                            <label>RANDOMIZE REGISTRATIONS</label>
+                            <select class="form-control" formControlName="randomize_reg">
+                                <option [selected] value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>ADMIT CARD DISTRIBUTION SCHEDULE</label>
+                            <select class="form-control" formControlName="distribution_schedule">
+                                <option [selected] value="0">Select</option>                                
+                                <option [value]="item.id" *ngFor="let item of admitCardDistributionSchedule">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">                            
+                            <label>DAYS FOR DISTRIBUTION</label>
+                            <input type="number" min="0" class="form-control" formControlName="days_for_distribution">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-lg-3">
+                        <div class="form-group foc trad">
+                            <label>SHOW CENTRE'S MAP</label>
+                            <select class="form-control" formControlName="centre_map">
+                                <option [selected] value="">Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group trad foc">                            
+                            <label>DISTRIBUTION METHOD</label>
+                            <select class="form-control" formControlName="distribution_method">
+                                <option [selected] value="0">Select</option>
+                                <option [value]="item.id" *ngFor="let item of admitCardDistributionMethod">{{item.name}}</option>                                
+                            </select>
+                        </div>
+                    </div>
+       
+                </div>
+        </form>
+        </div>
+    </div>
+
+</div>

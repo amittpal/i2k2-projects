@@ -1,0 +1,687 @@
+{
+    "exam_duration": {
+      "allowed_duration_in_seconds": 3600.0
+    },
+    "exam_info": [
+      {
+        "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+        "exam_type": "Entrance"
+      }
+    ],
+    "sections": [
+      {
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "section_name": "Section A"
+      }
+    ],
+    "section_status": [
+      {
+        "status_guid": "0e8a6169-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesVisited",
+        "status_name": "Unanswered",
+        "status_css_tag": "badge-warning",
+        "no_of_questions": "0"
+      },
+      {
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "no_of_questions": "10"
+      },
+      {
+        "status_guid": "0e8a6260-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesAnswered",
+        "status_name": "Answered",
+        "status_css_tag": "badge-success",
+        "no_of_questions": "0"
+      },
+      {
+        "status_guid": "0e8a6357-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesMarkReview",
+        "status_name": "To Review",
+        "status_css_tag": "badge-info",
+        "no_of_questions": "0"
+      }
+    ],
+    "section_questions_status": [
+      {
+        "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "1",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "2",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "3",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "4",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "5",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "6",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "7",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "8",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "9",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      },
+      {
+        "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+        "question_number": "10",
+        "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+        "status_type": "QuesNoVisit",
+        "status_name": "Unread",
+        "status_css_tag": "badge",
+        "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+        "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+        "primary_question_guid": ""
+      }
+    ],
+    "question_summary": [
+      {
+        "question": [
+          {
+            "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">The electronic configurations of three elements X, Y and Z are X – 2, 8; Y – 2, 8, 7 and Z – 2, 8, 2. Which of the following is correct?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "1"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "41604f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">X is a metal.</span></p>"
+          },
+          {
+            "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "41605161-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Y is a metal.</span></p>"
+          },
+          {
+            "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "41605214-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Z is a non-metal.</span></p>"
+          },
+          {
+            "question_guid": "569b1458-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "41605366-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Y is a non-metal and Z is a metal.</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Reaction between X and Y, forms compound Z. X loses electron and Y gains electron. Which of the following properties is not shown by Z?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "2"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "1fe59323-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Has high melting point</span></p>"
+          },
+          {
+            "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "1fe5954c-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Has low melting point</span></p>"
+          },
+          {
+            "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "1fe595e9-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Conducts electricity in molten state</span></p>"
+          },
+          {
+            "question_guid": "3bff2f91-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "1fe59648-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Occurs as solid</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Alloys are homogeneous mixtures of a metal with a metal or non-metal. Which among the following alloys contain non-metal as one of its constituents?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "3"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "060f4afe-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Brass</span></p>"
+          },
+          {
+            "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "060f4c90-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Bronze</span></p>"
+          },
+          {
+            "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "060f4e81-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Amalgam</span></p>"
+          },
+          {
+            "question_guid": "1a5040c0-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "060f4ef7-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Steel</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">2 mL each of concentrated HCl, HNO3&nbsp;and a mixture of concentrated HCl and concentrated HNO3&nbsp;in the ratio of 3 : 1 were taken in test tubes labelled as A, B and C. A small piece of metal was put in each test tube. No change occurred in test tubes A and B but the metal got dissolved in test tube C respectively. The metal could be</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "4"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "f156548c-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Al</span></p>"
+          },
+          {
+            "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "f156568a-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Au</span></p>"
+          },
+          {
+            "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "f156579c-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Cu</span></p>"
+          },
+          {
+            "question_guid": "00daa7a4-a1df-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "f15657fe-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Pt</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Which one of the following four metals would be displaced from the solution of its salts by other three metals?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "5"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "d219a1ba-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Mg</span></p>"
+          },
+          {
+            "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "d219a395-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Ag</span></p>"
+          },
+          {
+            "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "d219a44f-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Zn</span></p>"
+          },
+          {
+            "question_guid": "e65ca0d0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "d219a4b4-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Cu</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Metal M occurs in the Earth’s crust as its oxide M2O3. An alloy of this metal is used in making aircrafts. The ore of the metal M is</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "6"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "b1ccf8db-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">magnetite</span></p>"
+          },
+          {
+            "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "b1ccfaad-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">haematite</span></p>"
+          },
+          {
+            "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "b1ccfb5b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">bauxite</span></p>"
+          },
+          {
+            "question_guid": "cc0e8a1e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "b1ccfbbd-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">pyrolusite</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">An alloy reacted with dilute hydrochloric acid to produce a gas which ‘pops’ a lighted splint. The residue reacted with dilute nitric acid to form a blue solution. Which one of the following pairs of metals is present in the alloy?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "7"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "962f6227-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Copper and lead</span></p>"
+          },
+          {
+            "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "962f63ae-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Lead and magnesium</span></p>"
+          },
+          {
+            "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "962f6440-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Copper and magnesium</span></p>"
+          },
+          {
+            "question_guid": "abf85981-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "962f649e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Lead and zinc</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Generally metals react with acids to give salt and hydrogen gas. Which of the following acids does not give hydrogen gas on reacting with metals (except Mn and Mg)?</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "8"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "6f059c3c-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">H2SO4</span></p>"
+          },
+          {
+            "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "6f059dd0-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">HCl</span></p>"
+          },
+          {
+            "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "6f059e70-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">HNO3</span></p>"
+          },
+          {
+            "question_guid": "8a4a5a7b-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "6f059ed3-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">All of these</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">Due to its semiconductor properties the non-metal used in computer, T.V. etc. is</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "9"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "58bdea48-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Carbon</span></p>"
+          },
+          {
+            "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "58bdecf8-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Silicon</span></p>"
+          },
+          {
+            "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "58bdedaa-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Bromine</span></p>"
+          },
+          {
+            "question_guid": "687e315e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "58bdee10-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">Fluorine</span></p>"
+          }
+        ],
+        "answers": []
+      },
+      {
+        "question": [
+          {
+            "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "ans_question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "exam_guid": "ad371f0e-a1da-11eb-8f5e-5a28b94f0bf6",
+            "question_description": "<p><span style=\"color: rgb(34, 34, 34);\">The ability of metals to be drawn into thin wires is known as</span></p>",
+            "language_guid": "2b087c3f-2beb-11ea-a071-0242ac110013",
+            "language": "English",
+            "section_guid": "c7019fdb-a1da-11eb-8f5e-5a28b94f0bf6",
+            "section_name": "Section A",
+            "number_of_options": "4",
+            "answer_type_code": "SingleChoice",
+            "answer_type": "Single Choice",
+            "primary_question_guid": "",
+            "subject_guid": "12320821-7274-11ea-9104-fa163efd7a87",
+            "subject": "English",
+            "status_guid": "0e8a61e3-501f-11eb-885a-3e30c6f79162",
+            "status_name": "Unread",
+            "question_status_type": "QuesNoVisit",
+            "status_css_tag": "badge",
+            "question_number": "10"
+          }
+        ],
+        "option": [
+          {
+            "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "2028c9ea-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "1",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">ductility</span></p>"
+          },
+          {
+            "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "2028cc0e-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "2",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">malleability</span></p>"
+          },
+          {
+            "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "2028ccb2-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "3",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">sonority</span></p>"
+          },
+          {
+            "question_guid": "45f879a7-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_Guid": "2028cd17-a1de-11eb-8f5e-5a28b94f0bf6",
+            "option_number": "4",
+            "description": "<p><span style=\"color: rgb(34, 34, 34);\">conductivity</span></p>"
+          }
+        ],
+        "answers": []
+      }
+    ],
+    "stats": {
+      "cached_check_time": "3.1144ms",
+      "sql_conn_time": "0.939ms",
+      "sql_query_time": "8.9321ms",
+      "loop_time": "0.6458ms"
+    }
+  }
